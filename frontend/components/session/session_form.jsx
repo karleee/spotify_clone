@@ -11,8 +11,7 @@ class SessionForm extends React.Component {
   resetState() {
     if (this.props.formType === 'Log In') {
       this.state = {
-        username: '',
-        email: '',
+        loginCredentials: '',
         password: ''
       };
     } else {
@@ -20,7 +19,6 @@ class SessionForm extends React.Component {
         username: '',
         email: '',
         password: '',
-        nickname: '',
         gender: '',
         birthday: Date.now
       }
@@ -28,18 +26,13 @@ class SessionForm extends React.Component {
   }
 
   update(field) {
-    return e => this.setState({[field]: e.currentTarget.value});
+    return e => this.setState({ [field]: e.currentTarget.value });
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
-  }
-
-  handleLoginInput(e) {
-    let field = e.currentTarget.value.includes('@') ? 'email' : 'username';
-    this.setState({ [field]: e.currentTarget.value });
   }
 
   renderErrors() {
@@ -54,44 +47,67 @@ class SessionForm extends React.Component {
 
   render() {
     const { formType, clearErrors } = this.props;
-    let birthdayInput, 
-      nicknameInput, 
+    let emailInput,
+      birthdayInput, 
+      usernameInput, 
       genderInput;
 
     if (formType === 'Sign Up') {
-        nicknameInput = <label>
-          <br />
+      emailInput = <div>
+        <label>
           <input type="text"
-            value={this.state.nickname}
-            onChange={this.update('nickname')}
-            className="nickname-input"
-            placeholder="What should we call you?"
+            value={this.state.email}
+            onChange={this.update('email')}
+            className="login-input"
+            placeholder="Email"
           />
         </label>
+      </div>
 
-        birthdayInput = <label>
-          <br />
-          <input type="date"
-            onChange={this.update('birthday')}
-            className="birthday-input"
-          />
+      usernameInput = <label>
+        <br />
+        <input type="text"
+          value={this.state.username}
+          onChange={this.update('username')}
+          className="username-input"
+          placeholder="What should we call you?"
+        />
+      </label>
+
+      birthdayInput = <label>
+        <br />
+        <input type="date"
+          onChange={this.update('birthday')}
+          className="birthday-input"
+        />
+      </label>
+
+      genderInput = <div className="session-form-gender">
+        <label>
+          <input type="radio" value="male" onChange={this.update('gender')} />
+          Male
         </label>
 
-        genderInput = <div className="session-form-gender">
-          <label>
-            <input type="radio" value="male" onChange={this.update('gender')} />
-            Male
-          </label>
-
-          <label>
-            <input type="radio" value="female" onChange={this.update('gender')} />
-            Female
-          </label>
-          <label>
-            <input type="radio" value="non-binary" onChange={this.update('gender')} />
-            Non-binary
-          </label>
-        </div>
+        <label>
+          <input type="radio" value="female" onChange={this.update('gender')} />
+          Female
+        </label>
+        <label>
+          <input type="radio" value="non-binary" onChange={this.update('gender')} />
+          Non-binary
+        </label>
+      </div>
+    } else {
+      emailInput = <div>
+        <label>
+          <input type="text"
+            value={ this.state.loginCredentials }
+            onChange={this.update('loginCredentials')}
+            className="login-input"
+            placeholder={ formType === 'Log In' ? "Email address or username" : "Email" }
+          />
+        </label>
+      </div>
     }
 
     return (
@@ -102,16 +118,7 @@ class SessionForm extends React.Component {
               {this.renderErrors()}
 
               <div className="session-form-input">
-                <label>
-                  <input type="text"
-                    value={ this.state.username }
-                    onChange={ e => this.handleLoginInput(e) }
-                    className="login-input"
-                    placeholder={ formType === 'Log In' ? "Email address or username" : "Email" }
-                  />
-                </label>
-
-                <br/>
+                { emailInput }
 
                 <label>
                   <input type="password"
@@ -122,7 +129,7 @@ class SessionForm extends React.Component {
                   />
                 </label>
 
-                { nicknameInput }
+                { usernameInput }
 
                 { birthdayInput }
 
