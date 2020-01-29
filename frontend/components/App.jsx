@@ -1,8 +1,9 @@
 import React from 'react';
-import { Provider } from 'react-redux';
+import HeaderNavContainer from './header_nav/header_nav_container';
 
 const App = () => (
   <div>
+    <HeaderNavContainer />
     <h1>Spotify</h1>
   </div>
 );
