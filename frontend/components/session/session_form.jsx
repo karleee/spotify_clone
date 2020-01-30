@@ -66,7 +66,6 @@ class SessionForm extends React.Component {
       </div>
 
       usernameInput = <label>
-        <br />
         <input type="text"
           value={this.state.username}
           onChange={this.update('username')}
@@ -75,13 +74,13 @@ class SessionForm extends React.Component {
         />
       </label>
 
-      birthdayInput = <label>
-        <br />
+      birthdayInput = <div className="session-form-birthday">
+        <label>Date of birth</label>
         <input type="date"
           onChange={this.update('birthday')}
           className="birthday-input"
         />
-      </label>
+      </div>
 
       genderInput = <div className="session-form-gender">
         <label>
@@ -97,21 +96,6 @@ class SessionForm extends React.Component {
           <input type="radio" value="non-binary" onChange={this.update('gender')} />
           Non-binary
         </label>
-      </div>
-
-      termsInput = <div className="session-form-terms">
-        <small>
-          By clicking on Sign Up, you agree to Spotify's
-          <a href="https://www.spotify.com/us/legal/end-user-agreement/">Terms and Conditions of Use</a>.
-        </small>
-
-        <br />
-
-        <small>
-          To learn more about how Spotify collects, uses, shares, and protects your personal
-          data please read Spotify's
-            <a href="https://www.spotify.com/us/legal/privacy-policy/">Privacy Policy</a>.
-        </small>
       </div>
     } else {
       emailInput = <div>
@@ -155,7 +139,7 @@ class SessionForm extends React.Component {
 
                 { genderInput }
 
-                { termsInput }
+                <div class="g-recaptcha" data-sitekey="6LfWT9QUAAAAABaqSyzDj6zS5biO2U7SuEFk6omA"></div>
 
                 <div className="session-form-submit">
                   <br />
@@ -163,6 +147,8 @@ class SessionForm extends React.Component {
                 </div>
               </div>
           </form>
+
+          <script src='https://www.google.com/recaptcha/api.js'></script>
 
           <div className="session-form-redirect-container">
               { formType === 'Sign Up' ? (<p>Already have an account?

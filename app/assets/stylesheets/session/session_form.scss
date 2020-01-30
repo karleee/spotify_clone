@@ -1,3 +1,5 @@
+@import 'variables';
+
 .session-form-container {
   display: flex;
   flex-direction: column;
@@ -13,8 +15,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    // border-top: 1px solid lightgray;
-    width: 360px;
+    width: 410px;
     text-align: center;
 
     h3 {
@@ -22,21 +23,51 @@
     }
 
     .session-form-input {
-      .session-form-text-input {      
+      .session-form-text-input {     
         input {
           font-size: 16px;
           width: 350px;
           padding: 15px 10px;
+          margin-top: 20px;
+        }
+      }
+
+      .session-form-birthday {
+        display: flex;
+        flex-direction: column;
+        margin-left: 14px;
+        font-family: 'ProximaNova-Regular';
+        font-weight: 700;
+        font-size: 15px;
+        color: $gray;
+
+        label {
+          width: 90px;
+          margin-top: 20px;
         }
 
-        input[type=date] {
-          color: gray;
+        input {
+          margin: 0 0 0 4px;
+          color: $gray;
         }
       }
 
       .session-form-gender {
         display: flex;
         justify-content: flex-start;
+        width: 300px;
+        color: $gray;
+        font-family: 'ProximaNova-Regular';
+        font-size: 16px;
+        margin: 20px 15px;
+        
+        label {
+          margin-right: 20px;
+
+          input[type=radio] {
+            margin-right: 8px;
+          }
+        }
       }
     }
   }
