@@ -1,8 +1,13 @@
 import React from 'react';
+import HeaderNavContainer from '../header_nav/header_nav_container';
 import { Link } from 'react-router-dom';
 
 const Splash = () => (
   <div className="splash-root-container">
+    <header>
+      <HeaderNavContainer />
+    </header>
+
     <div className="splash-background-container"></div>
 
     <div className="splash-text-container">

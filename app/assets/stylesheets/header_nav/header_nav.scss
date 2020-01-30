@@ -2,9 +2,8 @@
 
 .app-container {
     header {
-      background: rgba(25, 20, 20, 0.6);
-
       .session-header-new {
+        background: rgba(25, 20, 20, 0.7);
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -13,6 +12,7 @@
         img {
           width: 134px;
           height: 41px;
+          margin-right: 600px;
         }
 
         .session-links {
