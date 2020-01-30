@@ -23,12 +23,27 @@
     color: $white;
 
     h1 {
-      font-family: 'proximaNova-bold';
-      font-size: 64px;
+      font-family: 'ProximaNova-Extrabld';
+      font-size: 75px;
     }
 
     p {
+      font-family: 'ProximaNova-Regular';
       font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 50px;
+    }
+
+    a {
+      font-family: 'ProximaNova-Bold';
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-decoration: none;
+      color: $white;
+      background: $green;
+      padding: 15px 50px;
+      border-radius: 25px;
+      border: 2px solid $dark-green;
     }
   }
 }

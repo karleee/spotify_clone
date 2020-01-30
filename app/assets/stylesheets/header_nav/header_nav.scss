@@ -16,7 +16,8 @@
         }
 
         .session-links {
-          font-size: 24px;
+          font-family: 'ProximaNova-Bold';
+          font-size: 17px;
           
           a {
             text-decoration: none;
@@ -24,7 +25,11 @@
           }
 
           a:first-child {
-            margin-right: 50px;
+            margin-right: 35px;
+          }
+
+          a:hover {
+            color: $green;
           }
         }
       }
