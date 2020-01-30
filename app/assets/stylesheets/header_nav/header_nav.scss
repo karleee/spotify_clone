@@ -1,0 +1,32 @@
+@import "variables";
+
+.app-container {
+    header {
+      background: rgba(25, 20, 20, 0.6);
+
+      .session-header-new {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 15px; 
+
+        img {
+          width: 134px;
+          height: 41px;
+        }
+
+        .session-links {
+          font-size: 24px;
+          
+          a {
+            text-decoration: none;
+            color: $white;
+          }
+
+          a:first-child {
+            margin-right: 50px;
+          }
+        }
+      }
+    }
+}

@@ -8,10 +8,9 @@ import { Switch, Route } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => (
-  <div>
+  <div className="app-container">
     <header>
       <HeaderNavContainer />
-      <h1>Spotify</h1>
     </header>
 
     <Switch>

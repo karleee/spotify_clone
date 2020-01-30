@@ -3,17 +3,22 @@ import { Link } from 'react-router-dom';
 
 const HeaderNav = ({ currentUser, logout }) => {
   const sessionLinks = () => (
-    <nav className="login-signup">
-      <Link to="/login">Log In</Link>
-      <Link to="/signup">Sign Up</Link>
+    <nav className="session-header-new">
+      <Link to="/"><img src={window.headerLogo} /></Link>
+      <div className="session-links">
+        <Link to="/login">Log In</Link>
+        <Link to="/signup">Sign Up</Link>
+      </div>
     </nav>
   );
 
   const personalLinks = () => (
-    <hgroup className="header-group">
-      <a href="https://www.spotify.com/us/premium/">Upgrade</a>
-      <button className="logout-button" onClick={logout}>Log Out</button>
-    </hgroup>
+    <nav className="session-header-returning">
+      <div className="session-links">
+        <a href="https://www.spotify.com/us/premium/">Upgrade</a>
+        <button className="logout-button" onClick={logout}>Log Out</button>
+      </div>
+    </nav>
   );
 
   return currentUser ? personalLinks() : sessionLinks();
