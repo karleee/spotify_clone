@@ -50,7 +50,8 @@ class SessionForm extends React.Component {
     let emailInput,
       birthdayInput, 
       usernameInput, 
-      genderInput;
+      genderInput,
+      termsInput;
 
     if (formType === 'Sign Up') {
       emailInput = <div>
@@ -97,6 +98,21 @@ class SessionForm extends React.Component {
           Non-binary
         </label>
       </div>
+
+      termsInput = <div className="session-form-terms">
+        <small>
+          By clicking on Sign Up, you agree to Spotify's
+          <a href="https://www.spotify.com/us/legal/end-user-agreement/">Terms and Conditions of Use</a>.
+        </small>
+
+        <br />
+
+        <small>
+          To learn more about how Spotify collects, uses, shares, and protects your personal
+          data please read Spotify's
+            <a href="https://www.spotify.com/us/legal/privacy-policy/">Privacy Policy</a>.
+        </small>
+      </div>
     } else {
       emailInput = <div>
         <label>
@@ -111,29 +127,35 @@ class SessionForm extends React.Component {
     }
 
     return (
-      <div className="session-form-container">
-          <form onSubmit={this.handleSubmit} className="session-form-box">
-              {formType === 'Log In' ? <h3>To continue, log in to Spotify.</h3> : ''}
+      <div className="session-form-container"> 
+          <Link to="/"><img src={ blackLogo } /></Link>
+
+          <form onSubmit={this.handleSubmit} className="session-form">
+              {formType === 'Sign Up' ?<h3>Sign up with your email address</h3> : <h4>To continue, log in to Spotify.</h4>}
 
               {this.renderErrors()}
 
               <div className="session-form-input">
-                { emailInput }
+                <div className="session-form-text-input">
+                  { emailInput }
 
-                <label>
-                  <input type="password"
-                    value={this.state.password}
-                    onChange={this.update('password')}
-                    className="password-input"
-                    placeholder="Password"
-                  />
-                </label>
+                  <label>
+                    <input type="password"
+                      value={this.state.password}
+                      onChange={this.update('password')}
+                      className="password-input"
+                      placeholder="Password"
+                    />
+                  </label>
 
-                { usernameInput }
+                  { usernameInput }
 
-                { birthdayInput }
+                  { birthdayInput }
+                </div>
 
                 { genderInput }
+
+                { termsInput }
 
                 <div className="session-form-submit">
                   <br />
@@ -160,32 +182,14 @@ class SessionForm extends React.Component {
               }
           </div>
 
-          <div className="session-form-footer-container-signup">
-            { formType === 'Sign Up' ? (
-              <div>
-                <small>
-                  By clicking on Sign Up, you agree to Spotify's
-                  <a href="https://www.spotify.com/us/legal/end-user-agreement/">Terms and Conditions of Use</a>.
-                </small>
-
-                <small>
-                  To learn more about how Spotify collects, uses, shares, and protects your personal
-                  data please read Spotify's
-                  <a href="https://www.spotify.com/us/legal/privacy-policy/">Privacy Policy</a>.
-                </small>
-              </div>
-            ) : (
-              <div>
-                <small>
-                  If you click "Log in with Facebook" and are not a Spotify user, you
-                  will be registered and you agree to Spotify's
-                  <a href="https://www.spotify.com/us/legal/end-user-agreement/">Terms and Conditions</a>
-                  and <a href="https://www.spotify.com/us/legal/privacy-policy/">Privacy Policy</a>.
-                </small>
-              </div>
-            )
-          }
-          </div>
+          {formType === 'Log In' ? (<div className="session-form-footer-container-signup">
+            <small>
+              If you click "Log in with Facebook" and are not a Spotify user, you
+              will be registered and you agree to Spotify's
+              <a href="https://www.spotify.com/us/legal/end-user-agreement/">Terms and Conditions</a>
+              and <a href="https://www.spotify.com/us/legal/privacy-policy/">Privacy Policy</a>.
+            </small>
+          </div>) : "" }
       </div>
     );
   }
