@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 
 const HeavyRotationIndexItem = ({ playlist }) => (
   <li>
-    <Link to={`/playlist/${playlist.id}`}>{ playlist.title }</Link>
-    <p>By Spotify</p>
+    <div className="heavy-rotation-thumbnail-content">
+      <Link to={`/playlist/${playlist.id}`}>{ playlist.title }</Link>
+      <p>By Spotify</p>
+    </div>
   </li>
 );
  

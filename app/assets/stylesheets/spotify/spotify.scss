@@ -55,29 +55,58 @@
       }
     }
 
-    h1 {
-      font-family: 'ProximaNova-Extrabld';
-      font-size: 45px;
-      color: $white;
-    }
-
-    .heavy-rotation-main {
-      margin-top: 40px;
-
-      h2 {
-        font-family: 'ProximaNova-Bold';
-        font-size: 20px;
+    .home-index-heavy-rotation {
+      .heavy-rotation-header {
         color: $white;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07); 
-        padding-bottom: 5px; 
+
+        h1 {
+          font-family: 'ProximaNova-Extrabld';
+          font-size: 48px;
+        }
+
+        h2 {
+          font-family: 'ProximaNova-Extrabld';
+          font-size: 18px;
+          padding-bottom: 10px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+          margin-top: 50px;
+        }
       }
 
       .heavy-rotation-playlists {
         ul {
+          display: flex;
+          flex-direction: row;
           list-style: none;
+          font-family: 'ProximaNova-Regular';
+          font-size: 13px;
+          color: $gray;
 
           li {
-            color: $white;
+            position: relative;
+            width: 110px;
+            height: 60px;
+            margin-right: 20px;
+            background: $playlist-thumbnail-gray;
+            border-radius: 15px;
+            padding: 92px 35px; 
+          }
+
+          .heavy-rotation-thumbnail-content {
+            position: absolute;
+            top: 150px;
+            left: 20px;
+
+            a {
+              font-family: 'ProximaNova-Bold';
+              font-size: 15px;
+              text-decoration: none;
+              color: $white;
+            }
+
+            p {
+              margin-top: 5px;
+            }
           }
         }
       }

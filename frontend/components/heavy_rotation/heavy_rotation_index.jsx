@@ -9,12 +9,17 @@ class HeavyRotationIndex extends React.Component {
   render() {
     const { playlists } = this.props;
     return (
-      <div className="heavy-rotation-playlists">  
-        <h1>Home</h1>
-        <h2>Your heavy rotation</h2>
-        <ul>
-          {playlists.map(playlist => <HeavyRotationIndexItem key={playlist.id} playlist={playlist} />)}
-        </ul>
+      <div className="home-index-heavy-rotation">  
+        <div className="heavy-rotation-header">
+          <h1>Home</h1>
+          <h2>Your heavy rotation</h2>
+        </div>
+
+        <div className="heavy-rotation-playlists">
+          <ul>
+            {playlists.map(playlist => <HeavyRotationIndexItem key={playlist.id} playlist={playlist} />)}
+          </ul>
+        </div>
       </div>
     )
   }

@@ -9,7 +9,12 @@ class HeavyRotationDetail extends React.Component {
     const { playlist } = this.props;
     if (!playlist) return null;
     return (
-      <h1>Success!!</h1>
+      <div className="heavy-rotation-detail-header">
+        <p>Playlist</p>
+        <h1>{ playlist.title }</h1>
+        <p>Created by Spotify</p>
+        {/* Call TrackIndex component, pass the playlist as a prop so that it can access the playlist's tracks */}
+      </div>
     );
   }
 }

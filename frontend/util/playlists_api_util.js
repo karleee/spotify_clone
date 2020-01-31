@@ -1,7 +1,7 @@
 export const fetchAllPlaylists = () => (
   $.ajax({
     method: 'GET', 
-    url: '/api/playlists',
+    url: '/api/playlists'
   })
 );
 
