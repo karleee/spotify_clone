@@ -10,10 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_29_222951) do
+ActiveRecord::Schema.define(version: 2020_01_30_223823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "albums", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "yr", null: false
+    t.integer "artist_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["artist_id"], name: "index_albums_on_artist_id"
+  end
+
+  create_table "playlist_tracks", force: :cascade do |t|
+    t.integer "playlist_id", null: false
+    t.integer "track_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["track_id", "playlist_id"], name: "index_playlist_tracks_on_track_id_and_playlist_id", unique: true
+  end
+
+  create_table "playlists", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "playlist_type", null: false
+    t.index ["user_id"], name: "index_playlists_on_user_id"
+  end
+
+  create_table "tracks", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "album_id", null: false
+    t.integer "artist_id", null: false
+    t.integer "ord", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_tracks_on_album_id"
+    t.index ["artist_id"], name: "index_tracks_on_artist_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false

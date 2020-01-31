@@ -5,7 +5,7 @@ const HeaderNav = ({ currentUser, logout }) => {
   const sessionLinks = () => (
     <nav className="session-header-new">
       <Link to="/"><img src={window.whiteLogo} /></Link>
-      <div className="session-links">
+      <div className="session-links-new">
         <Link to="/signup">Sign Up</Link>
         <Link to="/login">Log In</Link>
       </div>
@@ -14,10 +14,8 @@ const HeaderNav = ({ currentUser, logout }) => {
 
   const personalLinks = () => (
     <nav className="session-header-returning">
-      <div className="session-links">
-        <a href="https://www.spotify.com/us/premium/">Upgrade</a>
-        <button className="logout-button" onClick={logout}>Log Out</button>
-      </div>
+      <div className="session-header-upgrade-button"><a href="https://www.spotify.com/us/premium/">Upgrade</a></div>
+      <button className="logout-button" onClick={logout}>Log Out</button>
     </nav>
   );
 

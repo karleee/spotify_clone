@@ -37,7 +37,7 @@ class SessionForm extends React.Component {
 
   renderErrors() {
     return (
-      <ul>
+      <ul className="session-form-errors">
         {this.props.errors.map((error, i) => (
           <li key={`error-${i}`}>{error}</li>
         ))}
@@ -139,25 +139,25 @@ class SessionForm extends React.Component {
 
                 { genderInput }
 
-                <div class="g-recaptcha" data-sitekey="6LfWT9QUAAAAABaqSyzDj6zS5biO2U7SuEFk6omA"></div>
-
+                { formType === 'Sign Up' ? <div className="g-recaptcha" data-sitekey="6LfJUNQUAAAAACm8--awNRrVvlQIeybq8VWQDKO9"></div> : ""}
+                {/* 6LfWT9QUAAAAABaqSyzDj6zS5biO2U7SuEFk6omA */}
+     
+    
                 <div className="session-form-submit">
                   <br />
-                  <input className="session-submit" type="submit" value={formType} />
+                  <input className="session-submit-button" type="submit" value={formType} />
                 </div>
               </div>
           </form>
 
-          <script src='https://www.google.com/recaptcha/api.js'></script>
-
           <div className="session-form-redirect-container">
-              { formType === 'Sign Up' ? (<p>Already have an account?
+              { formType === 'Sign Up' ? (<p>Already have an account? 
                 <Link to='/login'
                   onClick={clearErrors} >
                   <span className="redirect-link">Log In</span>
                 </Link>
               </p>) : (
-                <div>
+                <div className="session-form-no-account">
                   <h3>Don't have an account?</h3>
                   <br />
                   <Link to='/signup'
@@ -167,15 +167,6 @@ class SessionForm extends React.Component {
                 </div>)
               }
           </div>
-
-          {formType === 'Log In' ? (<div className="session-form-footer-container-signup">
-            <small>
-              If you click "Log in with Facebook" and are not a Spotify user, you
-              will be registered and you agree to Spotify's
-              <a href="https://www.spotify.com/us/legal/end-user-agreement/">Terms and Conditions</a>
-              and <a href="https://www.spotify.com/us/legal/privacy-policy/">Privacy Policy</a>.
-            </small>
-          </div>) : "" }
       </div>
     );
   }

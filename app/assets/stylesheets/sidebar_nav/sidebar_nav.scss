@@ -1,0 +1,27 @@
+@import "variables";
+
+.sidebar-nav-container {
+  display: flex;
+  flex-direction: column;
+  background: $sidebar-gray;
+  width: 300px;
+
+  .sidebar-nav-main-content {
+    display: flex;
+    flex-direction: column;
+    margin: 25px 0 0 25px;
+
+    .sidebar-nav-header {
+      img {
+        width: 130px;
+        height: 40px;
+      }
+    }
+
+    .sidebar-nav-main-links {
+      a {
+        color: $white;
+      }
+    }
+  }
+}

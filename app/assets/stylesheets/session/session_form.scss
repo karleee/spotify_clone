@@ -22,11 +22,15 @@
       font-family: 'ProximaNova-Extrabld';
     }
 
+    h4 {
+      font-family: 'ProximaNova-Extrabld';
+    }
+
     .session-form-input {
       .session-form-text-input {     
         input {
           font-size: 16px;
-          width: 350px;
+          width: 400px;
           padding: 15px 10px;
           margin-top: 20px;
         }
@@ -35,7 +39,7 @@
       .session-form-birthday {
         display: flex;
         flex-direction: column;
-        margin-left: 14px;
+        margin-left: -5px;
         font-family: 'ProximaNova-Regular';
         font-weight: 700;
         font-size: 15px;
@@ -47,6 +51,7 @@
         }
 
         input {
+          font-family: 'ProximaNova-Regular';
           margin: 0 0 0 4px;
           color: $gray;
         }
@@ -59,15 +64,108 @@
         color: $gray;
         font-family: 'ProximaNova-Regular';
         font-size: 16px;
-        margin: 20px 15px;
+        margin: 20px 0px;
         
         label {
           margin-right: 20px;
 
           input[type=radio] {
             margin-right: 8px;
-          }
+          } 
         }
+      }
+
+      .g-recaptcha {
+        display: flex;
+        justify-content: center;
+        margin: 10px 0; 
+      }
+ 
+      .session-form-submit { 
+        .session-submit-button { 
+          background: $green;
+          font-size: 15px;
+          font-family: 'ProximaNova-Bold';
+          text-transform: uppercase;
+          color: $white;
+          letter-spacing: 2px;
+          padding: 15px 130px;
+          border-radius: 25px;
+        }
+
+        .session-submit-button:hover {
+          cursor: pointer;
+          background: $light-green;
+          transition: background 0.5s;
+        }
+      }
+    }
+  }
+
+  .session-form-errors {
+    list-style: none; 
+    font-family: 'ProximaNova-Regular';
+    font-weight: 700;
+    font-size: 12px;
+    width: 100%;
+
+    li {
+      background: $red;
+      padding: 15px 10px;  
+      color: $white;
+      margin-bottom: 10px;
+    }
+  }
+
+  .session-form-redirect-container {
+    p {
+      font-family: 'ProximaNova-Regular';
+      font-weight: 700;
+      font-size: 15px;
+
+      a {
+        margin-left: 5px;
+        text-decoration: none;
+        color: $green;
+      }
+
+      a:hover {
+        cursor: pointer;
+        color: $light-green;
+      }
+    }
+
+    .session-form-no-account {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 70px;
+      padding-top: 30px;
+      border-top: 1px solid lightgray;
+      width: 410px;
+
+      h3 {
+        font-family: 'ProximaNova-Extrabld';
+        font-size: 18px;
+      }
+
+      a {
+        font-family: 'ProximaNova-Bold';
+        font-size: 15px;
+        letter-spacing: 2px;
+        text-decoration: none;
+        color: $dark-gray;
+        border-radius: 25px;
+        border: 2px solid $dark-gray;
+        padding: 12px 100px; 
+        margin-top: -10px;
+      }
+
+      a:hover {
+        cursor: pointer;
+        background: $dark-gray;
+        color: $white;
+        transition: all 0.5s;
       }
     }
   }

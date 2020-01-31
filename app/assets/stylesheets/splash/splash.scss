@@ -5,9 +5,11 @@
   background-image: image_url('splash-background.png');
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100vh;
+  overflow: hidden;
 
   .splash-background-container {
-    width: 100%;
+    width: 100%; 
     height: 676px;
     background-image: image_url('splash-overlay.svg');
     background-repeat: no-repeat;
@@ -43,7 +45,10 @@
       background: $green;
       padding: 15px 50px;
       border-radius: 25px;
-      border: 2px solid $dark-green;
+    }
+
+    a:hover {
+      background: $light-green;
     }
   }
 }

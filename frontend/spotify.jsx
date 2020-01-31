@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 
-import * as APIUtil from './util/session_api_util';
+import * as SessionAPIUtil from './util/session_api_util';
+import { fetchAllPlaylists } from './util/playlists_api_util';
 
-
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {  
   let store;
   
   if (window.currentUser) {
@@ -22,9 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
-  window.login = APIUtil.login;
-  window.signup = APIUtil.signup;
-  window.logout = APIUtil.logout;
+  window.login = SessionAPIUtil.login;
+  window.signup = SessionAPIUtil.signup;
+  window.logout = SessionAPIUtil.logout;
+  window.fetchAllPlaylists = fetchAllPlaylists;
 
   const root = document.getElementById('root');
 
