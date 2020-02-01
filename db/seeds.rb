@@ -39,16 +39,11 @@ lord_huron_Radio = Playlist.create({
   playlist_type: 'heavyRotation'
 })
 
-testing = Playlist.create({ 
-  title: 'Test', 
-  user_id: admin.id, 
-  playlist_type: 'user'
-})
-
 # Artists
 ratatat = Artist.create({ name: 'Ratatat' })
 daft_punk = Artist.create({ name: 'Daft Punk' })
 the_whitest_boy_alive = Artist.create({ name: 'The Whitest Boy Alive'})
+gorillaz = Artist.create({ name: 'Gorillaz' })
 
 
 # Albums
@@ -68,6 +63,12 @@ the_whitest_boy_alive_dreams = Album.create({
   title: 'Dreams',
   yr: 2006,
   artist_id: the_whitest_boy_alive.id
+})
+
+gorillaz_feel_good_inc = Album.create({
+  title: 'Feel Good Inc.',
+  yr: 2005,
+  artist_id: gorillaz.id
 })
 
 # Tracks
@@ -120,6 +121,13 @@ the_whitest_boy_alive_track_burning = Track.create({
   ord: 1
 })
 
+gorillaz_track_feelGoodInc = Track.create({
+  title: 'Feel Good Inc.',
+  album_id: gorillaz_feel_good_inc.id,
+  artist_id: gorillaz.id,
+  ord: 1
+})
+
 # Playlist Tracks
 daft_punk_radio_track1 = PlaylistTrack.create({
   playlist_id: daft_punk_radio.id,
@@ -136,7 +144,7 @@ daft_punk_radio_track3 = PlaylistTrack.create({
   track_id: the_whitest_boy_alive_track_burning.id
 })
 
-miike_snow_radio_track1 = PlaylistTrack.create({
-  playlist_id: miike_snow_radio.id,
-  track_id: daft_punk_track_instantCrush.id
+daft_punk_radio_track4 = PlaylistTrack.create({
+  playlist_id: daft_punk_radio.id,
+  track_id: gorillaz_track_feelGoodInc.id
 })
