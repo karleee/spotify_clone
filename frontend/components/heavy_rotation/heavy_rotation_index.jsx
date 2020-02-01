@@ -1,5 +1,5 @@
 import React from 'react';
-import HeavyRotationIndexItem from './heavy_rotation_index_item';
+import PlaylistIndexItem from '../playlists/playlist_index_item';
 
 class HeavyRotationIndex extends React.Component {
   componentDidMount() {
@@ -13,11 +13,11 @@ class HeavyRotationIndex extends React.Component {
         <div className="heavy-rotation-header">
           <h1>Home</h1>
           <h2>Your heavy rotation</h2>
-        </div>
+        </div> 
 
         <div className="heavy-rotation-playlists">
           <ul>
-            {playlists.map(playlist => <HeavyRotationIndexItem key={playlist.id} playlist={playlist} />)}
+            {playlists.map(playlist => <PlaylistIndexItem key={playlist.id} playlist={playlist} />)}
           </ul>
         </div>
       </div>

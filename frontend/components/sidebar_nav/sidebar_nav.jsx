@@ -11,11 +11,21 @@ class SideBarNav extends React.Component {
       <div className="sidebar-nav-container"> 
         <div className="sidebar-nav-main-content">
           <div className="sidebar-nav-header">
-            <img src={ whiteLogo } />
+            <Link to="/home"><img src={ whiteLogo } /></Link>
           </div>
 
           <div className="sidebar-nav-main-links">
-            <Link to="/home">Home</Link>
+            <div id="home-link">
+              <Link to="/home">
+                <i id="home-icon"></i> 
+                <p>Home</p>
+              </Link> 
+            </div>
+
+            <Link to="/search">
+              <i></i>
+              <p>Search</p>
+            </Link> 
           </div>
         </div>
       </div>

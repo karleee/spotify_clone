@@ -1,10 +1,112 @@
 @import "variables";
 
+.playlist-thumbnails {
+  position: absolute;
+  top: 150px;
+  left: 20px;
+
+  a {
+    font-family: 'ProximaNova-Bold';
+    font-size: 15px;
+    text-decoration: none;
+    color: $white;  
+  }
+
+  p {
+    margin-top: 5px;
+  }
+}
+
+.playlist-detail-container {
+  .playlist-detail-header {
+    p:first-child {
+      font-family: 'ProximaNova-Regular';
+      font-size: 12px;
+      letter-spacing: 3px; 
+      text-transform: uppercase;
+      color: $white;
+    }
+
+    h1 {
+      font-family: 'ProximaNova-Extrabld';
+      font-size: 45px;
+      color: $white;
+    }
+ 
+    p:last-child {
+      font-family: 'ProximaNova-Regular';
+      font-size: 16px;
+      color: $gray;
+
+      span {
+        color: $white;
+      }
+    }
+  }
+
+  .playlist-detail-tracks {
+    ul {
+      display: flex;
+      flex-direction: column;
+      margin-left: 30%;
+
+      li {
+        display: flex;
+        flex-direction: row;
+        padding: 0 20px;
+
+        .track-info {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+
+          .music-note-icon {
+            position: absolute;
+            content: image_url('music-note-icon.png');
+            width: 10px;
+            height: 15px;
+            top: 20px;
+          }
+
+          .track-text {
+            margin-left: 25px;
+
+            p {
+              font-family: 'ProximaNova-Regular';
+            }
+
+            p:first-of-type {
+              font-size: 18px;
+              color: $white;
+            }
+
+            p:last-of-type {
+              font-size: 16px;
+              color: $gray;
+              margin-top: -15px;
+            }
+          }
+        }
+      }
+
+      li:hover { 
+        background: $track-light-gray; 
+        transition: all 0.25s;
+
+        .music-note-icon {
+          content: image_url('play-icon.png');
+          width: 15px;
+        }
+      }
+    }
+  }
+}
+
 .home-index-container {
   display: flex;
   height: 100vh;
   overflow: hidden;
-  background: $home-background-gray;
+  background: $main-background-gray;
 
   .home-index-main-content {
     display: flex;
@@ -92,22 +194,22 @@
             padding: 92px 35px; 
           }
 
-          .heavy-rotation-thumbnail-content {
-            position: absolute;
-            top: 150px;
-            left: 20px;
+          // .playlist-thumbnails {
+          //   position: absolute;
+          //   top: 150px;
+          //   left: 20px;
 
-            a {
-              font-family: 'ProximaNova-Bold';
-              font-size: 15px;
-              text-decoration: none;
-              color: $white;  
-            }
+          //   a {
+          //     font-family: 'ProximaNova-Bold';
+          //     font-size: 15px;
+          //     text-decoration: none;
+          //     color: $white;  
+          //   }
 
-            p {
-              margin-top: 5px;
-            }
-          }
+          //   p {
+          //     margin-top: 5px;
+          //   }
+          // }
         }
       }
     }

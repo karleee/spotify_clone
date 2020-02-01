@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const HeavyRotationIndexItem = ({ playlist }) => (
+const PlaylistIndexItem = ({ playlist }) => ( 
   <li>
-    <div className="heavy-rotation-thumbnail-content">
+    <div className="playlist-thumbnails">
       <Link to={`/playlist/${playlist.id}`}>{ playlist.title }</Link>
       <p>By Spotify</p>
     </div>
   </li>
 );
  
-export default HeavyRotationIndexItem;  
+export default PlaylistIndexItem;  

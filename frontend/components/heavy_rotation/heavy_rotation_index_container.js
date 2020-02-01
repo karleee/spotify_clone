@@ -4,7 +4,7 @@ import { selectPlaylistsFromType } from '../../reducers/selectors';
 import HeavyRotationIndex from './heavy_rotation_index';
  
 const mapStateToProps = state => ({
-  playlists: selectPlaylistsFromType(state, 'heavyRotation')
+  playlists: selectPlaylistsFromType(state, 'heavyRotation')  
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -9,9 +9,9 @@ export const receiveAllPlaylists = playlists => ({
   playlists
 });
 
-export const receiveSinglePlaylist = playlist => ({
+export const receiveSinglePlaylist = payload => ({ 
   type: RECEIVE_SINGLE_PLAYLIST,
-  playlist
+  payload
 });
 
 export const removePlaylist = id => ({
@@ -26,7 +26,7 @@ export const requestAllPlaylists = () => dispatch => (
 
 export const requestSinglePlaylist = id => dispatch => (
   PlaylistAPIUtil.fetchSinglePlaylist(id)
-    .then(playlist => dispatch(receiveSinglePlaylist(playlist)))
+    .then(payload => dispatch(receiveSinglePlaylist(payload)))
 );
 
 export const deletePlaylist = id => dispatch => (
