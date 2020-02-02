@@ -84,16 +84,16 @@ class SessionForm extends React.Component {
 
       genderInput = <div className="session-form-gender">
         <label>
-          <input type="radio" value="male" onChange={this.update('gender')} />
+          <input type="radio" name="user[gender]" value="male" onChange={this.update('gender')} />
           Male
         </label>
 
         <label>
-          <input type="radio" value="female" onChange={this.update('gender')} />
+          <input type="radio" name="user[gender]" value="female" onChange={this.update('gender')} />
           Female
         </label>
         <label>
-          <input type="radio" value="non-binary" onChange={this.update('gender')} />
+          <input type="radio" name="user[gender]" value="non-binary" onChange={this.update('gender')} />
           Non-binary
         </label>
       </div>

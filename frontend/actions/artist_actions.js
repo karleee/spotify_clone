@@ -1,5 +1,4 @@
 import * as ArtistAPIUtil from '../util/artists_api_util';
-
 export const RECEIVE_ALL_ARTISTS = 'RECEIVE_ALL_ARTISTS';
 export const RECEIVE_SINGLE_ARTIST= 'RECEIVE_SINGLE_ARTIST';
 

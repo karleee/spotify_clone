@@ -1,9 +1,10 @@
 import React from 'react';
-import TrackIndex from '../track/track_index_container';
+import { Route } from 'react-router-dom';
+import TrackDetail from '../track/track_detail_container';
 
 class PlaylistDetail extends React.Component { 
   componentDidMount() {
-    this.props.requestSinglePlaylist(this.props.match.params.playlistId);
+    this.props.requestSinglePlaylist(this.props.match.params.playlistId)
   }
 
   render() {
@@ -17,12 +18,12 @@ class PlaylistDetail extends React.Component {
           <p>Playlist</p>
           <h1>{ playlist.title }</h1>
           <p>
-            Created by <span>{playlist.user}</span> • { playlist.trackIds.length } songs
+            Created by <span>{playlist.user}</span> • {playlist.track_ids.length} songs
           </p>
         </div>
 
         <div className="playlist-detail-tracks">
-          <TrackIndex playlist={ playlist }/> 
+          <TrackDetail playlistId={ playlist.id } />
         </div>
       </div>
     );

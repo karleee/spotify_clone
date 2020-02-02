@@ -3,5 +3,5 @@ export const selectPlaylistsFromType = (state, playlistType) => (
 );
 
 export const selectTracksFromPlaylist = (state, playlist) => (
-  playlist ? playlist.trackIds.map(id => state.entities.tracks[id]) : []
-);
+  playlist.track_ids ? playlist.track_ids.map(id => state.entities.tracks[id]) : []   
+); 

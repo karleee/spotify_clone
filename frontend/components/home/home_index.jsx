@@ -1,9 +1,12 @@
 import React from 'react';
 import PlaylistIndexItem from '../playlists/playlist_index_item';
 
-class HeavyRotationIndex extends React.Component {
-  componentDidMount() {
+class HomeIndex extends React.Component {
+  componentDidMount() { 
     this.props.requestAllPlaylists();
+    this.props.requestAllTracks();
+    this.props.requestAllAlbums();
+    this.props.requestAllArtists();
   }
 
   render() {
@@ -16,7 +19,7 @@ class HeavyRotationIndex extends React.Component {
         </div> 
 
         <div className="heavy-rotation-playlists">
-          <ul>
+          <ul> 
             {playlists.map(playlist => <PlaylistIndexItem key={playlist.id} playlist={playlist} />)}
           </ul>
         </div>
@@ -25,4 +28,4 @@ class HeavyRotationIndex extends React.Component {
   }
 }
 
-export default HeavyRotationIndex;
+export default HomeIndex;

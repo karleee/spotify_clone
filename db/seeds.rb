@@ -41,6 +41,7 @@ lord_huron_Radio = Playlist.create({
 
 # Artists
 ratatat = Artist.create({ name: 'Ratatat' })
+julian_casablancas = Artist.create({ name: 'Julian Casablancas'})
 daft_punk = Artist.create({ name: 'Daft Punk' })
 the_whitest_boy_alive = Artist.create({ name: 'The Whitest Boy Alive'})
 gorillaz = Artist.create({ name: 'Gorillaz' })
