@@ -12,16 +12,18 @@ class HomeIndex extends React.Component {
   render() {
     const { playlists } = this.props;
     return (
-      <div className="home-index-heavy-rotation">  
-        <div className="heavy-rotation-header">
-          <h1>Home</h1>
-          <h2>Your heavy rotation</h2>
-        </div> 
+      <div className="home-container">
+        <div className="heavy-rotation-container">  
+          <div className="heavy-rotation-header">
+            <h1>Home</h1>
+            <h2>Your heavy rotation</h2>
+          </div> 
 
-        <div className="heavy-rotation-playlists">
-          <ul> 
-            {playlists.map(playlist => <PlaylistIndexItem key={playlist.id} playlist={playlist} />)}
-          </ul>
+          <div className="heavy-rotation-content">
+            <ul> 
+              {playlists.map(playlist => <PlaylistIndexItem key={playlist.id} playlist={playlist} />)}
+            </ul>
+          </div>
         </div>
       </div>
     )

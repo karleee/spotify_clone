@@ -3,8 +3,8 @@ import { requestSinglePlaylist } from '../../actions/playlist_actions';
 import { requestAllTracks } from '../../actions/track_actions';
 import PlaylistDetail from './playlist_detail';
 
-const mapStateToProps = (state, ownParams) => ({ 
-  playlist: state.entities.playlists[ownParams.match.params.playlistId]
+const mapStateToProps = (state, ownProps) => ({ 
+  playlist: state.entities.playlists[ownProps.match.params.playlistId]
 });
 
 const mapDispatchToProps = dispatch => ({

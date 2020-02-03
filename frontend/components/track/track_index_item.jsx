@@ -5,10 +5,10 @@ const TrackIndexItem = ({ track }) => (
     <div className="track-info">
       <i className="music-note-icon"></i>
       <div className="track-text">
-        <p>{track.title}</p>
+        <p>{track.title}</p> 
         <p>{track.artist} • {track.album}</p>
       </div>
-    </div>
+    </div> 
   </li>
 );
 

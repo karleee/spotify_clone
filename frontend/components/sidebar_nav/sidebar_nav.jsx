@@ -8,20 +8,20 @@ class SideBarNav extends React.Component {
 
   render() {
     return (
-      <div className="sidebar-nav-container"> 
-        <div className="sidebar-nav-main-content">
-          <div className="sidebar-nav-header">
-            <Link to="/home"><img src={ whiteLogo } /></Link>
+      <div className="sidebar-container"> 
+        <div className="sidebar-header">
+          <Link to="/home"><img src={ whiteLogo } /></Link>
+        </div>
+
+        <div className="sidebar-content">
+          <div id="home-link">
+            <Link to="/home">
+              <i id="home-icon"></i> 
+              <p>Home</p>
+            </Link> 
           </div>
 
-          <div className="sidebar-nav-main-links">
-            <div id="home-link">
-              <Link to="/home">
-                <i id="home-icon"></i> 
-                <p>Home</p>
-              </Link> 
-            </div>
-
+          <div id="search-link">
             <Link to="/search">
               <i></i>
               <p>Search</p>

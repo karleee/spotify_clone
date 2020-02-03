@@ -11,7 +11,9 @@
 #
 
 class Playlist < ApplicationRecord
-  validates :title, :user_id, :playlist_type, presence: true
+  validates :title, :user_id, :playlist_type, presence: true 
+
+  has_one_attached :photo
 
   belongs_to :user
 

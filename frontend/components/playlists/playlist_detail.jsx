@@ -15,14 +15,13 @@ class PlaylistDetail extends React.Component {
     return (
       <div className="playlist-detail-container">
         <div className="playlist-detail-header">
-          <p>Playlist</p>
+          <img src={playlist.photo_url} alt="Playlist thumbnail" /> 
           <h1>{ playlist.title }</h1>
-          <p>
-            Created by <span>{playlist.user}</span> • {playlist.track_ids.length} songs
-          </p>
+          <p>{playlist.user}</p>
+          <p>{playlist.track_ids.length} songs</p>         
         </div>
 
-        <div className="playlist-detail-tracks">
+        <div className="playlist-detail-tracks">  
           <TrackDetail playlistId={ playlist.id } />
         </div>
       </div>

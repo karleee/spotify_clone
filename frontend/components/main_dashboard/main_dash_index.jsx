@@ -7,9 +7,12 @@ import { Switch } from 'react-router-dom';
 import { ProtectedRoute } from '../../util/route_util';
 
 const MainDashboardIndex = ({ currentUser, logout }) => (
-  <div className="home-index-container">
-    <SideBarNav />
-    <div className="home-index-main-content">
+  <div className="main-dash-container">
+    <div className="main-dash-sidebar">
+      <SideBarNav />
+    </div>
+
+    <div className="main-dash-content"> 
       <HeaderNav />
       <Switch>
         <ProtectedRoute path="/home" component={HomeIndex} />

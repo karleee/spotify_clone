@@ -1,0 +1,317 @@
+@import "variables";
+
+.heavy-rotation-detail-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.playlist-thumbnails {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 20px;
+  left: 25px;
+
+  a {
+    position: absolute;
+
+    img {
+      width: 130px;
+      box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3); 
+    }
+
+    p:first-of-type {
+      font-family: 'ProximaNova-Bold';
+      font-size: 15px;
+      text-decoration: none;
+      color: $white;  
+    }
+
+    p:last-of-type {
+      margin-top: 5px;
+    }
+  }
+}
+
+.playlist-detail-container {
+  display: flex;
+  flex-direction: row;
+
+  .playlist-detail-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    img {
+      width: 270px;
+      box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.6); 
+    }
+
+    p:first-of-type {
+      font-family: 'ProximaNova-Regular';
+      font-size: 15px; 
+      color: $dark-gray;
+      margin-top: 10px;
+    }
+
+    p:last-of-type {
+      font-family: 'ProximaNova-Regular';
+      font-size: 12px;
+      color: $gray;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    h1 {
+      font-family: 'ProximaNova-Extrabld';
+      font-size: 25px;
+      letter-spacing: 1px;
+      color: $white;
+      margin-top: 20px;
+    }
+  }
+
+  .playlist-detail-tracks {
+    margin-left: 20px;
+    width: 100%;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+
+      li {
+        display: flex;
+        flex-direction: row;
+        padding: 0 20px;
+
+        .track-info {
+          display: flex;
+          flex-direction: column;
+          position: relative;
+
+          .music-note-icon {
+            position: absolute;
+            content: image_url('music-note-icon.png');
+            width: 10px;
+            height: 15px;
+            top: 20px;
+          }
+
+          .track-text {
+            margin-left: 25px;
+
+            p {
+              font-family: 'ProximaNova-Regular';
+            }
+
+            p:first-of-type {
+              font-size: 18px;
+              color: $white;
+            }
+
+            p:last-of-type {
+              font-size: 16px;
+              color: $gray;
+              margin-top: -15px;
+            }
+          }
+        }
+      }
+
+      li:hover { 
+        background: $track-light-gray; 
+        transition: all 0.25s;
+
+        .music-note-icon {
+          content: image_url('play-icon.png'); 
+          width: 15px;
+        }
+      }
+    }
+  }
+}
+
+.main-dash-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background: $main-background-gray; 
+
+  .main-dash-sidebar {
+    .sidebar-container {
+      display: flex;
+      flex-direction: column;
+      background: $sidebar-gray;
+      width: 205px;
+      height: 100vh;
+      padding: 25px 0 0 25px;
+
+      .sidebar-header {
+        a {
+          img {
+            width: 130px;
+            height: 40px;
+          }
+        }
+      }
+
+      .sidebar-content {
+        display: flex;
+        flex-direction: column;
+        font-family: 'ProximaNova-Bold';
+        margin: 15px 0 0 5px;
+        font-size: 15px;
+
+        #home-link {        
+          a {
+            display: flex; 
+            flex-direction: row;
+            align-items: center;
+            color: $gray;
+            text-decoration: none;
+
+            i {
+              margin-right: 15px;
+            }
+          
+            #home-icon {
+              content: image_url('normal-home-icon.png'); 
+              width: 20px;
+            }
+          }
+
+          a:hover {
+            p {
+              color: $white;
+              transition: color 0.5s;
+            }
+
+            #home-icon {
+              content: image_url('hover-home-icon.png');
+              width: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .main-dash-content {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 50px 0 35px;
+    width: 100%;
+
+    .session-header-returning {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 40px;
+
+      .session-header-upgrade-button {
+        a {
+          font-family: 'ProximaNova-Regular';
+          font-weight: 700;
+          font-size: 12px;
+          letter-spacing: 2px;
+          text-decoration: none;
+          color: $white;
+          text-transform: uppercase;
+          border-radius: 25px;
+          border: 1px solid $white;
+          padding: 10px 35px;
+          margin-right: 30px;
+        }
+
+        a:hover {
+          font-size: 13px;
+        }
+      }
+
+      button {
+        font-size: 12px; 
+        font-weight: 600;
+        color: $white;
+        background: $logout-button-gray;
+        border: none;
+        border-radius: 25px;
+        padding: 8px 30px;
+        box-shadow: 0 2px 4px 3px rgba(0, 0, 0, 0.6); 
+      }
+
+      button:hover {
+        cursor: pointer;
+        background: $logout-button-light-gray;
+      }
+    }
+
+    .home-container {
+      .heavy-rotation-container {
+        .heavy-rotation-header {
+          color: $white;
+
+          h1 {
+            font-family: 'ProximaNova-Extrabld';
+            font-size: 48px;
+          }
+
+          h2 {
+            font-family: 'ProximaNova-Extrabld';
+            font-size: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            margin-top: 50px;
+          }
+        }
+
+        .heavy-rotation-content {
+          position: relative;
+
+          ul {
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            list-style: none;
+
+            a {
+              position: relative;
+              width: 120px;
+              height: 90px;
+              margin-right: 20px;
+              background: $playlist-thumbnail-gray;
+              border-radius: 15px;
+              padding: 92px 40px; 
+              text-decoration: none;
+
+              li {
+                position: absolute;
+                top: 25px;
+                left: 25px;
+                display: flex;
+                flex-direction: column;
+
+                img {
+                  width: 150px;
+                  box-shadow: 0 0 5px 10px rgba(0, 0, 0, 0.1); 
+                }
+
+                p:first-of-type {
+                  font-family: 'ProximaNova-Bold';
+                  font-size: 14px;
+                  color: $white;
+                }
+
+                p:last-of-type {
+                  font-family: 'ProximaNova-Regular';
+                  font-size: 13px;
+                  color: $gray;
+                  margin-top: -8px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+} 

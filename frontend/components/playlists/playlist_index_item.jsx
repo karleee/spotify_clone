@@ -2,12 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const PlaylistIndexItem = ({ playlist }) => ( 
-  <li>
-    <div className="playlist-thumbnails">
-      <Link to={`/playlist/${playlist.id}`}>{ playlist.title }</Link>
+  <Link to={`/playlist/${playlist.id}`}>
+    <li>
+      <img src={playlist.photo_url} alt="Playlist thumbnail" />
+      <p>{playlist.title}</p>
       <p>By Spotify</p>
-    </div>
-  </li>
+    </li>
+  </Link>
 );
  
 export default PlaylistIndexItem;  
