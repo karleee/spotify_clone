@@ -3,12 +3,22 @@ import { Route } from 'react-router-dom';
 import TrackDetail from '../track/track_detail_container';
 
 class PlaylistDetail extends React.Component { 
-  componentDidMount() {
-    this.props.requestSinglePlaylist(this.props.match.params.playlistId)
+  constructor(props) {
+    super(props);
+    // this.handlePlay = this.handlePlay.bind(this);
   }
 
+  componentDidMount() {
+    // this.props.requestSinglePlaylist(this.props.match.params.playlistId);
+    // this.props.requestAllTracks();
+  }
+
+  // handlePlay() {
+  //   return () => this.props.receivePlaylistId(this.props.match.params.playlistId);
+  // }
+
   render() {
-    const { playlist } = this.props;
+    const { playlist, tracks } = this.props;
 
     if (!playlist) return null;
 
@@ -18,11 +28,11 @@ class PlaylistDetail extends React.Component {
           <img src={playlist.photo_url} alt="Playlist thumbnail" /> 
           <h1>{ playlist.title }</h1>
           <p>{playlist.user}</p>
-          <p>{playlist.track_ids.length} songs</p>         
+          <p>{playlist.track_ids.length} songs</p>          
         </div>
-
+ 
         <div className="playlist-detail-tracks">  
-          <TrackDetail playlistId={ playlist.id } />
+          <TrackDetail playlist={playlist} tracks={tracks} /> 
         </div>
       </div>
     );

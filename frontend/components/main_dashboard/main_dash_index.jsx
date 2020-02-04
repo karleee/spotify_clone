@@ -5,6 +5,7 @@ import HomeIndex from '../home/home_index_container';
 import PlaylistDetail from '../playlists/playlist_detail_container';
 import { Switch } from 'react-router-dom';
 import { ProtectedRoute } from '../../util/route_util';
+import AudioPlayer from '../audio_player/audio_player_container';
 
 const MainDashboardIndex = ({ currentUser, logout }) => (
   <div className="main-dash-container">
@@ -15,10 +16,11 @@ const MainDashboardIndex = ({ currentUser, logout }) => (
     <div className="main-dash-content"> 
       <HeaderNav />
       <Switch>
-        <ProtectedRoute path="/home" component={HomeIndex} />
-        <ProtectedRoute path="/playlist/:playlistId" component={PlaylistDetail} /> 
+        <ProtectedRoute path="/home" component={HomeIndex} /> 
+        <ProtectedRoute path="/playlist/:playlistId" component={PlaylistDetail} />   
       </Switch>
     </div>  
+    <ProtectedRoute path="/" component={AudioPlayer} />
   </div>
 );
  

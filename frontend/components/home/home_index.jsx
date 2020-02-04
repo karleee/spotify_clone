@@ -1,5 +1,6 @@
 import React from 'react';
 import PlaylistIndexItem from '../playlists/playlist_index_item';
+import AudioPlayer from '../audio_player/audio_player';
 
 class HomeIndex extends React.Component {
   componentDidMount() { 

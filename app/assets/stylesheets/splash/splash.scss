@@ -2,7 +2,7 @@
 
 .splash-root-container {
   position: relative;
-  background-image: image_url('splash-background.png');
+  background-image: image_url('splash/splash-background.png');
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -11,7 +11,7 @@
   .splash-background-container {
     width: 100%; 
     height: 676px;
-    background-image: image_url('splash-overlay.svg');
+    background-image: image_url('splash/splash-overlay.svg');
     background-repeat: no-repeat;
     background-size: cover;
   }

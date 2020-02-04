@@ -1,0 +1,133 @@
+@import "variables";
+
+.ap-container {
+  position: fixed;
+  width: 100%;
+  height: 100%; 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  top: 87%; 
+  background: $logout-button-gray;
+  padding: 15px 0;
+
+  .ap-main-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .ap-controls {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 35px;
+
+      .ap-shuffle {
+        .ap-shuffle-icon {
+          content: image_url('audio_player/normal_audio_shuffle.png');
+          width: 16px;
+          margin-top: 5px;
+        }
+
+        .ap-shuffle-icon.shuffle-selected {
+          content: image_url('audio_player/selected_audio_shuffle.png');
+          width: 16px;
+          margin-top: 16px;
+        }
+      }
+
+      .ap-previous-icon {
+        content: image_url('audio_player/audio_previous.png');
+        width: 12px;
+        height: 12px;
+        margin-left: 40px;
+      }
+
+      .ap-play-icon {
+        content: image_url('audio_player/audio_play.png'); 
+        width: 35px;
+        margin: 0 25px;
+      }
+
+      .ap-pause-icon {
+        content: image_url('audio_player/audio_pause.png');
+        width: 35px;
+        margin: 0 25px;
+      }
+
+      .ap-next-icon {
+        content: image_url('audio_player/audio_next.png');
+        width: 12px;
+        height: 12px;
+        margin-right: 40px;
+      }
+
+      .ap-repeat {
+        .ap-repeat-icon {
+          content: image_url('audio_player/normal_audio_repeat.png');
+          width: 16px;
+          margin-top: 5px;
+        }
+
+        .ap-repeat-icon.repeat-selected {
+          content: image_url('audio_player/selected_audio_repeat.png');
+          width: 16px;
+          margin-top: 16px;
+        }
+      }
+    }
+
+    .ap-soundbar {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 20px;
+
+      #ap-duration-time {
+        font-family: 'ProximaNova-Regular';
+        font-size: 13px;
+        color: $gray;
+        width: 27px;
+      }
+
+      #ap-timeline{
+        width: 550px;
+        height: 4px;
+        border-radius: 15px;
+        background: $audio-slider-gray;  
+        margin: 0 10px;
+
+        #ap-handle{
+      	  width: 12px;
+      	  height: 12px;
+      	  border-radius: 50%;
+      	  margin-top: -5px;
+          background: rgba(255, 255, 255,0.6); 
+          // transform: scale(0);
+        }
+      }
+
+      #ap-end-time {
+        font-family: 'ProximaNova-Regular';
+        font-size: 13px;
+        color: $gray;
+        width: 27px;
+      }
+    }
+
+    .ap-volume-bar {
+      .ap-volume-level {
+        width: 200px;
+        height: 5px;
+        background: red;
+      }
+    }
+
+    // #timeline:hover {
+    //   #handle {
+    //     transform: scale(1); 
+    //   }
+    // }
+  }
+}
