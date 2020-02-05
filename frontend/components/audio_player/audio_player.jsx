@@ -36,7 +36,20 @@ class AudioPlayer extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ currentTime: "0:00" })
+    this.setState({ currentTime: "0:00" });
+    this.currentTimeInterval = null;
+
+    this.audio.onplay = () => {
+      this.currentTimeInterval = setInterval(() => {
+        this.audio.volume = this.props.volume
+      }, 500);
+
+    }
+
+    this.audio.onpause = () => {
+      clearInterval(this.currentTimeInterval);
+    };
+
     this.audio.addEventListener("timeupdate", () => {
       if (this.audio && this.audio.currentTime === this.audio.duration) {
         this.next();
@@ -137,15 +150,18 @@ class AudioPlayer extends React.Component {
     let handleLeft = position - this.timeline.offsetLeft;
 
     if (handleLeft >= 0 && handleLeft <= timelineWidth) {
-        this.handle.style.marginLeft = handleLeft + "px"; 
+      this.handle.style.marginLeft = handleLeft + "px";
+      this.handleCircle.style.marginLeft = handleLeft + "px"; 
     }
 
     if (handleLeft < 0) {
-        this.handle.style.marginLeft = "0px";
+      this.handle.style.marginLeft = "0px";
+      this.handleCircle.style.marginLeft = "0px";
     }
 
     if (handleLeft > timelineWidth) {
-        this.handle.style.marginLeft = timelineWidth + "px";
+      this.handle.style.marginLeft = timelineWidth + "px";
+      this.handleCircle.style.marginLeft = this.timeline.offsetWidth + "px";
     }
   }
 
@@ -168,11 +184,11 @@ class AudioPlayer extends React.Component {
     const { audio } = this.props; 
     
     return (
-      <div className="ap-container">
-        {/* <AudioDetail track={audio} /> */}
+      <div className="audio-player-container">
+        <AudioDetail track={audio} />
 
         <div className="ap-main-controls">
-          <div className="ap-controls">
+          <div className="ap-main-control-buttons">
             <div className="ap-shuffle">
               <i className="ap-shuffle-icon" onClick={this.handleShuffle} ref={shuffleIcon => { this.shuffleIcon = shuffleIcon }}></i>
             </div>
@@ -187,17 +203,19 @@ class AudioPlayer extends React.Component {
             <audio src={ audio ? audio.audio_url : ""} ref={audio => { this.audio = audio } } autoPlay />
           </div>
 
-          <div className="ap-soundbar">
+          <div className="ap-timeline-controls">
             <p id="ap-duration-time">{this.state.currentTime}</p>
 
             <div id="ap-timeline" onClick={this.mouseMove} ref={(timeline) => { this.timeline = timeline }}>
               <div id="ap-handle" onMouseDown={this.mouseDown} ref={(handle) => { this.handle = handle }} />
-            </div> 
+              <div id="ap-handle-circle" onMouseDown={this.mouseDown} ref={(handleCircle) => { this.handleCircle = handleCircle }} />
+            </div>
 
             <p id="ap-end-time">{this.state.duration}</p>
           </div>
-          {/* <AudioVolume /> */}
         </div>
+
+        <AudioVolume />
       </div> 
     );  
   }

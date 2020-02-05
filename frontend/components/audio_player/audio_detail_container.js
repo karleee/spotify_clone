@@ -5,7 +5,7 @@ const mapStateToProps = (state, ownProps) => {
   return ({
     title: state.audio.title,
     artist: state.audio.artist,
-    photoUrl: state.audio.photoUrl
+    album: state.entities.albums[state.audio.albumId]
   });
 }
 

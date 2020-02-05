@@ -1,6 +1,9 @@
 @import "variables";
 
 .app-container {
+    position: relative;
+    overflow: hidden;
+    
     header {
       .session-header-new {
         background: rgba(25, 20, 20, 0.7);

@@ -32,7 +32,7 @@ class PlaylistDetail extends React.Component {
         </div>
  
         <div className="playlist-detail-tracks">  
-          <TrackDetail playlist={playlist} tracks={tracks} /> 
+          <TrackDetail playlist={playlist} tracks={tracks} />  
         </div>
       </div>
     );

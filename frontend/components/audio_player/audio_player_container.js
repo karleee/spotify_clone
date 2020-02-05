@@ -16,6 +16,8 @@ const mapStateToProps = state => {
 
   return ({
     audio: state.ui.currentTrack,
+    volume: state.audio.volume,
+    trackTime: state.audio.trackTime,
     nextTrack: state.ui.nextTrack,
     trackPlaying: state.audio.trackPlaying,
     tracks
@@ -25,6 +27,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   receiveCurrentTrack: track => dispatch(receiveCurrentTrack(track)),
   receiveNextTrack: track => dispatch(receiveNextTrack(track)),
+  receiveCurrentTime: time => dispatch(receiveCurrentTime(time))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AudioPlayer);

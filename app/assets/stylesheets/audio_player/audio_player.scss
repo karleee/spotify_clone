@@ -1,22 +1,53 @@
 @import "variables";
 
-.ap-container {
+.audio-player-container {
   position: fixed;
   width: 100%;
-  height: 100%; 
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
   top: 87%; 
   background: $logout-button-gray;
-  padding: 15px 0;
+  padding: 10px 20px;
+
+  .ap-track-detail {
+    display: flex;
+    flex-direction: row;
+    width: 15%;
+      
+    img {
+      width: 60px;
+      height: 60px;
+      box-shadow: 0 0 10px 8px rgba(0, 0, 0, 0.1); 
+    }
+
+    .ap-track-detail-text {
+      margin: 10px 0 0 15px;
+      vertical-align: center;
+
+      p:first-child {
+        font-family: 'ProximaNova-Regular';
+        font-size: 15px;
+        color: $white;
+        margin-bottom: 2px;
+      }
+
+      p:last-child {
+        font-family: 'ProximaNova-Regular';
+        font-size: 13px;
+        color: $gray;
+      }
+    }
+  }
 
   .ap-main-controls {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 70%;
 
-    .ap-controls {
+    .ap-main-control-buttons {
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -78,7 +109,7 @@
       }
     }
 
-    .ap-soundbar {
+    .ap-timeline-controls {
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -98,13 +129,25 @@
         background: $audio-slider-gray;  
         margin: 0 10px;
 
-        #ap-handle{
+        #ap-handle {
+          background: $white;
+          width: 0;
+          height: 4px;
+        }
+
+        #ap-handle-circle {
       	  width: 12px;
       	  height: 12px;
       	  border-radius: 50%;
-      	  margin-top: -5px;
+      	  margin-top: -8px;
           background: rgba(255, 255, 255,0.6); 
-          // transform: scale(0);
+          transform: scale(0.35);
+        }
+      }
+
+      #ap-timeline:hover {
+        #ap-handle-circle {
+          transform: scale(1);
         }
       }
 
@@ -115,19 +158,70 @@
         width: 27px;
       }
     }
+  }
 
-    .ap-volume-bar {
-      .ap-volume-level {
-        width: 200px;
-        height: 5px;
-        background: red;
+  .ap-volume-controls {
+    display: flex;
+    flex-direction: row;
+    width: 15%;
+
+    .ap-volume-icon {
+      content: "";
+      width: 17px;
+      height: 14px;
+      margin-right: 10px;
+
+      .ap-volume-high {
+        content: image_url('audio_player/audio_volume_high.png');
+        width: 17px;
+        height: 14px;
+      }
+
+      .ap-volume-low {
+        content: image_url('audio_player/audio_volume_low.png');
+        width: 14px;
+        height: 13px;
+      }
+
+      .ap-volume-off {
+        content: image_url('audio_player/audio_volume_off.png');
+        width: 17px;
+        height: 13px;
       }
     }
 
-    // #timeline:hover {
-    //   #handle {
-    //     transform: scale(1); 
-    //   }
-    // }
+    #ap-volume-timeline { 
+      margin-top: 5px;
+      width: 85px;
+      height: 5px;
+      border-radius: 15px;
+      background: $audio-slider-gray;  
+
+      #ap-volume-handle {
+        width: 0;
+        height: 4px;
+        border-radius: 15px;
+        background: $gray;
+      }
+
+      #ap-volume-handle-circle {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: $white;
+        margin-top: -8px;
+        transform: scale(0);
+      }
+    }
+
+    #ap-volume-timeline:hover {
+      #ap-volume-handle {
+        background: $green;
+      }
+
+      #ap-volume-handle-circle {
+        transform: scale(1);
+      }
+    }
   }
 }

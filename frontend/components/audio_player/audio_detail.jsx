@@ -7,7 +7,7 @@ class AudioDetail extends React.Component {
     this.state = {
       title: "",
       artist: "",
-      photoUrl: ""
+      album: ""
     }
   }
 
@@ -18,16 +18,21 @@ class AudioDetail extends React.Component {
     if (newProps.artist) {
       this.setState({ artist: newProps.artist })
     }
-    if (newProps.photoUrl) {
-      this.setState({ photoUrl: newProps.photoUrl })
+    if (newProps.albumId) {
+      this.setState({ album: state.entities.albums[newProps.albumId] })
     }
   }
 
   render() {
+    const { title, artist, album } = this.props;
+
     return (
       <div className="ap-track-detail">
-        {/* <p>good</p>
-        <p>{ this.state.title }</p> */}
+        { album ? <img src={ album.photo_url} alt="Current song album cover" />: "" }
+        <div className="ap-track-detail-text">
+          <p>{ title }</p> 
+          <p>{ artist }</p>
+        </div>
       </div>
     );
   }

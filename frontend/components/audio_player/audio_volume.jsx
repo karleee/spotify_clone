@@ -1,5 +1,6 @@
 import React from 'react';
-class AudioSound extends React.Component {
+
+class AudioVolume extends React.Component {
   constructor(props) {
     super(props);
 
@@ -8,19 +9,19 @@ class AudioSound extends React.Component {
       mute: false
     };
 
+    this.handlePosition = this.handlePosition.bind(this);
     this.mouseMove = this.mouseMove.bind(this);
     this.mouseDown = this.mouseDown.bind(this);
     this.mouseUp = this.mouseUp.bind(this);
     this.mute = this.mute.bind(this);
-    this.handlePosition = this.handlePosition.bind(this);
   }
 
   componentDidMount() {
     const { volume } = this.props;
 
     this.setState({ volume });
-    // this.handle.style.width = this.timeline.offsetWidth + "px";
-    // this.handleCircle.style.marginLeft = this.timeline.offsetWidth + "px";
+    this.handle.style.width = this.timeline.offsetWidth + "px";
+    this.handleCircle.style.marginLeft = this.timeline.offsetWidth + "px";
   }
 
   handlePosition(position) {
@@ -28,8 +29,8 @@ class AudioSound extends React.Component {
     let handleLeft = position - this.timeline.offsetLeft;
 
     if (handleLeft > this.timeline.offsetWidth || this.state.volume === 1) {
-        this.handleCircle.style.marginLeft = this.timeline.offsetWidth + "px";
-        this.handle.style.width = this.timeline.offsetWidth + "px";
+      this.handle.style.width = this.timeline.offsetWidth + "px";
+      this.handleCircle.style.marginLeft = this.timeline.offsetWidth + "px";
     }
 
     if (handleLeft >= 0 && handleLeft <= this.timeline.offsetWidth) {
@@ -82,26 +83,27 @@ class AudioSound extends React.Component {
   render() {
     let volumeClass;
 
-    if (this.state.volume >= .6) {
-      volumeClass = 'ap-volume-up';
+    if (this.state.volume >= 0.6) {
+      volumeClass = "ap-volume-high";
     } else if (this.state.volume > 0) {
-      volumeClass = 'ap-volume-down';
-    } else if (this.state.volume <= 0) {
-      volumeClass = 'ap-volume-off';
+      volumeClass = "ap-volume-low";
+    } else if (this.state.volume === 0) {
+      volumeClass = "ap-volume-off";
     }
 
-    if (this.state.mute) {
-      volumeClass = 'ap-volume-off';
-    }
+    if (this.state.mute) volumeClass = 'ap-volume-off';
 
     return (
-      <div className="ap-volume-bar">
-        <div id="ap-volume-level" onClick={this.mouseMove} ref={timeline => { this.timeline = timeline }}>
-          <div id="ap-volume-handle" onMouseDown={this.mouseDown} ref={handle => { this.handle = handle }} />
+      <div className="ap-volume-controls">
+        <div className="ap-volume-icon"><i className={volumeClass}></i></div>
+
+        <div id="ap-volume-timeline" onClick={this.mouseMove} ref={(timeline) => { this.timeline = timeline }}>
+          <div id="ap-volume-handle" onMouseDown={this.mouseDown} ref={(handle) => { this.handle = handle }} />
+          <div id="ap-volume-handle-circle" onMouseDown={this.mouseDown} ref={(handleCircle) => { this.handleCircle = handleCircle }} />
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default AudioSound;
+export default AudioVolume;
