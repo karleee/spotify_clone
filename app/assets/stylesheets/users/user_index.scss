@@ -1,0 +1,140 @@
+@import "variables";
+
+.user-index-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    font-family: 'ProximaNova-Bold';
+    color: $white;
+    margin-bottom: 30px;
+
+    h1 {
+      font-size: 38px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+  }
+
+  .playlists {
+    ul {
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      font-family: 'ProximaNova-Regular';
+      font-weight: 900;
+      font-size: 15px; 
+      color: $white;
+      letter-spacing: 0.5px;
+
+      li {
+        .playlist-image {
+          position: relative;
+
+          .play-button {
+            position: absolute;
+            top: 60px;
+            left: 60px;
+            z-index: 1;
+            opacity: 0;
+
+            .triangle {
+              position: relative;
+              top: 15px;
+              left: 25px;
+              background-color: $white; 
+              text-align: left;
+            }
+
+            .triangle:before,
+            .triangle:after {
+              content: '';
+              position: absolute;
+              background-color: inherit;
+            }
+
+            .triangle,
+            .triangle:before,
+            .triangle:after {
+              width: 20px;
+              height: 20px;
+              border-top-right-radius: 30%;
+            }
+
+            .triangle.right {
+              transform: rotate(-90deg) skewX(-30deg) scale(1,.866);
+            }           
+
+            .triangle:before {
+              transform: rotate(-135deg) skewX(-45deg) scale(1.414,.707) translate(0,-50%);
+            }
+
+            .triangle:after {
+              transform: rotate(135deg) skewY(-45deg) scale(.707,1.414) translate(50%);
+            }
+            
+            .circle {
+              position: absolute;
+              top: -5px;
+              width: 70px;
+              height: 70px;
+              border-radius: 50%;
+              border: 2px solid $audio-progress-gray;
+            }
+          }
+
+          img {
+            width: 180px;
+          }
+        }
+
+        .playlist-image:hover {            
+          .play-button {
+            opacity: 1;
+            transition: opacity 0.5s;
+          }
+
+          .play-button:hover {
+            cursor: default;
+            transform: scale(1.05); 
+
+            .circle {
+              border: 2px solid $white;
+            }
+          }
+
+          .overlay {
+            position: absolute;
+            left: 10px;
+            width: 180px;
+            height: 180px;
+            background: rgba(0, 0, 0, 0.6);
+            transition: background 0.5s;
+          }
+        } 
+
+        .playlist-name {
+          margin-top: 10px;
+          
+          a {
+            text-decoration: none;
+            color: $white;
+          }
+        }
+      }
+    }
+
+    ul:nth-child(odd) {
+      img {
+        margin: 0 10px;
+      }
+    }
+  }
+}

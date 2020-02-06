@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { receiveCurrentTrack, receiveNextTrack } from '../../actions/track_actions';
 import AudioPlayer from './audio_player';
 import { selectTracksFromPlaylist } from '../../reducers/selectors';
+import { receiveTitle, receiveArtist, receivePlaylistId, receiveAlbumId } from '../../actions/audio_actions';
 
 const mapStateToProps = state => {
   let playlist;
@@ -17,7 +18,6 @@ const mapStateToProps = state => {
   return ({
     audio: state.ui.currentTrack,
     volume: state.audio.volume,
-    trackTime: state.audio.trackTime,
     nextTrack: state.ui.nextTrack,
     trackPlaying: state.audio.trackPlaying,
     tracks
@@ -27,7 +27,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   receiveCurrentTrack: track => dispatch(receiveCurrentTrack(track)),
   receiveNextTrack: track => dispatch(receiveNextTrack(track)),
-  receiveCurrentTime: time => dispatch(receiveCurrentTime(time))
+  receiveTitle: title => dispatch(receiveTitle(title)),
+  receiveArtist: artist => dispatch(receiveArtist(artist)),
+  receivePlaylistId: playlistId => dispatch(receivePlaylistId(playlistId)),
+  receiveAlbumId: albumId => dispatch(receiveAlbumId(albumId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AudioPlayer);

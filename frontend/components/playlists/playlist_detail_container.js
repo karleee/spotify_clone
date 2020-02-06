@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
-import { requestSinglePlaylist } from '../../actions/playlist_actions';
-import { requestAllTracks } from '../../actions/track_actions';
-import { receivePlaylistId } from '../../actions/audio_actions';
+import { receiveCurrentTrack, receiveNextTrack } from '../../actions/track_actions';
+import { receiveTitle, receiveArtist, receivePlaylistId, receiveAlbumId } from '../../actions/audio_actions';
 import { selectTracksFromPlaylist } from '../../reducers/selectors';
 import PlaylistDetail from './playlist_detail';
 
@@ -15,8 +14,11 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  // requestSinglePlaylist: id => dispatch(requestSinglePlaylist(id)),
-  // requestAllTracks: () => dispatch(requestAllTracks()),
+  receiveCurrentTrack: track => dispatch(receiveCurrentTrack(track)),
+  receiveNextTrack: track => dispatch(receiveNextTrack(track)),
+  receiveTitle: title => dispatch(receiveTitle(title)),
+  receiveArtist: artist => dispatch(receiveArtist(artist)),
+  receiveAlbumId: albumId => dispatch(receiveAlbumId(albumId)),
   receivePlaylistId: playlistId => dispatch(receivePlaylistId(playlistId))
 });
 

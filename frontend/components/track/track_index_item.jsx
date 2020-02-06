@@ -1,10 +1,10 @@
 import React from 'react';
 
-const TrackIndexItem = ({ track, handleTrackClick }) => ( 
+const TrackIndexItem = ({ track, handleClick }) => ( 
   <li>
     <div className="track-info">
       <div className="track-note">
-        <i className="music-note-icon" onClick={() => handleTrackClick(track)}></i>
+        <i className="music-note-icon" onClick={() => handleClick(track)}></i>
       </div>
 
       <div className="track-text">

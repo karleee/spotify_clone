@@ -27,7 +27,7 @@ const audioReducer = (state = { volume: 1 }, action) => {
     case RECEIVE_TRACK_PLAYING:
       return Object.assign({}, state, { trackPlaying: action.track });
     case RECEIVE_CURRENT_TIME:
-      return Object.assign({}, state, { trackTime: action.time });
+      return Object.assign({}, state, { currentTime: action.time });
     default:
       return state;
   }

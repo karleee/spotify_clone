@@ -2,6 +2,10 @@ export const selectPlaylistsFromType = (state, playlistType) => (
   Object.values(state.entities.playlists).filter(playlist => playlist.playlist_type === playlistType)
 );
 
+export const selectPlaylistsFromUser = (state, user) => (
+  Object.values(state.entities.playlists).filter(playlist => playlist.user_id === user.id)
+); 
+
 export const selectTracksFromPlaylist = (state, playlist) => (
   playlist.track_ids ? playlist.track_ids.map(id => state.entities.tracks[id]) : []   
 ); 
@@ -11,7 +15,7 @@ export const selectTracksFromAlbum = (state, album) => (
 ); 
 
 export const selectTracksFromArtist = (state, artist) => (
-  artist.track_ids ? artist.track_ids.map(id => state.entities.tracks[id]) : []  
+  artist.track_ids ? artist.track_ids.map(id => state.entities.tracks[id]) : []   
 ); 
 
 export const selectArtistFromName = (state, name) => {

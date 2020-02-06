@@ -5,27 +5,25 @@ class TrackDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = { play: false }; 
-    this.handleTrackClick = this.handleTrackClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleTrackClick(track) {
+  handleClick(track) {
     let index = (this.props.tracks.indexOf(track) + 1) % this.props.tracks.length;  
     let nextTrack = this.props.tracks[index];
     this.props.receiveCurrentTrack(track);
     this.props.receiveNextTrack(nextTrack); 
     this.props.receiveTitle(track.title); 
     this.props.receiveArtist(track.artist);
-    // this.props.receivePhotoUrl(this.props.photoUrl); 
-    // this.props.receivePlaylistId(this.props.playlistId);  
-    //need to do this.props.albumId...
-    this.props.receiveAlbumId(track.album_id); 
+    this.props.receivePlaylistId(this.props.playlistId);  
+    this.props.receiveAlbumId(track.album_id);  
   }
 
   render() {
     const { tracks } = this.props; 
     return (
       <ul id="track-list">
-        {tracks.map(track => <TrackIndexItem key={track.id} track={track} handleTrackClick={this.handleTrackClick} />)} 
+        {tracks.map(track => <TrackIndexItem key={track.id} track={track} handleClick={this.handleClick} />)} 
       </ul>
     );
   }

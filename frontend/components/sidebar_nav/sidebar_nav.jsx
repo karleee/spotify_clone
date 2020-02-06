@@ -14,16 +14,16 @@ class SideBarNav extends React.Component {
         </div>
 
         <div className="sidebar-content">
-          <div id="home-link">
+          <div className="home-wrapper">
             <Link to="/home">
               <i id="home-icon"></i> 
               <p>Home</p>
             </Link> 
           </div>
 
-          <div id="search-link">
+          <div className="search-wrapper">
             <Link to="/search">
-              <i></i>
+              <i id="search-icon"></i>
               <p>Search</p>
             </Link> 
           </div>

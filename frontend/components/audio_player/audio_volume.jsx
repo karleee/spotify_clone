@@ -1,6 +1,7 @@
 import React from 'react';
 
 class AudioVolume extends React.Component {
+  // Constructor for AudioVolume component
   constructor(props) {
     super(props);
 
@@ -8,7 +9,7 @@ class AudioVolume extends React.Component {
       volume: 1,
       mute: false
     };
-
+    // Binding functions for context of this
     this.handlePosition = this.handlePosition.bind(this);
     this.mouseMove = this.mouseMove.bind(this);
     this.mouseDown = this.mouseDown.bind(this);
@@ -16,6 +17,7 @@ class AudioVolume extends React.Component {
     this.mute = this.mute.bind(this);
   }
 
+  // Component mounting
   componentDidMount() {
     const { volume } = this.props;
 
@@ -24,8 +26,9 @@ class AudioVolume extends React.Component {
     this.handleCircle.style.marginLeft = this.timeline.offsetWidth + "px";
   }
 
+  // Positions the progress bar and handle circle
   handlePosition(position) {
-    let timelineWidth = this.timeline.offsetWidth - this.handle.offsetWidth;
+    // let timelineWidth = this.timeline.offsetWidth - this.handle.offsetWidth;
     let handleLeft = position - this.timeline.offsetLeft;
 
     if (handleLeft > this.timeline.offsetWidth || this.state.volume === 1) {
@@ -44,6 +47,7 @@ class AudioVolume extends React.Component {
     }
   }
 
+  // Handles mouse movement
   mouseMove(e) {
     this.handlePosition(e.pageX);
     this.setState({ mute: false });
@@ -60,16 +64,19 @@ class AudioVolume extends React.Component {
     this.props.receiveVolume(this.state.volume);
   }
 
+  // Handles mouse down
   mouseDown(e) {
     window.addEventListener('mousemove', this.mouseMove);
     window.addEventListener('mouseup', this.mouseUp);
   }
 
+  // Handles mouse up
   mouseUp(e) {
     window.removeEventListener('mousemove', this.mouseMove);
     window.removeEventListener('mouseup', this.mouseUp);
   }
 
+  // Switches between mute and not muted
   mute() {
     if (!this.state.mute) {
       this.setState({ mute: true });
@@ -80,6 +87,7 @@ class AudioVolume extends React.Component {
     }
   }
 
+  // Renders component
   render() {
     let volumeClass;
 
@@ -95,11 +103,13 @@ class AudioVolume extends React.Component {
 
     return (
       <div className="ap-volume-controls">
-        <div className="ap-volume-icon"><i className={volumeClass}></i></div>
+        <div className="ap-volume-icon" onClick={ this.mute }><i className={ volumeClass }></i></div>
 
-        <div id="ap-volume-timeline" onClick={this.mouseMove} ref={(timeline) => { this.timeline = timeline }}>
-          <div id="ap-volume-handle" onMouseDown={this.mouseDown} ref={(handle) => { this.handle = handle }} />
-          <div id="ap-volume-handle-circle" onMouseDown={this.mouseDown} ref={(handleCircle) => { this.handleCircle = handleCircle }} />
+        <div id="ap-volume-timeline" onClick={ this.mouseMove } ref={timeline => this.timeline = timeline }>
+          <div id="ap-volume-progress-bar">
+            <div id="ap-volume-handle" onMouseDown={ this.mouseDown } ref={handle => this.handle = handle } />
+            <div id="ap-volume-handle-circle" onMouseDown={ this.mouseDown } ref={handleCircle => this.handleCircle = handleCircle } />
+          </div>
         </div>
       </div>
     );

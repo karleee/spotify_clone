@@ -2,13 +2,14 @@ import React from 'react';
 import AudioDetail from './audio_detail_container';
 import AudioVolume from './audio_volume_container';
 
-class AudioPlayer extends React.Component { 
+class AudioPlayer extends React.Component {
+  // Constructor for AudioPlayer component
   constructor(props) {
     super(props);
 
-    this.state = { 
-      audio: "", 
-      nextTrack: "", 
+    this.state = {
+      audio: "",
+      nextTrack: "",
       tracks: [],
       play: false,
       shuffle: false,
@@ -16,42 +17,37 @@ class AudioPlayer extends React.Component {
       currentTime: 0,
       duration: "0:00"
     };
-
+    // Binding functions for context of this
     this.previous = this.previous.bind(this);
     this.play = this.play.bind(this);
     this.next = this.next.bind(this);
     this.handleShuffle = this.handleShuffle.bind(this);
     this.handleRepeat = this.handleRepeat.bind(this);
-    this.positionHandle = this.positionHandle.bind(this);
+    this.handlePosition = this.handlePosition.bind(this);
     this.mouseMove = this.mouseMove.bind(this);
     this.mouseDown = this.mouseDown.bind(this);
     this.mouseUp = this.mouseUp.bind(this);
   }
 
-  // Play button only changes to a pause button if a new song is selected
-  componentWillReceiveProps(newProps) {
-    if (newProps.audio && newProps.audio.audio_url !== this.state.audio) {
-      this.setState({ play: true });
-    }
-  }
-
+  // Component mounting 
   componentDidMount() {
-    this.setState({ currentTime: "0:00" });
     this.currentTimeInterval = null;
+    this.setState({ currentTime: "0:00" });
 
+    // Changes the volume based on the slider
     this.audio.onplay = () => {
       this.currentTimeInterval = setInterval(() => {
         this.audio.volume = this.props.volume
       }, 500);
 
-    }
+    };
 
     this.audio.onpause = () => {
       clearInterval(this.currentTimeInterval);
     };
 
     this.audio.addEventListener("timeupdate", () => {
-      if (this.audio && this.audio.currentTime === this.audio.duration) {
+      if (this.audio && this.audio.currentTime >= this.audio.duration) {
         this.next();
       }
 
@@ -62,31 +58,54 @@ class AudioPlayer extends React.Component {
       let currentTime = this.formatTime(this.audio.currentTime);
       this.setState({ currentTime });
       let ratio = this.audio.currentTime / this.audio.duration;
-      let position = (this.timeline.offsetWidth * ratio) + this.timeline.offsetLeft;
-      this.positionHandle(position);
+      let position = this.timeline.offsetWidth * ratio + this.timeline.offsetLeft;
+      this.handlePosition(position);
     });
   }
 
-  // Puts duration time into a uniform format
+  // Formats track times in uniform format
   formatTime(seconds) {
     let min = Math.floor(seconds / 60);
     seconds = Math.floor(seconds % 60);
-    seconds = seconds < 10 ? '0' + seconds : seconds;
-    return min + ':' + seconds;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    return min + ":" + seconds;
   }
 
-  // Plays a track when it is clicked
-  play() {
-    if (this.state.play) {
-      this.setState({ play: false });
-      this.audio.pause();
-    } else {
-      this.setState({ play: true });
-      this.audio.play();
+  // Component receiving new props
+  componentWillReceiveProps(newProps) {
+    if (newProps.audio && newProps.audio.track_url !== this.state.audio) {
+      let audio = newProps.audio.track_url;
+      this.setState({ play: true, audio });
     }
   }
 
-  // Plays the next track in the playlist
+  // Gets the previous song in the playlist
+  previous() {
+    const { audio, tracks } = this.props;
+    let newCurrentIndx = ((tracks.indexOf(audio) - 1) + tracks.length) % tracks.length;
+    let newNextIndx = (newCurrentIndx + 1) % tracks.length;
+    let newCurrentTrack = tracks[newCurrentIndx];
+    let newNextTrack = tracks[newNextIndx];
+    this.props.receiveCurrentTrack(newCurrentTrack);
+    this.props.receiveNextTrack(newNextTrack);
+    this.props.receiveTitle(newCurrentTrack.title);
+    this.props.receiveArtist(newCurrentTrack.artist);
+    this.props.receiveAlbumId(newCurrentTrack.album_id); 
+    this.setState({ play: true, audio: newCurrentTrack, nextTrack: newNextTrack });
+  }
+
+  // Switches play and pause buttons
+  play() {
+    if (this.state.play) {
+      this.audio.pause();
+      this.setState({ play: false });
+    } else {
+      this.audio.play();
+      this.setState({ play: true });
+    }
+  }
+
+  // Gets the next song in the playlist
   next() {
     const { audio, nextTrack, tracks } = this.props;
     let index;
@@ -96,40 +115,51 @@ class AudioPlayer extends React.Component {
       this.setState({ play: true, audio });
       this.audio.play();
       return;
-    } else if (this.state.repeat && this.audio.currentTime < this.audio.duration) {
-      this.setState({ repeat: !this.state.repeat });
-      this.repeatButton.classList.remove('rand-selected');
-    }
-
-    if (this.state.shuffle) {
+    } else if (this.state.shuffle) {
       index = Math.floor(Math.random() * tracks.length);
     } else {
-      index = (tracks.indexOf(nextTrack) + 1) % tracks.length;
+      index = (tracks.indexOf(nextTrack) + 1) % tracks.length; 
     }
 
-    let newCurrentTrack = tracks[index];
+    let newNextTrack = tracks[index];
     this.props.receiveCurrentTrack(nextTrack);
-    this.props.receiveNextTrack(newCurrentTrack);
+    this.props.receiveNextTrack(newNextTrack);
+    this.props.receiveTitle(nextTrack.title);
+    this.props.receiveArtist(nextTrack.artist);
+    this.props.receiveAlbumId(nextTrack.album_id); 
+    this.setState({ play: true, audio: nextTrack, nextTrack: newNextTrack });
   }
 
-  // Plays the previous track in the playlist
-  previous() {
-    const { audio, tracks } = this.props;
-    let newCurrentIndx = ((tracks.indexOf(audio) - 1) + tracks.length) % tracks.length;
-    let newNextIndx = (newCurrentIndx + 1) % tracks.length;
-    let newCurrentTrack = tracks[newCurrentIndx];
-    let newNextTrack = tracks[newNextIndx];
-    this.props.receiveCurrentTrack(newCurrentTrack);
-    this.props.receiveNextTrack(newNextTrack);
+  // Positions the progress bar and handle circle
+  handlePosition(position) {
+    if (!this.audio.duration) return;
+
+    let timelineWidth = this.timeline.offsetWidth - this.handle.offsetWidth;
+    let handleLeft = position - this.timeline.offsetLeft;
+
+    if (handleLeft >= 0 && handleLeft <= this.timeline.offsetWidth) {
+      this.handle.style.width = handleLeft + "px";
+      this.handleCircle.style.marginLeft = handleLeft + "px";
+    }
+
+    if (handleLeft < 0) {
+      this.handle.style.width = "0px";
+      this.handleCircle.style.marginLeft = "0px";
+    }
+
+    if (handleLeft > this.timeline.offsetWidth) {
+      this.handleCircle.style.marginLeft = this.timeline.offsetWidth + "px";
+      this.handle.style.width = this.timeline.offsetWidth + "px";
+    }
   }
 
   // Plays a random track from the playlist
   handleShuffle(e) {
     e.preventDefault();
     if (!this.state.shuffle === true) {
-      this.shuffleIcon.classList.add("shuffle-selected");
+      this.shuffleButton.classList.add("shuffle-selected");
     } else {
-      this.shuffleIcon.classList.remove("shuffle-selected");
+      this.shuffleButton.classList.remove("shuffle-selected");
     }
     this.setState({ shuffle: !this.state.shuffle });
   }
@@ -138,77 +168,64 @@ class AudioPlayer extends React.Component {
   handleRepeat(e) {
     e.preventDefault();
     if (!this.state.repeat === true) {
-      this.repeatIcon.classList.add("repeat-selected");
+      this.repeatButton.classList.add("repeat-selected");
     } else {
-      this.repeatIcon.classList.remove("repeat-selected");
+      this.repeatButton.classList.remove("repeat-selected");
     }
     this.setState({ repeat: !this.state.repeat });
   }
 
-  positionHandle(position) {
-    let timelineWidth = this.timeline.offsetWidth - this.handle.offsetWidth;
-    let handleLeft = position - this.timeline.offsetLeft;
-
-    if (handleLeft >= 0 && handleLeft <= timelineWidth) {
-      this.handle.style.marginLeft = handleLeft + "px";
-      this.handleCircle.style.marginLeft = handleLeft + "px"; 
-    }
-
-    if (handleLeft < 0) {
-      this.handle.style.marginLeft = "0px";
-      this.handleCircle.style.marginLeft = "0px";
-    }
-
-    if (handleLeft > timelineWidth) {
-      this.handle.style.marginLeft = timelineWidth + "px";
-      this.handleCircle.style.marginLeft = this.timeline.offsetWidth + "px";
-    }
-  }
-
+  // Handles mouse movement
   mouseMove(e) {
-    this.positionHandle(e.pageX);
+    this.handlePosition(e.pageX);
     this.audio.currentTime = ((e.pageX - this.timeline.offsetLeft) / this.timeline.offsetWidth) * this.audio.duration;
   }
 
+  // Handles mouse down
   mouseDown(e) {
     window.addEventListener('mousemove', this.mouseMove);
     window.addEventListener('mouseup', this.mouseUp);
   }
 
+  // Handles mouse up
   mouseUp(e) {
     window.removeEventListener('mousemove', this.mouseMove);
     window.removeEventListener('mouseup', this.mouseUp);
-  };
+  }
 
+  // Renders the component
   render() {
-    const { audio } = this.props; 
-    
+    const { audio } = this.props;
+
     return (
       <div className="audio-player-container">
         <AudioDetail track={audio} />
 
         <div className="ap-main-controls">
           <div className="ap-main-control-buttons">
-            <div className="ap-shuffle">
-              <i className="ap-shuffle-icon" onClick={this.handleShuffle} ref={shuffleIcon => { this.shuffleIcon = shuffleIcon }}></i>
+            <i className="ap-shuffle-icon" onClick={this.handleShuffle} ref={shuffleButton => { this.shuffleButton = shuffleButton }}></i>
+
+            <i className="ap-previous-icon" onClick={this.previous}></i>
+
+            <div className="ap-play-wrapper">
+              <i className={!this.state.play ? "ap-play-icon" : "ap-pause-icon"} onClick={this.play}></i>
             </div>
 
-            <div className="ap-previous-icon" onClick={ this.previous } />
-            <div className={!this.state.play ? "ap-play-icon" : "ap-pause-icon"} onClick={ this.play } />
-            <div className="ap-next-icon" onClick={ this.next } />
+            <i className="ap-next-icon" onClick={this.next}></i>
 
-            <div className="ap-repeat">
-              <i className="ap-repeat-icon" onClick={this.handleRepeat} ref={repeatIcon => { this.repeatIcon = repeatIcon }}></i>
-            </div>
-            <audio src={ audio ? audio.audio_url : ""} ref={audio => { this.audio = audio } } autoPlay />
+            <i className="ap-repeat-icon" onClick={this.handleRepeat} ref={repeatButton => { this.repeatButton = repeatButton }}></i>
+            
+            <audio src={audio ? audio.audio_url : ""} ref={audio => { this.audio = audio }} autoPlay />
           </div>
 
           <div className="ap-timeline-controls">
             <p id="ap-duration-time">{this.state.currentTime}</p>
 
             <div id="ap-timeline" onClick={this.mouseMove} ref={(timeline) => { this.timeline = timeline }}>
-              <div id="ap-handle" onMouseDown={this.mouseDown} ref={(handle) => { this.handle = handle }} />
-              <div id="ap-handle-circle" onMouseDown={this.mouseDown} ref={(handleCircle) => { this.handleCircle = handleCircle }} />
+              <div id="ap-progress-bar">
+                <div id="ap-handle" onMouseDown={this.mouseDown} ref={(handle) => { this.handle = handle }} />
+                <div id="ap-handle-circle" onMouseDown={this.mouseDown} ref={(handleCircle) => { this.handleCircle = handleCircle }} />
+               </div>
             </div>
 
             <p id="ap-end-time">{this.state.duration}</p>
@@ -216,9 +233,9 @@ class AudioPlayer extends React.Component {
         </div>
 
         <AudioVolume />
-      </div> 
-    );  
+      </div>
+    );
   }
 }
- 
+
 export default AudioPlayer;

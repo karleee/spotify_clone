@@ -11,7 +11,7 @@ export const receiveVolume = volume => ({
   type: RECEIVE_VOLUME,
   volume
 });
-
+ 
 export const receiveTitle = title => ({
   type: RECEIVE_TITLE,
   title

@@ -9,7 +9,6 @@
 User.destroy_all
 Playlist.destroy_all
 PlaylistTrack.destroy_all
-# ActiveStorage::Attachment.all.each { | attachment | attachment.purge }
 
 # Users
 
@@ -55,6 +54,7 @@ julian_casablancas = Artist.create({ name: 'Julian Casablancas'})
 daft_punk = Artist.create({ name: 'Daft Punk' })
 the_whitest_boy_alive = Artist.create({ name: 'The Whitest Boy Alive'})
 gorillaz = Artist.create({ name: 'Gorillaz' })
+lord_huron = Artist.create({ name: 'Lord Huron' })
 
 
 # Albums
@@ -102,6 +102,15 @@ gorillaz_demonDays = Album.create({
 gorillaz_demonDays.photo.purge
 photo = File.open('/Users/karenlee/Desktop/albums/gorillaz_demonDays.png')
 gorillaz_demonDays.photo.attach(io: photo, filename: 'gorillaz_demonDays.png')
+
+lord_huron_strangeTrails = Album.create({
+  title: 'Strange Trails',
+  yr: 2015,
+  artist_id: lord_huron.id
+})
+lord_huron_strangeTrails.photo.purge 
+photo = File.open('/Users/karenlee/Desktop/albums/lord_huron_strangeTrails.png')
+lord_huron_strangeTrails.photo.attach(io: photo, filename: 'lord_huron_strangeTrails.png')
 
 # Tracks
 ratatat_track_creamOnChrome = Track.create({
@@ -184,6 +193,16 @@ gorillaz_track_feelGoodInc.audio.purge
 audio = File.open('/Users/karenlee/Desktop/audio/feel_good_inc.mp3')
 gorillaz_track_feelGoodInc.audio.attach(io: audio, filename: 'feel_good_inc.mp3') 
 
+lord_huron_track_theNightWeMet = Track.create({
+  title: 'The Night We Met',
+  album_id: lord_huron_strangeTrails.id,
+  artist_id: lord_huron.id,
+  ord: 14
+})
+lord_huron_track_theNightWeMet.audio.purge
+audio = File.open('/Users/karenlee/Desktop/audio/the_night_we_met.mp3')
+lord_huron_track_theNightWeMet.audio.attach(io: audio, filename: 'the_night_we_met.mp3') 
+
 # Playlist Tracks
 daft_punk_radio_track1 = PlaylistTrack.create({
   playlist_id: daft_punk_radio.id,
@@ -203,4 +222,9 @@ daft_punk_radio_track3 = PlaylistTrack.create({
 daft_punk_radio_track4 = PlaylistTrack.create({
   playlist_id: daft_punk_radio.id,
   track_id: gorillaz_track_feelGoodInc.id
+})
+
+lord_huron_radio_track1 = PlaylistTrack.create({
+  playlist_id: lord_huron_radio.id,
+  track_id: lord_huron_track_theNightWeMet.id
 })

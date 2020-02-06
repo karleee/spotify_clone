@@ -2,14 +2,14 @@
 
 .audio-player-container {
   position: fixed;
+  top: 87%; 
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  top: 87%; 
   background: $logout-button-gray;
-  padding: 10px 20px;
+  padding: 20px;
 
   .ap-track-detail {
     display: flex;
@@ -45,7 +45,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 70%;
+    width: 80%;
 
     .ap-main-control-buttons {
       display: flex;
@@ -53,19 +53,28 @@
       justify-content: center;
       align-items: center;
       height: 35px;
+      padding-bottom: 10px;
 
-      .ap-shuffle {
-        .ap-shuffle-icon {
-          content: image_url('audio_player/normal_audio_shuffle.png');
-          width: 16px;
-          margin-top: 5px;
-        }
+      .ap-shuffle-icon {
+        content: image_url('audio_player/normal_audio_shuffle.png');
+        width: 16px;
+        margin-top: 5px;
+      }
 
-        .ap-shuffle-icon.shuffle-selected {
+      .ap-shuffle-icon.shuffle-selected {
+        content: image_url('audio_player/selected_audio_shuffle.png');
+        width: 16px;
+        margin-top: 16px;
+      }
+
+      .ap-shuffle-icon:hover {
+        content: image_url('audio_player/hover_audio_shuffle.png');
+        width: 16px;
+      }
+
+      .ap-shuffle-icon.shuffle-selected:hover {
           content: image_url('audio_player/selected_audio_shuffle.png');
           width: 16px;
-          margin-top: 16px;
-        }
       }
 
       .ap-previous-icon {
@@ -75,10 +84,26 @@
         margin-left: 40px;
       }
 
-      .ap-play-icon {
-        content: image_url('audio_player/audio_play.png'); 
-        width: 35px;
-        margin: 0 25px;
+      .ap-previous-icon:hover {
+        content: image_url('audio_player/hover_audio_previous.png');
+        width: 12px;
+        height: 12px;
+      }
+
+      .ap-play-wrapper {
+        width: 100px;
+        text-align: center;
+
+        .ap-play-icon {
+          content: image_url('audio_player/audio_play.png'); 
+          width: 35px;
+        }
+
+        .ap-play-icon:hover {
+          content: image_url('audio_player/hover_audio_play.png');
+          width: 38px;
+          transition: all 0.2s;
+        }
       }
 
       .ap-pause-icon {
@@ -94,18 +119,33 @@
         margin-right: 40px;
       }
 
-      .ap-repeat {
-        .ap-repeat-icon {
-          content: image_url('audio_player/normal_audio_repeat.png');
-          width: 16px;
-          margin-top: 5px;
-        }
+      .ap-next-icon:hover {
+        content: image_url('audio_player/hover_audio_next.png');
+        width: 12px;
+        height: 12px;
+      }
 
-        .ap-repeat-icon.repeat-selected {
-          content: image_url('audio_player/selected_audio_repeat.png');
-          width: 16px;
-          margin-top: 16px;
-        }
+      .ap-repeat-icon {
+        content: image_url('audio_player/normal_audio_repeat.png');
+        width: 16px;
+        margin-top: 5px;
+      }
+
+      .ap-repeat-icon.repeat-selected {
+        content: image_url('audio_player/selected_audio_repeat.png');
+        width: 16px;
+        margin-top: 16px;
+      }
+
+      .ap-repeat-icon:hover {
+        content: image_url('audio_player/hover_audio_repeat.png');
+        width: 16px;
+      }
+
+      .ap-repeat-icon.repeat-selected:hover {
+        content: image_url('audio_player/selected_audio_repeat.png');
+        width: 16px;
+        margin-top: 16px;
       }
     }
 
@@ -113,7 +153,6 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      margin-top: 20px;
 
       #ap-duration-time {
         font-family: 'ProximaNova-Regular';
@@ -129,25 +168,37 @@
         background: $audio-slider-gray;  
         margin: 0 10px;
 
-        #ap-handle {
-          background: $white;
-          width: 0;
-          height: 4px;
+        #ap-progress-bar {
+          position: absolute;
+
+          #ap-handle {
+            width: 0;
+            height: 4px;
+            background: $audio-progress-gray; 
+            border-radius: 15px; 
+          }
+
+          #ap-handle-circle {
+            position: relative;
+            left: -8px;
+      	    width: 13px;
+      	    height: 13px;
+      	    border-radius: 50%;
+      	    margin-top: -8px;
+            background: $audio-progress-gray;   
+            transform: scale(0.25);
+          }
         }
 
-        #ap-handle-circle {
-      	  width: 12px;
-      	  height: 12px;
-      	  border-radius: 50%;
-      	  margin-top: -8px;
-          background: rgba(255, 255, 255,0.6); 
-          transform: scale(0.35);
-        }
-      }
+        #ap-progress-bar:hover {
+          #ap-handle {
+            background: $green;
+          }
 
-      #ap-timeline:hover {
-        #ap-handle-circle {
-          transform: scale(1);
+          #ap-handle-circle {
+            background: $audio-handle-circle-gray; 
+            transform: scale(1);
+          }
         }
       }
 
@@ -197,30 +248,36 @@
       border-radius: 15px;
       background: $audio-slider-gray;  
 
-      #ap-volume-handle {
-        width: 0;
-        height: 4px;
-        border-radius: 15px;
-        background: $gray;
+      #ap-volume-progress-bar {
+        position: absolute;
+
+        #ap-volume-handle {
+          width: 0;
+          height: 4px;
+          border-radius: 15px;
+          background: $audio-progress-gray;
+        }
+
+        #ap-volume-handle-circle {
+          position: relative;
+          width: 13px;
+          height: 13px;
+          border-radius: 50%;
+          background: $audio-handle-circle-gray;
+          top: -8px;
+          left: -8px;
+          transform: scale(0);
+        }
       }
 
-      #ap-volume-handle-circle {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: $white;
-        margin-top: -8px;
-        transform: scale(0);
-      }
-    }
+      #ap-volume-progress-bar:hover {
+        #ap-volume-handle {
+          background: $green;
+        }
 
-    #ap-volume-timeline:hover {
-      #ap-volume-handle {
-        background: $green;
-      }
-
-      #ap-volume-handle-circle {
-        transform: scale(1);
+        #ap-volume-handle-circle {
+          transform: scale(1);
+        }
       }
     }
   }
