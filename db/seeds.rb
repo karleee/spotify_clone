@@ -5,13 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
 
 User.destroy_all
 Playlist.destroy_all
 PlaylistTrack.destroy_all
 
 # Users
-
 admin = User.create({
   username: 'Spotify', 
   email: 'admin@gmail.com', 
@@ -26,28 +26,27 @@ daft_punk_radio = Playlist.create({
   user_id: admin.id, 
   playlist_type: 'heavyRotation'
 })
-photo = File.open('/Users/karenlee/Desktop/playlists/daft_punk_radio.png')
-daft_punk_radio.photo.attach(io: photo, filename: 'daft_punk_radio.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/daft_punk_radio.png')
+daft_punk_radio.photo.attach(io: file, filename: 'daft_punk_radio.png')
 
 miike_snow_radio = Playlist.create({ 
   title: 'Miike Snow Radio', 
   user_id: admin.id, 
   playlist_type: 'heavyRotation'
 })
-photo = File.open('/Users/karenlee/Desktop/playlists/miike_snow_radio.png')
-miike_snow_radio.photo.attach(io: photo, filename: 'miike_snow_radio.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/miike_snow_radio.png')
+miike_snow_radio.photo.attach(io: file, filename: 'miike_snow_radio.png')
 
 lord_huron_radio = Playlist.create({ 
   title: 'Lord Huron Radio', 
   user_id: admin.id, 
   playlist_type: 'heavyRotation'
 })
-photo = File.open('/Users/karenlee/Desktop/playlists/lord_huron_radio.png')
-lord_huron_radio.photo.attach(io: photo, filename: 'lord_huron_radio.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/lord_huron_radio.png')
+lord_huron_radio.photo.attach(io: file, filename: 'lord_huron_radio.png')
 
 # Artists
 ratatat = Artist.create({ name: 'Ratatat' })
-julian_casablancas = Artist.create({ name: 'Julian Casablancas'})
 daft_punk = Artist.create({ name: 'Daft Punk' })
 the_whitest_boy_alive = Artist.create({ name: 'The Whitest Boy Alive'})
 gorillaz = Artist.create({ name: 'Gorillaz' })
@@ -60,48 +59,48 @@ ratatat_creamOnChrome = Album.create({
   yr: 2015,
   artist_id: ratatat.id
 })
-photo = File.open('/Users/karenlee/Desktop/albums/ratatat_creamOnChrome.png')
-ratatat_creamOnChrome.photo.attach(io: photo, filename: 'ratatat_creamOnChrome.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/ratatat_creamOnChrome.png')
+ratatat_creamOnChrome.photo.attach(io: file, filename: 'ratatat_creamOnChrome.png')
 
 ratatat_magnifique = Album.create({
   title: 'Magnifique',
   yr: 2015,
   artist_id: ratatat.id
 })
-photo = File.open('/Users/karenlee/Desktop/albums/ratatat_magnifique.png')
-ratatat_magnifique.photo.attach(io: photo, filename: 'ratatat_magnifique.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/ratatat_magnifique.png')
+ratatat_magnifique.photo.attach(io: file, filename: 'ratatat_magnifique.png')
 
 daft_punk_instantAccessMemories = Album.create({
   title: 'Random Access Memories',
   yr: 2013,
   artist_id: daft_punk.id
 })
-photo = File.open('/Users/karenlee/Desktop/albums/daft_punk_instantAccessMemories.png')
-daft_punk_instantAccessMemories.photo.attach(io: photo, filename: 'daft_punk_instantAccessMemories.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/daft_punk_instantAccessMemories.png')
+daft_punk_instantAccessMemories.photo.attach(io: file, filename: 'daft_punk_instantAccessMemories.png')
 
 the_whitest_boy_alive_dreams = Album.create({
   title: 'Dreams',
   yr: 2006,
   artist_id: the_whitest_boy_alive.id
 })
-photo = File.open('/Users/karenlee/Desktop/albums/the_whitest_boy_alive_dreams.png')
-the_whitest_boy_alive_dreams.photo.attach(io: photo, filename: 'the_whitest_boy_alive_dreams.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/the_whitest_boy_alive_dreams.png')
+the_whitest_boy_alive_dreams.photo.attach(io: file, filename: 'the_whitest_boy_alive_dreams.png')
 
 gorillaz_demonDays = Album.create({
   title: 'Demon Days',
   yr: 2005,
   artist_id: gorillaz.id
 })
-photo = File.open('/Users/karenlee/Desktop/albums/gorillaz_demonDays.png')
-gorillaz_demonDays.photo.attach(io: photo, filename: 'gorillaz_demonDays.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/gorillaz_demonDays.png')
+gorillaz_demonDays.photo.attach(io: file, filename: 'gorillaz_demonDays.png')
 
 lord_huron_strangeTrails = Album.create({
   title: 'Strange Trails',
   yr: 2015,
   artist_id: lord_huron.id
 })
-photo = File.open('/Users/karenlee/Desktop/albums/lord_huron_strangeTrails.png')
-lord_huron_strangeTrails.photo.attach(io: photo, filename: 'lord_huron_strangeTrails.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/lord_huron_strangeTrails.png')
+lord_huron_strangeTrails.photo.attach(io: file, filename: 'lord_huron_strangeTrails.png')
 
 # Tracks
 ratatat_track_creamOnChrome = Track.create({
@@ -110,8 +109,8 @@ ratatat_track_creamOnChrome = Track.create({
   artist_id: ratatat.id,
   ord: 2
 })
-audio = File.open('/Users/karenlee/Desktop/audio/cream_on_chrome.mp3')
-ratatat_track_creamOnChrome.audio.attach(io: audio, filename: 'cream_on_chrome.mp3') 
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/cream_on_chrome.mp3')
+ratatat_track_creamOnChrome.audio.attach(io: file, filename: 'cream_on_chrome.mp3') 
 
 ratatat_track_abrasive = Track.create({
   title: 'Abrasive',
@@ -119,8 +118,8 @@ ratatat_track_abrasive = Track.create({
   artist_id: ratatat.id,
   ord: 4
 })
-audio = File.open('/Users/karenlee/Desktop/audio/abrasive.mp3')
-ratatat_track_abrasive.audio.attach(io: audio, filename: 'abrasive.mp3') 
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/abrasive.mp3')
+ratatat_track_abrasive.audio.attach(io: file, filename: 'abrasive.mp3') 
 
 ratatat_track_pricksOfBrightness = Track.create({
   title: 'Pricks of Brightness',
@@ -128,8 +127,8 @@ ratatat_track_pricksOfBrightness = Track.create({
   artist_id: ratatat.id,
   ord: 7
 })
-audio = File.open('/Users/karenlee/Desktop/audio/pricks_of_brightness.mp3')
-ratatat_track_pricksOfBrightness.audio.attach(io: audio, filename: 'pricks_of_brightness.mp3') 
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/pricks_of_brightness.mp3')
+ratatat_track_pricksOfBrightness.audio.attach(io: file, filename: 'pricks_of_brightness.mp3') 
 
 ratatat_track_supreme = Track.create({
   title: 'Supreme',
@@ -137,8 +136,8 @@ ratatat_track_supreme = Track.create({
   artist_id: ratatat.id,
   ord: 10
 })
-audio = File.open('/Users/karenlee/Desktop/audio/supreme.mp3')
-ratatat_track_supreme.audio.attach(io: audio, filename: 'supreme.mp3') 
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/supreme.mp3')
+ratatat_track_supreme.audio.attach(io: file, filename: 'supreme.mp3') 
 
 ratatat_track_rome = Track.create({
   title: 'Rome',
@@ -146,8 +145,8 @@ ratatat_track_rome = Track.create({
   artist_id: ratatat.id,
   ord: 11
 })
-audio = File.open('/Users/karenlee/Desktop/audio/rome.mp3')
-ratatat_track_rome.audio.attach(io: audio, filename: 'rome.mp3') 
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/rome.mp3')
+ratatat_track_rome.audio.attach(io: file, filename: 'rome.mp3') 
 
 daft_punk_track_instantCrush = Track.create({
   title: 'Instant Crush',
@@ -155,8 +154,8 @@ daft_punk_track_instantCrush = Track.create({
   artist_id: daft_punk.id,
   ord: 5
 })
-audio = File.open('/Users/karenlee/Desktop/audio/instant_crush.mp3')
-daft_punk_track_instantCrush.audio.attach(io: audio, filename: 'instant_crush.mp3') 
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/instant_crush.mp3')
+daft_punk_track_instantCrush.audio.attach(io: file, filename: 'instant_crush.mp3') 
 
 the_whitest_boy_alive_track_burning = Track.create({
   title: 'Burning',
@@ -164,8 +163,8 @@ the_whitest_boy_alive_track_burning = Track.create({
   artist_id: the_whitest_boy_alive.id,
   ord: 1
 })
-audio = File.open('/Users/karenlee/Desktop/audio/burning.mp3')
-the_whitest_boy_alive_track_burning.audio.attach(io: audio, filename: 'burning.mp3') 
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/burning.mp3')
+the_whitest_boy_alive_track_burning.audio.attach(io: file, filename: 'burning.mp3') 
 
 gorillaz_track_feelGoodInc = Track.create({
   title: 'Feel Good Inc.',
@@ -173,8 +172,8 @@ gorillaz_track_feelGoodInc = Track.create({
   artist_id: gorillaz.id,
   ord: 1
 })
-audio = File.open('/Users/karenlee/Desktop/audio/feel_good_inc.mp3')
-gorillaz_track_feelGoodInc.audio.attach(io: audio, filename: 'feel_good_inc.mp3') 
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/feel_good_inc.mp3')
+gorillaz_track_feelGoodInc.audio.attach(io: file, filename: 'feel_good_inc.mp3') 
 
 lord_huron_track_theNightWeMet = Track.create({
   title: 'The Night We Met',
@@ -182,8 +181,8 @@ lord_huron_track_theNightWeMet = Track.create({
   artist_id: lord_huron.id,
   ord: 14
 })
-audio = File.open('/Users/karenlee/Desktop/audio/the_night_we_met.mp3')
-lord_huron_track_theNightWeMet.audio.attach(io: audio, filename: 'the_night_we_met.mp3') 
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/the_night_we_met.mp3')
+lord_huron_track_theNightWeMet.audio.attach(io: file, filename: 'the_night_we_met.mp3') 
 
 # Playlist Tracks
 daft_punk_radio_track1 = PlaylistTrack.create({

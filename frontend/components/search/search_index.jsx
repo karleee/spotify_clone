@@ -30,29 +30,31 @@ class SearchIndex extends React.Component {
     this.setState({ artist });
   }
 
-//   matches(input) {
-//     const matches = [];
-//     if (this.state.inputVal.length === 0) {
-//         return matches;
-//     }
+  // Finds matches with user input
+  matches(input) {
+    const matches = [];
+    if (this.state.inputVal.length === 0) {
+      return matches;
+    }
 
-//     this.props.values.forEach(value => {
-//         let sub;
-//         if (value.title && input.length >= 2) { 
-//             sub = value.title.slice(0, input.length);
-//         } else if (value.name && input.length >= 2) {
-//             sub = value.name.slice(0, input.length);
-//         }
+    this.props.values.forEach(value => {
+      let sub;
+      if (value.title && input.length >= 2) { 
+          sub = value.title.slice(0, input.length);
+      } else if (value.name && input.length >= 2) {
+          sub = value.name.slice(0, input.length);
+      }
 
-//         if (input.length >= 2 && sub.toLowerCase() === input.toLowerCase()) {
-//             matches.push(value);
-//         }
-//     });
-//     if (matches.length === 0) {
-//         matches.push('No results found for ' + `\"${input}\"`);
-//     }
-//     return matches;
-//   }
+      if (input.length >= 2 && sub.toLowerCase() === input.toLowerCase()) {
+          matches.push(value);
+      }
+    });
+    
+    if (matches.length === 0) {
+        matches.push('No results found for ' + `\"${input}\"`);
+    }
+    return matches;
+  }
 
 
 //     handleInput(e) {

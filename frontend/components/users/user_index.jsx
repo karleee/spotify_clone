@@ -30,6 +30,8 @@ class UserIndex extends React.Component {
                 receiveArtist={ this.props.receiveArtist }
                 receivePlaylistId={ this.props.receivePlaylistId }
                 receiveAlbumId={ this.props.receiveAlbumId }
+                //testing
+                {...this.props}
               />)
             }
           </ul>

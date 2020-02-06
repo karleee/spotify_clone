@@ -50,7 +50,7 @@ class UserIndexItem extends React.Component {
           </div>
 
           <div className="playlist-name">
-            <Link to={`/playlist/${playlist.id}`}>{ playlist.title}</Link>
+            <Link to={`/playlist/${playlist.id}`}>{ playlist.title}</Link> 
           </div>
         </li>
     );
