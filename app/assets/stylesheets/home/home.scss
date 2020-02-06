@@ -417,23 +417,73 @@
                 display: flex;
                 flex-direction: column;
 
-                img {
-                  width: 150px;
-                  box-shadow: 0 0 5px 10px rgba(0, 0, 0, 0.1); 
+                .playlist-thumbnail-wrapper {
+                  position: relative;
+
+                  img {
+                    width: 150px;
+                    box-shadow: 0 0 5px 10px rgba(0, 0, 0, 0.1); 
+                  }
+
+                  p:first-of-type {
+                    font-family: 'ProximaNova-Bold';
+                    font-size: 14px;
+                    color: $white;
+                    margin-top: 15px;
+                  }
+
+                  p:last-of-type {
+                    font-family: 'ProximaNova-Regular';
+                    font-size: 13px;
+                    color: $gray;
+                    margin-top: 5px;
+                  }
+
+
+                  .play-button {
+                    position: absolute;
+                    top: 5px;
+                    left: 10px;
+                    z-index: 1;
+                    opacity: 0;
+
+                    .triangle {
+                      position: relative;
+                      width: 0; 
+                      height: 0; 
+                      border-top: 8px solid transparent;
+                      border-bottom: 8px solid transparent;                
+                      border-left: 13px solid $white;
+                      top: 200px;
+                      left: 120px;
+                      text-align: left;
+                      z-index: 1;
+                    }
+
+                    .circle {
+                      position: absolute;
+                      top: 190px;
+                      left: 107px;
+                      width: 35px;
+                      height: 35px;
+                      border-radius: 50%;
+                      background: $green;
+                    }
+                  }
+                }
+              }
+
+              li:hover {
+                .play-button {
+                  opacity: 1;
+                  transition: opacity 0.5s;
                 }
 
-                p:first-of-type {
-                  font-family: 'ProximaNova-Bold';
-                  font-size: 14px;
-                  color: $white;
-                  margin-top: 15px;
-                }
-
-                p:last-of-type {
-                  font-family: 'ProximaNova-Regular';
-                  font-size: 13px;
-                  color: $gray;
-                  margin-top: 8px;
+                .play-button:hover {
+                  position: absolute;
+                  transform: scale(1.10);
+                  top: -15px;
+                  left: -1px;
                 }
               }
             }

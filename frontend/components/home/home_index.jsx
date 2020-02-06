@@ -16,14 +16,14 @@ class HomeIndex extends React.Component {
     return (
       <div className="home-container">
         <div className="heavy-rotation-container">  
-          <div className="heavy-rotation-header">
+          <div className="heavy-rotation-header"> 
             <h1>Home</h1>
             <h2>Your heavy rotation</h2>
           </div> 
 
           <div className="heavy-rotation-content">
             <ul> 
-              {playlists.map(playlist => <PlaylistIndexItem key={playlist.id} playlist={playlist} />)}
+              {playlists.map(playlist => <PlaylistIndexItem key={playlist.id} playlist={playlist} />)}  
             </ul>
           </div>
         </div>

@@ -7,10 +7,10 @@ class UserIndexItem extends React.Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.play = this.play.bind(this);
-  }
+  } 
 
   handleClick(e) {
-    if (!e.target.classList.contains("triangle")) {
+    if (!e.target.classList.contains("circle")) { 
       this.props.history.push(`/playlist/${this.props.playlist.id}`);    
     }
   }
