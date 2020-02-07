@@ -16,6 +16,13 @@ admin = User.create({
   username: 'Fikafy', 
   email: 'admin@gmail.com',  
   gender: 'female',
+  birthday: Date.new(1995) 
+})
+
+dolby = User.create({
+  username: 'dolby', 
+  email: 'dolby@gmail.com',  
+  gender: 'male',
   birthday: Date.new(1995),  
   password:'123456'
 })
