@@ -17,7 +17,7 @@ To see the most up to date version, please visit [the homepage](https://karleee-
 
 ## Feature Spotlight
 
-> ### Dynamic Play
+### Dynamic Play
 
 The dynamic play feature allows the user to start a playlist from various places on the website. The first access point appears when the user lands on the home page and positions their mouse over the playlist thumbnails on their dashboard. 
 
@@ -26,6 +26,7 @@ As the mouse hovers over the thumbnail, an option to play the playlist appears i
 Across the website, there are multiple access points like the one mentioned above: the playlist thumbnails that appear on the user's page and the playlist photo on the playlist page itself.
 
 **Challenges**
+
 * Displaying multiple visual hover effects on the user interface on elements that were already being hovered over
 * Creating the functionality of dual on click actions for one HTML element
 * Wiring the audio to begin playing the chosen playlist when the user clicks on a play button from outside of the playlist page
@@ -69,7 +70,7 @@ Pictured below, are the individual HTML elements highlighted for clarity. As you
 
 ------
 
-> Audio Player
+### Audio Player
 
 
 
