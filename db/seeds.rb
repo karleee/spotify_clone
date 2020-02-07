@@ -793,7 +793,7 @@ lord_huron_radio_track8 = PlaylistTrack.create({
   track_id: lake_street_dive_track_iWantYouBack.id
 })
 
-lord_huron_radio_track9 = PlaylistTrack.create({
+lord_huron_radio_track9 = PlaylistTrack.create({ 
   playlist_id: lord_huron_radio.id,
   track_id: bahamas_track_allTheTime.id
 })

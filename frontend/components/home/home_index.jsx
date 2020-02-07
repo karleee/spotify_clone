@@ -16,7 +16,7 @@ class HomeIndex extends React.Component {
       <div className="home-wrapper">
         <h1>Home</h1>
         
-        <div className="heavy-rotation-wrapper">  
+        <div className="heavy-rotation-wrapper">   
           <div className="header"> 
             <h2>Your heavy rotation</h2>
           </div> 
