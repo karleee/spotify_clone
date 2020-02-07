@@ -70,7 +70,18 @@ Pictured below, are the individual HTML elements highlighted for clarity. As you
 
 ------
 
-### Audio Player
+### Flexible Searching
+
+The search query that the user chooses to enter in the search page of the application is flexible enough to be used with different datatypes that have unique styling decisions: artists, playlists, and songs. Not only is the user able to choose any one of those datatypes to search for, but the styling is also changed depending on what their query was. 
+
+**Challenges**
+
+* Extracting a complete set of search query results from the store despite a difference in datatype structure
+* Extracting uniform attributes from a search result to correctly display the top result
+* Extracting the correct album artwork for each track displayed in the search result
+
+**Solutions**
+
 
 
 
