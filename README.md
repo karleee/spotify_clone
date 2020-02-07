@@ -98,7 +98,7 @@ The search query that the user chooses to enter in the search page of the applic
 
 ![alt text][photo 7]
 
-[photo 6]: https://github.com/karleee/fikafy/blob/images/search_ex2.png
+[photo 7]: https://github.com/karleee/fikafy/blob/images/search_ex2.png
 
 **Challenges**
 
