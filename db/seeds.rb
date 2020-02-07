@@ -467,7 +467,7 @@ miike_snow_track_songForNoOne = Track.create({
   ord: 4
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/black_and_blue.mp3')
-miike_snow_track_blackAndBlue.audio.attach(io: file, filename: 'black_and_blue.mp3') 
+miike_snow_track_songForNoOne.audio.attach(io: file, filename: 'black_and_blue.mp3') 
 
 miike_snow_track_myTrigger = Track.create({
   title: 'My Trigger',
