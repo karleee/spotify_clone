@@ -137,6 +137,6 @@ To remedy this problem, I chose to render the relevant HTML elements directly in
 
 | Version Number        | Updates           | 
 | :------------- |:------------- |
-| Version 1.1      | Audio player patches, Playlist CRUD capabilities |
+| Version 1.1      | Audio player patches, Playlist CRUD capabilities, Third Pary Rerouting |
 | Version 1.2      | Expanded database of audio      |   
 | Version 1.3 | Additional UI effects      |   
