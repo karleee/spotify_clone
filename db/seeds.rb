@@ -333,7 +333,7 @@ basement_jaxx_junto= Album.create({
   artist_id: basement_jaxx.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/basement_jaxx_junto.png')
-basement_jaxx_junto.photo.attach(io: file, filename: 'basement_jaxx_junto.png')
+basement_jaxx_junto.photo.attach(io: file, filename: 'basement_jaxx_junto.png') 
 
 # Tracks
 ratatat_track_creamOnChrome = Track.create({
