@@ -82,6 +82,8 @@ The search query that the user chooses to enter in the search page of the applic
 
 **Solutions**
 
+> Querying the Store
 
+To remedy the differences in my database tables for the artists, playlists, and tracks, I chose to 
 
 
