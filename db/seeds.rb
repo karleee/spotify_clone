@@ -14,6 +14,7 @@ PlaylistTrack.destroy_all
 # Users
 admin = User.create({
   username: 'Fikafy', 
+  password: '123456',
   email: 'admin@gmail.com',  
   gender: 'female',
   birthday: Date.new(1995) 
@@ -21,10 +22,10 @@ admin = User.create({
 
 dolby = User.create({
   username: 'dolby', 
+  password: '123456',
   email: 'dolby@gmail.com',  
   gender: 'male',
-  birthday: Date.new(1995),  
-  password:'123456'
+  birthday: Date.new(1995) 
 })
 
 # Playlists
@@ -475,7 +476,7 @@ miike_snow_track_myTrigger = Track.create({
   ord: 1
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/my_trigger.mp3')
-miike_snow_track_blackAndBlue.audio.attach(io: file, filename: 'my_trigger.mp3') 
+miike_snow_track_myTrigger.audio.attach(io: file, filename: 'my_trigger.mp3') 
 
 miike_snow_track_theHeartOfMe = Track.create({
   title: 'The Heart of Me',
@@ -501,8 +502,8 @@ starfkr_track_girlsJustWantToHaveFun= Track.create({
   artist_id: starfkr.id,
   ord: 6
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/my_trigger.mp3')
-miike_snow_track_blackAndBlue.audio.attach(io: file, filename: 'my_trigger.mp3') 
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/girls_just_want_to_have_fun.mp3')
+starfkr_track_girlsJustWantToHaveFun.audio.attach(io: file, filename: 'girls_just_want_to_have_fun.mp3') 
 
 phantogram_track_youreMine= Track.create({
   title: 'You\'re Mine',

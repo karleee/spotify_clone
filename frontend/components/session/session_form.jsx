@@ -43,6 +43,7 @@ class SessionForm extends React.Component {
       let birthday;
       let dateStr;
       let field;
+      let randomUsername;
 
       genderButtons = document.getElementsByName('user[gender]');
       genderButtons[0].checked = true;
@@ -53,30 +54,14 @@ class SessionForm extends React.Component {
       field = document.querySelector('#birthday-input');
       field.value = dateStr;
 
-      this.setState({ username: 'dolby', email: 'dolby@gmail.com', password: '123456', gender: 'male', birthday: dateStr });
+      randomUsername = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+
+      this.setState({ username: randomUsername, email: `${randomUsername}.@gmail.com`, password: '123456', gender: 'male', birthday: dateStr });
     } else {
       this.setState({ loginCredentials: 'dolby', password: '123456' });
     }
 
-    this.props.demoLogin({ username: 'dolby', email: 'dolby@gmail.com', password: '123456' }).then(() => { this.resetState() });
-  }
-
-  resetState() {
-    if (this.props.formType === 'Log In') {
-      this.state = {
-        username: '',
-        password: '',
-        show: false
-      };
-    } else {
-      this.state = {
-        name: '',
-        username: '',
-        password: '',
-        show: false,
-        birthday: Date.now
-      };
-    }
+    this.props.demoLogin({ username: 'dolby', loginCredentials: 'dolby@gmail.com', password: '123456' }).then(() => { this.resetState() });
   }
 
   renderErrors() {
@@ -94,8 +79,7 @@ class SessionForm extends React.Component {
     let emailInput,
       birthdayInput, 
       usernameInput, 
-      genderInput,
-      termsInput;
+      genderInput;
 
     if (formType === 'Sign Up') {
       emailInput = <div>
