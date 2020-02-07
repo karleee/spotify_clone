@@ -76,11 +76,29 @@ handleClick(e) {
 Pictured below, are the individual HTML elements highlighted for clarity. As you can see, by binding the `handleClick` function to the entire clickable thumbnail area, the normal linking behavior that takes the user to the playlist's page will only occur if they __do not__ click on the play button, which is encompassed by the HTML element with a class name of `circle`.
 
 
+![alt text][photo 4]
+
+[photo 4]: https://github.com/karleee/fikafy/blob/images/play_exp1.png
+
+![alt text][photo 5]
+
+[photo 5]: https://github.com/karleee/fikafy/blob/images/play_exp2.png
+
+
 ------
 
 ### Flexible Searching
 
 The search query that the user chooses to enter in the search page of the application is flexible enough to be used with different datatypes that have unique styling decisions: artists, playlists, and songs. Not only is the user able to choose any one of those datatypes to search for, but the styling is also changed depending on what their query was. 
+
+![alt text][photo 6]
+
+[photo 6]: https://github.com/karleee/fikafy/blob/images/search_ex1.png
+
+
+![alt text][photo 7]
+
+[photo 6]: https://github.com/karleee/fikafy/blob/images/search_ex2.png
 
 **Challenges**
 
