@@ -25,6 +25,14 @@ As the mouse hovers over the thumbnail, an option to play the playlist appears i
 
 Across the website, there are multiple access points like the one mentioned above: the playlist thumbnails that appear on the user's page and the playlist photo on the playlist page itself.
 
+![alt text][photo 1]
+
+[photo 1]: https://github.com/karleee/fikafy/blob/images/play_ex1.png
+
+![alt text][photo 2]
+
+[photo 2]: https://github.com/karleee/fikafy/blob/images/play_ex2.png
+
 **Challenges**
 
 * Displaying multiple visual hover effects on the user interface on elements that were already being hovered over
