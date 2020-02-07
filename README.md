@@ -131,3 +131,12 @@ if (this.props.artists.length > 0) {
 Although the track display in the search results resembles the current track indicator that is embedded into the audio very closely, re-using the same component proved to be difficult. Because the component that renders the audio information in the audio player uses the current song that is playing to display the appropriate album artwork and song information, using its container component in the case of a search result would prove to have problems if the user did not choose to directly play a track from the query results.
 
 To remedy this problem, I chose to render the relevant HTML elements directly in the search result index item presentational component; although, I would like to find a more DRY way to accomplish this in the future.
+
+## Future Updates
+
+
+| Version Number        | Updates           | 
+| :------------- |:------------- |
+| Version 1.1      | Audio player patches, Playlist CRUD capabilities |
+| Version 1.2      | Expanded database of audio      |   
+| Version 1.3 | Additional UI effects      |   
