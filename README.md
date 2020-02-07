@@ -112,6 +112,19 @@ this.props.values.forEach(value => {
   
 > Uniform Object Values
 
-Because playlists, tracks, and artists vary slightly in how the photo url is retrieved, as well as whether 
+Because playlists, tracks, and artists vary slightly in how the photo url is retrieved, as well as whether or not one contains a user or an artist creator type, it was important to establish common variables that could be used in a basic HTML template. To accomplish this, I established an if and else if branch that prioritized which slice of the data from the resulting search to be rendered. Depending on which branch the first (the closest) match fell into, the necessary variables were extracted and saved into local variables to be used in the HTML rendering.
+
+``` javascript
+if (this.props.artists.length > 0) {
+  result = this.props.artists[0];
+  creator = result.name;
+  photoUrl = result.photo_url;
+  link = `artist/${result.id}`;
+} else if (this.props.albums.length > 0) {
+  result = this.props.albums[0];
+  creator = result.artist;
+  photoUrl = result.photo_url;
+  link = `album/${result.id}`;
+  ```
 
 
