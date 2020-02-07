@@ -58,7 +58,7 @@ class SearchIndex extends React.Component {
     });
 
     if (matches.length === 0)  matches.push('No results found for ' + `\"${input}\"`);
-
+    
     return matches;
   }
 
@@ -85,11 +85,11 @@ class SearchIndex extends React.Component {
       notFound = "";
     }
 
-    return (
+    return ( 
       <div className="search-bar-wrapper">
         <div className="bar">
           <i className="search-bar-icon"></i>
-          <input type="text" onChange={this.handleInput} placeholder="Search for Artists or Playlists" />
+          <input type="text" onChange={this.handleInput} placeholder="Search for Artists, Songs, or Playlists" />
         </div>
 
         { notFound ? <p>{notFound}</p> : <SearchResultIndex query={this.state.query} found={found} /> }

@@ -22,6 +22,10 @@
       border-radius: 25px;
       border: none;
     }
+
+    input[type=text]:focus {
+      outline: none;
+    }
   }
 
   .search-error-wrapper {
@@ -74,9 +78,14 @@
         padding: 20px;
         background: $logout-button-gray;
         border-radius: 15px;
-        margin-top: -30px;
+        margin-top: -30px; 
 
-        img {
+        .result-track {
+          width: 100px;
+          box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-other {
           width: 100px;
           border-radius: 50%;
           box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);

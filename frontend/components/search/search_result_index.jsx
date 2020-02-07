@@ -28,6 +28,7 @@ class SearchResultIndex extends React.Component {
 
   render() {    
     let result;
+    let album;
     let link;
     let creator;
     let photoUrl;
@@ -47,11 +48,18 @@ class SearchResultIndex extends React.Component {
       result = this.props.playlists[0];
       creator = result.user;
       photoUrl = result.photo_url;
+
       if (tracks.length == 0) {
         tracks = -1;
       }
       link = `playlist/${result.id}`;
-    } 
+    }  else if (this.props.tracks.length > 0) {
+      result = this.props.tracks[0];
+      album = this.props.allAlbums[result.album_id - 1];
+      creator = result.artist;
+      photoUrl = album.photo_url;
+      link = `album/${album.id}`;
+    }
 
     if (!result) return null;
 
@@ -66,9 +74,11 @@ class SearchResultIndex extends React.Component {
 
         {this.state.result ? <div className="results-wrapper">
           <div className="result">
-            <img src={photoUrl} alt="Thumbnail photo" />
+            <img className={ result.album_id ? "result-track" : "result-other" } src={photoUrl} alt="Thumbnail photo" />
             <Link to={link}>{result.title ? result.title : creator}</Link>
-            <div className="label"><p>{result.name ? "Artist" : "Playlist" }</p></div> 
+            {result.name ? <div className="label"><p>Artist</p></div> : "" }
+            {result.playlist_type ? <div className="label"><p>Playlist</p></div> : ""}
+            {result.album_id ? <div className="label"><p>Song</p></div> : ""}
           </div>
 
           <div className="tracks-wrapper">
