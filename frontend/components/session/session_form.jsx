@@ -6,6 +6,7 @@ class SessionForm extends React.Component {
     super(props);
     this.resetState();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
   }
 
   resetState() {
@@ -33,6 +34,49 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
+  }
+
+  handleDemoLogin(e) {
+    e.preventDefault();
+    if (this.props.formType === 'Sign Up') {
+      let genderButtons;
+      let birthday;
+      let dateStr;
+      let field;
+
+      genderButtons = document.getElementsByName('user[gender]');
+      genderButtons[0].checked = true;
+
+      birthday = new Date();
+      birthday.setMinutes(birthday.getMinutes() - birthday.getTimezoneOffset());
+      dateStr = birthday.toISOString().substring(0, 10);
+      field = document.querySelector('#birthday-input');
+      field.value = dateStr;
+
+      this.setState({ username: 'dolby', email: 'dolby@gmail.com', password: '123456', gender: 'male', birthday: dateStr });
+    } else {
+      this.setState({ loginCredentials: 'dolby', password: '123456' });
+    }
+
+    this.props.demoLogin({ username: 'dolby', email: 'dolby@gmail.com', password: '123456' }).then(() => { this.resetState() });
+  }
+
+  resetState() {
+    if (this.props.formType === 'Log In') {
+      this.state = {
+        username: '',
+        password: '',
+        show: false
+      };
+    } else {
+      this.state = {
+        name: '',
+        username: '',
+        password: '',
+        show: false,
+        birthday: Date.now
+      };
+    }
   }
 
   renderErrors() {
@@ -78,7 +122,7 @@ class SessionForm extends React.Component {
         <label>Date of birth</label>
         <input type="date"
           onChange={this.update('birthday')}
-          className="birthday-input"
+          id="birthday-input"
         />
       </div>
 
@@ -112,57 +156,74 @@ class SessionForm extends React.Component {
 
     return (
       <div className="session-form-container"> 
-          <Link to="/"><img src={ blackLogo } /></Link>
-
-          <form onSubmit={this.handleSubmit} className="session-form">
-              {formType === 'Sign Up' ?<h3>Sign up with your email address</h3> : <h4>To continue, log in to Spotify.</h4>}
-
-              {this.renderErrors()}
-
-              <div className="session-form-input">
-                <div className="session-form-text-input">
-                  { emailInput }
-
-                  <label>
-                    <input type="password"
-                      value={this.state.password}
-                      onChange={this.update('password')}
-                      className="password-input"
-                      placeholder="Password"
-                    />
-                  </label>
-
-                  { usernameInput }
-
-                  { birthdayInput }
-                </div>
-
-                { genderInput }
-    
-                <div className="session-form-submit">
-                  <br />
-                  <input className="session-submit-button" type="submit" value={formType} />
-                </div>
-              </div>
-          </form>
-
-          <div className="session-form-redirect-container">
-              { formType === 'Sign Up' ? (<p>Already have an account? 
-                <Link to='/login'
-                  onClick={clearErrors} >
-                  <span className="redirect-link">Log In</span>
-                </Link>
-              </p>) : (
-                <div className="session-form-no-account">
-                  <h3>Don't have an account?</h3>
-                  <br />
-                  <Link to='/signup'
-                     onClick={clearErrors} >
-                     <span className="redirect-link">{'Sign Up For Spotify'.toUpperCase()}</span>
-                  </Link>
-                </div>)
-              }
+        <div className="image-wrapper">
+          <div className="image">
+            <Link to="/">
+              <img src={blackLogo} />
+              <h1>Fikafy</h1> 
+            </Link>
           </div>
+        </div>
+
+        <button className="demo-login" onClick={this.handleDemoLogin}>
+          { formType === 'Sign Up' ? 'Demo Sign Up' : 'Demo Log In' }
+        </button> 
+
+        <div className="separator">
+          <div className="left-line"></div>
+          <p>or</p>
+          <div className="right-line"></div>
+        </div>
+
+        <form onSubmit={this.handleSubmit} className="session-form">
+            {formType === 'Sign Up' ?<h3>Sign up with your email address</h3> : <h4>To continue, log in to Fikafy.</h4>}
+
+            {this.renderErrors()}
+
+            <div className="session-form-input">
+              <div className="session-form-text-input">
+                { emailInput }
+
+                <label>
+                  <input type="password"
+                    value={this.state.password}
+                    onChange={this.update('password')}
+                    className="password-input"
+                    placeholder="Password"
+                  />
+                </label>
+
+                { usernameInput }
+
+                { birthdayInput }
+              </div>
+
+              { genderInput }
+    
+              <div className="session-form-submit">
+                <br />
+                <input className="session-submit-button" type="submit" value={formType} />
+              </div>
+            </div>
+        </form>
+
+        <div className="session-form-redirect-container">
+            { formType === 'Sign Up' ? (<p>Already have an account? 
+              <Link to='/login'
+                onClick={clearErrors} >
+                <span className="redirect-link">Log In</span>
+              </Link>
+            </p>) : (
+              <div className="session-form-no-account">
+                <h3>Don't have an account?</h3>
+                <br />
+                <Link to='/signup'
+                   onClick={clearErrors} >
+                   <span className="redirect-link">{'Sign Up For Fikafy'.toUpperCase()}</span>
+                </Link>
+              </div>)
+            }
+        </div>
       </div>
     );
   }

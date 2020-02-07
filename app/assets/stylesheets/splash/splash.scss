@@ -28,18 +28,31 @@
     background: rgba(0, 0, 0, 0.6);
     padding: 15px 80px;
 
-    a:first-child {
-      width: 45%;
+    .image {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-family: 'ProximaNova-Bold';
 
-      img {
-        width: 135px;
-        height: 40px;
-        margin-right: 50px;
+      a:first-child {
+        width: 40%;
+
+        img {
+          width: 45px;
+          margin-right: 20px;
+        }
+      }
+
+      h1 {
+        font-size: 26px;
+        color: $white;
+        letter-spacing: 0.5px;
       }
     }
 
     .links {
-      width: 25%;
+      width: 30%;
+      margin-left: 50%;
 
       a {
         font-family: 'ProximaNova-Bold';

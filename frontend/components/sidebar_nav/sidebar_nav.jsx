@@ -10,7 +10,10 @@ class SideBarNav extends React.Component {
     return (
       <div className="sidebar"> 
         <div className="header">
-          <Link to="/home"><img src={ whiteLogo } /></Link>
+          <Link to="/home">
+            <img src={ whiteLogo } />
+            <h1>Fikafy</h1>
+          </Link> 
         </div>
 
         <div className="links">

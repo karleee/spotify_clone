@@ -11,7 +11,7 @@ const Splash = () => (
     <div className="splash-text-container">
       <h1>Music for everyone.</h1>
       <p>Millions of songs. No credit card needed.</p>
-      <Link to="/signup">{'Get Spotify Free'.toUpperCase()}</Link> 
+      <Link to="/signup">{'Get Fikafy Free'.toUpperCase()}</Link> 
     </div>
   </div>
 );

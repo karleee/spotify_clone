@@ -73,9 +73,20 @@
 
       .header {
         a {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          font-family: 'ProximaNova-Bold';
+          color: $white;
+          text-decoration: none;
+
           img {
-            width: 130px;
-            height: 38px;
+            width: 45px;
+            margin-right: 5px;
+          }
+
+          h1 {
+            font-size: 28px;
           }
         }
       }

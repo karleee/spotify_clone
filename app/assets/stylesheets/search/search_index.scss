@@ -22,10 +22,6 @@
       border-radius: 25px;
       border: none;
     }
-
-    input[type=text]:focus {
-      outline: none;
-    }
   }
 
   .search-error-wrapper {
@@ -60,7 +56,7 @@
         letter-spacing: 0.5px;
         list-style: none;
 
-        li:first-child {
+        li:first-child { 
           margin-right: 290px;
         }
       }

@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 const HeaderNav = ({ currentUser, logout }) => {
   const sessionLinks = () => (
     <div className="session-header-wrapper">
-      <Link to="/"><img src={window.whiteLogo} /></Link>
+      <div className="image">
+        <Link to="/"><img src={window.whiteLogo} /></Link> 
+        <h1>Fikafy</h1>
+      </div>
 
       <div className="links">
         <Link to="/signup">Sign Up</Link>

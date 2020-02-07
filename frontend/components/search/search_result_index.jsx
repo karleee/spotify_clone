@@ -49,9 +49,8 @@ class SearchResultIndex extends React.Component {
       creator = result.user;
       photoUrl = result.photo_url;
 
-      if (tracks.length == 0) {
-        tracks = -1;
-      }
+      if (tracks.length == 0) tracks = -1;
+    
       link = `playlist/${result.id}`;
     }  else if (this.props.tracks.length > 0) {
       result = this.props.tracks[0];

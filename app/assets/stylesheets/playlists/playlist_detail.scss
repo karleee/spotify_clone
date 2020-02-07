@@ -150,6 +150,7 @@
           align-items: flex-start;
           position: relative;
           padding: 15px 20px;
+          width: 90%;
 
           .track-note {
             width: 15px;
@@ -177,6 +178,19 @@
               font-size: 16px;
               color: $gray;
               margin-top: -15px;
+            }
+          }
+        }
+
+        .track-info:hover {
+          background: $track-light-gray;
+
+          .track-note {
+            width: 15px;
+
+            .music-note-icon {
+              content: image_url('playlists/play-icon.png'); 
+              width: 14px;
             }
           }
         }
