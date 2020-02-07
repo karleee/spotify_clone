@@ -138,10 +138,6 @@ class SessionForm extends React.Component {
                 </div>
 
                 { genderInput }
-
-                { formType === 'Sign Up' ? <div className="g-recaptcha" data-sitekey="6LfJUNQUAAAAACm8--awNRrVvlQIeybq8VWQDKO9"></div> : ""}
-                {/* 6LfWT9QUAAAAABaqSyzDj6zS5biO2U7SuEFk6omA */}
-     
     
                 <div className="session-form-submit">
                   <br />

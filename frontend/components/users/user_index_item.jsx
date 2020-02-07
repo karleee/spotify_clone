@@ -6,6 +6,7 @@ class UserIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
+    this.handleTrack = this.handleTrack.bind(this);
     this.play = this.play.bind(this);
   } 
 
@@ -16,7 +17,7 @@ class UserIndexItem extends React.Component {
   }
 
   handleTrack(playlist) {
-    // still going forward one, then back one, and then it plays normally...
+    // still going forward one, then back one, and then it plays normally... 
     if (!playlist.payload.tracks) return;
     let tracks = Object.values(playlist.payload.tracks);
     let currentTrack = tracks[0];

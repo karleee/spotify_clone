@@ -30,7 +30,7 @@ class PlaylistDetail extends React.Component {
     return (
       <div className="playlist-detail-wrapper">
         <div className="header">
-          <div className="playlist-image">
+          <div className="image">
             <div className="play-button" onClick={this.play}>
               <div className="triangle right"></div>
               <div className="circle"></div>
@@ -42,14 +42,14 @@ class PlaylistDetail extends React.Component {
 
           <h1>{ playlist.title }</h1>
 
-          <div className="playlist-detail-user-wrapper">
+          <div className="user-wrapper">
             { playlist.playlist_type === 'album' ? <Link to={`/artists/${playlist.user_id}`}>{playlist.user}</Link> : <Link to={`/users/${playlist.user_id}`}>{playlist.user}</Link> } 
           </div>
           
           <p>{playlist.track_ids.length} songs</p>             
         </div>
  
-        <div className="playlist-detail-tracks">  
+        <div className="tracks">  
           <TrackDetail playlist={playlist} tracks={tracks} />  
         </div>
       </div>

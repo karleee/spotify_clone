@@ -47,10 +47,24 @@ lord_huron_radio.photo.attach(io: file, filename: 'lord_huron_radio.png')
 
 # Artists
 ratatat = Artist.create({ name: 'Ratatat' })
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/ratatat.png')
+ratatat.photo.attach(io: file, filename: 'ratatat.png')
+
 daft_punk = Artist.create({ name: 'Daft Punk' })
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/daft_punk.png')
+daft_punk.photo.attach(io: file, filename: 'daft_punk.png')
+
 the_whitest_boy_alive = Artist.create({ name: 'The Whitest Boy Alive'})
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/the_whitest_boy_alive.png')
+the_whitest_boy_alive.photo.attach(io: file, filename: 'the_whitest_boy_alive.png')
+
 gorillaz = Artist.create({ name: 'Gorillaz' })
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/gorillaz.png')
+gorillaz.photo.attach(io: file, filename: 'gorillaz.png')
+
 lord_huron = Artist.create({ name: 'Lord Huron' })
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/lord_huron.png')
+lord_huron.photo.attach(io: file, filename: 'lord_huron.png')
 
 
 # Albums
@@ -84,7 +98,7 @@ the_whitest_boy_alive_dreams = Album.create({
   artist_id: the_whitest_boy_alive.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/the_whitest_boy_alive_dreams.png')
-the_whitest_boy_alive_dreams.photo.attach(io: file, filename: 'the_whitest_boy_alive_dreams.png')
+the_whitest_boy_alive_dreams.photo.attach(io: file, filename: 'the_whitest_boy_alive_dreams.png') 
 
 gorillaz_demonDays = Album.create({
   title: 'Demon Days',

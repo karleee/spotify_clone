@@ -1,6 +1,5 @@
 import React from 'react';
-const WAIT_INTERVAL = 1000;
-const ENTER_KEY = 13;
+import SearchResultIndex from './search_result_index_container';
 
 class SearchIndex extends React.Component {
   // Constructor for Search Index component
@@ -8,7 +7,7 @@ class SearchIndex extends React.Component {
     super(props);
 
     this.state = {
-      inputVal: "",
+      query: "",
       results: []
     };
 
@@ -30,82 +29,73 @@ class SearchIndex extends React.Component {
     this.setState({ artist });
   }
 
-  // Finds matches with user input
+  // Finds matching artist, playlist, album, and tracks with user input
   matches(input) {
     const matches = [];
-    if (this.state.inputVal.length === 0) {
+
+    if (this.state.query.length === 0) { 
       return matches;
     }
 
     this.props.values.forEach(value => {
       let sub;
-      if (value.title && input.length >= 2) { 
-          sub = value.title.slice(0, input.length);
-      } else if (value.name && input.length >= 2) {
-          sub = value.name.slice(0, input.length);
-      }
+      let attr = [];
 
-      if (input.length >= 2 && sub.toLowerCase() === input.toLowerCase()) {
+      if (value.title) attr.push(value.title);
+      if (value.name) attr.push(value.name);
+      if (value.artist) attr.push(value.artist);
+
+
+      attr.forEach(attr => {
+        if (attr && input.length >= 2) {
+          sub = attr.slice(0, input.length);
+        }
+
+        if (input.length >= 2 && sub.toLowerCase() === input.toLowerCase()) {
           matches.push(value);
-      }
+        }
+      });
     });
-    
-    if (matches.length === 0) {
-        matches.push('No results found for ' + `\"${input}\"`);
-    }
+
+    if (matches.length === 0)  matches.push('No results found for ' + `\"${input}\"`);
+
     return matches;
   }
 
+  // Handles user input
+  handleInput(e) {
+    e.preventDefault();
+    let results = this.matches(e.target.value);
+    this.setState({ query: e.target.value, results });
+  }
 
-//     handleInput(e) {
-//         e.preventDefault();
-//         let results = this.matches(e.target.value);
-//         this.setState({ inputVal: e.target.value, results });
-
-
-//     }
-
-//     render() {
-//         const { logout, currentUser } = this.props;
-//         let result;
-//         let notFound;
+  // Renders SearchIndex component
+  render() {
+    let found;
+    let notFound;
 
 
-//         if (typeof this.state.results[0] === "string") {
-//             notFound = <div className="search-error"><h1 className="error-text">{this.state.results}</h1></div>;
-//         } else {
-//             result = this.state.results;
+    if (typeof this.state.results[0] === 'string') {
+      notFound = <div className="search-error-wrapper">
+        <h2>{this.state.results}</h2>
+        <p>Please make sure your words are spelled correctly or use less or different keywords.</p>
+      </div>;
+    } else {
+      found = this.state.results;
+      notFound = "";
+    }
 
-//             notFound = "";
-//         }
-//         return (
-//             <div className="search-main-container">
-//                 <NavSidebar logout={logout} currentUser={currentUser} />
-//                 <div className="search-wrapper">
+    return (
+      <div className="search-bar-wrapper">
+        <div className="bar">
+          <i className="search-bar-icon"></i>
+          <input type="text" onChange={this.handleInput} placeholder="Search for Artists or Playlists" />
+        </div>
 
-//                     <section className="search-container">
-//                         <div className="search-bar">
-//                             <label className="search-bar-label">
-//                                 Search for a Artist, Album, Playlist</label>
-//                             <input className="search-input"
-//                                 onChange={this.handleInput}
-//                                 placeholder="Start typing..." type="text">
-//                             </input>
-//                         </div>
-//                     </section>
-
-//                     <section className="search-results">
-//                         {notFound ? notFound :
-//                             <SearchResultContainer
-//                                 inputVal={this.state.inputVal}
-//                                 result={result}
-//                             />}
-//                     </section>
-//                 </div>
-
-//             </div>
-//         );
-//     }
+        { notFound ? <p>{notFound}</p> : <SearchResultIndex query={this.state.query} found={found} /> }
+      </div>
+    );
+  }
 }
 
 export default SearchIndex;

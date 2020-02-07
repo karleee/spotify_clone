@@ -1,19 +1,61 @@
 @import 'variables';
 
-.splash-root-container {
+.splash-wrapper {
   position: relative;
   background-image: image_url('splash/splash-background.png');
   background-repeat: no-repeat;
   background-size: cover;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
 
-  .splash-background-container {
+  .overlay {
     width: 100%; 
-    height: 676px;
+    height: 100%;
     background-image: image_url('splash/splash-overlay.svg');
     background-repeat: no-repeat;
     background-size: cover;
+  }
+
+  .session-header-wrapper {
+    position: fixed;
+    width: 100%;
+    top: 0%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px 80px;
+
+    a:first-child {
+      width: 45%;
+
+      img {
+        width: 135px;
+        height: 40px;
+        margin-right: 50px;
+      }
+    }
+
+    .links {
+      width: 25%;
+
+      a {
+        font-family: 'ProximaNova-Bold';
+        font-size: 17px;
+        color: lightgray;
+        text-decoration: none;
+      }
+
+      a:first-child {
+        margin: 40px;
+      }
+
+      a:hover {
+        color: $green;
+      }
+    }
   }
 
   .splash-text-container {

@@ -4,7 +4,7 @@ import SearchIndex from './search_index';
 
 const mapStateToProps = state => ({
   currentUser: state.entities.users[state.session.id],
-  values: Object.values(state.entities.albums).concat(Object.values(state.entities.playlist)).concat(Object.values(state.entities.artist))
+  values: Object.values(state.entities.albums).concat(Object.values(state.entities.artists)).concat(Object.values(state.entities.tracks)).concat(Object.values(state.entities.playlists))
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -12,4 +12,4 @@ const mapDispatchToProps = dispatch => ({
   receiveArtist: artist => dispatch(receiveArtist(artist))
 });
 
- export default connect(mapStateToProps, mapDispatchToProps)(SearchIndex); 
+ export default connect(mapStateToProps, mapDispatchToProps)(SearchIndex);  

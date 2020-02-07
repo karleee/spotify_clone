@@ -3,20 +3,21 @@ import { Link } from 'react-router-dom';
 
 const HeaderNav = ({ currentUser, logout }) => {
   const sessionLinks = () => (
-    <nav className="session-header-new">
+    <div className="session-header-wrapper">
       <Link to="/"><img src={window.whiteLogo} /></Link>
-      <div className="session-links-new">
+
+      <div className="links">
         <Link to="/signup">Sign Up</Link>
         <Link to="/login">Log In</Link>
       </div>
-    </nav>
+    </div>
   );
 
   const personalLinks = () => (
-    <nav className="session-header-returning">
-      <div className="session-header-upgrade-button"><a href="https://www.spotify.com/us/premium/">Upgrade</a></div>
+    <div className="session-header-wrapper">
+      <div className="upgrade-button"><a href="https://www.spotify.com/us/premium/">Upgrade</a></div>
       <button className="logout-button" onClick={logout}>Log Out</button>
-    </nav>
+    </div>
   );
 
   return currentUser ? personalLinks() : sessionLinks();

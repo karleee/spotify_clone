@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
   requestAllTracks: () => dispatch(requestAllTracks()),
   requestAllAlbums: () => dispatch(requestAllAlbums()),
   requestAllArtists: () => dispatch(requestAllArtists()),
-  requestAllUsers: () => dispatch(requestAllUsers())
+  requestAllUsers: () => dispatch(requestAllUsers()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeIndex);
