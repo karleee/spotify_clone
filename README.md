@@ -109,5 +109,9 @@ this.props.values.forEach(value => {
   });
 });
   ```
+  
+> Uniform Object Values
+
+Because playlists, tracks, and artists vary slightly in how the photo url is retrieved, as well as whether 
 
 
