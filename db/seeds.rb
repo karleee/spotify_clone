@@ -324,8 +324,16 @@ greta_van_fleet_fromTheFires = Album.create({
   yr: 2017,
   artist_id: greta_van_fleet.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/greta_van_fleet_fromtheFires.png')
-greta_van_fleet_fromtheFires.photo.attach(io: file, filename: 'greta_van_fleet_fromtheFires.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/greta_van_fleet_fromTheFires.png')
+greta_van_fleet_fromTheFires.photo.attach(io: file, filename: 'greta_van_fleet_fromTheFires.png')
+
+bahamas_bahamasIsAfie = Album.create({
+  title: 'Bahamas Is Afie',
+  yr: 2014,
+  artist_id: bahamas.id
+})
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/bahamas_bahamasIsAfie.png')
+bahamas_bahamasIsAfie.photo.attach(io: file, filename: 'bahamas_bahamasIsAfie.png')
 
 basement_jaxx_junto= Album.create({
   title: 'Junto',
