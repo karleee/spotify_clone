@@ -84,6 +84,30 @@ The search query that the user chooses to enter in the search page of the applic
 
 > Querying the Store
 
-To remedy the differences in my database tables for the artists, playlists, and tracks, I chose to 
+To remedy the differences in my database tables for the artists, playlists, and tracks, I chose to begin with a `values` array of all possible matching objects in the container component. Once I had all the possibilities, I applied another filter from inside of another function in the presentational component.
+
+Rather than checking just the `title` or `name` of an object, running through a pre selected group of relevant attributes from the object ensures that a track by the artist is also included in the results; because a track has both a `title` and `artist` attribute, checking only the title first does not ensure that the track will be included in the matched results (i.e. the track title does not have the artist's name __but__ the artist's name does match the search query).
+
+``` javascript
+this.props.values.forEach(value => {
+  let sub;
+  let attr = [];
+
+  if (value.title) attr.push(value.title);
+  if (value.name) attr.push(value.name);
+  if (value.artist) attr.push(value.artist);
+
+
+  attr.forEach(attr => {
+    if (attr && input.length >= 2) {
+      sub = attr.slice(0, input.length);
+    }
+
+    if (input.length >= 2 && sub.toLowerCase() === input.toLowerCase()) {
+      matches.push(value);
+    }
+  });
+});
+  ```
 
 
