@@ -39,6 +39,7 @@ class SessionForm extends React.Component {
 
   handleDemoLogin(e) {
     e.preventDefault();
+    
     if (this.props.formType === 'Sign Up') {
       let genderButtons;
       let birthday;
@@ -132,7 +133,7 @@ class SessionForm extends React.Component {
           <input type="text"
             value={ this.state.loginCredentials }
             onChange={this.update('loginCredentials')}
-            className="login-input"
+            id="login-input"
             placeholder={ formType === 'Log In' ? "Email address or username" : "Email" }
           />
         </label>
