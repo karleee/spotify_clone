@@ -29,6 +29,12 @@ class AudioPlayer extends React.Component {
     this.mouseUp = this.mouseUp.bind(this);
   }
 
+  // Cleanup from mounting component
+  componentWillUnmount() {
+    this.audio.pause();
+    this.setState({ audio: "", play: false });
+  }
+
   // Component mounting 
   componentDidMount() {
     this.currentTimeInterval = null;
@@ -39,12 +45,11 @@ class AudioPlayer extends React.Component {
       this.currentTimeInterval = setInterval(() => {
         this.audio.volume = this.props.volume
       }, 500);
-
-    };
+    }
 
     this.audio.onpause = () => {
       clearInterval(this.currentTimeInterval);
-    };
+    }
 
     this.audio.addEventListener("timeupdate", () => {
       if (this.audio && this.audio.currentTime >= this.audio.duration) {

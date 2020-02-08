@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import Faker from 'faker'
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -49,12 +50,12 @@ class SessionForm extends React.Component {
       genderButtons[0].checked = true;
 
       birthday = new Date();
-      birthday.setMinutes(birthday.getMinutes() - birthday.getTimezoneOffset());
+      birthday.setMinutes(birthday.getMinutes() - birthday.getTimezoneOffset()); 
       dateStr = birthday.toISOString().substring(0, 10);
       field = document.querySelector('#birthday-input');
       field.value = dateStr;
 
-      randomUsername = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+      randomUsername = Faker.internet.userName();
 
       this.setState({ username: randomUsername, email: `${randomUsername}.@gmail.com`, password: '123456', gender: 'male', birthday: dateStr });
     } else {
