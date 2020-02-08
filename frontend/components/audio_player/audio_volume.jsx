@@ -10,7 +10,7 @@ class AudioVolume extends React.Component {
       mute: false
     };
     // Binding functions for context of this
-    this.handlePosition = this.handlePosition.bind(this);
+    this.handlePosition = this.handlePosition.bind(this); 
     this.mouseMove = this.mouseMove.bind(this);
     this.mouseDown = this.mouseDown.bind(this);
     this.mouseUp = this.mouseUp.bind(this);

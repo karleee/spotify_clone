@@ -31,6 +31,9 @@ class AudioPlayer extends React.Component {
 
   // Component mounting 
   componentDidMount() {
+    // Upon logout don't try to calculate the duration of a null song
+    if (!this.props.audio) return;
+
     this.currentTimeInterval = null;
     this.setState({ currentTime: "0:00" });
 
@@ -88,7 +91,7 @@ class AudioPlayer extends React.Component {
     let newNextTrack = tracks[newNextIndx];
     this.props.receiveCurrentTrack(newCurrentTrack);
     this.props.receiveNextTrack(newNextTrack);
-    this.props.receiveTitle(newCurrentTrack.title);
+    this.props.receiveTitle(newCurrentTrack.title); 
     this.props.receiveArtist(newCurrentTrack.artist);
     this.props.receiveAlbumId(newCurrentTrack.album_id); 
     this.setState({ play: true, audio: newCurrentTrack, nextTrack: newNextTrack });

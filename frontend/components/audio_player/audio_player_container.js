@@ -29,7 +29,7 @@ const mapDispatchToProps = dispatch => ({
   receiveNextTrack: track => dispatch(receiveNextTrack(track)),
   receiveTitle: title => dispatch(receiveTitle(title)),
   receiveArtist: artist => dispatch(receiveArtist(artist)),
-  receivePlaylistId: playlistId => dispatch(receivePlaylistId(playlistId)),
+  receivePlaylistId: playlistId => dispatch(receivePlaylistId(playlistId)), 
   receiveAlbumId: albumId => dispatch(receiveAlbumId(albumId))
 });
 

@@ -21,7 +21,7 @@ export const receiveCurrentTrack = track => ({
 });
 
 export const receiveNextTrack = track => ({
-  type: RECEIVE_NEXT_TRACK,
+  type: RECEIVE_NEXT_TRACK, 
   track
 });
 
