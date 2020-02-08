@@ -31,9 +31,6 @@ class AudioPlayer extends React.Component {
 
   // Component mounting 
   componentDidMount() {
-    // Upon logout don't try to calculate the duration of a null song
-    if (!this.props.audio) return;
-
     this.currentTimeInterval = null;
     this.setState({ currentTime: "0:00" });
 

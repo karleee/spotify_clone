@@ -9,6 +9,7 @@ class AudioVolume extends React.Component {
       volume: 1,
       mute: false
     };
+
     // Binding functions for context of this
     this.handlePosition = this.handlePosition.bind(this); 
     this.mouseMove = this.mouseMove.bind(this);
@@ -28,7 +29,6 @@ class AudioVolume extends React.Component {
 
   // Positions the progress bar and handle circle
   handlePosition(position) {
-    // let timelineWidth = this.timeline.offsetWidth - this.handle.offsetWidth;
     let handleLeft = position - this.timeline.offsetLeft;
 
     if (handleLeft > this.timeline.offsetWidth || this.state.volume === 1) {

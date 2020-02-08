@@ -4,19 +4,10 @@ import { Link } from 'react-router-dom';
 class HeaderNav extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   volume: 1
-    // }
     this.handleLogout = this.handleLogout.bind(this);
   }
 
   handleLogout() {
-    // let currentTrack = null;
-    // let nextTrack = null;
-    // this.props.receiveCurrentTrack(currentTrack);
-    // this.props.receiveNextTrack(nextTrack);
-    // this.props.receiveVolume(1);
-    // how to set the current state to null tracks?
     this.props.logout();
   }
 
