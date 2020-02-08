@@ -10,8 +10,8 @@ const mapStateToProps = ({ session, entities: { users } }) => ({
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
-  receiveCurrentTrack: track => dispatch(receiveCurrentTrack(track)),
-  receiveNextTrack: track => dispatch(receiveNextTrack(track)),
+  // receiveCurrentTrack: track => dispatch(receiveCurrentTrack(track)),
+  // receiveNextTrack: track => dispatch(receiveNextTrack(track)),
   // receiveVolume: volume => dispatch(receiveVolume(volume))
 });
 
