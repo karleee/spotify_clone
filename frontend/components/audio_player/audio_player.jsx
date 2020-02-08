@@ -19,7 +19,7 @@ class AudioPlayer extends React.Component {
     };
     // Binding functions for context of this
     this.previous = this.previous.bind(this);
-    this.play = this.play.bind(this);
+    this.play = this.play.bind(this); 
     this.next = this.next.bind(this);
     this.handleShuffle = this.handleShuffle.bind(this);
     this.handleRepeat = this.handleRepeat.bind(this);
@@ -92,7 +92,7 @@ class AudioPlayer extends React.Component {
     this.props.receiveArtist(newCurrentTrack.artist);
     this.props.receiveAlbumId(newCurrentTrack.album_id); 
     this.setState({ play: true, audio: newCurrentTrack, nextTrack: newNextTrack });
-  }
+  } 
 
   // Switches play and pause buttons
   play() {

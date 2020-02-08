@@ -14,8 +14,8 @@ const uiReducer = (state = _initialState, action) => {
       return Object.assign({}, state, { currentTrack: action.track }); 
     case RECEIVE_NEXT_TRACK:
       return Object.assign({}, state, { currentTrack: state.currentTrack, nextTrack: action.track }); 
-    case LOGOUT_CURRENT_USER:
-      return _initialState;
+    // case LOGOUT_CURRENT_USER:
+    //   return _initialState;
     default:
       return state;
   }

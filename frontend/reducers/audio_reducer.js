@@ -8,11 +8,11 @@ import {
   RECEIVE_CURRENT_TIME,
   RECEIVE_ALBUM_ID
 } from "../actions/audio_actions";
-import { LOGOUT_CURRENT_USER } from "../actions/session_actions";
+// import { LOGOUT_CURRENT_USER } from "../actions/session_actions";
 
-const _initialState = {
-  volume: 1
-}
+// const _initialState = {
+//   volume: 1
+// }
 
 const audioReducer = (state = { volume: 1 }, action) => {
   Object.freeze(state);
@@ -33,8 +33,8 @@ const audioReducer = (state = { volume: 1 }, action) => {
       return Object.assign({}, state, { trackPlaying: action.track });
     case RECEIVE_CURRENT_TIME:
       return Object.assign({}, state, { currentTime: action.time });
-    case LOGOUT_CURRENT_USER:
-      return _initialState;
+    // case LOGOUT_CURRENT_USER:
+    //   return _initialState;
     default:
       return state;
   }

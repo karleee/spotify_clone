@@ -7,9 +7,9 @@ class HeaderNav extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
   }
 
-  handleLogout() {
-    this.props.logout();
-  }
+  // handleLogout() {
+  //   this.props.logout();
+  // }
 
   render() {
     const sessionLinks = () => (
@@ -29,7 +29,7 @@ class HeaderNav extends React.Component {
     const personalLinks = () => (
       <div className="session-header-wrapper">
         <div className="upgrade-button"><a href="https://www.spotify.com/us/premium/">Upgrade</a></div>
-        <button className="logout-button" onClick={this.handleLogout}>Log Out</button>
+        <button className="logout-button" onClick={this.props.logout}>Log Out</button>
       </div>
     );
 
