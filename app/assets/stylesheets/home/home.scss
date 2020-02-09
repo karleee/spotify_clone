@@ -4,6 +4,8 @@
   display: flex;
   flex-direction: column;
   background: $main-background-gray;
+  height: 100vh;
+  overflow: hidden;
 
   .session-header-wrapper {
     position: fixed;
