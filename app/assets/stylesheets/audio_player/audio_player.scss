@@ -1,8 +1,8 @@
 @import "variables";
 
 .audio-player-container {
-  // position: sticky;
-  top: 87%; 
+  position: fixed;
+  top: 87%;   
   width: 100%;
   display: flex;
   flex-direction: row;
