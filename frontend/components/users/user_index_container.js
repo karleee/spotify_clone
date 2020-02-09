@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return ({ 
     user,
-    playlists: selectPlaylistsFromUser(state, user)
+    playlists: selectPlaylistsFromUser(state, user) 
   });
 }
 

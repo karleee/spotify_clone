@@ -16,10 +16,9 @@ class UserIndexItem extends React.Component {
     }
   }
 
-  handleTrack(playlist) {
-    // still going forward one, then back one, and then it plays normally... 
-    if (!playlist.payload.tracks) return;
-    let tracks = Object.values(playlist.payload.tracks);
+  handleTrack() {
+    if (!this.props.tracks) return;
+    const { playlist, tracks } = this.props;
     let currentTrack = tracks[0];
     let nextTrack = tracks[1];
     this.props.receiveCurrentTrack(currentTrack);
@@ -27,11 +26,12 @@ class UserIndexItem extends React.Component {
     this.props.receiveTitle(currentTrack.title);
     this.props.receiveArtist(currentTrack.artist);
     this.props.receiveAlbumId(currentTrack.album_id);
+    this.props.receivePlaylistId(playlist.id);
   }
 
   play() {
     const { playlist } = this.props;
-    this.props.requestSinglePlaylist(this.props.playlist.id).then(playlist => this.handleTrack(playlist));
+    this.handleTrack(playlist);
     this.props.receivePlaylistId(playlist.id);
   }
 

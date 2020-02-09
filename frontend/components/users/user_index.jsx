@@ -1,6 +1,5 @@
 import React from 'react';
-import UserIndexItem from './user_index_item';
-import { selectTracksFromPlaylist } from '../../reducers/selectors';
+import UserIndexItem from './user_index_item_container';
 
 class UserIndex extends React.Component {
   constructor(props) {
@@ -29,7 +28,7 @@ class UserIndex extends React.Component {
                 receiveTitle={ this.props.receiveTitle }
                 receiveArtist={ this.props.receiveArtist }
                 receivePlaylistId={ this.props.receivePlaylistId }
-                receiveAlbumId={ this.props.receiveAlbumId }
+                receiveAlbumId={ this.props.receiveAlbumId } 
                 {...this.props}
               />)
             }

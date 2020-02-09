@@ -22,8 +22,8 @@ class TrackDetail extends React.Component {
   render() {
     const { tracks } = this.props; 
     return (
-      <ul id="track-list">
-        {tracks.map(track => <TrackIndexItem key={track.id} track={track} handleClick={this.handleClick} />)} 
+      <ul>
+        {tracks.map(track => <TrackIndexItem key={track.id} track={track} handleClick={this.handleClick} />)}  
       </ul>
     );
   }

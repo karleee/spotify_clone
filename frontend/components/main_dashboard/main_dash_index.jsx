@@ -15,12 +15,12 @@ const MainDashboardIndex = ({ currentUser, logout }) => (
     <div className="main-content-wrapper">
       <SideBarNav />
       
-      <div className="sidebar-placeholder"></div>
+      {/* <div className="sidebar-placeholder"></div> */}
 
       <div className="content"> 
         <Switch>
           <ProtectedRoute path="/home" component={HomeIndex} /> 
-          <ProtectedRoute path="/playlist/:playlistId" component={PlaylistDetail} /> 
+          <ProtectedRoute path="/playlist/:playlistId" component={PlaylistDetail} />   
           <ProtectedRoute path="/users/:userId" component={UserIndex} />     
           <ProtectedRoute path="/search" component={SearchIndex} />
         </Switch>

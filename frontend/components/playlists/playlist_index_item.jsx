@@ -30,7 +30,7 @@ class PlaylistIndexItem extends React.Component {
 
   play() {
     const { playlist } = this.props;
-    this.handleTrack(playlist);
+    this.handleTrack(playlist); 
     this.props.receivePlaylistId(playlist.id);
   }
 
