@@ -17,6 +17,7 @@ class TrackDetail extends React.Component {
     this.props.receiveArtist(track.artist);
     this.props.receivePlaylistId(this.props.playlistId);  
     this.props.receiveAlbumId(track.album_id);  
+    this.setState({ play: true });
   }
 
   render() {
