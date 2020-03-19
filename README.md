@@ -4,7 +4,7 @@
 Fikafy is a single page music streaming app that is meant to mirror the style and user interface of 'Spotify'. Using a simple and clean interface, it delivers continuous song playing capability along with extra features embedded in the audio player; some of which include track shuffling, repeating, and automatic queuing. 
 
 <kbd>
-<img src="https://github.com/karleee/morsel/blob/master/README_images/morsel_main1.png" alt="Homepage" width="900px"     border="1">
+<img src="https://github.com/karleee/fikafy/blob/master/README_images/fikafy_main1.png" alt="Homepage" width="900px"     border="1">
 </kbd>
 
 <br>
@@ -12,7 +12,7 @@ Fikafy is a single page music streaming app that is meant to mirror the style an
 <br>
 
 <kbd>
-<img src="https://github.com/karleee/morsel/blob/master/README_images/morsel_main2.png" alt="Homepage" width="900px" border="1">
+<img src="https://github.com/karleee/fikafy/blob/master/README_images/fikafy_main2.png" alt="Homepage" width="900px" border="1">
 </kbd>
 
 ## How It Works
@@ -33,7 +33,7 @@ The dynamic play feature allows the user to start a playlist from various places
 
 As the mouse hovers over the thumbnail, an option to play the playlist appears in the form of a green and white icon. If the user clicks anywhere other than the play button, they are redirected to the playlist's page; however, if they click on the play icon, then they remain on the current page and the playlist will begin playing in the audio player.
 
-Across the website, there are multiple access points like the one mentioned above: the playlist thumbnails that appear on the user's page and the playlist photo on the playlist page itself.
+Across the website, there are multiple access points like the one mentioned above, a majority of which are placed on top of album or playlist thumbnails.
 
 <kbd>
 <img src="https://github.com/karleee/morsel/blob/master/README_images/morsel_restaurant1.png" alt="Homepage" width="900px" border="1">
