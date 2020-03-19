@@ -50,6 +50,14 @@ Across the website, there are multiple access points like the one mentioned abov
 
 <br>
 <br>
+<br>
+
+<kbd>
+<img src="https://github.com/karleee/fikafy/blob/master/README_images/fikafy_play3.png" alt="Play example 1" width="900px" border="1">
+</kbd>
+
+<br>
+<br>
 
 **Challenges**
 > Multiple Hover Effects
@@ -122,7 +130,7 @@ Using the same techniques that I implemented in the above solution, I created di
 The search query that the user chooses to enter in the search page of the application is flexible enough to be used with different datatypes that have unique styling decisions: artists, playlists, and songs. Not only is the user able to choose any one of those datatypes to search for, but the styling is also changed depending on what their query was. 
 
 <kbd>
-<img src="https://github.com/karleee/morsel/blob/master/README_images/morsel_gallery1.png" alt="Homepage" width="900px" border="1">
+<img src="https://github.com/karleee/fikafy/blob/master/README_images/fikafy_search1.png" alt="Homepage" width="900px" border="1">
 </kbd>
 
 <br>
