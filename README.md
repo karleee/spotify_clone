@@ -12,7 +12,7 @@ Fikafy is a single page music streaming app that is meant to mirror the style an
 <br>
 
 <kbd>
-<img src="https://github.com/karleee/fikafy/blob/master/README_images/fikafy_main2.png" alt="Homepage" width="900px" border="1">
+<img src="https://github.com/karleee/fikafy/blob/master/README_images/fikafy_main2.png" alt="Signup page" width="900px" border="1">
 </kbd>
 
 ## How It Works
@@ -36,7 +36,7 @@ As the mouse hovers over the thumbnail, an option to play the playlist appears i
 Across the website, there are multiple access points like the one mentioned above, a majority of which are placed on top of album or playlist thumbnails.
 
 <kbd>
-<img src="https://github.com/karleee/morsel/blob/master/README_images/morsel_restaurant1.png" alt="Homepage" width="900px" border="1">
+<img src="https://github.com/karleee/fikafy/blob/master/README_images/fikafy_play1.png" alt="Play example 1" width="900px" border="1">
 </kbd>
 
 <br>
