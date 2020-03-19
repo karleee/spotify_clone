@@ -104,7 +104,7 @@ Pictured below, are the individual HTML elements highlighted for clarity. As you
 
 > Dynamic Audo Playing: Solution
 
-add text here
+Using the same techniques that I implemented in the above solution, I created different
 
 ------
 
