@@ -41,6 +41,15 @@ Across the website, there are multiple access points like the one mentioned abov
 
 <br>
 <br>
+<br>
+
+
+<kbd>
+<img src="https://github.com/karleee/fikafy/blob/master/README_images/fikafy_play2.png" alt="Play example 1" width="900px" border="1">
+</kbd>
+
+<br>
+<br>
 
 **Challenges**
 > Multiple Hover Effects
