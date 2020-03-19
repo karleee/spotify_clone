@@ -4,7 +4,7 @@
 Fikafy is a single page music streaming app that is meant to mirror the style and user interface of 'Spotify'. Using a simple and clean interface, it delivers continuous song playing capability along with extra features embedded in the audio player; some of which include track shuffling, repeating, and automatic queuing. 
 
 <kbd>
-<img src="https://github.com/karleee/fikafy/blob/master/README_images/fikafy_main1.png.png" alt="Homepage" width="900px"     border="1">
+<img src="https://github.com/karleee/fikafy/blob/master/README_images/fikafy_main1.png" alt="Homepage" width="900px"     border="1">
 </kbd>
 
 <br>
