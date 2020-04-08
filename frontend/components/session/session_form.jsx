@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import Faker from 'faker'
 
 class SessionForm extends React.Component {
   constructor(props) {

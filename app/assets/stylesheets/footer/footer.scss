@@ -1,0 +1,82 @@
+@import 'variables';
+
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background: black;
+  box-sizing: border-box;
+  padding: 5em 3em;
+}
+
+.logo-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 15%;
+  background: yellowgreen;
+
+  .footer.image-wrapper {
+    width: 5em;
+    height: 5em;
+    background: yellow;
+  }
+
+  h2 {
+    font-family: 'ProximaNova-Bold';
+    color: white;
+    margin-left: 0.5em;
+  }
+}
+
+.footer-links-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+  padding: 0 1em;
+  // background: orange;
+
+  .about-wrapper,
+  .discover-wrapper,
+  .dev-wrapper {
+    width: 25%;
+
+    h3 {
+      font-family: 'ProximaNova-Bold';
+      text-transform: uppercase;
+      font-size: 0.85em;
+      letter-spacing: 0.05em;
+      color: $gray;
+    }
+
+    ul {
+      list-style: none;
+      width: 100%;
+      margin-top: 0.5em;
+
+      li {
+        font-family: 'ProximaNova-Regular';
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        color: white;
+        width: 100%;
+        padding: 0.8em 0;
+
+        a {
+          text-decoration: none;
+          font-weight: 700;
+          color: white;
+        }
+
+        a:hover {
+          color: $green;
+        }
+
+        p {
+          color: white;
+        }
+      }
+    }
+  }
+}
