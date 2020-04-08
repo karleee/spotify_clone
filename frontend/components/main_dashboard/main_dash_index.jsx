@@ -21,7 +21,7 @@ const MainDashboardIndex = ({ currentUser, logout }) => (
         <Switch>
           <ProtectedRoute path="/home" component={HomeIndex} /> 
           <ProtectedRoute path="/playlist/:playlistId" component={PlaylistDetail} />   
-          <ProtectedRoute path="/users/:userId" component={UserIndex} />     
+          <ProtectedRoute path="/users/:userId" component={UserIndex} />      
           <ProtectedRoute path="/search" component={SearchIndex} />
         </Switch>
       </div>  

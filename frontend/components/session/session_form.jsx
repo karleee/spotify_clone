@@ -39,30 +39,6 @@ class SessionForm extends React.Component {
 
   handleDemoLogin(e) {
     e.preventDefault();
-    
-    if (this.props.formType === 'Sign Up') {
-      let genderButtons;
-      let birthday;
-      let dateStr;
-      let field;
-      let randomUsername;
-
-      genderButtons = document.getElementsByName('user[gender]');
-      genderButtons[0].checked = true;
-
-      birthday = new Date();
-      birthday.setMinutes(birthday.getMinutes() - birthday.getTimezoneOffset()); 
-      dateStr = birthday.toISOString().substring(0, 10);
-      field = document.querySelector('#birthday-input');
-      field.value = dateStr;
-
-      randomUsername = Faker.internet.userName();
-
-      this.setState({ username: randomUsername, email: `${randomUsername}.@gmail.com`, password: '123456', gender: 'male', birthday: dateStr });
-    } else {
-      this.setState({ loginCredentials: 'dolby', password: '123456' });
-    }
-
     this.props.demoLogin({ username: 'dolby', loginCredentials: 'dolby@gmail.com', password: '123456' }).then(() => { this.resetState() });
   }
 
