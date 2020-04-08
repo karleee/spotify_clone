@@ -37,7 +37,7 @@ class Footer extends Component {
   // Monitors user click on page and determines whether or not to close dev menu
   monitorClick() {
     window.addEventListener('click', e => {
-      if (e.target.parentElement.className !== 'developer-name-wrapper') {
+      if (e.target.parentElement.className !== 'dev-name-wrapper') {
         const allKeys = Object.keys(this.state);
         allKeys.forEach(dev => {
           this.setState({ [dev]: false });
@@ -76,9 +76,9 @@ class Footer extends Component {
             <h3>Developer</h3>
             <ul>
               <li>
-                <div className="developer-name-wrapper" onClick={e => this.showContactInfo(e, 1)}>
+                <div className="dev-name-wrapper" onClick={e => this.showContactInfo(e, 1)}>
                   <p>Karen Lee</p>
-                  <div className="developers-triangle-wrapper"></div>
+                  <div className="dev-triangle-wrapper"></div>
                 </div>
 
                 {this.state.dev1 ? <div className="developers-dropdown-wrapper">

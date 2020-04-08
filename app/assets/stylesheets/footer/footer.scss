@@ -76,7 +76,37 @@
         p {
           color: white;
         }
+
+        .developer-name-wrapper {
+          display: flex;
+          flex-direction: row;
+        }
       }
     }
+  }
+
+  .dev-wrapper ul li {
+    position: relative;
+  }
+
+  .dev-name-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    display: inline-flex;
+  } 
+
+  .dev-name-wrapper:hover {
+    cursor: pointer;
+  } 
+
+  .dev-triangle-wrapper {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: solid 4px white;
+    border-left: solid 4px transparent;
+    border-right: solid 4px transparent;
+    margin-left: 7px;
   }
 }
