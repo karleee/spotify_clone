@@ -49,12 +49,12 @@ class Footer extends Component {
   render() {
     return(
       <div className="footer-container">
-        <div className="logo-wrapper">
-          <div className="footer image-wrapper"></div>
-          <h2>Fikafy</h2>
-        </div>
-
         <div className="footer-links-container">
+          <div className="logo-wrapper">
+            <div className="footer image-wrapper"></div>
+            <h2>Fikafy</h2>
+          </div>
+          
           <div className="about-wrapper">
             <h3>About</h3>
             <ul>
@@ -81,7 +81,7 @@ class Footer extends Component {
                   <div className="dev-triangle-wrapper"></div>
                 </div>
 
-                {this.state.dev1 ? <div className="developers-dropdown-wrapper">
+                {this.state.dev1 ? <div className="dev-dropdown-wrapper">
                   <ul>
                     <li><a href="https://github.com/karleee">Github</a></li>
                     <li><a href="https://www.linkedin.com/in/karleee/">LinkedIn</a></li>
@@ -93,6 +93,10 @@ class Footer extends Component {
               </li>
             </ul>
           </div>
+        </div>
+
+        <div className="footer-copyright-wrapper">
+          <small>Copyright &copy; 2020 Fikafy</small>
         </div>
       </div>
     );
