@@ -123,16 +123,15 @@
       flex-direction: column;
       justify-content: flex-start;
       width: 100%;
-      background: $dark-gray;
-      border-radius: 3px;
-      box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+      box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
       padding: 0.5em 0;
 
       li {
         width: 100%;
         box-sizing: border-box;
-        border-bottom: 1px solid var(--light-border-color);
-        padding-bottom: 0;
+        padding: 0.5em 0;
 
         a {
           display: block;
@@ -152,7 +151,7 @@
 
       li:hover {
         text-decoration: none;
-        background: var(--blue);
+        background: $green;
         cursor: pointer;
       } 
     }  
