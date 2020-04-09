@@ -104,7 +104,7 @@ class AudioPlayer extends React.Component {
     if (this.state.play) {
       this.audio.pause();
       this.setState({ play: false });
-    } else {
+    } else { 
       this.audio.play();
       this.setState({ play: true });
     }

@@ -16,7 +16,7 @@ class UserIndexItem extends React.Component {
     // Changing the currrently stored playlist tracks
     localStorage.setItem('viewing_playlist', JSON.stringify(this.props.playlist));
     const currentPlaylist = JSON.parse(localStorage.getItem('viewing_playlist'));
-    const allTracks = JSON.parse(localStorage.getItem('tracks'));
+    const allTracks = JSON.parse(localStorage.getItem('tracks')); 
 
     let foundTracks = [];
     currentPlaylist.track_ids.forEach(num => foundTracks.push(allTracks[num]));

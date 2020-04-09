@@ -16,7 +16,6 @@ const mapStateToProps = state => {
   }
 
   return ({
-    // playlist,
     audio: state.ui.currentTrack,
     volume: state.audio.volume,
     nextTrack: state.ui.nextTrack, 
