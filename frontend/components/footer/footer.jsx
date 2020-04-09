@@ -51,7 +51,9 @@ class Footer extends Component {
       <div className="footer-container">
         <div className="footer-links-container">
           <div className="logo-wrapper">
-            <div className="footer image-wrapper"></div>
+            <div className="footer image-wrapper">
+              <img src={window.whiteLogo} />
+            </div>
             <h2>Fikafy</h2>
           </div>
 

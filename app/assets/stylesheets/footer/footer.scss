@@ -6,34 +6,40 @@
   width: 100%;
   background: black;
   box-sizing: border-box;
-  padding: 5em 3em 3em 3em;
+  padding: 7% 7% 3% 7%;
 }
 
 .footer-links-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: flex-start;
   width: 100%;
   padding: 0 1em;
-  // background: orange;
 
   .logo-wrapper {
     display: flex;
     flex-direction: row;
     align-items: center;
     width: 15%;
-    background: yellowgreen;
 
     .footer.image-wrapper {
-      width: 5em;
-      height: 5em;
-      background: yellow;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 30%;
+      height: 30%;
+
+      img {
+        width: 80%;
+      }
     }
 
     h2 {
       font-family: 'ProximaNova-Bold';
       color: white;
-      margin-left: 0.5em;
+      margin-left: 0.25em;
     }
   }
 
@@ -123,7 +129,7 @@
       flex-direction: column;
       justify-content: flex-start;
       width: 100%;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.15);
       border-radius: 5px;
       box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
       padding: 0.5em 0;
@@ -159,7 +165,12 @@
 }
 
 .footer-copyright-wrapper {
-  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  font-family: 'ProximaNova-Regular';
+  color: $gray;
   box-sizing: border-box;
   padding-top: 7em;
+  width: 100%;
 }
