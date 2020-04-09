@@ -3,12 +3,15 @@ import TrackDetail from './track_detail';
 import { receiveCurrentTrack, receiveNextTrack } from '../../actions/track_actions';
 import { receiveTitle, receiveArtist, receivePlaylistId, receiveAlbumId } from '../../actions/audio_actions';
 
-const mapStateToProps = (state, { playlist, tracks }) => ({ 
-  playlist,
-  tracks,
-  photoUrl: playlist.photo_url,
-  playlistId: playlist.id
-});
+const mapStateToProps = (state, { playlist, tracks }) => { 
+  let currentPlaylist = playlist || JSON.parse(localStorage.getItem('viewing_playlist'));
+  const currentTracks = tracks || JSON.parse(localStorage.getItem('playlist_tracks'));
+
+  return ({
+    playlist: currentPlaylist,
+    tracks: currentTracks
+  });
+};
 
 const mapDispatchToProps = dispatch => ({ 
   receiveCurrentTrack: track => dispatch(receiveCurrentTrack(track)), 

@@ -16,7 +16,7 @@ class PlaylistIndexItem extends React.Component {
   }
 
   handleTrack() {
-    if (!this.props.tracks) return;
+    // if (!this.props.tracks) return;
     const { playlist, tracks } = this.props;
     let currentTrack = tracks[0];
     let nextTrack = tracks[1];

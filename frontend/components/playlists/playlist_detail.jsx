@@ -12,15 +12,11 @@ class PlaylistDetail extends React.Component {
     // Persisting values of playlist and tracks for page refresh
     // Local storage can only store string and values, no objects
     localStorage.setItem('viewing_playlist', JSON.stringify(this.props.playlist));
-    localStorage.setItem('playlist_tracks', JSON.stringify(this.props.tracks));
+    localStorage.setItem('playlist_tracks', JSON.stringify(this.props.tracks)); 
   }
 
   play() {
-    // Persisting values of playlist for page refresh
-    // Local storage can only store string and values, no objects
-    localStorage.setItem('playing_playlist', JSON.stringify(this.props.playlist));
-
-    if (!this.props.tracks) return;
+    // if (!this.props.tracks) return;
     const { playlist, tracks } = this.props;
     let currentTrack = tracks[0];
     let nextTrack = tracks[1];
@@ -51,7 +47,7 @@ class PlaylistDetail extends React.Component {
           <h1>{playlist.title}</h1> 
 
           <div className="user-wrapper">
-            { playlist.playlist_type === 'album' ? <Link to={`/artists/${playlist.user_id}`}>{playlist.user}</Link> : <Link to={`/users/${playlist.user_id}`}>{playlist.user}</Link> } 
+            {playlist.playlist_type === 'album' ? <Link to={`/artists/${playlist.user_id}`}>{playlist.user}</Link> : <Link to={`/users/${playlist.user_id}`}>{playlist.user}</Link>} 
           </div>
           
           <p>{playlist.track_ids.length} songs</p>             

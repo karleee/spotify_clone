@@ -7,7 +7,8 @@ import PlaylistDetail from './playlist_detail';
 
 const mapStateToProps = (state, ownProps) => { 
   // Retrieving stored values from local storage
-  const playlist = state.entities.playlists[ownProps.match.params.playlistId] || JSON.parse(localStorage.getItem('viewing_playlist'));
+  const playlists = JSON.parse(localStorage.getItem('playlists'));
+  const playlist = playlists[ownProps.match.params.playlistId];
   let tracks = selectTracksFromPlaylist(state, playlist);
 
   // Before assigning to props check if tracks contains invalid values

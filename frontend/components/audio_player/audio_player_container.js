@@ -5,18 +5,18 @@ import { selectTracksFromPlaylist } from '../../reducers/selectors';
 import { receiveTitle, receiveArtist, receivePlaylistId, receiveAlbumId } from '../../actions/audio_actions';
 
 const mapStateToProps = state => {
-  let playlist;
+  const playlists = JSON.parse(localStorage.getItem('playlists'));
   let tracks;
 
   if (state.audio.playlist_id) {
-    playlist = state.entities.playlists[state.audio.playlist_id] || JSON.parse(localStorage.getItem('playing_playlist'));
+    const playlist = playlists[state.audio.playlist_id];
     tracks = selectTracksFromPlaylist(state, playlist);
   } else {
     tracks = null;
   }
 
   return ({
-    playlist,
+    // playlist,
     audio: state.ui.currentTrack,
     volume: state.audio.volume,
     nextTrack: state.ui.nextTrack, 

@@ -10,7 +10,7 @@ import HomeIndex from './home_index';
 const mapStateToProps = state => {
   // Persisting values for page refresh
   // Local storage can only store string and values, no objects
-  localStorage.setItem('playlist', JSON.stringify(state.entities.playlists));
+  localStorage.setItem('playlists', JSON.stringify(state.entities.playlists));
   localStorage.setItem('tracks', JSON.stringify(state.entities.tracks));
   localStorage.setItem('albums', JSON.stringify(state.entities.albums));
   localStorage.setItem('artists', JSON.stringify(state.entities.artists));

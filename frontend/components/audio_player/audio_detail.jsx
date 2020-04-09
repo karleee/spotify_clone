@@ -30,8 +30,6 @@ class AudioDetail extends React.Component {
   render() {
     const { title, artist, album } = this.props;
 
-    console.log(album);
-
     return (
       <div className="ap-track-detail">
         { album ? <img src={ album.photo_url} alt="Current song album cover" />: "" }

@@ -6,17 +6,19 @@ import { receiveCurrentTrack, receiveNextTrack } from '../../actions/track_actio
 import { receiveTitle, receiveArtist, receivePlaylistId, receiveAlbumId, receivePhotoUrl } from '../../actions/audio_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  const user = state.entities.users[ownProps.match.params.userId];
+  const users = JSON.parse(localStorage.getItem('users'));
+  const playlists = JSON.parse(localStorage.getItem('playlists'));
+  const user = users[ownProps.match.params.userId];
 
   return ({ 
     user,
-    playlists: selectPlaylistsFromUser(state, user) 
+    playlists: selectPlaylistsFromUser(playlists, user)   
   });
 }
 
 const mapDispatchToProps = dispatch => ({
   requestSinglePlaylist: id => dispatch(requestSinglePlaylist(id)),
-  receiveCurrentTrack: track => dispatch(receiveCurrentTrack(track)),
+  receiveCurrentTrack: track => dispatch(receiveCurrentTrack(track)), 
   receiveNextTrack: track => dispatch(receiveNextTrack(track)),
   receiveTitle: title => dispatch(receiveTitle(title)),
   receiveArtist: artist => dispatch(receiveArtist(artist)),
