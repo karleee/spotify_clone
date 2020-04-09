@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// const HeaderNav = ({ currentUser, logout }) => {
 class HeaderNav extends React.Component {
   constructor(props) {
     super(props);

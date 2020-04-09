@@ -1,12 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Route } from 'react-router-dom';
 import TrackDetail from '../track/track_detail_container';
 
 class PlaylistDetail extends React.Component { 
   constructor(props) {
     super(props);
     this.play = this.play.bind(this);
+    this.state = {
+      playlist: this.props.playlist,
+      tracks: this.props.tracks
+    }
+  }
+
+  componentDidMount() {
+    this.props.requestAllPlaylists();
+    this.props.requestAllTracks(); 
+
+    // Persisting values of playlist and tracks for page refresh
+    // Local storage can only store string and values, no objects
+    localStorage.setItem('playlist', JSON.stringify(this.props.playlist));
+    localStorage.setItem('tracks', JSON.stringify(this.props.tracks));
   }
 
   play() {
@@ -23,9 +36,7 @@ class PlaylistDetail extends React.Component {
   }
 
   render() {
-    const { playlist, tracks } = this.props;
-
-    if (!playlist) return null;
+    const { playlist, tracks } = this.state;
 
     return (
       <div className="playlist-detail-wrapper">
@@ -40,7 +51,7 @@ class PlaylistDetail extends React.Component {
             <img src={playlist.photo_url} alt="Playlist thumbnail" />  
           </div>
 
-          <h1>{ playlist.title }</h1>
+          <h1>{playlist.title}</h1> 
 
           <div className="user-wrapper">
             { playlist.playlist_type === 'album' ? <Link to={`/artists/${playlist.user_id}`}>{playlist.user}</Link> : <Link to={`/users/${playlist.user_id}`}>{playlist.user}</Link> } 
@@ -49,8 +60,8 @@ class PlaylistDetail extends React.Component {
           <p>{playlist.track_ids.length} songs</p>             
         </div>
  
-        <div className="tracks">  
-          <TrackDetail playlist={playlist} tracks={tracks} />  
+        <div className="tracks">   
+          <TrackDetail playlist={playlist} tracks={tracks} />   
         </div>
       </div>
     );

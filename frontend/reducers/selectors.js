@@ -7,7 +7,7 @@ export const selectPlaylistsFromUser = (state, user) => (
 ); 
 
 export const selectTracksFromPlaylist = (state, playlist) => (
-  playlist.track_ids ? playlist.track_ids.map(id => state.entities.tracks[id]) : []   
+  playlist.track_ids ? playlist.track_ids.map(id => state.entities.tracks[id]) : []    
 ); 
 
 export const selectTracksFromAlbum = (state, album) => (
