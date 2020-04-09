@@ -49,7 +49,7 @@ class Footer extends Component {
   render() {
     return(
       <div className="footer-container">
-        <div className="footer-links-container">
+        <div className="footer-links-wrapper">
           <div className="logo-wrapper">
             <div className="footer image-wrapper">
               <img src={window.whiteLogo} />
