@@ -24,7 +24,6 @@ class HeaderNav extends React.Component {
 
     const personalLinks = () => (
       <div className="session-header-wrapper">
-        <div className="upgrade-button"><a href="https://www.spotify.com/us/premium/">Upgrade</a></div>
         <button className="logout-button" onClick={this.props.logout}>Log Out</button>
       </div>
     );

@@ -10,32 +10,14 @@
   .session-header-wrapper {
     position: fixed;
     top: 4%;
-    left: 78%;
+    left: 0;
     display: flex;
     flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
-
-    .upgrade-button {    
-      width: 170px;
-
-      a {
-        font-family: 'ProximaNova-Regular';
-        font-weight: 700;
-        font-size: 12px;
-        letter-spacing: 2px;
-        text-decoration: none;
-        color: $white;
-        text-transform: uppercase;
-        border-radius: 25px;
-        border: 1px solid $white;
-        padding: 10px 35px;
-      }
-
-      a:hover {
-        cursor: default;
-        font-size: 13px;;
-      }
-    }
+    box-sizing: border-box;
+    padding: 1em 3em;
+    width: 100%;
 
     .logout-button {
       font-size: 12px; 
@@ -171,6 +153,7 @@
     .home-wrapper {
       display: flex;
       flex-direction: column;
+      width: 100%;
 
       h1 {
         font-family: 'ProximaNova-Extrabld';
