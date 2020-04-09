@@ -9,6 +9,10 @@ class TrackDetail extends React.Component {
   }
 
   handleClick(track) {
+    // Persisting values of playlist for page refresh
+    // Local storage can only store string and values, no objects
+    localStorage.setItem('playing_playlist', JSON.stringify(this.props.playlist));
+
     let index = (this.props.tracks.indexOf(track) + 1) % this.props.tracks.length;  
     let nextTrack = this.props.tracks[index];
     this.props.receiveCurrentTrack(track);

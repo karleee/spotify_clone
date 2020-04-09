@@ -4,6 +4,7 @@ import { receiveCurrentTrack, receiveNextTrack } from '../../actions/track_actio
 import { receiveTitle, receiveArtist, receivePlaylistId, receiveAlbumId } from '../../actions/audio_actions';
 
 const mapStateToProps = (state, { playlist, tracks }) => ({ 
+  playlist,
   tracks,
   photoUrl: playlist.photo_url,
   playlistId: playlist.id

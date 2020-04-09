@@ -6,14 +6,15 @@ import { selectTracksFromPlaylist } from '../../reducers/selectors';
 import PlaylistDetail from './playlist_detail';
 
 const mapStateToProps = (state, ownProps) => { 
-  let playlist = state.entities.playlists[ownProps.match.params.playlistId] || JSON.parse(localStorage.getItem('playlist'));
-  let tracks = selectTracksFromPlaylist(state, playlist) || JSON.parse(localStorage.getItem('tracks'));
+  // Retrieving stored values from local storage
+  const playlist = state.entities.playlists[ownProps.match.params.playlistId] || JSON.parse(localStorage.getItem('viewing_playlist'));
+  let tracks = selectTracksFromPlaylist(state, playlist);
 
   // Before assigning to props check if tracks contains invalid values
   // If so, default to tracks in local storage
   const isInvalid = ele => ele === undefined || ele === null;
-  if (tracks.some(isInvalid) || !tracks) tracks = JSON.parse(localStorage.getItem('tracks'));
-
+  if (tracks.some(isInvalid) || !tracks) tracks = JSON.parse(localStorage.getItem('playlist_tracks'));
+  
   return ({
     playlist,
     tracks

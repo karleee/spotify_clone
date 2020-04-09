@@ -7,9 +7,19 @@ import { requestAllUsers } from '../../actions/user_actions';
 import { selectPlaylistsFromType } from '../../reducers/selectors';
 import HomeIndex from './home_index';
  
-const mapStateToProps = state => ({ 
-  playlists: selectPlaylistsFromType(state, 'heavyRotation')  
-});
+const mapStateToProps = state => {
+  // Persisting values for page refresh
+  // Local storage can only store string and values, no objects
+  localStorage.setItem('playlist', JSON.stringify(state.entities.playlists));
+  localStorage.setItem('tracks', JSON.stringify(state.entities.tracks));
+  localStorage.setItem('albums', JSON.stringify(state.entities.albums));
+  localStorage.setItem('artists', JSON.stringify(state.entities.artists));
+  localStorage.setItem('users', JSON.stringify(state.entities.users));
+
+  return ({
+    playlists: selectPlaylistsFromType(state, 'heavyRotation')  
+  })
+};
 
 const mapDispatchToProps = dispatch => ({
   requestAllPlaylists: () => dispatch(requestAllPlaylists()),

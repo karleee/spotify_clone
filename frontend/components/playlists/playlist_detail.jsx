@@ -6,23 +6,20 @@ class PlaylistDetail extends React.Component {
   constructor(props) {
     super(props);
     this.play = this.play.bind(this);
-    this.state = {
-      playlist: this.props.playlist,
-      tracks: this.props.tracks
-    }
   }
 
   componentDidMount() {
-    this.props.requestAllPlaylists();
-    this.props.requestAllTracks(); 
-
     // Persisting values of playlist and tracks for page refresh
     // Local storage can only store string and values, no objects
-    localStorage.setItem('playlist', JSON.stringify(this.props.playlist));
-    localStorage.setItem('tracks', JSON.stringify(this.props.tracks));
+    localStorage.setItem('viewing_playlist', JSON.stringify(this.props.playlist));
+    localStorage.setItem('playlist_tracks', JSON.stringify(this.props.tracks));
   }
 
   play() {
+    // Persisting values of playlist for page refresh
+    // Local storage can only store string and values, no objects
+    localStorage.setItem('playing_playlist', JSON.stringify(this.props.playlist));
+
     if (!this.props.tracks) return;
     const { playlist, tracks } = this.props;
     let currentTrack = tracks[0];
@@ -32,11 +29,11 @@ class PlaylistDetail extends React.Component {
     this.props.receiveTitle(currentTrack.title);
     this.props.receiveArtist(currentTrack.artist);
     this.props.receiveAlbumId(currentTrack.album_id);
-    this.props.receivePlaylistId(playlist.id);
+    this.props.receivePlaylistId(playlist.id); 
   }
 
   render() {
-    const { playlist, tracks } = this.state;
+    const { playlist, tracks } = this.props;
 
     return (
       <div className="playlist-detail-wrapper">

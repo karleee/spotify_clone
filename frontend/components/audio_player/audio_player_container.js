@@ -9,16 +9,17 @@ const mapStateToProps = state => {
   let tracks;
 
   if (state.audio.playlist_id) {
-    playlist = state.entities.playlists[state.audio.playlist_id];
+    playlist = state.entities.playlists[state.audio.playlist_id] || JSON.parse(localStorage.getItem('playing_playlist'));
     tracks = selectTracksFromPlaylist(state, playlist);
   } else {
     tracks = null;
   }
 
   return ({
+    playlist,
     audio: state.ui.currentTrack,
     volume: state.audio.volume,
-    nextTrack: state.ui.nextTrack,
+    nextTrack: state.ui.nextTrack, 
     trackPlaying: state.audio.trackPlaying,
     tracks
   });
