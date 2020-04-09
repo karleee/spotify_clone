@@ -10,6 +10,10 @@ class AudioDetail extends React.Component {
       album: ""
     }
   }
+  
+  componentDidMount() {
+    this.props.requestAllAlbums();
+  }
 
   componentWillReceiveProps(newProps) {
     if (newProps.title) {
@@ -25,6 +29,8 @@ class AudioDetail extends React.Component {
 
   render() {
     const { title, artist, album } = this.props;
+
+    console.log(album);
 
     return (
       <div className="ap-track-detail">

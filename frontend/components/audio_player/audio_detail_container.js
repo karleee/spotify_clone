@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import { requestAllAlbums } from '../../actions/album_actions';
+
 import AudioDetail from './audio_detail';
 
 const mapStateToProps = (state, ownProps) => {
@@ -6,7 +8,11 @@ const mapStateToProps = (state, ownProps) => {
     title: state.audio.title,
     artist: state.audio.artist,
     album: state.entities.albums[state.audio.albumId]
-  });
+  }); 
 }
 
-export default connect(mapStateToProps)(AudioDetail);
+const mapDispatchToProps = dispatch => ({
+  requestAllAlbums: () => dispatch(requestAllAlbums())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AudioDetail);
