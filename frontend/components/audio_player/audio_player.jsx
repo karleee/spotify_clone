@@ -11,7 +11,6 @@ class AudioPlayer extends React.Component {
       audio: "",
       nextTrack: "",
       tracks: [],
-      // paused: true,
       shuffle: false,
       repeat: false,
       currentTime: 0,
@@ -91,7 +90,7 @@ class AudioPlayer extends React.Component {
     this.props.receiveTitle(newCurrentTrack.title); 
     this.props.receiveArtist(newCurrentTrack.artist);
     this.props.receiveAlbumId(newCurrentTrack.album_id); 
-    this.setState({ paused: false, audio: newCurrentTrack, nextTrack: newNextTrack });
+    this.setState({ audio: newCurrentTrack, nextTrack: newNextTrack });
   } 
 
   // Switches play and pause buttons
@@ -101,13 +100,12 @@ class AudioPlayer extends React.Component {
 
     if (button === 'play') {
       this.audio.play();
-      // this.setState({ paused: false });
-
+      // Setting global state of isPlaying true for pause change
       isPlaying = true;
       this.props.receiveIsPlaying(isPlaying);
     } else {
       this.audio.pause();
-      // this.setState({ paused: true });
+      // Setting global state of isPlaying to false for play button
       isPlaying = false;
       this.props.receiveIsPlaying(isPlaying);
     }
@@ -120,7 +118,7 @@ class AudioPlayer extends React.Component {
 
     if (this.state.repeat && this.audio.currentTime >= this.audio.duration) {
       this.audio.currentTime = 0;
-      this.setState({ play: true, audio });
+      this.setState({ audio });
       this.audio.play();
       return;
     } else if (this.state.shuffle) {
@@ -135,7 +133,7 @@ class AudioPlayer extends React.Component {
     this.props.receiveTitle(nextTrack.title);
     this.props.receiveArtist(nextTrack.artist);
     this.props.receiveAlbumId(nextTrack.album_id); 
-    this.setState({ play: true, audio: nextTrack, nextTrack: newNextTrack });
+    this.setState({ audio: nextTrack, nextTrack: newNextTrack });
   }
 
   // Positions the progress bar and handle circle

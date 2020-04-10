@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
+
 import { receiveCurrentTrack, receiveNextTrack } from '../../actions/track_actions';
-import AudioPlayer from './audio_player';
-import { selectTracksFromPlaylist } from '../../reducers/selectors';
 import { receiveTitle, receiveArtist, receivePlaylistId, receiveAlbumId, receiveIsPlaying } from '../../actions/audio_actions';
+import { selectTracksFromPlaylist } from '../../reducers/selectors';
+
+import AudioPlayer from './audio_player';
 
 const mapStateToProps = state => {
   const playlists = JSON.parse(localStorage.getItem('playlists'));
