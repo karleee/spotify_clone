@@ -10,9 +10,7 @@ class PlaylistIndexItem extends React.Component {
   }
 
   handleClick(e) {
-    if (e.target.classList.contains("circle")) {
-      this.props.history.push(`/home`);
-    }
+    if (e.target.classList.contains("circle")) this.props.history.push(`/home`);
   }
 
   handleTrack() {
@@ -23,11 +21,15 @@ class PlaylistIndexItem extends React.Component {
     this.props.receiveNextTrack(nextTrack);
     this.props.receiveTitle(currentTrack.title);
     this.props.receiveArtist(currentTrack.artist);
-    this.props.receiveAlbumId(currentTrack.album_id);
+    this.props.receiveAlbumId(currentTrack.album_id); 
     this.props.receivePlaylistId(playlist.id);
   }
 
   play() {
+    // Setting global isPlaying state to true for icon change
+    const isPlaying = true;
+    this.props.receiveIsPlaying(isPlaying);
+
     const { playlist } = this.props;
     this.handleTrack(playlist);  
     this.props.receivePlaylistId(playlist.id);

@@ -1,9 +1,11 @@
 import { RECEIVE_CURRENT_TRACK, RECEIVE_NEXT_TRACK } from '../actions/track_actions';
 import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
+import { RECEIVE_IS_PLAYING } from '../actions/audio_actions';
 
 const _initialState = {
   currentTrack: null,
-  nextTrack: null
+  nextTrack: null,
+  isPlaying: false
 }
 
 const uiReducer = (state = _initialState, action) => {
@@ -14,8 +16,8 @@ const uiReducer = (state = _initialState, action) => {
       return Object.assign({}, state, { currentTrack: action.track }); 
     case RECEIVE_NEXT_TRACK:
       return Object.assign({}, state, { currentTrack: state.currentTrack, nextTrack: action.track }); 
-    // case LOGOUT_CURRENT_USER:
-    //   return _initialState;
+    case RECEIVE_IS_PLAYING:
+      return Object.assign({}, state, { isPlaying: action.isPlaying });
     default:
       return state;
   }

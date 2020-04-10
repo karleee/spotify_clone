@@ -11,7 +11,7 @@ class AudioPlayer extends React.Component {
       audio: "",
       nextTrack: "",
       tracks: [],
-      play: false,
+      // paused: true,
       shuffle: false,
       repeat: false,
       currentTime: 0,
@@ -52,13 +52,8 @@ class AudioPlayer extends React.Component {
     }
 
     this.audio.addEventListener("timeupdate", () => {
-      if (this.audio && this.audio.currentTime >= this.audio.duration) {
-        this.next();
-      }
-
-      if (this.audio.duration) {
-        this.setState({ duration: this.formatTime(this.audio.duration) })
-      }
+      if (this.audio && this.audio.currentTime >= this.audio.duration) this.next();
+      if (this.audio.duration) this.setState({ duration: this.formatTime(this.audio.duration) });
 
       let currentTime = this.formatTime(this.audio.currentTime);
       this.setState({ currentTime });
@@ -80,7 +75,7 @@ class AudioPlayer extends React.Component {
   componentWillReceiveProps(newProps) {
     if (newProps.audio && newProps.audio.track_url !== this.state.audio) {
       let audio = newProps.audio.track_url;
-      this.setState({ play: true, audio });
+      this.setState({ paused: false, audio });
     }
   }
 
@@ -96,17 +91,25 @@ class AudioPlayer extends React.Component {
     this.props.receiveTitle(newCurrentTrack.title); 
     this.props.receiveArtist(newCurrentTrack.artist);
     this.props.receiveAlbumId(newCurrentTrack.album_id); 
-    this.setState({ play: true, audio: newCurrentTrack, nextTrack: newNextTrack });
+    this.setState({ paused: false, audio: newCurrentTrack, nextTrack: newNextTrack });
   } 
 
   // Switches play and pause buttons
-  play() {
-    if (this.state.play) {
-      this.audio.pause();
-      this.setState({ play: false });
-    } else { 
+  play(e) {
+    const button = e.target.className === 'ap-play-icon' ? 'play' : 'pause';
+    let isPlaying;
+
+    if (button === 'play') {
       this.audio.play();
-      this.setState({ play: true });
+      // this.setState({ paused: false });
+
+      isPlaying = true;
+      this.props.receiveIsPlaying(isPlaying);
+    } else {
+      this.audio.pause();
+      // this.setState({ paused: true });
+      isPlaying = false;
+      this.props.receiveIsPlaying(isPlaying);
     }
   }
 
@@ -200,7 +203,7 @@ class AudioPlayer extends React.Component {
 
   // Renders the component
   render() {
-    const { audio } = this.props;
+    const { audio, isPlaying } = this.props;
 
     return (
       <div className="audio-player-container">
@@ -213,7 +216,7 @@ class AudioPlayer extends React.Component {
             <i className="ap-previous-icon" onClick={this.previous}></i>
 
             <div className="ap-play-wrapper">
-              <i className={!this.state.play ? "ap-play-icon" : "ap-pause-icon"} onClick={this.play}></i>
+              <i className={!isPlaying ? "ap-play-icon" : "ap-pause-icon"} onClick={this.play}></i>
             </div>
 
             <i className="ap-next-icon" onClick={this.next}></i>
