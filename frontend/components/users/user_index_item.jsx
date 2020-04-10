@@ -12,8 +12,7 @@ class UserIndexItem extends React.Component {
   } 
   
   componentDidMount() {
-    // Changing the currently stored viewing playlist
-    // Changing the currrently stored playlist tracks
+    // Changing the currently stored viewing playlist and tracks
     localStorage.setItem('viewing_playlist', JSON.stringify(this.props.playlist));
     const currentPlaylist = JSON.parse(localStorage.getItem('viewing_playlist'));
     const allTracks = JSON.parse(localStorage.getItem('tracks')); 
@@ -47,6 +46,10 @@ class UserIndexItem extends React.Component {
   }
 
   play() {
+    // Setting global state of isPlaying true for pause change
+    const isPlaying = true;
+    this.props.receiveIsPlaying(isPlaying);
+    
     const { playlist } = this.props;
     this.handleTrack(playlist);
     this.props.receivePlaylistId(playlist.id);
