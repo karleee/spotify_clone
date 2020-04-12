@@ -8,14 +8,7 @@ import AudioPlayer from './audio_player';
 
 const mapStateToProps = state => {
   const playlists = JSON.parse(localStorage.getItem('playlists'));
-  let tracks;
-
-  if (state.audio.playlist_id) {
-    const playlist = playlists[state.audio.playlist_id];
-    tracks = selectTracksFromPlaylist(state, playlist);
-  } else {
-    tracks = null;
-  }
+  const tracks = JSON.parse(localStorage.getItem('playlist_tracks'));
 
   return ({
     audio: state.ui.currentTrack,

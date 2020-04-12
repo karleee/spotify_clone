@@ -16,23 +16,24 @@ class PlaylistDetail extends React.Component {
   }
 
   play() {
-    // Setting global state of isPlaying true for pause change
+    // // Setting global state of isPlaying true for pause change
     const isPlaying = true;
     this.props.receiveIsPlaying(isPlaying);
 
     const { playlist, tracks } = this.props;
-    let currentTrack = tracks[0];
-    let nextTrack = tracks[1];
+    const currentTrack = tracks[0];
+    const nextTrack = tracks[1];
+
     this.props.receiveCurrentTrack(currentTrack);
     this.props.receiveNextTrack(nextTrack);
     this.props.receiveTitle(currentTrack.title);
     this.props.receiveArtist(currentTrack.artist);
-    this.props.receiveAlbumId(currentTrack.album_id);
     this.props.receivePlaylistId(playlist.id); 
+    this.props.receiveAlbumId(currentTrack.album_id);
   }
 
   render() {
-    const { playlist, tracks } = this.props;
+    const { playlist, tracks, currentTrack } = this.props;
 
     return (
       <div className="playlist-detail-wrapper">
@@ -56,7 +57,7 @@ class PlaylistDetail extends React.Component {
           <p>{playlist.track_ids.length} songs</p>             
         </div>
  
-        <div className="tracks">   
+        <div className="tracks">    
           <TrackDetail playlist={playlist} tracks={tracks} />   
         </div>
       </div>
