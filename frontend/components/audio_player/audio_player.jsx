@@ -113,27 +113,37 @@ class AudioPlayer extends React.Component {
 
   // Gets the next song in the playlist
   next() {
-    const { audio, nextTrack, tracks } = this.props;
-    let index;
+    const { audio, tracks } = this.props;
+    let currentIndex;
+    let nextIndex;
+
+    tracks.forEach((track, indx) => { if (track.title === audio.title) currentIndex = indx });
+ 
+    // console.log('current track: ' + JSON.stringify(tracks[currentIndex]));
 
     if (this.state.repeat && this.audio.currentTime >= this.audio.duration) {
-      this.audio.currentTime = 0;
+      this.audio.currentTime = 0; 
       this.setState({ audio });
       this.audio.play();
       return;
     } else if (this.state.shuffle) {
-      index = Math.floor(Math.random() * tracks.length);
+      nextIndex = Math.floor(Math.random() * tracks.length);
     } else {
-      index = (tracks.indexOf(nextTrack) + 1) % tracks.length; 
+      nextIndex = (currentIndex + 1) % tracks.length; 
     }
 
-    let newNextTrack = tracks[index];
-    this.props.receiveCurrentTrack(nextTrack);
-    this.props.receiveNextTrack(newNextTrack);
-    this.props.receiveTitle(nextTrack.title);
-    this.props.receiveArtist(nextTrack.artist);
-    this.props.receiveAlbumId(nextTrack.album_id); 
-    this.setState({ audio: nextTrack, nextTrack: newNextTrack });
+    // The next track becomes the current track
+    // The and the next track of the previous next track becomes the new next track
+    let currentTrack = tracks[nextIndex];
+    let nextTrack = tracks[tracks.indexOf(currentTrack) + 1 % tracks.length];
+
+    // Setting global state with new current and next tracks
+    this.props.receiveCurrentTrack(currentTrack);
+    this.props.receiveNextTrack(nextTrack);
+    this.props.receiveTitle(currentTrack.title);
+    this.props.receiveArtist(currentTrack.artist);
+    this.props.receiveAlbumId(currentTrack.album_id); 
+    this.setState({ audio: currentTrack, nextTrack: nextTrack });
   }
 
   // Positions the progress bar and handle circle
