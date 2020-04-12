@@ -3,7 +3,6 @@
 .playlist-detail-wrapper {
   display: flex;
   flex-direction: row;
-//   width: 100%;
 
   .header {
     display: flex;
@@ -161,7 +160,7 @@
             }
           }
 
-          .track-text {
+          .track-text.playlist {
             margin-left: 15px;
 
             p {
@@ -178,6 +177,12 @@
               font-size: 16px;
               color: $gray;
               margin-top: -15px;
+            }
+          }
+
+          .track-text.playlist.active {
+            p {
+              color: $green;
             }
           }
         }

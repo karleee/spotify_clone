@@ -23,10 +23,10 @@ class TrackDetail extends React.Component {
   }
 
   render() {
-    const { tracks } = this.props; 
+    const { tracks, currentTrack } = this.props; 
     return (
       <ul>
-        {tracks.map(track => <TrackIndexItem key={track.id} track={track} handleClick={this.handleClick} />)}  
+        {tracks.map(track => <TrackIndexItem key={track.id} track={track} currentTrack={currentTrack} handleClick={this.handleClick} />)}  
       </ul>
     );
   }

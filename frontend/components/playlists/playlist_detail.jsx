@@ -32,7 +32,7 @@ class PlaylistDetail extends React.Component {
   }
 
   render() {
-    const { playlist, tracks } = this.props;
+    const { playlist, tracks, currentTrack } = this.props;
 
     return (
       <div className="playlist-detail-wrapper">
@@ -56,7 +56,7 @@ class PlaylistDetail extends React.Component {
           <p>{playlist.track_ids.length} songs</p>             
         </div>
  
-        <div className="tracks">   
+        <div className="tracks">    
           <TrackDetail playlist={playlist} tracks={tracks} />   
         </div>
       </div>
