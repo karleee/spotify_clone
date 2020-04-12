@@ -81,16 +81,24 @@ class AudioPlayer extends React.Component {
   // Gets the previous song in the playlist
   previous() {
     const { audio, tracks } = this.props;
-    let newCurrentIndx = ((tracks.indexOf(audio) - 1) + tracks.length) % tracks.length;
-    let newNextIndx = (newCurrentIndx + 1) % tracks.length;
-    let newCurrentTrack = tracks[newCurrentIndx];
-    let newNextTrack = tracks[newNextIndx];
-    this.props.receiveCurrentTrack(newCurrentTrack);
-    this.props.receiveNextTrack(newNextTrack);
-    this.props.receiveTitle(newCurrentTrack.title); 
-    this.props.receiveArtist(newCurrentTrack.artist);
-    this.props.receiveAlbumId(newCurrentTrack.album_id); 
-    this.setState({ audio: newCurrentTrack, nextTrack: newNextTrack });
+    let currentIndex;
+
+    // Get the index for the current and previous track
+    tracks.forEach((track, indx) => { if (track.title === audio.title) currentIndex = indx });
+    let previousIndex = ((currentIndex - 1) + tracks.length) % tracks.length;
+
+    // The previous track becomes the current track
+    // The next track becomes the current track
+    let currentTrack = tracks[previousIndex]
+    let nextTrack = tracks[currentIndex];
+
+    // Setting global state
+    this.props.receiveCurrentTrack(currentTrack);
+    this.props.receiveNextTrack(nextTrack);
+    this.props.receiveTitle(currentTrack.title); 
+    this.props.receiveArtist(currentTrack.artist);
+    this.props.receiveAlbumId(currentTrack.album_id); 
+    this.setState({ audio: currentTrack, nextTrack });
   } 
 
   // Switches play and pause buttons
@@ -117,10 +125,9 @@ class AudioPlayer extends React.Component {
     let currentIndex;
     let nextIndex;
 
+    // Get the index for the current track
     tracks.forEach((track, indx) => { if (track.title === audio.title) currentIndex = indx });
  
-    // console.log('current track: ' + JSON.stringify(tracks[currentIndex]));
-
     if (this.state.repeat && this.audio.currentTime >= this.audio.duration) {
       this.audio.currentTime = 0; 
       this.setState({ audio });
