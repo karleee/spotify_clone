@@ -10,7 +10,8 @@ const mapStateToProps = (state, { playlist, tracks }) => {
   return ({
     playlist: currentPlaylist,
     tracks: currentTracks,
-    currentTrack: state.ui.currentTrack
+    currentTrack: state.ui.currentTrack,
+    isPlaying: state.ui.isPlaying
   });
 };
 
