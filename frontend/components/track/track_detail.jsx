@@ -5,7 +5,6 @@ class TrackDetail extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    console.log(this.props.tracks);
   }
 
   handleClick(track) {
@@ -26,6 +25,7 @@ class TrackDetail extends React.Component {
 
   render() {
     const { tracks, currentTrack } = this.props; 
+
     return (
       <ul>
         {tracks.map(track => <TrackIndexItem key={track.id} track={track} currentTrack={currentTrack} handleClick={this.handleClick} />)}  
