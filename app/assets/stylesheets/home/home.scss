@@ -1,273 +1,127 @@
 @import "variables";
 
-.main-dash-wrapper {
+.home-container {
   display: flex;
   flex-direction: column;
-  background: $main-background-gray;
-  height: 100vh;
-  overflow: hidden;
+  // width: 90%;
+  box-sizing: border-box;
+  // padding: 0 15em;
+  // height: 100%;
+  // background: yellow;
+  padding: 0 5em;
+  // margin-top: 90px;
 
-  .session-header-wrapper {
-    position: fixed;
-    top: 4%;
-    left: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 1em 3em;
-    width: 100%;
-
-    .logout-button {
-      font-size: 12px; 
-      font-weight: 600;
-      color: $white;
-      background: $logout-button-gray;
-      border: none;
-      border-radius: 25px;
-      padding: 8px 30px;
-      box-shadow: 0 2px 4px 3px rgba(0, 0, 0, 0.6); 
-    }
-
-    .logout-button:hover {
-      cursor: defeault;
-      background: $logout-button-light-gray;
-    }
+  h1 {
+    font-family: 'ProximaNova-Extrabld';
+    font-size: 48px;
+    color: $white;
   }
 
-  .main-content-wrapper {
+  .heavy-rotation-wrapper {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    color: $white;
 
-    .sidebar {
-      position: sticky;
-      display: flex;
-      flex-direction: column;
-      background: $sidebar-gray;
-      width: 15%;
-      height: 100vh;
-      padding: 25px 0 0 25px;
-
-      .header {
-        a {
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          font-family: 'ProximaNova-Bold';
-          color: $white;
-          text-decoration: none;
-
-          img {
-            width: 45px;
-            margin-right: 5px;
-          }
-
-          h1 {
-            font-size: 28px;
-          }
-        }
-      }
-
-      .links {
-        display: flex;
-        flex-direction: column;
-        font-family: 'ProximaNova-Bold';
-        margin: 30px 0 0 3px;
-        font-size: 15px;
-
-        .home-wrapper { 
-          margin-bottom: 20px;
-
-          a {
-            display: flex; 
-            flex-direction: row;
-            align-items: center;
-            color: $gray;
-            text-decoration: none;
-
-            i {
-              margin-right: 15px;
-            }
-              
-            #home-icon {
-              content: image_url('home/normal_home.png'); 
-              width: 20px;
-            }
-          }
-        }
-
-        .home-wrapper:hover {                    
-          p {
-            color: $white;
-            transition: color 0.25s;
-          }
-
-          #home-icon {
-            content: image_url('home/hover_home.png');
-            width: 20px;
-          }
-        }
-
-        .search-wrapper {
-          a {
-            display: flex; 
-            flex-direction: row;
-            align-items: center;
-            color: $gray;
-            text-decoration: none;
-
-            i {
-              margin-right: 15px;
-            }
-           
-            #search-icon {
-              content: image_url('home/normal_search.png'); 
-              width: 20px;
-            }
-          }
-        }
-
-        .search-wrapper:hover {                    
-          p {
-            color: $white;
-            transition: color 0.25s;
-          }
-
-          #search-icon {
-            content: image_url('home/hover_search_icon.png'); 
-            width: 20px;
-          }
-        }
-      }
-    }
-  }
-
-  .content { 
-    width: 100%;
-    height: 470px;
-    margin: 90px 0 0 45px;
-    padding: 30px;
-    overflow: scroll;
-
-    .home-wrapper {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-
-      h1 {
+    .header {
+      h2 {
         font-family: 'ProximaNova-Extrabld';
-        font-size: 48px;
-        color: $white;
+        font-size: 18px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        margin-top: 50px;
       }
+    }
 
-      .heavy-rotation-wrapper {
+    .playlists {
+      margin-top: 30px;
+
+      ul {
         display: flex;
-        flex-direction: column;
-        color: $white;
+        flex-direction: row;
 
-        .header {
-          h2 {
-            font-family: 'ProximaNova-Extrabld';
-            font-size: 18px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-            margin-top: 50px;
+        li {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          background: $playlist-thumbnail-gray;
+          border-radius: 15px;
+          padding: 20px 20px 40px 20px;
+
+          .playlist-thumbnail-wrapper {
+            .thumbnail {
+              a {
+                text-decoration: none;
+
+                img {
+                  width: 140px;
+                  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+                }
+              }
+
+              p:first-of-type {
+                font-family: 'ProximaNova-Bold';
+                font-size: 14px;
+                color: $white; 
+                margin-top: 10px;
+              }
+
+              p:last-of-type {
+                font-family: 'ProximaNova-Regular';
+                font-size: 13px;
+                color: $gray; 
+                margin-top: 5px;
+              }
+            }
+
+            .play-button {
+              position: absolute;
+              top: 5px;
+              left: 10px;
+              z-index: 1;
+              opacity: 0;
+
+              .triangle {
+                position: relative;
+                width: 0; 
+                height: 0; 
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;                
+                border-left: 13px solid $white;
+                top: 200px;
+                left: 120px;
+                text-align: left;
+                z-index: 1;
+              }
+              .circle {
+                position: absolute;
+                top: 190px;
+                left: 107px;
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                background: $green;
+              }
+            }
           }
         }
 
-        .playlists {
-          margin-top: 30px;
+        li:nth-child(even) {
+          margin: 0 20px;
+        }
 
-          ul {
-            display: flex;
-            flex-direction: row;
+        li:hover {
+          .play-button {
+            opacity: 1;
+          }
 
-            li {
-              position: relative;
-              display: flex;
-              flex-direction: column;
-              background: $playlist-thumbnail-gray;
-              border-radius: 15px;
-              padding: 20px 20px 40px 20px;
-
-              .playlist-thumbnail-wrapper {
-                .thumbnail {
-                  a {
-                    text-decoration: none;
-
-                    img {
-                      width: 140px;
-                      box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
-                    }
-                  }
-
-                  p:first-of-type {
-                    font-family: 'ProximaNova-Bold';
-                    font-size: 14px;
-                    color: $white; 
-                    margin-top: 10px;
-                  }
-
-                  p:last-of-type {
-                    font-family: 'ProximaNova-Regular';
-                    font-size: 13px;
-                    color: $gray; 
-                    margin-top: 5px;
-                  }
-                }
-
-                .play-button {
-                  position: absolute;
-                  top: 5px;
-                  left: 10px;
-                  z-index: 1;
-                  opacity: 0;
-
-                  .triangle {
-                    position: relative;
-                    width: 0; 
-                    height: 0; 
-                    border-top: 8px solid transparent;
-                    border-bottom: 8px solid transparent;                
-                    border-left: 13px solid $white;
-                    top: 200px;
-                    left: 120px;
-                    text-align: left;
-                    z-index: 1;
-                  }
-                  .circle {
-                    position: absolute;
-                    top: 190px;
-                    left: 107px;
-                    width: 35px;
-                    height: 35px;
-                    border-radius: 50%;
-                    background: $green;
-                  }
-                }
-              }
-            }
-
-            li:nth-child(even) {
-              margin: 0 20px;
-            }
-
-            li:hover {
-              .play-button {
-                opacity: 1;
-              }
-
-              .play-button:hover {
-                position: absolute;
-                transform: scale(1.10);
-                top: -15px; 
-                left: -1px;
-              }
-            }
+          .play-button:hover {
+            position: absolute;
+            transform: scale(1.10);
+            top: -15px; 
+            left: -1px;
           }
         }
       }
     }
   }
-}     
+}

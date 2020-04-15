@@ -13,7 +13,7 @@ class HomeIndex extends React.Component {
   render() {
     const { playlists } = this.props;
     return (
-      <div className="home-wrapper">
+      <div className="home-container">
         <h1>Home</h1>
         
         <div className="heavy-rotation-wrapper">   
