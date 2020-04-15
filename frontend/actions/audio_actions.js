@@ -7,6 +7,7 @@ export const RECEIVE_ALBUM_ID = 'RECEIVE_ALBUM_ID';
 export const RECEIVE_TRACK_PLAYING = 'RECEIVE_TRACK_PLAYING';
 export const RECEIVE_CURRENT_TIME = 'RECEIVE_CURRENT_TIME';
 export const RECEIVE_IS_PLAYING = 'RECEIVE_IS_PLAYING';
+export const RECEIVE_AUDIO = 'RECEIVE_AUDIO';
 
 export const receiveVolume = volume => ({
   type: RECEIVE_VOLUME,
@@ -48,8 +49,14 @@ export const receiveCurrentTime = time => ({
   time
 });
 
-// Testing for global playing state variable...
+// Song playing indicator
 export const receiveIsPlaying = isPlaying => ({
   type: RECEIVE_IS_PLAYING,
   isPlaying
 })
+
+// Current audio object
+// export const receiveAudio = audio => ({
+//   type: RECEIVE_AUDIO,
+//   audio
+// })

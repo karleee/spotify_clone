@@ -8,10 +8,21 @@ class TrackDetail extends React.Component {
   }
 
   handleClick(track) {
-    // Setting global isPlaying state to true for icon change
-    const isPlaying = true;
-    this.props.receiveIsPlaying(isPlaying);
+    // Get the current audio tag on the page (the current song playing)
+    const audio = document.getElementById("audio");
 
+    // Toggle global isPlaying state for icon change 
+    const isPlaying = !this.props.isPlaying;
+    this.props.receiveIsPlaying(isPlaying); 
+
+    // Play and pause the audio when buttons are clicked
+    if (isPlaying) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+
+    // Setting new current and next track
     let index = (this.props.tracks.indexOf(track) + 1) % this.props.tracks.length;  
     let nextTrack = this.props.tracks[index];
 
@@ -23,6 +34,7 @@ class TrackDetail extends React.Component {
     this.props.receiveAlbumId(track.album_id);  
   }
 
+  // Renders the TrackDetail component
   render() {
     const { tracks, currentTrack, isPlaying } = this.props; 
 

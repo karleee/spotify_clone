@@ -16,7 +16,7 @@ class PlaylistDetail extends React.Component {
   }
 
   play() {
-    // // Setting global state of isPlaying true for pause change
+    // Setting global state of isPlaying true for pause change
     const isPlaying = true;
     this.props.receiveIsPlaying(isPlaying);
 

@@ -103,6 +103,7 @@ class AudioPlayer extends React.Component {
 
   // Switches play and pause buttons
   play(e) {
+    // Determine button type
     const button = e.target.className === 'ap-play-icon' ? 'play' : 'pause';
     let isPlaying;
 
@@ -121,16 +122,16 @@ class AudioPlayer extends React.Component {
 
   // Gets the next song in the playlist
   next() {
-    const { audio, tracks } = this.props;
+    const { currentTrack, tracks } = this.props;
     let currentIndex;
     let nextIndex;
 
     // Get the index for the current track
-    tracks.forEach((track, indx) => { if (track.title === audio.title) currentIndex = indx });
+    tracks.forEach((track, indx) => { if (track.title === currentTrack.title) currentIndex = indx });
  
     if (this.state.repeat && this.audio.currentTime >= this.audio.duration) {
       this.audio.currentTime = 0; 
-      this.setState({ audio });
+      this.setState({ currentTrack });
       this.audio.play();
       return;
     } else if (this.state.shuffle) {
@@ -141,23 +142,23 @@ class AudioPlayer extends React.Component {
 
     // The next track becomes the current track
     // The and the next track of the previous next track becomes the new next track
-    let currentTrack = tracks[nextIndex];
-    let nextTrack = tracks[tracks.indexOf(currentTrack) + 1 % tracks.length];
+    let newTrack = tracks[nextIndex];
+    let nextTrack = tracks[tracks.indexOf(newTrack) + 1 % tracks.length];
 
     // Setting global state with new current and next tracks
-    this.props.receiveCurrentTrack(currentTrack);
+    this.props.receiveCurrentTrack(newTrack);
     this.props.receiveNextTrack(nextTrack);
-    this.props.receiveTitle(currentTrack.title);
-    this.props.receiveArtist(currentTrack.artist);
-    this.props.receiveAlbumId(currentTrack.album_id); 
-    this.setState({ audio: currentTrack, nextTrack: nextTrack });
+    this.props.receiveTitle(newTrack.title);
+    this.props.receiveArtist(newTrack.artist);
+    this.props.receiveAlbumId(newTrack.album_id); 
+    this.setState({ currentIndex: newTrack, nextTrack });
   }
 
   // Positions the progress bar and handle circle
   handlePosition(position) {
     if (!this.audio.duration) return;
 
-    let timelineWidth = this.timeline.offsetWidth - this.handle.offsetWidth;
+    // let timelineWidth = this.timeline.offsetWidth - this.handle.offsetWidth;
     let handleLeft = position - this.timeline.offsetLeft;
 
     if (handleLeft >= 0 && handleLeft <= this.timeline.offsetWidth) {
@@ -218,11 +219,11 @@ class AudioPlayer extends React.Component {
 
   // Renders the component
   render() {
-    const { audio, isPlaying } = this.props;
+    const { currentTrack, isPlaying } = this.props;
 
     return (
       <div className="audio-player-container">
-        <AudioDetail track={audio} />
+        <AudioDetail track={currentTrack} />
 
         <div className="ap-main-controls">
           <div className="ap-main-control-buttons">
@@ -238,7 +239,7 @@ class AudioPlayer extends React.Component {
 
             <i className="ap-repeat-icon" onClick={this.handleRepeat} ref={repeatButton => { this.repeatButton = repeatButton }}></i>
             
-            <audio src={audio ? audio.audio_url : ""} ref={audio => { this.audio = audio }} autoPlay />
+            <audio id="audio" src={currentTrack ? currentTrack.audio_url : ""} ref={audio => { this.audio = audio }} autoPlay />
           </div>
 
           <div className="ap-timeline-controls">
