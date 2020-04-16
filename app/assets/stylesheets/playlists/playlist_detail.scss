@@ -8,94 +8,101 @@
   margin-top: 5em;
   height: 65vh;
 
-  .header {
+  .playlist.album-cover-container {
     display: flex;
     flex-direction: column; 
     align-items: center;
-    width: 25%;
+    width: 23%;
 
-    .image {
+    .playlist.image-container {
       position: relative; 
+      width: 100%;
 
-      .play-button {
+      img {
+        width: 100%;
+        box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.6); 
+      }
+
+      .overlay-container {
         position: absolute;
-        top: 100px;
-        left: 100px;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6); 
+        opacity: 0;
+      }
+
+      .playlist.pause-button.overlay-container {
+        opacity: 1;
+      }
+
+      .control-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
         z-index: 1;
         opacity: 0;
 
-        .triangle {
-          position: relative;
-          top: 15px;
-          left: 25px;
-          background: $white; 
-          text-align: left;
-        }
-
-        .triangle:before,
-        .triangle:after {
-          content: '';
-          position: absolute;
-          background: inherit;
-        }
-
-        .triangle,
-        .triangle:before,
-        .triangle:after {
-          width: 20px;
-          height: 20px;
-          border-top-right-radius: 30%;
-        }
-
-        .triangle.right {
-          transform: rotate(-90deg) skewX(-30deg) scale(1,.866);
-        }           
-
-        .triangle:before {
-          transform: rotate(-135deg) skewX(-45deg) scale(1.414,.707) translate(0,-50%);
-        }
-
-        .triangle:after {
-          transform: rotate(135deg) skewY(-45deg) scale(.707,1.414) translate(50%);
-        }
-         
-        .circle {
-          position: absolute;
-          top: -5px;
-          width: 70px;
-          height: 70px;
+        .playlist.circle-icon-wrapper {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          width: 4.375em;
+          height: 4.375em;
           border-radius: 50%;
           border: 2px solid $audio-progress-gray;
+
+          .playlist.play-icon-wrapper {
+            content: image_url('playlists/gray-play-icon.png');
+            width: 2em;
+          }
         }
       }
 
-      img {
-        width: 270px;
-        box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.6); 
+      /* Playlist thumbnail pause button styling */
+
+      .playlist.pause-button.control-container {
+        opacity: 1;
+
+        .playlist.pause-icon-wrapper {
+          content: image_url('playlists/gray-pause-icon.png');
+          width: 2em;
+        }
       }
     }
 
-    .image:hover {            
-      .play-button {
+    .playlist.image-container:hover {    
+      .control-container {
         opacity: 1;
-        transition: opacity 0.5s;
-      }
+      }    
+      
+      .playlist.circle-icon-wrapper:hover {
+        transform: scale(1.1);
+        border: 2px solid white;
+        transition: transform 0.5s;
 
-      .play-button:hover {
-        cursor: default;
-        transform: scale(1.05); 
+        .playlist.play-icon-wrapper {
+          content: image_url('playlists/white-play-icon.png');
+          width: 2em;
+        }
 
-        .circle {
-          border: 2px solid $white;
+        .playlist.pause-icon-wrapper {
+          content: image_url('playlists/white-pause-icon.png');
+          width: 2em;
         }
       }
 
-      .overlay {
-        position: absolute;
-        width: 270px;
-        height: 270px;
-        background: rgba(0, 0, 0, 0.6); 
-        transition: background 0.5s;
+      .playlist.play-button.overlay-container {
+        opacity: 1;
+        transition: opacity 0.5s;
       }
     }
 
@@ -133,6 +140,8 @@
       margin-top: 20px;
     }
   }
+
+  /* Playlist tracks styling */
 
   .tracks {
     width: 75%;

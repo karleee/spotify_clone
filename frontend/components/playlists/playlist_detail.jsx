@@ -33,19 +33,25 @@ class PlaylistDetail extends React.Component {
   }
 
   render() {
-    const { playlist, tracks, currentTrack } = this.props;
+    const { playlist, tracks, isPlaying } = this.props;
+
+    // Determine class name for button based on play or pause
+    const buttonType = isPlaying? 'pause-button' : 'play-button';
+    const buttonIcon = isPlaying ? 'pause-icon' : 'play-icon';
+
 
     return (
-      <div className="playlist-detail-wrapper">
-        <div className="header">
-          <div className="image">
-            <div className="play-button" onClick={this.play}>
-              <div className="triangle right"></div>
-              <div className="circle"></div>
-            </div>
+      <div className="playlist-detail-wrapper">  
+        <div className="playlist album-cover-container">
+          <div className="playlist image-container">
+            <img src={playlist.photo_url} alt="Playlist thumbnail" /> 
+            <div className={`playlist ${buttonType} overlay-container`}></div> 
 
-            <div className="overlay"></div>
-            <img src={playlist.photo_url} alt="Playlist thumbnail" />  
+            <div className={`playlist ${buttonType} control-container`} onClick={this.play}>
+              <div className="playlist circle-icon-wrapper">
+                <i className={`playlist ${buttonIcon}-wrapper`}></i>
+              </div>
+            </div>
           </div>
 
           <h1>{playlist.title}</h1> 

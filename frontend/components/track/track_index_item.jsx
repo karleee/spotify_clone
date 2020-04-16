@@ -19,7 +19,7 @@ const TrackIndexItem = ({ track, currentTrack, isPlaying, handleClick }) => {
     <li>
       <div className={`track-info ${audioState}`}>
         <div className="track-note">
-          <i className="music-note-icon" onClick={() => handleClick(track)}></i> 
+          <i className="music-note-icon" onClick={e => handleClick(e, track)}></i> 
         </div>
 
         <div className={`track-text playlist ${isActive}`}>
