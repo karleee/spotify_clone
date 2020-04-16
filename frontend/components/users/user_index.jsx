@@ -4,7 +4,6 @@ import UserIndexItem from './user_index_item_container';
 class UserIndex extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.tracks);
   }
 
   render() {
@@ -17,7 +16,7 @@ class UserIndex extends React.Component {
           <h2>Public Playlists</h2> 
         </div>
 
-        <div className="playlists">
+        {/* <div className="playlists"> */}
           <ul>
             { playlists.map(playlist => 
               <UserIndexItem 
@@ -34,7 +33,7 @@ class UserIndex extends React.Component {
               />)
             }
           </ul>
-        </div>
+        {/* </div> */}
       </div>
     );
   }

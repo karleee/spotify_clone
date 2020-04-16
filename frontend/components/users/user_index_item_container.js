@@ -8,7 +8,8 @@ const mapStateToProps = (state, { playlist }) => {
 
   return ({
     playlist,
-    tracks
+    tracks,
+    isPlaying: state.ui.isPlaying 
   });
 }
 
