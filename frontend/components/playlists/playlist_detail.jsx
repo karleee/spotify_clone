@@ -5,7 +5,6 @@ import TrackDetail from '../track/track_detail_container';
 class PlaylistDetail extends React.Component { 
   constructor(props) {
     super(props);
-    // this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -34,7 +33,7 @@ class PlaylistDetail extends React.Component {
     } else {
       audio.pause();
     }
-    
+
     // Setting new current and next track
     this.props.receiveCurrentTrack(currentTrack);
     this.props.receiveNextTrack(nextTrack);
@@ -57,7 +56,7 @@ class PlaylistDetail extends React.Component {
         <div className="playlist album-cover-container">
           <div className="playlist image-container">
             <img src={playlist.photo_url} alt="Playlist thumbnail" /> 
-            <div className={`playlist ${buttonType} overlay-container`}></div> 
+            <div className={`playlist ${buttonType} overlay-container`}></div>  
 
             <div className={`playlist ${buttonType} control-container`} onClick={e => this.handleClick(e)}>
               <div className="playlist circle-icon-wrapper">

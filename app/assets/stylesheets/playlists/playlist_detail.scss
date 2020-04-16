@@ -154,124 +154,141 @@
       display: flex;
       flex-direction: column;
       width: 100%;
+      list-style: none;
 
       li {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
+        width: 100%;
 
-        .track-info {
+        .track-index-item.main-container {
           position: relative;
           display: flex;
           flex-direction: row;
+          justify-content: space-between;
           align-items: flex-start;
           box-sizing: border-box; 
           padding: 15px 20px;
           width: 95%;
 
-          .track-note {
-            width: 15px;
-            margin-top: 0.25em;
+          .track-index-item.text-container {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
 
-            .music-note-icon {
-              content: image_url('playlists/white-music-note-icon.png'); 
-              width: 65%;
-            }
-          }
+            .track-index-item.note-icon-wrapper {
+              width: 15px;
+              margin-top: 0.25em;
 
-          .track-text.playlist {
-            box-sizing: border-box;
-            padding-left: 1em;
-
-            p {
-              font-family: 'ProximaNova-Regular';
+              .track-index-item.note-icon {
+                content: image_url('playlists/white-music-note-icon.png'); 
+                width: 65%;
+              }
             }
 
-            p:first-of-type {
-              font-size: 18px;
-              color: $white;
-              margin-bottom: 20px;
+            .track-index-item.title-artist-wrapper {
+              box-sizing: border-box;
+              padding-left: 1em;
+
+              p {
+                font-family: 'ProximaNova-Regular';
+              }
+
+              p:first-of-type {
+                font-size: 18px;
+                color: $white;
+                margin-bottom: 20px;
+              }
+
+              p:last-of-type,
+              p a {
+                font-size: 16px;
+                color: $gray;
+                margin-top: -15px;
+                text-decoration: none;
+              }
             }
 
-            p:last-of-type,
-            p a {
-              font-size: 16px;
-              color: $gray;
-              margin-top: -15px;
-              text-decoration: none;
-            }
-          }
+            /* Active track text styling */
+            /* Persists despite song is active or not */
 
-          /* Active track text styling */
-
-          .track-text.playlist.active {
-            p:first-of-type {
-              color: $green;
-
-              a {
+            .track-index-item.title-artist-wrapper.active {
+              p:first-of-type {
                 color: $green;
+
+                a {
+                  color: $green;
+                }
+              }
+            }
+          }
+
+          /* Song duration styling */
+          .track-index-item.duration-container {
+            font-family: 'ProximaNova-Regular';
+            font-size: 15px;
+            color: $audio-progress-gray;
+          }
+        }
+
+        /* Normal hover styling */
+
+        .track-index-item.main-container:hover {
+          background: $track-light-gray;
+
+          .track-index-item.text-container {
+            .track-index-item.note-icon-wrapper {
+              width: 15px;
+
+              .track-index-item.note-icon {
+                content: image_url('playlists/white-play-icon.png');  
+                width: 100%;
               }
             }
           }
         }
 
-        /* Active track styling */
+        /* Active track general styling */
 
-        .track-info.active {
-          .track-note {
-            width: 15px;
-
-            .music-note-icon {
-              content: image_url('playlists/green-music-note-icon.png');  
-              width: 10px;
-            }
-          }
-        }
-
-        .track-info.active:hover {
-          .track-note {
-            width: 15px;
-
-            .music-note-icon {
-              content: image_url('playlists/green-pause-icon.png'); 
-              width: 100%; 
-            }
-          }
-        }
-
-        /* Paused track styling */
-
-        .track-info.paused {
-          .track-note {
-            width: 15px;
-
-            .music-note-icon {
-              content: image_url('playlists/green-music-note-icon.png'); 
-              width: 10px;
-            }
-          }
-        }
-
-        .track-info.paused:hover {
-          .track-note {
-            width: 15px;
-
-            .music-note-icon {
-              content: image_url('playlists/green-play-icon.png');  
-              width: 100%; 
-            }
-          }
-        }
-
-        .track-info:hover {
+        .track-index-item.active.main-container {
           background: $track-light-gray;
 
-          .track-note {
-            width: 15px;
-
-            .music-note-icon {
-              content: image_url('playlists/white-play-icon.png'); 
+          .track-index-item.text-container {
+            .track-index-item.note-icon-wrapper {
               width: 15px;
+
+              .track-index-item.note-icon {
+                content: image_url('playlists/green-pause-icon.png');  
+                width: 100%;
+              }
+            }
+          }
+        }
+
+        /* Paused track general styling */
+
+        .track-index-item.paused.main-container {
+          .track-index-item.text-container {
+            .track-index-item.note-icon-wrapper {
+              width: 15px;
+
+              .track-index-item.note-icon {
+                content: image_url('playlists/green-music-note-icon.png');  
+                width: 10px;
+              }
+            }
+          }
+        }
+
+        /* Paused hover effects styling */
+
+        .track-index-item.paused.main-container:hover {
+          .track-index-item.text-container {
+            .track-index-item.note-icon-wrapper {
+              width: 15px;
+
+              .track-index-item.note-icon {
+                content: image_url('playlists/green-play-icon.png');  
+                width: 100%; 
+              }
             }
           }
         }

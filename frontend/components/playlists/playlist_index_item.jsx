@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 class PlaylistIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(e) {
@@ -18,7 +17,6 @@ class PlaylistIndexItem extends React.Component {
 
     // Toggle global isPlaying state based on play or pause button press for icon change
     const parent = e.target.parentElement;
-    // console.log(parent.parentElement.className);
     const isPlaying = parent.parentElement.className === 'playlist-item pause-button control-container' ? false : true;
     this.props.receiveIsPlaying(isPlaying);
 

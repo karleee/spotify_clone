@@ -9,11 +9,12 @@ class TrackDetail extends React.Component {
 
   handleClick(e, track) {
     // Get the current audio tag on the page (the current song playing)
+    console.log(e.target.parentElement.parentElement.parentElement.className);
     const audio = document.getElementById("audio");
 
     // Toggle global isPlaying state based on play or pause button press for icon change
-    const parent = e.target.parentElement;
-    const isPlaying = parent.parentElement.className === 'track-info active' ? false : true;
+    const parent = e.target.parentElement.parentElement.parentElement;
+    const isPlaying = parent.className === 'track-index-item active main-container' ? false : true;
     this.props.receiveIsPlaying(isPlaying); 
 
     // Play and pause the audio when buttons are clicked 
