@@ -5,29 +5,15 @@ class PlaylistIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    this.handleTrack = this.handleTrack.bind(this);
-    // this.handleAudio = this.handleAudio.bind(this);
   }
 
   handleClick(e) {
-    if (e.target.classList.contains("circle")) this.props.history.push(`/home`);
-  }
-
-  handleTrack() {
-    const { playlist, tracks } = this.props;
-    let currentTrack = tracks[0];
-    let nextTrack = tracks[1];
-    this.props.receiveCurrentTrack(currentTrack);
-    this.props.receiveNextTrack(nextTrack);
-    this.props.receiveTitle(currentTrack.title);
-    this.props.receiveArtist(currentTrack.artist);
-    this.props.receiveAlbumId(currentTrack.album_id); 
-    this.props.receivePlaylistId(playlist.id);
+    if (e.target.className === 'playlist play-icon-wrapper') this.props.history.push(`/home`);
   }
 
   handleAudio(e) {
     // Get the current audio tag on the page (the current song playing)
-    const { playlist } = this.props;
+    const { playlist, tracks } = this.props;
     const audio = document.getElementById("audio");
 
     // Toggle global isPlaying state based on play or pause button press for icon change
@@ -42,8 +28,16 @@ class PlaylistIndexItem extends React.Component {
     } else {
       audio.pause();
     }
-
-    this.handleTrack(playlist);  
+  
+    // Setting current and next track
+    this.props.receivePlaylistId(playlist.id);
+    let currentTrack = tracks[0];
+    let nextTrack = tracks[1];
+    this.props.receiveCurrentTrack(currentTrack);
+    this.props.receiveNextTrack(nextTrack);
+    this.props.receiveTitle(currentTrack.title);
+    this.props.receiveArtist(currentTrack.artist);
+    this.props.receiveAlbumId(currentTrack.album_id);
     this.props.receivePlaylistId(playlist.id);
   }
 
@@ -56,7 +50,7 @@ class PlaylistIndexItem extends React.Component {
 
     return (
         <li>
-          <div className="playlist-thumbnail-wrapper" onClick={this.handleClick}> 
+          <div className="playlist-thumbnail-wrapper" onClick={e => this.handleClick(e)}> 
             <div className="thumbnail">
               <Link to={`/playlist/${playlist.id}`}>
                 <img src={playlist.photo_url} alt="Playlist thumbnail" />
