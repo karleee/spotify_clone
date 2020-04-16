@@ -7,7 +7,8 @@ import PlaylistIndexItem from './playlist_index_item';
 const mapStateToProps = (state, { playlist }) => ({
   playlist,
   tracks: selectTracksFromPlaylist(state, playlist),
-  isPlaying: state.ui.isPlaying
+  currentTrack: state.ui.currentTrack,
+  isPlaying: state.ui.isPlaying 
 });
 
 const mapDispatchToProps = dispatch => ({

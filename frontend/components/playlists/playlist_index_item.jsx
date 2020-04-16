@@ -6,7 +6,7 @@ class PlaylistIndexItem extends React.Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.handleTrack = this.handleTrack.bind(this);
-    this.play = this.play.bind(this);
+    // this.handleAudio = this.handleAudio.bind(this);
   }
 
   handleClick(e) {
@@ -25,22 +25,34 @@ class PlaylistIndexItem extends React.Component {
     this.props.receivePlaylistId(playlist.id);
   }
 
-  play() {
-    // Setting global isPlaying state to true for icon change
-    const isPlaying = true;
+  handleAudio(e) {
+    // Get the current audio tag on the page (the current song playing)
+    const { playlist } = this.props;
+    const audio = document.getElementById("audio");
+
+    // Toggle global isPlaying state based on play or pause button press for icon change
+    const parent = e.target.parentElement;
+    // console.log(parent.parentElement.className);
+    const isPlaying = parent.parentElement.className === 'playlist-item pause-button control-container' ? false : true;
     this.props.receiveIsPlaying(isPlaying);
 
-    const { playlist } = this.props;
+    // Play and pause the audio when buttons are clicked 
+    if (isPlaying) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+
     this.handleTrack(playlist);  
     this.props.receivePlaylistId(playlist.id);
   }
 
   render() {
-    const { playlist, isPlaying } = this.props;
+    const { playlist, currentTrack, isPlaying } = this.props;
 
     // Determine class name for button based on play or pause
-    const buttonType = isPlaying ? 'pause-button' : 'play-button';
-    const buttonIcon = isPlaying ? 'pause-icon' : 'play-icon';
+    const buttonType = isPlaying && playlist.track_ids[0] === currentTrack.id ? 'pause-button' : 'play-button';
+    const buttonIcon = isPlaying && playlist.track_ids[0] === currentTrack.id  ? 'pause-icon' : 'play-icon';
 
     return (
         <li>
@@ -55,7 +67,7 @@ class PlaylistIndexItem extends React.Component {
 
             <div className={`playlist-item ${buttonType} control-container`}>
               <div className="playlist-item circle-icon-wrapper">
-                <div className={`playlist ${buttonIcon}-wrapper`} onClick={this.play}></div>  
+                <div className={`playlist ${buttonIcon}-wrapper`} onClick={e => this.handleAudio(e)}></div>  
               </div>
             </div>
           </div>

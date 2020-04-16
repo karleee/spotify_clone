@@ -94,6 +94,11 @@
                   content: image_url('playlists/white-play-icon.png');
                   width: 1em;
                 }
+
+                .playlist.pause-icon-wrapper {
+                  content: image_url('playlists/white-pause-icon.png');
+                  width: 1em;
+                }
               }
             }
           }
