@@ -36,7 +36,11 @@ class PlaylistIndexItem extends React.Component {
   }
 
   render() {
-    const { playlist } = this.props;
+    const { playlist, isPlaying } = this.props;
+
+    // Determine class name for button based on play or pause
+    const buttonType = isPlaying ? 'pause-button' : 'play-button';
+    const buttonIcon = isPlaying ? 'pause-icon' : 'play-icon';
 
     return (
         <li>
@@ -49,9 +53,10 @@ class PlaylistIndexItem extends React.Component {
               </Link>
             </div>
 
-            <div className="play-button">
-            <div className="triangle right" onClick={this.play}></div> 
-              <div className="circle"></div>
+            <div className={`playlist-item ${buttonType} control-container`}>
+              <div className="playlist-item circle-icon-wrapper">
+                <div className={`playlist ${buttonIcon}-wrapper`} onClick={this.play}></div>  
+              </div>
             </div>
           </div>
         </li>
