@@ -5,7 +5,7 @@ import TrackDetail from '../track/track_detail_container';
 class PlaylistDetail extends React.Component { 
   constructor(props) {
     super(props);
-    this.play = this.play.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -15,15 +15,27 @@ class PlaylistDetail extends React.Component {
     localStorage.setItem('playlist_tracks', JSON.stringify(this.props.tracks)); 
   }
 
-  play() {
-    // Setting global state of isPlaying true for pause change
-    const isPlaying = true;
-    this.props.receiveIsPlaying(isPlaying);
-
+  handleClick(e) {   
     const { playlist, tracks } = this.props;
     const currentTrack = tracks[0];
     const nextTrack = tracks[1];
 
+    // Get the current audio tag on the page (the current song playing)
+    const audio = document.getElementById("audio");
+
+    // Toggle global isPlaying state based on play or pause button press for icon change
+    const parent = e.target.parentElement;
+    const isPlaying = parent.parentElement.className === 'playlist pause-button control-container' ? false : true;
+    this.props.receiveIsPlaying(isPlaying);
+
+    // Play and pause the audio when buttons are clicked 
+    if (isPlaying) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+    
+    // Setting new current and next track
     this.props.receiveCurrentTrack(currentTrack);
     this.props.receiveNextTrack(nextTrack);
     this.props.receiveTitle(currentTrack.title);
@@ -47,7 +59,7 @@ class PlaylistDetail extends React.Component {
             <img src={playlist.photo_url} alt="Playlist thumbnail" /> 
             <div className={`playlist ${buttonType} overlay-container`}></div> 
 
-            <div className={`playlist ${buttonType} control-container`} onClick={this.play}>
+            <div className={`playlist ${buttonType} control-container`} onClick={e => this.handleClick(e)}>
               <div className="playlist circle-icon-wrapper">
                 <i className={`playlist ${buttonIcon}-wrapper`}></i>
               </div>

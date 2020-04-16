@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
   // If so, default to tracks in local storage
   const isInvalid = ele => ele === undefined || ele === null;
   if (tracks.some(isInvalid) || !tracks) tracks = JSON.parse(localStorage.getItem('playlist_tracks'));
-  
+   
   return ({
     playlist,
     tracks,
