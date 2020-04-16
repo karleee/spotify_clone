@@ -9,6 +9,7 @@ const mapStateToProps = (state, { playlist }) => {
   return ({
     playlist,
     tracks,
+    currentTrack: state.ui.currentTrack,
     isPlaying: state.ui.isPlaying 
   });
 }
