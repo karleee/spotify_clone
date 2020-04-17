@@ -42,8 +42,6 @@ class TrackIndexItem extends Component {
     let audioState;
 
     if (currentTrack) {
-      // console.log(currentTrack.title === track.title);
-      // console.log(isPlaying);
       if (currentTrack.title === track.title && isPlaying) {
         audioState = 'active';
       }  else if (currentTrack.title === track.title && !isPlaying) {
@@ -51,8 +49,6 @@ class TrackIndexItem extends Component {
       } else {
         audioState = '';
       }  
-
-      // console.log(audioState);
     }
 
     return ( 

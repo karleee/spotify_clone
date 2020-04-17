@@ -7,7 +7,7 @@ class HomeIndex extends React.Component {
     this.props.requestAllTracks();
     this.props.requestAllAlbums();
     this.props.requestAllArtists();
-    this.props.requestAllUsers();
+    this.props.requestAllUsers(); 
   }
 
   render() {
