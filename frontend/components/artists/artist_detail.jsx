@@ -17,7 +17,8 @@ class ArtistDetail extends Component {
   // Renders ArtistDetail component
   render() {
     const { artist, albums, tracks } = this.props;
-
+    console.log(JSON.stringify(tracks));
+    
     return (
       <div className="artist-detail body-container">
         <div className="artist-detail banner-container">
