@@ -5,14 +5,26 @@ class TrackDetail extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    console.log(this.props.tracks);
   }
 
-  handleClick(track) {
-    // Setting global isPlaying state to true for icon change
-    const isPlaying = true;
-    this.props.receiveIsPlaying(isPlaying);
+  handleClick(e, track) {
+    // Get the current audio tag on the page (the current song playing)
+    console.log(e.target.parentElement.parentElement.parentElement.className);
+    const audio = document.getElementById("audio");
 
+    // Toggle global isPlaying state based on play or pause button press for icon change
+    const parent = e.target.parentElement.parentElement.parentElement;
+    const isPlaying = parent.className === 'track-index-item active main-container' ? false : true;
+    this.props.receiveIsPlaying(isPlaying); 
+
+    // Play and pause the audio when buttons are clicked 
+    if (isPlaying) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+
+    // Setting new current and next track
     let index = (this.props.tracks.indexOf(track) + 1) % this.props.tracks.length;  
     let nextTrack = this.props.tracks[index];
 
@@ -24,11 +36,13 @@ class TrackDetail extends React.Component {
     this.props.receiveAlbumId(track.album_id);  
   }
 
+  // Renders the TrackDetail component
   render() {
-    const { tracks, currentTrack } = this.props; 
+    const { tracks, currentTrack, isPlaying } = this.props; 
+
     return (
       <ul>
-        {tracks.map(track => <TrackIndexItem key={track.id} track={track} currentTrack={currentTrack} handleClick={this.handleClick} />)}  
+        {tracks.map(track => <TrackIndexItem key={track.id} track={track} currentTrack={currentTrack} isPlaying={isPlaying} handleClick={this.handleClick} />)}  
       </ul>
     );
   }

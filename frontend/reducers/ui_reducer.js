@@ -1,11 +1,11 @@
 import { RECEIVE_CURRENT_TRACK, RECEIVE_NEXT_TRACK } from '../actions/track_actions';
-import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
-import { RECEIVE_IS_PLAYING } from '../actions/audio_actions';
+// import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
+import { RECEIVE_IS_PLAYING, RECEIVE_AUDIO } from '../actions/audio_actions';
 
 const _initialState = {
   currentTrack: null,
   nextTrack: null,
-  isPlaying: false
+  isPlaying: false 
 }
 
 const uiReducer = (state = _initialState, action) => {

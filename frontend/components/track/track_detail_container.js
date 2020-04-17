@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import TrackDetail from './track_detail';
 import { receiveCurrentTrack, receiveNextTrack } from '../../actions/track_actions';
-import { receiveTitle, receiveArtist, receivePlaylistId, receiveAlbumId, receiveIsPlaying } from '../../actions/audio_actions';
+import { receiveTitle, receiveArtist, receivePlaylistId, receiveAlbumId, receiveIsPlaying, receiveAudio } from '../../actions/audio_actions';
 
 const mapStateToProps = (state, { playlist, tracks }) => { 
   let currentPlaylist = playlist || JSON.parse(localStorage.getItem('viewing_playlist'));
@@ -10,7 +10,8 @@ const mapStateToProps = (state, { playlist, tracks }) => {
   return ({
     playlist: currentPlaylist,
     tracks: currentTracks,
-    currentTrack: state.ui.currentTrack
+    currentTrack: state.ui.currentTrack,
+    isPlaying: state.ui.isPlaying
   });
 };
 
@@ -21,7 +22,8 @@ const mapDispatchToProps = dispatch => ({
   receiveArtist: artist => dispatch(receiveArtist(artist)),
   receivePlaylistId: playlistId => dispatch(receivePlaylistId(playlistId)), 
   receiveAlbumId: albumId => dispatch(receiveAlbumId(albumId)),
-  receiveIsPlaying: isPlaying => dispatch(receiveIsPlaying(isPlaying))
+  receiveIsPlaying: isPlaying => dispatch(receiveIsPlaying(isPlaying)),
+  // receiveAudio: audio => dispatch(receiveAudio(audio))
 });
   
 export default connect(mapStateToProps, mapDispatchToProps)(TrackDetail);    

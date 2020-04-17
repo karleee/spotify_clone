@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
 
 import { receiveCurrentTrack, receiveNextTrack } from '../../actions/track_actions';
-import { receiveTitle, receiveArtist, receivePlaylistId, receiveAlbumId, receiveIsPlaying } from '../../actions/audio_actions';
+import { receiveTitle, receiveArtist, receivePlaylistId, receiveAlbumId, receiveIsPlaying, receiveAudio } from '../../actions/audio_actions';
 import { selectTracksFromPlaylist } from '../../reducers/selectors';
 
 import AudioPlayer from './audio_player';
 
 const mapStateToProps = state => {
-  const playlists = JSON.parse(localStorage.getItem('playlists'));
+  // const playlists = JSON.parse(localStorage.getItem('playlists'));
   const tracks = JSON.parse(localStorage.getItem('playlist_tracks'));
 
   return ({
-    audio: state.ui.currentTrack,
+    currentTrack: state.ui.currentTrack, 
     volume: state.audio.volume,
     nextTrack: state.ui.nextTrack, 
     trackPlaying: state.audio.trackPlaying,
@@ -27,7 +27,8 @@ const mapDispatchToProps = dispatch => ({
   receiveArtist: artist => dispatch(receiveArtist(artist)),
   receivePlaylistId: playlistId => dispatch(receivePlaylistId(playlistId)), 
   receiveAlbumId: albumId => dispatch(receiveAlbumId(albumId)),
-  receiveIsPlaying: isPlaying => dispatch(receiveIsPlaying(isPlaying))
+  receiveIsPlaying: isPlaying => dispatch(receiveIsPlaying(isPlaying)),
+  // receiveAudio: audio => dispatch(receiveAudio(audio))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AudioPlayer);

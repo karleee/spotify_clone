@@ -6,9 +6,7 @@ class UserIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = { tracks: [] };
-    this.handleClick = this.handleClick.bind(this);
     this.handleTrack = this.handleTrack.bind(this);
-    this.play = this.play.bind(this);
   } 
   
   componentDidMount() {
@@ -26,16 +24,33 @@ class UserIndexItem extends React.Component {
   }
 
   handleClick(e) {
-    if (!e.target.classList.contains("circle")) { 
+    console.log(e.target.className !== 'user-index play-icon-wrapper');
+    if (e.target.className !== 'user-index play-icon-wrapper' && e.target.className !== 'user-index pause-icon-wrapper') {
       this.props.history.push(`/playlist/${this.props.playlist.id}`);    
     }
   }
 
-  handleTrack() {
+  play(e) {
+    // Get the current audio tag on the page (the current song playing)
     const { playlist } = this.props;
     const { tracks } = this.state;
+    const audio = document.getElementById("audio");
 
-    let currentTrack = tracks[0]; 
+    // Toggle global isPlaying state based on play or pause button press for icon change
+    const parent = e.target.parentElement;
+    const isPlaying = parent.parentElement.className === 'user-index pause-button control-container' ? false : true;
+    this.props.receiveIsPlaying(isPlaying);
+
+    // Play and pause the audio when buttons are clicked 
+    if (isPlaying) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+
+    this.props.receivePlaylistId(playlist.id);
+
+    let currentTrack = tracks[0];
     let nextTrack = tracks[1];
     this.props.receiveCurrentTrack(currentTrack);
     this.props.receiveNextTrack(nextTrack);
@@ -45,29 +60,25 @@ class UserIndexItem extends React.Component {
     this.props.receivePlaylistId(playlist.id);
   }
 
-  play() {
-    // Setting global state of isPlaying true for pause change
-    const isPlaying = true;
-    this.props.receiveIsPlaying(isPlaying);
-    
-    const { playlist } = this.props;
-    this.handleTrack(playlist);
-    this.props.receivePlaylistId(playlist.id);
-  }
-
   render() {
-    const { playlist } = this.props;
+    const { playlist, currentTrack, isPlaying } = this.props;
+
+    // Determine class name for button based on play or pause
+    const buttonType = isPlaying && playlist.track_ids[0] === currentTrack.id ? 'pause-button' : 'play-button';
+    const buttonIcon = isPlaying && playlist.track_ids[0] === currentTrack.id ? 'pause-icon' : 'play-icon';
 
     return (
         <li>
-          <div className="playlist-image" onClick={ this.handleClick }>
-            <div className="play-button" onClick={ this.play }> 
-              <div className="triangle right"></div> 
-              <div className="circle"></div>
+          <div className="user-index image-container" onClick={e => this.handleClick(e)}>
+            <img src={playlist.photo_url} alt="Playlist thumbnail" onClick={e => this.handleClick(e)}/>
+            <div className={`user-index ${buttonType} overlay-container`}></div>
+
+            <div className={`user-index ${buttonType} control-container`} onClick={e => this.play(e)}> 
+              <div className="user-index circle-icon-wrapper">
+                <i className={`user-index ${buttonIcon}-wrapper`}></i>
+              </div> 
             </div>
 
-            <div className="overlay"></div>
-            <img src={playlist.photo_url} alt="Playlist thumbnail" onClick={ this.handleClick }/>
           </div>
 
           <div className="playlist-name">
