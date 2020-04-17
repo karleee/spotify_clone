@@ -34,13 +34,22 @@ class ArtistDetailItem extends Component {
 
   // Renders the ArtistDetailItem component
   render() {
-    const { track, indx } = this.props;
+    const { track, albums, indx } = this.props;
     let { duration } = this.state;
+
+    //Testing...
+    const albumId = track.album_id; 
+    const album = albums[albumId];
+    // console.log(track); 
+    // console.log('Album: ' + JSON.stringify(album));
+
 
     return (
       <li>
         <div className="artist-detail name-container">
-          <div className="artist-detail image-wrapper"></div>
+          <div className="artist-detail image-wrapper">
+            <img src={`${album.photo_url}`} alt="Album cover"/>
+          </div>
 
           <div className="artist-detail button-wrapper">
             <p>{indx}</p>

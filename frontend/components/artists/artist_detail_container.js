@@ -4,9 +4,10 @@ import ArtistDetail from './artist_detail';
 import { selectTracksFromArtist } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
-  // Get all artists from either state or local storage
+  // Get all artists and albums from local storage
   // Get the artist and their tracks
-  const artists = JSON.parse(localStorage.getItem('artists'))
+  const artists = JSON.parse(localStorage.getItem('artists'));
+  const albums = JSON.parse(localStorage.getItem('albums'));
   const artist = artists[ownProps.match.params.artistId];
   let tracks = selectTracksFromArtist(state, artist);
 
@@ -17,6 +18,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return ({
     artist,
+    albums,
     tracks
   });
 };

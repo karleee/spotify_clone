@@ -190,6 +190,18 @@
 
               p {
                 font-family: 'ProximaNova-Regular';
+
+                a {
+                  font-size: 16px;
+                  color: $gray;
+                  margin-top: -15px;
+                  text-decoration: none;
+                }
+
+                a:hover {
+                  cursor: pointer;
+                  text-decoration: underline;
+                }
               }
 
               p:first-of-type {
@@ -198,8 +210,7 @@
                 margin-bottom: 20px;
               }
 
-              p:last-of-type,
-              p a {
+              p:last-of-type {
                 font-size: 16px;
                 color: $gray;
                 margin-top: -15px;

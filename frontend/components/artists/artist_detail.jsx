@@ -16,9 +16,7 @@ class ArtistDetail extends Component {
 
   // Renders ArtistDetail component
   render() {
-    const { artist, tracks } = this.props;
-
-    // console.log('First track: ' + JSON.stringify(tracks[0].title));
+    const { artist, albums, tracks } = this.props;
 
     return (
       <div className="artist-detail body-container">
@@ -37,7 +35,7 @@ class ArtistDetail extends Component {
 
           <ul>
             {tracks.map((track, indx) =>
-              <ArtistDetailItem key={track.id} track={track} indx={indx + 1} />
+              <ArtistDetailItem key={track.id} albums={albums} track={track} indx={indx + 1} />
             )}
           </ul>
         </div>
