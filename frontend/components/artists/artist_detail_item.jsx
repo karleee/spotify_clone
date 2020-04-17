@@ -39,10 +39,15 @@ class ArtistDetailItem extends Component {
 
     return (
       <li>
-        <div className="artist-detail image-wrapper"></div>
-        <p>{indx}</p>
-        <p>{track.title}</p>  
-        <p>{duration}</p>
+        <div className="artist-detail title-and-no-container">
+          <div className="artist-detail image-wrapper"></div>
+          <p className="artist-detail track-no-wrapper">{indx}</p>
+          <p>{track.title}</p>  
+        </div>
+
+        <div className="artist-detail duration-container">
+          <p>{duration}</p>
+        </div>
       </li>
     );
   }

@@ -14,47 +14,104 @@
     width: 100%;
     height: 50%;
     background: yellowgreen;
+
+    .artist-detail.header-container {
+      // position: absolute;
+      // top: 20%;
+      // left: 0;
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: flex-start;
+      color: white;
+      box-sizing: border-box;
+      padding: 2em;
+      // width: 300px;
+      // height: 200px;
+      // background: orange;
+
+      p:first-of-type {
+        font-family: 'ProximaNova-Regular';
+        text-transform: uppercase;
+        font-size: 0.75em;
+        letter-spacing: 0.2em; 
+        margin-left: 0.5em;
+      }
+
+      h1 {
+        // margin: 0;
+        // padding: 0;
+        font-family: 'ProximaNova-Extrabld';
+        font-size: 100px;
+        margin-top: 2%;
+        // font-size: calc(65px + (85 - 65) * ((100vw - 300px) / (1600 - 300)));
+        // margin-top: 1em;
+      }
+
+      button {
+        font-family: 'ProximaNova-Regular';
+        font-size: 0.8em;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-weight: 700;
+        background: $green;
+        border: none;
+        box-sizing: border-box;
+        padding: 0.8em 3em;
+        border-radius: 2em;
+        margin-top: 3%;
+      }
+    }
   }
 
-  .artist-detail.header-container {
-    // position: absolute;
-    // top: 20%;
-    // left: 0;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: flex-start;
-    color: white;
+  .artist-detail.songs-container {
+    width: 100%;
     box-sizing: border-box;
     padding: 2em;
 
-    p:first-of-type {
-      font-family: 'ProximaNova-Regular';
-      text-transform: uppercase;
-      font-size: 0.75em;
-      letter-spacing: 0.2em; 
-      margin-left: 0.5em;
-    }
-
-    h1 {
-      // margin: 0;
-      // padding: 0;
+    h2 {
       font-family: 'ProximaNova-Bold';
-      font-size: 7em;
-      // margin-top: 1em;
+      font-size: 1.2em;
+      color: white;
     }
 
-    button {
-      font-family: 'ProximaNova-Regular';
-      font-size: 0.8em;
+    ul {
+      list-style: none;
       color: white;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      font-weight: 700;
-      background: $green;
-      border: none;
-      box-sizing: border-box;
-      padding: 0.8em 3em;
-      border-radius: 2em;
+      width: 100%;
+      margin-top: 1%;
+
+      li {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'ProximaNova-Regular';
+        border-top: 1px solid $track-light-gray;
+        border-bottom: 1px solid $track-light-gray;
+        box-sizing: border-box;
+        padding-right: 1em;
+        width: 60%;
+
+        .artist-detail.title-and-no-container {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          width: 70%;
+          // background: purple;
+
+          .artist-detail.image-wrapper {
+            width: 2.5em;
+            height: 2.5em;
+            // margin-right: 1%;
+            background: orange;
+          }
+
+          .track-no-wrapper {
+            margin: 0 3% 0 1%;
+          }
+        }
+      }
     }
   }
 }

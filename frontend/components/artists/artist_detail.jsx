@@ -26,23 +26,11 @@ class ArtistDetail extends Component {
           <div className="artist-detail header-container">
             <p>Artist</p>
             <h1>{artist.name}</h1>
-
-            {/* <div className="artist-detail button-container"> */}
-              <button>Play</button>
-            {/* </div> */}
+            <button>Play</button>
           </div>
         </div> 
 
-        {/* <div className="artist-detail header-container">
-          <p>Artist</p>
-          <h1>{artist.name}</h1>
-
-          <div className="artist button-container">
-            <button>Play</button>
-          </div>
-        </div> */}
-
-        <div className="artist songs-container"> 
+        <div className="artist-detail songs-container"> 
           <h2>Popular</h2>
 
           <ul>
