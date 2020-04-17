@@ -1,11 +1,60 @@
-.artist.body-container {
+@import "variables";
+
+.artist-detail.body-container {
   width: 100%;
   height: 100%;
   // background: orange;
 
-  .artist.banner-container { 
+  .artist-detail.banner-container { 
+    // position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
     width: 100%;
     height: 50%;
     background: yellowgreen;
+  }
+
+  .artist-detail.header-container {
+    // position: absolute;
+    // top: 20%;
+    // left: 0;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: flex-start;
+    color: white;
+    box-sizing: border-box;
+    padding: 2em;
+
+    p:first-of-type {
+      font-family: 'ProximaNova-Regular';
+      text-transform: uppercase;
+      font-size: 0.75em;
+      letter-spacing: 0.2em; 
+      margin-left: 0.5em;
+    }
+
+    h1 {
+      // margin: 0;
+      // padding: 0;
+      font-family: 'ProximaNova-Bold';
+      font-size: 7em;
+      // margin-top: 1em;
+    }
+
+    button {
+      font-family: 'ProximaNova-Regular';
+      font-size: 0.8em;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      background: $green;
+      border: none;
+      box-sizing: border-box;
+      padding: 0.8em 3em;
+      border-radius: 2em;
+    }
   }
 }

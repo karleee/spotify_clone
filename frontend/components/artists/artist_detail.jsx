@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import ArtistDetailItem from './artist_detail_item';
 
 class ArtistDetail extends Component {
-  // Constructor for ArtistDetail component
+  // Constructor for ArtistDetail component 
   constructor(props) {
     super(props);
   }
@@ -21,17 +21,26 @@ class ArtistDetail extends Component {
     // console.log('First track: ' + JSON.stringify(tracks[0].title));
 
     return (
-      <div className="artist body-container">
-        <div className="artist banner-container"></div> 
+      <div className="artist-detail body-container">
+        <div className="artist-detail banner-container">
+          <div className="artist-detail header-container">
+            <p>Artist</p>
+            <h1>{artist.name}</h1>
 
-        <div className="artist header-container">
+            {/* <div className="artist-detail button-container"> */}
+              <button>Play</button>
+            {/* </div> */}
+          </div>
+        </div> 
+
+        {/* <div className="artist-detail header-container">
           <p>Artist</p>
           <h1>{artist.name}</h1>
 
           <div className="artist button-container">
             <button>Play</button>
           </div>
-        </div>
+        </div> */}
 
         <div className="artist songs-container"> 
           <h2>Popular</h2>
