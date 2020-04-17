@@ -60,7 +60,7 @@ class PlaylistDetail extends React.Component {
 
             <div className={`playlist ${buttonType} control-container`} onClick={e => this.handleClick(e)}>
               <div className="playlist circle-icon-wrapper">
-                <i className={`playlist ${buttonIcon}-wrapper`}></i>
+                <i className={`playlist ${buttonIcon}-wrapper`}></i> 
               </div>
             </div>
           </div>

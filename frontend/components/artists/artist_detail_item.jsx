@@ -39,9 +39,17 @@ class ArtistDetailItem extends Component {
 
     return (
       <li>
-        <div className="artist-detail title-and-no-container">
+        <div className="artist-detail name-container">
           <div className="artist-detail image-wrapper"></div>
-          <p className="artist-detail track-no-wrapper">{indx}</p>
+
+          <div className="artist-detail button-wrapper">
+            <p>{indx}</p>
+
+            <div className="artist-detail play-button-wrapper">
+              <i className="artist-detail play-icon-wrapper"></i>
+            </div>
+          </div>
+
           <p>{track.title}</p>  
         </div>
 

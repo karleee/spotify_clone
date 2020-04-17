@@ -23,12 +23,14 @@ class ArtistDetail extends Component {
     return (
       <div className="artist-detail body-container">
         <div className="artist-detail banner-container">
+          <img src={artist.banner_url} alt="Artist banner" /> 
+          <div className="artist-detail banner-overlay-container"></div>
           <div className="artist-detail header-container">
             <p>Artist</p>
             <h1>{artist.name}</h1>
             <button>Play</button>
           </div>
-        </div> 
+        </div>  
 
         <div className="artist-detail songs-container"> 
           <h2>Popular</h2>
