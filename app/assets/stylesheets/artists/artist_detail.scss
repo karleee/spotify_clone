@@ -72,7 +72,7 @@
     }
   }
 
-  .artist-detail.songs-container {
+  .artist-detail.songs-container { 
     width: 100%;
     height: 50%;
     box-sizing: border-box;
@@ -100,7 +100,6 @@
         border-top: 1px solid $track-light-gray;
         padding-right: 1em;
         width: 60%;
-        // height: 16%;
 
         .artist-detail.name-container {
           display: flex;
@@ -168,13 +167,15 @@
             opacity: 0;
           }
 
-          .artist-detail.play-button-wrapper {
+          .artist-detail.play-button-wrapper {  
             opacity: 1;
           }
 
           .artist-detail.play-button-wrapper:hover {
             border-radius: 50%;
             border: 1px solid white;
+            transform: scale(1.05);
+            transition: transform 0.5s;
 
             .artist-detail.play-icon-wrapper {
               content: image_url('playlists/white-play-icon.png');

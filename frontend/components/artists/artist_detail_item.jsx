@@ -32,17 +32,44 @@ class ArtistDetailItem extends Component {
     return min + ":" + seconds;
   }
 
+  handleClick(e) {
+    const { tracks } = this.props;
+
+    // Get the current and next track
+    const currentTrack = tracks[0];
+    const nextTrack = tracks[1];
+
+    // Get the current audio tag on the page (the current song playing)
+    const audio = document.getElementById("audio");
+
+    // Toggle global isPlaying state based on play or pause button press for icon change
+    const parent = e.target.parentElement;
+    const isPlaying = parent.className === 'artist-detail play-button-wrapper' ? false : true;
+    this.props.receiveIsPlaying(isPlaying);
+
+    // Play and pause the audio when buttons are clicked 
+    if (isPlaying) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+
+    // Setting new current and next track
+    this.props.receiveCurrentTrack(currentTrack);
+    this.props.receiveNextTrack(nextTrack);
+    this.props.receiveTitle(currentTrack.title);
+    this.props.receiveArtist(currentTrack.artist);
+    this.props.receiveAlbumId(currentTrack.album_id); 
+  }
+
   // Renders the ArtistDetailItem component
   render() {
     const { track, albums, indx } = this.props;
     let { duration } = this.state;
 
-    //Testing...
+    // Getting track's album
     const albumId = track.album_id; 
     const album = albums[albumId];
-    // console.log(track); 
-    // console.log('Album: ' + JSON.stringify(album));
-
 
     return (
       <li>
@@ -54,7 +81,7 @@ class ArtistDetailItem extends Component {
           <div className="artist-detail button-wrapper">
             <p>{indx}</p>
 
-            <div className="artist-detail play-button-wrapper">
+            <div className="artist-detail play-button-wrapper" onClick={e => this.handleClick(e)}>
               <i className="artist-detail play-icon-wrapper"></i>
             </div>
           </div>

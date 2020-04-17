@@ -1,7 +1,11 @@
 import { connect } from 'react-redux';
+
+import { receiveCurrentTrack, receiveNextTrack } from '../../actions/track_actions';
+import { receiveTitle, receiveArtist, receivePlaylistId, receiveAlbumId, receiveIsPlaying } from '../../actions/audio_actions';
+
 import ArtistDetail from './artist_detail';
 
-import { selectTracksFromArtist } from '../../reducers/selectors';
+import { selectTracksFromArtist, selectPlaylistsFromUser } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
   // Get all artists and albums from local storage
@@ -11,10 +15,15 @@ const mapStateToProps = (state, ownProps) => {
   const artist = artists[ownProps.match.params.artistId];
   let tracks = selectTracksFromArtist(state, artist);
 
+  // Testing...
+  // const playlist = selectPlaylistsFromUser(state, artist);
+  // console.log(state);
+  // console.log(JSON.stringify(playlist));
+
   // Before assigning to props check if tracks contains invalid values
   // If so, default to tracks in local storage
   const isInvalid = ele => ele === undefined || ele === null;
-  if (tracks.some(isInvalid) || !tracks) tracks = JSON.parse(localStorage.getItem('artist_tracks'));
+  if (tracks.some(isInvalid) || !tracks) tracks = JSON.parse(localStorage.getItem('playlist_tracks'));
 
   return ({
     artist,
@@ -24,7 +33,13 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({ 
-
+  receiveCurrentTrack: track => dispatch(receiveCurrentTrack(track)),
+  receiveNextTrack: track => dispatch(receiveNextTrack(track)),
+  receiveTitle: title => dispatch(receiveTitle(title)),
+  receiveArtist: artist => dispatch(receiveArtist(artist)),
+  receiveAlbumId: albumId => dispatch(receiveAlbumId(albumId)),
+  receivePlaylistId: playlistId => dispatch(receivePlaylistId(playlistId)),
+  receiveIsPlaying: isPlaying => dispatch(receiveIsPlaying(isPlaying))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArtistDetail);

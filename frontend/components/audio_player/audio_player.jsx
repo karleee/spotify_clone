@@ -137,8 +137,6 @@ class AudioPlayer extends React.Component {
     let currentIndex;
     let nextIndex;
 
-    console.log('REPEATED?: ' + this.state.repeat); 
-
     // Get the index for the current track
     tracks.forEach((track, indx) => { if (track.title === currentTrack.title) currentIndex = indx });
  

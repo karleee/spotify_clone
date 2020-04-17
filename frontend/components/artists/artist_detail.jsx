@@ -11,14 +11,24 @@ class ArtistDetail extends Component {
   componentDidMount() {
     // Persisting values of artist tracks
     // Local storage can only store string and values, no objects
-    localStorage.setItem('artist_tracks', JSON.stringify(this.props.tracks));
+    localStorage.setItem('playlist_tracks', JSON.stringify(this.props.tracks));
   }
 
   // Renders ArtistDetail component
   render() {
-    const { artist, albums, tracks } = this.props;
-    console.log(JSON.stringify(tracks));
-    
+    const { 
+      artist, 
+      albums, 
+      tracks,
+      receiveCurrentTrack,
+      receiveNextTrack,
+      receiveTitle,
+      receiveArtist,
+      receiveAlbumId,
+      receivePlaylistId,
+      receiveIsPlaying
+    } = this.props;
+
     return (
       <div className="artist-detail body-container">
         <div className="artist-detail banner-container">
@@ -36,7 +46,20 @@ class ArtistDetail extends Component {
 
           <ul>
             {tracks.map((track, indx) =>
-              <ArtistDetailItem key={track.id} albums={albums} track={track} indx={indx + 1} />
+              <ArtistDetailItem 
+                key={track.id} 
+                albums={albums} 
+                track={track} 
+                tracks={tracks} 
+                indx={indx + 1} 
+                receiveCurrentTrack={receiveCurrentTrack}
+                receiveNextTrack={receiveNextTrack}
+                receiveTitle={receiveTitle}
+                receiveArtist={receiveArtist}
+                receiveAlbumId={receiveAlbumId}
+                receivePlaylistId={receivePlaylistId}
+                receiveIsPlaying={receiveIsPlaying}
+              />
             )}
           </ul>
         </div>
