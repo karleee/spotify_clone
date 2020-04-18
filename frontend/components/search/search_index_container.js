@@ -2,10 +2,17 @@ import { connect } from 'react-redux';
 import { receiveTitle } from '../../actions/audio_actions';
 import SearchIndex from './search_index'; 
 
-const mapStateToProps = state => ({
-  currentUser: state.entities.users[state.session.id],
-  values: Object.values(state.entities.albums).concat(Object.values(state.entities.artists)).concat(Object.values(state.entities.tracks)).concat(Object.values(state.entities.playlists))
-});
+const mapStateToProps = state => {
+  // Get the artists, albums, and tracks from localStorage in case of manual page refresh
+  const artists = Object.values(JSON.parse(localStorage.getItem('artists')));
+  const albums = Object.values(JSON.parse(localStorage.getItem('albums')));
+  const tracks = Object.values(JSON.parse(localStorage.getItem('tracks')));
+  const playlists = Object.values(JSON.parse(localStorage.getItem('playlists')));
+
+  return ({
+    values: [...albums, ...artists, ...tracks, ...playlists]
+  });
+};
 
 const mapDispatchToProps = dispatch => ({
   receiveTitle: title => dispatch(receiveTitle(title)),

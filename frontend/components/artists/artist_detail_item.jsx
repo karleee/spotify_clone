@@ -79,7 +79,7 @@ class ArtistDetailItem extends Component {
       <li>
         <div className="artist-detail name-container">
           <div className="artist-detail image-wrapper">
-            <img src={`${album.photo_url}`} alt="Album cover"/>
+            <img src={`${album.photo_url}`} alt="Album cover"/> 
           </div>
 
           <div className="artist-detail button-wrapper">

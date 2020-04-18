@@ -5,7 +5,6 @@ class SearchIndex extends React.Component {
   // Constructor for Search Index component
   constructor(props) {
     super(props);
-
     this.state = {
       query: "",
       results: []
@@ -86,9 +85,9 @@ class SearchIndex extends React.Component {
     }
 
     return ( 
-      <div className="search-bar-wrapper">
-        <div className="bar">
-          <i className="search-bar-icon"></i>
+      <div className="search-index search-bar-container">
+        <div className="search-index bar-wrapper">
+          <i className="search-index search-icon-wrapper"></i>
           <input type="text" onChange={this.handleInput} placeholder="Search for Artists, Songs, or Playlists" />
         </div>
 
