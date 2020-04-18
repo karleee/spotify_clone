@@ -43,17 +43,12 @@ class ArtistDetailItem extends Component {
 
     // Play and pause the audio when buttons are clicked 
     if (isPlaying) {
-      audio.play();
+      audio.play(); 
     } else {
       audio.pause();
     }
 
-    // Setting new current and next track
-    // let index = (this.props.tracks.indexOf(track) + 1) % this.props.tracks.length;
-    // let nextTrack = this.props.tracks[index];
-
     this.props.receiveCurrentTrack(track);
-    // this.props.receiveNextTrack(nextTrack);
     this.props.receiveTitle(track.title);
     this.props.receiveArtist(track.artist);
     this.props.receiveAlbumId(track.album_id);

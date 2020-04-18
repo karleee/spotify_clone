@@ -18,7 +18,7 @@ class ArtistDetail extends Component {
   }
 
   handleAudio(e) {
-    const { tracks } = this.props;
+    const { playlist, tracks } = this.props;
     const clickedClass = e.target.className;
     const buttonClass = 'artist-detail pause-button-wrapper';
     let playState;
@@ -29,7 +29,10 @@ class ArtistDetail extends Component {
     } else {
       playState = true;
     }
+
     localStorage.setItem('artist_playing', JSON.stringify(playState));
+    localStorage.setItem('active_playlist', JSON.stringify(playlist));
+    localStorage.setItem('playlist_tracks', JSON.stringify(tracks));
 
     // Call play function with event, all tracks, and targeted button class name
     this.play(tracks, clickedClass, buttonClass);
@@ -85,10 +88,10 @@ class ArtistDetail extends Component {
     } = this.props;
 
     //Testing...
-    const playState = JSON.parse(localStorage.getItem('artist_play'));
+    const playState = JSON.parse(localStorage.getItem('artist_playing'));
 
     // Determine class name for button based on play or pause
-    const buttonType = playState && isPlaying ? 'pause-button' : 'play-button';
+    const buttonType = playState ? 'pause-button' : 'play-button';
 
     return (
       <div className="artist-detail body-container">

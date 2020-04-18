@@ -5,18 +5,22 @@ import { receiveTitle, receiveArtist, receivePlaylistId, receiveAlbumId, receive
 
 import ArtistDetail from './artist_detail';
 
-import { selectTracksFromArtist } from '../../reducers/selectors';
+import { selectTracksFromArtist, selectPlaylistFromArtist, selectTracksFromPlaylist, selectTracksFromArtistPlaylist } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
-  // Get all artists and albums from local storage
-  // Get the artist and their tracks
+  // Get all playlists, tracks, artists, and albums from local storage
+  const playlists = Object.values(JSON.parse(localStorage.getItem('playlists'))).filter(playlist => playlist.playlist_type === 'artist');
+  const tracks = Object.values(JSON.parse(localStorage.getItem('tracks')));
   const artists = JSON.parse(localStorage.getItem('artists'));
   const albums = JSON.parse(localStorage.getItem('albums'));
+
+  // Get artist, artist's playlists, and artist's tracks
   const artist = artists[ownProps.match.params.artistId];
-  let tracks = selectTracksFromArtist(state, artist);
+  let artistPlaylist = selectPlaylistFromArtist(playlists, artist)[0];
+  let artistTracks = selectTracksFromArtistPlaylist(tracks, artistPlaylist);
 
   // Get artist page's play state
-  let storedPlayState = JSON.parse(localStorage.getItem('artist_playing'));
+  let storedPlayState = JSON.parse(localStorage.getItem('artist_playing')); 
   const playState = storedPlayState === null ? false : storedPlayState;
 
   // Before assigning to props check if tracks contains invalid values
@@ -27,7 +31,8 @@ const mapStateToProps = (state, ownProps) => {
   return ({
     artist,
     albums,
-    tracks,
+    playlist: artistPlaylist,
+    tracks: artistTracks,
     currentTrack: state.ui.currentTrack,
     isPlaying: state.ui.isPlaying,
     playState

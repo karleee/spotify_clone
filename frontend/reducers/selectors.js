@@ -6,8 +6,19 @@ export const selectPlaylistsFromUser = (playlists, user) => (
   Object.values(playlists).filter(playlist => playlist.user_id === user.id)
 ); 
 
+// Gets the playlist from an artist
+export const selectPlaylistFromArtist = (playlists, artist) => (
+  Object.values(playlists).filter(playlist => playlist.user_id === artist.id)
+); 
+
+// Testing...
+export const selectTracksFromArtistPlaylist = (tracks, playlist) => (
+  playlist.track_ids ? playlist.track_ids.map(id => tracks[id - 1]) : []
+); 
+
+// Gets the tracks from a playlist
 export const selectTracksFromPlaylist = (state, playlist) => (
-  playlist.track_ids ? playlist.track_ids.map(id => state.entities.tracks[id]) : []    
+  playlist.track_ids ? playlist.track_ids.map(id => state.entities.tracks[id]) : []     
 ); 
 
 export const selectTracksFromAlbum = (state, album) => (
