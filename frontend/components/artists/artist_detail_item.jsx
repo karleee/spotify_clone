@@ -32,19 +32,13 @@ class ArtistDetailItem extends Component {
     return min + ":" + seconds;
   }
 
-  handleClick(e) {
-    const { tracks } = this.props;
-
-    // Get the current and next track
-    const currentTrack = tracks[0];
-    const nextTrack = tracks[1];
-
+  handleClick(e, track) {
     // Get the current audio tag on the page (the current song playing)
     const audio = document.getElementById("audio");
 
     // Toggle global isPlaying state based on play or pause button press for icon change
-    const parent = e.target.parentElement;
-    const isPlaying = parent.className === 'artist-detail pause-button-wrapper' ? false : true;
+    const parent = e.target.parentElement.parentElement.parentElement;
+    const isPlaying = parent.className === 'track-index-item active main-container' ? false : true;
     this.props.receiveIsPlaying(isPlaying);
 
     // Play and pause the audio when buttons are clicked 
@@ -55,11 +49,15 @@ class ArtistDetailItem extends Component {
     }
 
     // Setting new current and next track
-    this.props.receiveCurrentTrack(currentTrack);
+    let index = (this.props.tracks.indexOf(track) + 1) % this.props.tracks.length;
+    let nextTrack = this.props.tracks[index];
+
+    this.props.receiveCurrentTrack(track);
     this.props.receiveNextTrack(nextTrack);
-    this.props.receiveTitle(currentTrack.title);
-    this.props.receiveArtist(currentTrack.artist);
-    this.props.receiveAlbumId(currentTrack.album_id); 
+    this.props.receiveTitle(track.title);
+    this.props.receiveArtist(track.artist);
+    this.props.receivePlaylistId(this.props.playlistId);
+    this.props.receiveAlbumId(track.album_id);
   }
 
   // Renders the ArtistDetailItem component
@@ -85,7 +83,7 @@ class ArtistDetailItem extends Component {
           <div className="artist-detail button-wrapper">
             <p>{indx}</p>
 
-            <div className={`artist-detail ${buttonType}-wrapper`} onClick={e => this.handleClick(e)}>
+            <div className={`artist-detail ${buttonType}-wrapper`} onClick={e => this.handleClick(e, track)}>
               <i className={`artist-detail ${iconType}-wrapper`}></i>
             </div>
           </div>

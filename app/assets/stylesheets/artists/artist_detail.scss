@@ -194,6 +194,11 @@
             border: 1px solid white;
             transform: scale(1.05);
             transition: transform 0.5s;
+
+            .play-icon-wrapper {
+              content: image_url('playlists/white-play-icon.png'); 
+              width: 0.7em;
+            }
           }
         }
       }

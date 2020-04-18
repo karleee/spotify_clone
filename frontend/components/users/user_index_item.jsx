@@ -6,7 +6,7 @@ class UserIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = { tracks: [] };
-    this.handleTrack = this.handleTrack.bind(this);
+    // this.handleTrack = this.handleTrack.bind(this); 
   } 
   
   componentDidMount() {
@@ -24,7 +24,6 @@ class UserIndexItem extends React.Component {
   }
 
   handleClick(e) {
-    console.log(e.target.className !== 'user-index play-icon-wrapper');
     if (e.target.className !== 'user-index play-icon-wrapper' && e.target.className !== 'user-index pause-icon-wrapper') {
       this.props.history.push(`/playlist/${this.props.playlist.id}`);    
     }
