@@ -81,90 +81,98 @@ class AudioPlayer extends React.Component {
   // Gets the previous song in the playlist
   previous() {
     const { currentTrack, tracks } = this.props;
-    let previousIndex;
-    let currentIndex;
 
-    // Get the index for the previous track
-    tracks.forEach((track, indx) => { if (track.title === currentTrack.title) currentIndex = indx });
+    if (currentTrack) {
+      let previousIndex;
+      let currentIndex;
 
-    if (this.state.repeat || (this.state.repeat && this.audio.currentTime >= this.audio.duration)) {
-      this.audio.currentTime = 0;
-      this.setState({ currentTrack });
-      this.audio.play();
-      return;
-    } else if (this.state.shuffle) {
-      previousIndex = Math.floor(Math.random() * tracks.length);
-    } else {
-      previousIndex = ((currentIndex - 1) + tracks.length) % tracks.length;
+      // Get the index for the previous track
+      tracks.forEach((track, indx) => { if (track.title === currentTrack.title) currentIndex = indx });
+
+      if (this.state.repeat || (this.state.repeat && this.audio.currentTime >= this.audio.duration)) {
+        this.audio.currentTime = 0;
+        this.setState({ currentTrack });
+        this.audio.play();
+        return;
+      } else if (this.state.shuffle) {
+        previousIndex = Math.floor(Math.random() * tracks.length);
+      } else {
+        previousIndex = ((currentIndex - 1) + tracks.length) % tracks.length;
+      }
+
+      // The previous track becomes the current track
+      // The next track becomes the current track
+      let newTrack = tracks[previousIndex]
+      let nextTrack = tracks[currentIndex];
+
+      // Setting global state
+      this.props.receiveCurrentTrack(newTrack);
+      this.props.receiveNextTrack(nextTrack);
+      this.props.receiveTitle(newTrack.title); 
+      this.props.receiveArtist(newTrack.artist);
+      this.props.receiveAlbumId(newTrack.album_id); 
+      this.setState({ currentTrack: newTrack, nextTrack });
     }
-
-    // The previous track becomes the current track
-    // The next track becomes the current track
-    let newTrack = tracks[previousIndex]
-    let nextTrack = tracks[currentIndex];
-
-    // Setting global state
-    this.props.receiveCurrentTrack(newTrack);
-    this.props.receiveNextTrack(nextTrack);
-    this.props.receiveTitle(newTrack.title); 
-    this.props.receiveArtist(newTrack.artist);
-    this.props.receiveAlbumId(newTrack.album_id); 
-    this.setState({ currentTrack: newTrack, nextTrack });
-  } 
+  }   
 
   // Switches play and pause buttons
   play(e) {
-    // Determine button type
-    const button = e.target.className === 'ap-play-icon' ? 'play' : 'pause';
-    let isPlaying;
+    if (this.props.currentTrack) {
+      // Determine button type
+      const button = e.target.className === 'ap-play-icon' ? 'play' : 'pause';
+      let isPlaying;
 
-    // Setting global state of isPlaying to false or true based on pause or play
-    if (button === 'play') {
-      this.audio.play();
-      isPlaying = true;
-      this.props.receiveIsPlaying(isPlaying);
-    } else {
-      this.audio.pause();
-      isPlaying = false;
-      this.props.receiveIsPlaying(isPlaying);
+      // Setting global state of isPlaying to false or true based on pause or play
+      if (button === 'play') {
+        this.audio.play();
+        isPlaying = true;
+        this.props.receiveIsPlaying(isPlaying);
+      } else {
+        this.audio.pause();
+        isPlaying = false;
+        this.props.receiveIsPlaying(isPlaying);
+      }
     }
   }
 
   // Gets the next song in the playlist
   next() {
     const { currentTrack, tracks, receiveIsPlaying } = this.props;
-    let currentIndex;
-    let nextIndex;
 
-    // Set isPlaying to true
-    receiveIsPlaying(true);
+    if (currentTrack) {
+      let currentIndex;
+      let nextIndex;
 
-    // Get the index for the current track
-    tracks.forEach((track, indx) => { if (track.title === currentTrack.title) currentIndex = indx });
+      // Set isPlaying to true
+      receiveIsPlaying(true);
+
+      // Get the index for the current track
+      tracks.forEach((track, indx) => { if (track.title === currentTrack.title) currentIndex = indx });
  
-    if (this.state.repeat || (this.state.repeat && this.audio.currentTime >= this.audio.duration)) {
-      this.audio.currentTime = 0; 
-      this.setState({ currentTrack });
-      this.audio.play();
-      return;
-    } else if (this.state.shuffle) {
-      nextIndex = Math.floor(Math.random() * tracks.length);
-    } else {
-      nextIndex = (currentIndex + 1) % tracks.length; 
+      if (this.state.repeat || (this.state.repeat && this.audio.currentTime >= this.audio.duration)) {
+        this.audio.currentTime = 0; 
+        this.setState({ currentTrack });
+        this.audio.play();
+        return;
+      } else if (this.state.shuffle) {
+        nextIndex = Math.floor(Math.random() * tracks.length);
+      } else {
+        nextIndex = (currentIndex + 1) % tracks.length; 
+      }
+      
+      // The next track becomes the current track
+      // The and the next track of the previous next track becomes the new next track
+      let newTrack = tracks[nextIndex];
+      let nextTrack = tracks[tracks.indexOf(newTrack) + 1 % tracks.length];
+
+      // Setting global state with new current and next tracks
+      this.props.receiveCurrentTrack(newTrack);
+      // this.props.receiveNextTrack(nextTrack);
+      this.props.receiveTitle(newTrack.title);
+      this.props.receiveArtist(newTrack.artist);
+      this.props.receiveAlbumId(newTrack.album_id); 
+      this.setState({ currentIndex: newTrack, nextTrack });
     }
-
-    // The next track becomes the current track
-    // The and the next track of the previous next track becomes the new next track
-    let newTrack = tracks[nextIndex];
-    let nextTrack = tracks[tracks.indexOf(newTrack) + 1 % tracks.length];
-
-    // Setting global state with new current and next tracks
-    this.props.receiveCurrentTrack(newTrack);
-    this.props.receiveNextTrack(nextTrack);
-    this.props.receiveTitle(newTrack.title);
-    this.props.receiveArtist(newTrack.artist);
-    this.props.receiveAlbumId(newTrack.album_id); 
-    this.setState({ currentIndex: newTrack, nextTrack });
   }
 
   // Positions the progress bar and handle circle

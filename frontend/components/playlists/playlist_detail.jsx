@@ -10,7 +10,7 @@ class PlaylistDetail extends React.Component {
   componentDidMount() {
     // Persisting values of playlist and tracks for page refresh
     // Local storage can only store string and values, no objects
-    localStorage.setItem('viewing_playlist', JSON.stringify(this.props.playlist));
+    // localStorage.setItem('viewing_playlist', JSON.stringify(this.props.playlist));
     localStorage.setItem('playlist_tracks', JSON.stringify(this.props.tracks)); 
   }
 
@@ -49,13 +49,12 @@ class PlaylistDetail extends React.Component {
   render() {
     const { playlist, tracks, isPlaying } = this.props;
 
-    // Getting active and currently viewed playlist
-    const viewingPlaylist = JSON.parse(localStorage.getItem('viewing_playlist'));
+    // Getting active playlist
     const activePlaylist = JSON.parse(localStorage.getItem('active_playlist'));
 
     // Determine class name for button based on play or pause
-    const buttonType = isPlaying && viewingPlaylist.id === activePlaylist.id ? 'pause-button' : 'play-button';
-    const buttonIcon = isPlaying && viewingPlaylist.id === activePlaylist.id ? 'pause-icon' : 'play-icon';
+    const buttonType = isPlaying && playlist.id === activePlaylist.id ? 'pause-button' : 'play-button';
+    const buttonIcon = isPlaying && playlist.id === activePlaylist.id ? 'pause-icon' : 'play-icon';
 
     return (
       <div className="playlist-detail-wrapper">  

@@ -17,7 +17,6 @@ class TrackIndexItem extends Component {
     // // Creates a new audio element with track's mp3 url
     const audio = new Audio();
     audio.src = [track.audio_url];
-    // const audio = document.getElementById("audio");
 
     // Gets the duration in seconds once the audio file is done loading 
     audio.onloadedmetadata = () => {
@@ -36,13 +35,12 @@ class TrackIndexItem extends Component {
 
   // Renders TrackIndexItem component
   render() {
-    const { track, currentTrack, isPlaying, handleClick } = this.props;
+    const { track, playlist, currentTrack, isPlaying, handleClick } = this.props;
 
-    // Getting active and currently viewed playlist
-    const viewingPlaylist = JSON.parse(localStorage.getItem('viewing_playlist'));
+    // Getting active playlist
     const activePlaylist = JSON.parse(localStorage.getItem('active_playlist'));
 
-    const isActive = currentTrack && currentTrack.title === track.title &&  viewingPlaylist.id === activePlaylist.id ? 'active' : '';
+    const isActive = currentTrack && currentTrack.title === track.title &&  playlist.id === activePlaylist.id ? 'active' : '';
     let audioState;
 
     if (currentTrack) {

@@ -49,14 +49,13 @@ class ArtistDetailItem extends Component {
     }
 
     // Setting new current and next track
-    let index = (this.props.tracks.indexOf(track) + 1) % this.props.tracks.length;
-    let nextTrack = this.props.tracks[index];
+    // let index = (this.props.tracks.indexOf(track) + 1) % this.props.tracks.length;
+    // let nextTrack = this.props.tracks[index];
 
     this.props.receiveCurrentTrack(track);
-    this.props.receiveNextTrack(nextTrack);
+    // this.props.receiveNextTrack(nextTrack);
     this.props.receiveTitle(track.title);
     this.props.receiveArtist(track.artist);
-    this.props.receivePlaylistId(this.props.playlistId);
     this.props.receiveAlbumId(track.album_id);
   }
 
@@ -66,8 +65,8 @@ class ArtistDetailItem extends Component {
     let { duration } = this.state;
 
     // Determine class name for button based on play or pause
-    const buttonType = isPlaying && track.id === currentTrack.id ? 'pause-button' : 'play-button';
-    const iconType = isPlaying && track.id === currentTrack.id ? 'pause-icon' : 'play-icon';
+    const buttonType = isPlaying && track.id === currentTrack.id && this.props.playState ? 'pause-button' : 'play-button';
+    const iconType = isPlaying && track.id === currentTrack.id && this.props.playState ? 'pause-icon' : 'play-icon';
 
     // Getting track's album 
     const albumId = track.album_id; 
@@ -88,7 +87,7 @@ class ArtistDetailItem extends Component {
             </div>
           </div>
 
-          <p className={currentTrack && track.title === currentTrack.title ? 'active' : ''}>{track.title}</p>  
+          <p className={currentTrack && track.title === currentTrack.title && this.props.playState ? 'active' : ''}>{track.title}</p>  
         </div>
 
         <div className="artist-detail duration-container">

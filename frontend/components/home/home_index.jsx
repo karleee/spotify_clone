@@ -21,7 +21,7 @@ class HomeIndex extends React.Component {
             <h2>Your heavy rotation</h2>
           </div> 
 
-          <div className="playlists">
+          <div className="playlists"> 
             <ul> 
               {playlists.map(playlist => 
                 <PlaylistIndexItem key={playlist.id} playlist={playlist} {...this.props} />)}   

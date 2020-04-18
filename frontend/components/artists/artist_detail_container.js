@@ -15,6 +15,10 @@ const mapStateToProps = (state, ownProps) => {
   const artist = artists[ownProps.match.params.artistId];
   let tracks = selectTracksFromArtist(state, artist);
 
+  // Get artist page's play state
+  let storedPlayState = JSON.parse(localStorage.getItem('artist_playing'));
+  const playState = storedPlayState === null ? false : storedPlayState;
+
   // Before assigning to props check if tracks contains invalid values
   // If so, default to tracks in local storage
   const isInvalid = ele => ele === undefined || ele === null;
@@ -24,8 +28,9 @@ const mapStateToProps = (state, ownProps) => {
     artist,
     albums,
     tracks,
+    currentTrack: state.ui.currentTrack,
     isPlaying: state.ui.isPlaying,
-    currentTrack: state.ui.currentTrack
+    playState
   });
 };
 

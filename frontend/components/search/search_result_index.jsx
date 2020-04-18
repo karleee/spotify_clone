@@ -9,15 +9,7 @@ class SearchResultIndex extends React.Component {
       result: true,
       playlist: false
     }
-    // this.toggleResult = this.toggleResult.bind(this);
   }
-
-  // toggleResult(e) {
-  //   if (this.state.result === false) {
-  //     this.setState({ result: true });
-  //     this.setState({ playlist: false }); 
-  //   }
-  // }
 
   togglePlaylist() {
     if (this.state.playlist === false) {

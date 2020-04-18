@@ -4,7 +4,6 @@ import { RECEIVE_IS_PLAYING, RECEIVE_AUDIO } from '../actions/audio_actions';
 
 const _initialState = {
   currentTrack: null,
-  nextTrack: null,
   isPlaying: false 
 }
 
@@ -14,8 +13,8 @@ const uiReducer = (state = _initialState, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_TRACK:
       return Object.assign({}, state, { currentTrack: action.track }); 
-    case RECEIVE_NEXT_TRACK:
-      return Object.assign({}, state, { currentTrack: state.currentTrack, nextTrack: action.track }); 
+    // case RECEIVE_NEXT_TRACK:
+    //   return Object.assign({}, state, { currentTrack: state.currentTrack, nextTrack: action.track }); 
     case RECEIVE_IS_PLAYING:
       return Object.assign({}, state, { isPlaying: action.isPlaying });
     default:

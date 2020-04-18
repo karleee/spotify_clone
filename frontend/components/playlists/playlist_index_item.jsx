@@ -6,53 +6,70 @@ class PlaylistIndexItem extends React.Component {
     super(props);
   }
 
-  handleClick(e) {
+  handleThumbnailClick(e) {
     if (e.target.className === 'playlist play-icon-wrapper') this.props.history.push(`/home`);
   }
 
   handleAudio(e) {
     const { playlist, tracks } = this.props;
+    const clickedClass = e.target.className;
+    const buttonClass = 'playlist pause-icon-wrapper';
+
+    // Setting the playlist tracks and active playlist in localStorage
+    localStorage.setItem('playlist_tracks', JSON.stringify(tracks));
+    localStorage.setItem('active_playlist', JSON.stringify(playlist));
+
+    // Call play function with event, all tracks, and targeted button class name
+    this.play(tracks, clickedClass, buttonClass);
+  }
+
+  play(tracks, clickedClass, buttonClass) {
+    // Get the current and next track
+    const currentTrack = tracks[0];
+    // const nextTrack = tracks[1];
 
     // Get the current audio tag on the page (the current song playing)
     const audio = document.getElementById("audio");
 
-    // Setting the active playlist in localStorage
-    localStorage.setItem('active_playlist', JSON.stringify(playlist));
-
     // Toggle global isPlaying state based on play or pause button press for icon change
-    const parent = e.target.parentElement;
-    const isPlaying = parent.parentElement.className === 'playlist-item pause-button control-container' ? false : true;
+    const isPlaying = clickedClass === buttonClass ? false : true;
     this.props.receiveIsPlaying(isPlaying);
 
     // Play and pause the audio when buttons are clicked 
+    // Calling play or pause now returns a Promise
     if (isPlaying) {
-      audio.play();
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => 'Success!').catch(() => 'Error');
+      }
     } else {
-      audio.pause();
+      const pausePromise = audio.pause();
+      if (pausePromise !== undefined) {
+        pausePromise.then(() => 'Success!').catch(() => 'Error'); 
+      }
     }
-  
-    // Setting current and next track
-    this.props.receivePlaylistId(playlist.id);
-    let currentTrack = tracks[0];
-    let nextTrack = tracks[1];
-    this.props.receiveCurrentTrack(currentTrack);
-    this.props.receiveNextTrack(nextTrack);
+
+    // Setting new current and next track
+    this.props.receiveCurrentTrack(currentTrack); 
+    // this.props.receiveNextTrack(nextTrack);
     this.props.receiveTitle(currentTrack.title);
     this.props.receiveArtist(currentTrack.artist);
     this.props.receiveAlbumId(currentTrack.album_id);
-    this.props.receivePlaylistId(playlist.id);
   }
 
   render() {
     const { playlist, currentTrack, isPlaying } = this.props;
 
-    // Determine class name for button based on play or pause
-    const buttonType = isPlaying && playlist.track_ids[0] === currentTrack.id ? 'pause-button' : 'play-button';
-    const buttonIcon = isPlaying && playlist.track_ids[0] === currentTrack.id  ? 'pause-icon' : 'play-icon';
+    // Getting active playlist
+    const activePlaylist = JSON.parse(localStorage.getItem('active_playlist'));
+
+    // Determine class name for button based on play or pause 
+    const buttonType = isPlaying && playlist.track_ids[0] === currentTrack.id && playlist.id === activePlaylist.id ? 'pause-button' : 'play-button';
+    const buttonIcon = isPlaying && playlist.track_ids[0] === currentTrack.id && playlist.id === activePlaylist.id ? 'pause-icon' : 'play-icon';
 
     return (
         <li>
-          <div className="playlist-thumbnail-wrapper" onClick={e => this.handleClick(e)}> 
+          <div className="playlist-thumbnail-wrapper" onClick={e => this.handleThumbnailClick(e)}> 
             <div className="thumbnail">
               <Link to={`/playlist/${playlist.id}`}>
                 <img src={playlist.photo_url} alt="Playlist thumbnail" />
