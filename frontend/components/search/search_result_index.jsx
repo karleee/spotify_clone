@@ -9,15 +9,15 @@ class SearchResultIndex extends React.Component {
       result: true,
       playlist: false
     }
-    this.toggleResult = this.toggleResult.bind(this);
+    // this.toggleResult = this.toggleResult.bind(this);
   }
 
-  toggleResult(e) {
-    if (this.state.result === false) {
-      this.setState({ result: true });
-      this.setState({ playlist: false }); 
-    }
-  }
+  // toggleResult(e) {
+  //   if (this.state.result === false) {
+  //     this.setState({ result: true });
+  //     this.setState({ playlist: false }); 
+  //   }
+  // }
 
   togglePlaylist() {
     if (this.state.playlist === false) {
@@ -63,16 +63,16 @@ class SearchResultIndex extends React.Component {
     if (!result) return null;
 
     return (
-      <div className="results-wrapper">
-        <div className="header">
+      <div className="search-result result-container">
+        <div className="search-result header-container">
           <ul>
-            <li onClick={this.toggleResult.bind(this)}>Top result</li>
-            <li onClick={this.togglePlaylist.bind(this)}>Songs</li>
+            <li>Top result</li>
+            <li>Songs</li>
           </ul>
         </div>
 
-        {this.state.result ? <div className="results-wrapper">
-          <div className="result">
+        {this.state.result ? <div className="search-result returned-results-wrapper">
+          <div className="search-result primary-result-wrapper">
             <img className={ result.album_id ? "result-track" : "result-other" } src={photoUrl} alt="Thumbnail photo" />
             <Link to={link}>{result.title ? result.title : creator}</Link>
             {result.name ? <div className="label"><p>Artist</p></div> : "" }
@@ -80,7 +80,7 @@ class SearchResultIndex extends React.Component {
             {result.album_id ? <div className="label"><p>Song</p></div> : ""}
           </div>
 
-          <div className="tracks-wrapper">
+          <div className="search-result returned-tracks-wrapper">
             <ul>
               {this.props.tracks.map(track => 
                 <li key={track.id}>

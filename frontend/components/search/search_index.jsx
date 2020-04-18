@@ -87,8 +87,8 @@ class SearchIndex extends React.Component {
     return ( 
       <div className="search-index search-bar-container">
         <div className="search-index bar-wrapper">
-          <i className="search-index search-icon-wrapper"></i>
           <input type="text" onChange={this.handleInput} placeholder="Search for Artists, Songs, or Playlists" />
+          <i className="search-index search-icon-wrapper"></i>
         </div>
 
         { notFound ? <p>{notFound}</p> : <SearchResultIndex query={this.state.query} found={found} /> }

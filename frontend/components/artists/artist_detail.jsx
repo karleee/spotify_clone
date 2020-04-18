@@ -14,6 +14,35 @@ class ArtistDetail extends Component {
     localStorage.setItem('playlist_tracks', JSON.stringify(this.props.tracks));
   }
 
+  handleClick(e) {
+    const { tracks } = this.props;
+
+    // Get the current and next track
+    const currentTrack = tracks[0];
+    const nextTrack = tracks[1];
+
+    // Get the current audio tag on the page (the current song playing)
+    const audio = document.getElementById("audio");
+
+    // Toggle global isPlaying state based on play or pause button press for icon change
+    const isPlaying = e.target.className === 'artist-detail pause-button-wrapper' ? false : true;
+    this.props.receiveIsPlaying(isPlaying);
+
+    // Play and pause the audio when buttons are clicked 
+    if (isPlaying) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+
+    // Setting new current and next track
+    this.props.receiveCurrentTrack(currentTrack);
+    this.props.receiveNextTrack(nextTrack);
+    this.props.receiveTitle(currentTrack.title);
+    this.props.receiveArtist(currentTrack.artist);
+    this.props.receiveAlbumId(currentTrack.album_id);
+  }
+
   // Renders ArtistDetail component
   render() {
     const { 
@@ -31,6 +60,9 @@ class ArtistDetail extends Component {
       currentTrack
     } = this.props;
 
+    // Determine class name for button based on play or pause
+    const buttonType = isPlaying && currentTrack.id === currentTrack.id ? 'pause-button' : 'play-button';
+
     return (
       <div className="artist-detail body-container">
         <div className="artist-detail banner-container">
@@ -39,7 +71,10 @@ class ArtistDetail extends Component {
           <div className="artist-detail header-container">
             <p>Artist</p>
             <h1>{artist.name}</h1>
-            <button>Play</button>
+
+            <button className={`artist-detail ${buttonType}-wrapper`} onClick={e => this.handleClick(e)}>
+              {buttonType === 'play-button' ? 'Play' : 'Pause'}
+            </button>
           </div>
         </div>  
 

@@ -5,7 +5,7 @@ import { receiveTitle, receiveArtist, receivePlaylistId, receiveAlbumId, receive
 
 import ArtistDetail from './artist_detail';
 
-import { selectTracksFromArtist, selectPlaylistsFromUser } from '../../reducers/selectors';
+import { selectTracksFromArtist } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
   // Get all artists and albums from local storage
