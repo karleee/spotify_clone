@@ -32,27 +32,20 @@ class SearchIndex extends React.Component {
   matches(input) {
     const matches = [];
 
-    if (this.state.query.length === 0) { 
-      return matches;
-    }
+    if (this.state.query.length === 0) return matches;
 
     this.props.values.forEach(value => {
       let sub;
       let attr = [];
 
+      if (value.artist) attr.push(value.artist);
       if (value.title) attr.push(value.title);
       if (value.name) attr.push(value.name);
-      if (value.artist) attr.push(value.artist);
 
 
       attr.forEach(attr => {
-        if (attr && input.length >= 2) {
-          sub = attr.slice(0, input.length);
-        }
-
-        if (input.length >= 2 && sub.toLowerCase() === input.toLowerCase()) {
-          matches.push(value);
-        }
+        if (attr && input.length >= 2) sub = attr.slice(0, input.length);
+        if (input.length >= 2 && sub.toLowerCase() === input.toLowerCase()) matches.push(value);
       });
     });
 

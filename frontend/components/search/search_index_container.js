@@ -10,7 +10,7 @@ const mapStateToProps = state => {
   const playlists = Object.values(JSON.parse(localStorage.getItem('playlists')));
 
   return ({
-    values: [...albums, ...artists, ...tracks, ...playlists]
+    values: [...artists, ...tracks, ...playlists, ...albums]
   });
 };
 
