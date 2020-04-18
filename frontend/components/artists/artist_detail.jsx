@@ -6,7 +6,7 @@ class ArtistDetail extends Component {
   // Constructor for ArtistDetail component 
   constructor(props) {
     super(props);
-    this.state = { isPlaying: false }
+    this.state = { playState: false }
   }
 
   componentDidMount() {
@@ -18,8 +18,8 @@ class ArtistDetail extends Component {
   handleClick(e) {
     const { tracks } = this.props;
 
-    // Toggle local isPlaying state
-    this.setState({ isPlaying: !this.state.isPlaying });
+    // Toggle local playState
+    this.setState({ playState: !this.state.playState });
 
     // Get the current and next track
     const currentTrack = tracks[0];
@@ -65,7 +65,7 @@ class ArtistDetail extends Component {
     } = this.props;
 
     // Determine class name for button based on play or pause
-    const buttonType = this.state.isPlaying ? 'pause-button' : 'play-button';
+    const buttonType = this.state.playState && isPlaying ? 'pause-button' : 'play-button';
 
     return (
       <div className="artist-detail body-container">
@@ -101,7 +101,7 @@ class ArtistDetail extends Component {
                 receivePlaylistId={receivePlaylistId}
                 receiveIsPlaying={receiveIsPlaying}
                 isPlaying={isPlaying}
-                currentTrack={currentTrack}
+                currentTrack={currentTrack} 
               />
             )}
           </ul>

@@ -19,6 +19,9 @@ class PlaylistDetail extends React.Component {
     const currentTrack = tracks[0];
     const nextTrack = tracks[1];
 
+    // Setting the active playlist in localStorage
+    localStorage.setItem('active_playlist', JSON.stringify(playlist));
+
     // Get the current audio tag on the page (the current song playing)
     const audio = document.getElementById("audio");
 
@@ -46,10 +49,13 @@ class PlaylistDetail extends React.Component {
   render() {
     const { playlist, tracks, isPlaying } = this.props;
 
-    // Determine class name for button based on play or pause
-    const buttonType = isPlaying? 'pause-button' : 'play-button';
-    const buttonIcon = isPlaying ? 'pause-icon' : 'play-icon';
+    // Getting active and currently viewed playlist
+    const viewingPlaylist = JSON.parse(localStorage.getItem('viewing_playlist'));
+    const activePlaylist = JSON.parse(localStorage.getItem('active_playlist'));
 
+    // Determine class name for button based on play or pause
+    const buttonType = isPlaying && viewingPlaylist.id === activePlaylist.id ? 'pause-button' : 'play-button';
+    const buttonIcon = isPlaying && viewingPlaylist.id === activePlaylist.id ? 'pause-icon' : 'play-icon';
 
     return (
       <div className="playlist-detail-wrapper">  

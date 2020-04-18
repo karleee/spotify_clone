@@ -8,8 +8,13 @@ class TrackDetail extends React.Component {
   }
 
   handleClick(e, track) {
+    const { playlist } = this.props;
+
     // Get the current audio tag on the page (the current song playing)
     const audio = document.getElementById("audio");
+
+    // Setting the active playlist in localStorage
+    localStorage.setItem('active_playlist', JSON.stringify(playlist));
 
     // Toggle global isPlaying state based on play or pause button press for icon change
     const parent = e.target.parentElement.parentElement.parentElement;

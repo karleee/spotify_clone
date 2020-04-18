@@ -38,7 +38,11 @@ class TrackIndexItem extends Component {
   render() {
     const { track, currentTrack, isPlaying, handleClick } = this.props;
 
-    const isActive = currentTrack && currentTrack.title === track.title ? 'active' : '';
+    // Getting active and currently viewed playlist
+    const viewingPlaylist = JSON.parse(localStorage.getItem('viewing_playlist'));
+    const activePlaylist = JSON.parse(localStorage.getItem('active_playlist'));
+
+    const isActive = currentTrack && currentTrack.title === track.title &&  viewingPlaylist.id === activePlaylist.id ? 'active' : '';
     let audioState;
 
     if (currentTrack) {
