@@ -14,7 +14,7 @@ class SearchIndex extends React.Component {
     this.handleInput = this.handleInput.bind(this);
     this.matches = this.matches.bind(this);
     this.handleTitle = this.handleTitle.bind(this);
-    this.handleArtist = this.handleArtist.bind(this);
+    this.handleArtist = this.handleArtist.bind(this); 
   }
 
  
@@ -30,8 +30,10 @@ class SearchIndex extends React.Component {
 
   // Finds matching artist, playlist, album, and tracks with user input
   matches(input) {
+    // Initialize empty array to hold found query matches
     const matches = [];
 
+    // If the length of the query is zero, return an empty array
     if (this.state.query.length === 0) return matches;
 
     this.props.values.forEach(value => {
