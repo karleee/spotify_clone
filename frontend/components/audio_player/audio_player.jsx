@@ -118,14 +118,13 @@ class AudioPlayer extends React.Component {
     const button = e.target.className === 'ap-play-icon' ? 'play' : 'pause';
     let isPlaying;
 
+    // Setting global state of isPlaying to false or true based on pause or play
     if (button === 'play') {
       this.audio.play();
-      // Setting global state of isPlaying true for pause change
       isPlaying = true;
       this.props.receiveIsPlaying(isPlaying);
     } else {
       this.audio.pause();
-      // Setting global state of isPlaying to false for play button
       isPlaying = false;
       this.props.receiveIsPlaying(isPlaying);
     }
@@ -133,9 +132,12 @@ class AudioPlayer extends React.Component {
 
   // Gets the next song in the playlist
   next() {
-    const { currentTrack, tracks } = this.props;
+    const { currentTrack, tracks, receiveIsPlaying } = this.props;
     let currentIndex;
     let nextIndex;
+
+    // Set isPlaying to true
+    receiveIsPlaying(true);
 
     // Get the index for the current track
     tracks.forEach((track, indx) => { if (track.title === currentTrack.title) currentIndex = indx });

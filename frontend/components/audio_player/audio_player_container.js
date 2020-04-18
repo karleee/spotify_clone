@@ -27,7 +27,6 @@ const mapDispatchToProps = dispatch => ({
   receivePlaylistId: playlistId => dispatch(receivePlaylistId(playlistId)), 
   receiveAlbumId: albumId => dispatch(receiveAlbumId(albumId)),
   receiveIsPlaying: isPlaying => dispatch(receiveIsPlaying(isPlaying)),
-  // receiveAudio: audio => dispatch(receiveAudio(audio))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AudioPlayer);

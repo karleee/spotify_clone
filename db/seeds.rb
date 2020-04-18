@@ -186,15 +186,6 @@ banner = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/basement_jaxx_ba
 basement_jaxx.photo.attach(io: file, filename: 'basement_jaxx.png')
 basement_jaxx.banner.attach(io: banner, filename: 'basement_jaxx_banner.png')
 
-# Playlists (Albums)
-# daft_punk_all = Playlist.create({
-#   title: 'Daft Punk All',
-#   user_id: daft_punk.id,
-#   playlist_type: 'album' 
-# })
-# file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/daft_punk_radio.png')
-# daft_punk_radio.photo.attach(io: file, filename: 'daft_punk_radio.png')
-
 # Albums
 ratatat_creamOnChrome = Album.create({
   title: 'Cream on Chrome',
@@ -871,8 +862,3 @@ lord_huron_radio_track10 = PlaylistTrack.create({
   playlist_id: lord_huron_radio.id,
   track_id: basement_jaxx_track_neverSayNever.id
 })
-
-# daft_punk_all_track1 = PlaylistTrack.create({
-#   playlist_id: daft_punk_all.id,
-#   track_id: daft_punk_track_instantCrush.id
-# })

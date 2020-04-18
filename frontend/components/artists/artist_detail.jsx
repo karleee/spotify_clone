@@ -26,7 +26,9 @@ class ArtistDetail extends Component {
       receiveArtist,
       receiveAlbumId,
       receivePlaylistId,
-      receiveIsPlaying
+      receiveIsPlaying,
+      isPlaying,
+      currentTrack
     } = this.props;
 
     return (
@@ -59,6 +61,8 @@ class ArtistDetail extends Component {
                 receiveAlbumId={receiveAlbumId}
                 receivePlaylistId={receivePlaylistId}
                 receiveIsPlaying={receiveIsPlaying}
+                isPlaying={isPlaying}
+                currentTrack={currentTrack}
               />
             )}
           </ul>

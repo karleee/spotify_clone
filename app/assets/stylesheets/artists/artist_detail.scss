@@ -129,7 +129,8 @@
           height: 2.5em;
           margin-left: 3%;
 
-          .artist-detail.play-button-wrapper {
+          .play-button-wrapper, 
+          .pause-button-wrapper {
             position: absolute;
             display: flex;
             flex-direction: row;
@@ -138,11 +139,23 @@
             width: 1.5em;
             height: 1.5em;
             border-radius: 50%;
-            border: 1px solid $gray;
             opacity: 0;
 
-            .artist-detail.play-icon-wrapper {
+            .play-icon-wrapper {
               content: image_url('playlists/gray-play-icon.png');
+              width: 0.7em;
+            }
+          }
+
+          .play-button-wrapper {
+            border: 1px solid $gray;
+          }
+
+          .pause-button-wrapper {
+            border: 1px solid white;
+
+            .pause-icon-wrapper {
+              content: image_url('playlists/white-pause-icon.png');
               width: 0.7em;
             }
           }
@@ -167,20 +180,16 @@
             opacity: 0;
           }
 
-          .artist-detail.play-button-wrapper {  
+          .play-button-wrapper,
+          .pause-button-wrapper {  
             opacity: 1;
           }
 
-          .artist-detail.play-button-wrapper:hover {
+          .play-button-wrapper:hover {
             border-radius: 50%;
             border: 1px solid white;
             transform: scale(1.05);
             transition: transform 0.5s;
-
-            .artist-detail.play-icon-wrapper {
-              content: image_url('playlists/white-play-icon.png');
-              width: 0.7em;
-            }
           }
         }
       }

@@ -15,11 +15,6 @@ const mapStateToProps = (state, ownProps) => {
   const artist = artists[ownProps.match.params.artistId];
   let tracks = selectTracksFromArtist(state, artist);
 
-  // Testing...
-  // const playlist = selectPlaylistsFromUser(state, artist);
-  // console.log(state);
-  // console.log(JSON.stringify(playlist));
-
   // Before assigning to props check if tracks contains invalid values
   // If so, default to tracks in local storage
   const isInvalid = ele => ele === undefined || ele === null;
@@ -28,7 +23,9 @@ const mapStateToProps = (state, ownProps) => {
   return ({
     artist,
     albums,
-    tracks
+    tracks,
+    isPlaying: state.ui.isPlaying,
+    currentTrack: state.ui.currentTrack
   });
 };
 
