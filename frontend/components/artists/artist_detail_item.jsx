@@ -90,7 +90,7 @@ class ArtistDetailItem extends Component {
             </div>
           </div>
 
-          <p>{track.title}</p>  
+          <p className={currentTrack && track.title === currentTrack.title ? 'active' : ''}>{track.title}</p>  
         </div>
 
         <div className="artist-detail duration-container">
