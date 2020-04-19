@@ -11,7 +11,7 @@ export const selectPlaylistFromArtist = (playlists, artist) => (
   Object.values(playlists).filter(playlist => playlist.user_id === artist.id)
 ); 
 
-// Testing...
+// Gets the tracks from an artist's playlist
 export const selectTracksFromArtistPlaylist = (tracks, playlist) => (
   playlist.track_ids ? playlist.track_ids.map(id => tracks[id - 1]) : []
 ); 

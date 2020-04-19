@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
 
-import { receiveCurrentTrack, receiveNextTrack } from '../../actions/track_actions';
-import { receiveTitle, receiveArtist, receivePlaylistId, receiveAlbumId, receiveIsPlaying } from '../../actions/audio_actions';
+import { receiveCurrentTrack } from '../../actions/track_actions';
+import { receiveTitle, receiveArtist, receiveAlbumId, receiveIsPlaying } from '../../actions/audio_actions';
 
 import ArtistDetail from './artist_detail';
 
-import { selectTracksFromArtist, selectPlaylistFromArtist, selectTracksFromPlaylist, selectTracksFromArtistPlaylist } from '../../reducers/selectors';
+import { selectPlaylistFromArtist, selectTracksFromArtistPlaylist } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
   // Get all playlists, tracks, artists, and albums from local storage
@@ -41,11 +41,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({ 
   receiveCurrentTrack: track => dispatch(receiveCurrentTrack(track)),
-  receiveNextTrack: track => dispatch(receiveNextTrack(track)),
+  // receiveNextTrack: track => dispatch(receiveNextTrack(track)),
   receiveTitle: title => dispatch(receiveTitle(title)),
   receiveArtist: artist => dispatch(receiveArtist(artist)),
   receiveAlbumId: albumId => dispatch(receiveAlbumId(albumId)),
-  receivePlaylistId: playlistId => dispatch(receivePlaylistId(playlistId)),
+  // receivePlaylistId: playlistId => dispatch(receivePlaylistId(playlistId)),
   receiveIsPlaying: isPlaying => dispatch(receiveIsPlaying(isPlaying))
 });
 
