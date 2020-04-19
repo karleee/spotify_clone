@@ -6,7 +6,6 @@ class UserIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = { tracks: [] };
-    // this.handleTrack = this.handleTrack.bind(this); 
   } 
   
   componentDidMount() {
@@ -25,6 +24,9 @@ class UserIndexItem extends React.Component {
 
   handleClick(e) {
     if (e.target.className !== 'user-index play-icon-wrapper' && e.target.className !== 'user-index pause-icon-wrapper') {
+      // Set active playlist in localStorage
+      localStorage.setItem('active_playlist', JSON.stringify(this.props.playlist));
+
       this.props.history.push(`/playlist/${this.props.playlist.id}`);    
     }
   }
@@ -41,30 +43,37 @@ class UserIndexItem extends React.Component {
     this.props.receiveIsPlaying(isPlaying);
 
     // Play and pause the audio when buttons are clicked 
+    // Calling play or pause now returns a Promise
     if (isPlaying) {
-      audio.play();
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => 'Success!').catch(() => 'Error');
+      }
     } else {
-      audio.pause();
+      const pausePromise = audio.pause();
+      if (pausePromise !== undefined) {
+        pausePromise.then(() => 'Success!').catch(() => 'Error');
+      }
     }
 
     this.props.receivePlaylistId(playlist.id);
 
     let currentTrack = tracks[0];
-    let nextTrack = tracks[1];
     this.props.receiveCurrentTrack(currentTrack);
-    this.props.receiveNextTrack(nextTrack);
     this.props.receiveTitle(currentTrack.title);
     this.props.receiveArtist(currentTrack.artist);
     this.props.receiveAlbumId(currentTrack.album_id);
-    this.props.receivePlaylistId(playlist.id);
   }
 
   render() {
     const { playlist, currentTrack, isPlaying } = this.props;
 
+    // Get active playlist from localStorage
+    const activePlaylist = JSON.parse(localStorage.getItem('active_playlist'));
+
     // Determine class name for button based on play or pause
-    const buttonType = isPlaying && playlist.track_ids[0] === currentTrack.id ? 'pause-button' : 'play-button';
-    const buttonIcon = isPlaying && playlist.track_ids[0] === currentTrack.id ? 'pause-icon' : 'play-icon';
+    const buttonType = isPlaying && playlist.track_ids[0] === currentTrack.id && playlist.id === activePlaylist.id ? 'pause-button' : 'play-button';
+    const buttonIcon = isPlaying && playlist.track_ids[0] === currentTrack.id && playlist.id === activePlaylist.id ? 'pause-icon' : 'play-icon';
 
     return (
         <li>

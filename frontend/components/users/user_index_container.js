@@ -7,12 +7,14 @@ import { receiveTitle, receiveArtist, receivePlaylistId, receiveAlbumId, receive
 
 const mapStateToProps = (state, ownProps) => {
   const users = JSON.parse(localStorage.getItem('users'));
-  const playlists = JSON.parse(localStorage.getItem('playlists'));
+  const playlists = Object.values(JSON.parse(localStorage.getItem('playlists'))).filter(playlist => playlist.playlist_type !== 'artist');
   const user = users[ownProps.match.params.userId];
+  const userPlaylists = selectPlaylistsFromUser(playlists, user);
+  console.log(playlists); 
 
   return ({ 
     user,
-    playlists: selectPlaylistsFromUser(playlists, user)   
+    playlists: selectPlaylistsFromUser(playlists, user)    
   });
 }
 

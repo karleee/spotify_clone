@@ -40,7 +40,10 @@ export const login = user => dispatch => (
 );
 
 export const logout = () => dispatch => (
-  SessionAPIUtil.logout().then(user => (
-    dispatch(logoutCurrentUser())
-  ))
+  SessionAPIUtil.logout().then(() => {
+    // Explicity resetting play state to false if the user logs out
+    // Otherwise don't touch it/keep the play state across the site
+    localStorage.setItem('artist_playing', false);
+    return dispatch(logoutCurrentUser()); 
+  })
 );

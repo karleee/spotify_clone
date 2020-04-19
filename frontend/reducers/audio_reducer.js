@@ -8,11 +8,6 @@ import {
   RECEIVE_CURRENT_TIME,
   RECEIVE_ALBUM_ID
 } from "../actions/audio_actions";
-// import { LOGOUT_CURRENT_USER } from "../actions/session_actions";
-
-// const _initialState = {
-//   volume: 1
-// }
 
 const audioReducer = (state = { volume: 1 }, action) => {
   Object.freeze(state);

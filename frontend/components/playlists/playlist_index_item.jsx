@@ -63,6 +63,10 @@ class PlaylistIndexItem extends React.Component {
     // Getting active playlist
     const activePlaylist = JSON.parse(localStorage.getItem('active_playlist'));
 
+    // Getting users
+    const users = JSON.parse(localStorage.getItem('users'));
+    const user = users[playlist.user_id];
+
     // Determine class name for button based on play or pause 
     const buttonType = isPlaying && playlist.track_ids[0] === currentTrack.id && playlist.id === activePlaylist.id ? 'pause-button' : 'play-button';
     const buttonIcon = isPlaying && playlist.track_ids[0] === currentTrack.id && playlist.id === activePlaylist.id ? 'pause-icon' : 'play-icon';
@@ -74,7 +78,7 @@ class PlaylistIndexItem extends React.Component {
               <Link to={`/playlist/${playlist.id}`}>
                 <img src={playlist.photo_url} alt="Playlist thumbnail" />
                 <p>{playlist.title}</p>
-                <p>By {playlist.user}</p> 
+                <p>By {user.username}</p> 
               </Link>
             </div>
 

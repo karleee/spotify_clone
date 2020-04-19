@@ -17,7 +17,7 @@ const mapStateToProps = state => {
   localStorage.setItem('users', JSON.stringify(state.entities.users));
 
   return ({
-    playlists: selectPlaylistsFromType(state, 'heavyRotation')  
+    playlists: selectPlaylistsFromType(state, 'heavyRotation')
   })
 };
 

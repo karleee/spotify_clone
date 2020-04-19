@@ -44,9 +44,9 @@ class TrackIndexItem extends Component {
     let audioState;
 
     if (currentTrack) {
-      if (currentTrack.title === track.title && isPlaying) {
+      if (currentTrack.title === track.title && isPlaying && playlist.id === activePlaylist.id) {
         audioState = 'active';
-      }  else if (currentTrack.title === track.title && !isPlaying) {
+      }  else if (currentTrack.title === track.title && !isPlaying && playlist.id === activePlaylist.id) {
         audioState = 'paused';
       } else {
         audioState = '';
@@ -57,7 +57,7 @@ class TrackIndexItem extends Component {
       <li>
         <div className={`track-index-item ${audioState} main-container`}>
           <div className='track-index-item text-container'>
-            <div className="track-index-item note-icon-wrapper">
+            <div className="track-index-item note-icon-wrapper"> 
               <i className="track-index-item note-icon" onClick={e => handleClick(e, track)}></i> 
             </div>
 

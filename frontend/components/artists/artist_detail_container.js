@@ -41,11 +41,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({ 
   receiveCurrentTrack: track => dispatch(receiveCurrentTrack(track)),
-  // receiveNextTrack: track => dispatch(receiveNextTrack(track)),
   receiveTitle: title => dispatch(receiveTitle(title)),
   receiveArtist: artist => dispatch(receiveArtist(artist)),
   receiveAlbumId: albumId => dispatch(receiveAlbumId(albumId)),
-  // receivePlaylistId: playlistId => dispatch(receivePlaylistId(playlistId)),
   receiveIsPlaying: isPlaying => dispatch(receiveIsPlaying(isPlaying))
 });
 

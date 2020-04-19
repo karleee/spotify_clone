@@ -199,7 +199,7 @@ ratatat_all.photo.attach(io: file, filename: 'ratatat.png')
 daft_punk_all = Playlist.create({ 
   title: 'Daft Punk All', 
   user_id: daft_punk.id, 
-  playlist_type: 'artist'
+  playlist_type: 'artist' 
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/daft_punk.png')
 daft_punk_all.photo.attach(io: file, filename: 'daft_punk.png')

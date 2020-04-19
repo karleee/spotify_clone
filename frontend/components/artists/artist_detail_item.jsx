@@ -33,20 +33,36 @@ class ArtistDetailItem extends Component {
   }
 
   handleClick(e, track) {
+    const { playlist } = this.props;
+
     // Get the current audio tag on the page (the current song playing)
     const audio = document.getElementById("audio");
+    let playState;
 
     // Toggle global isPlaying state based on play or pause button press for icon change
-    const parent = e.target.parentElement.parentElement.parentElement;
-    const isPlaying = parent.className === 'track-index-item active main-container' ? false : true;
+    // const parent = e.target.parentElement.parentElement.parentElement;
+    const isPlaying = e.target.className === 'artist-detail pause-button-wrapper' ? false : true;
     this.props.receiveIsPlaying(isPlaying);
 
     // Play and pause the audio when buttons are clicked 
+    // Calling play or pause now returns a Promise
     if (isPlaying) {
-      audio.play(); 
+      playState = true;
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => 'Success!').catch(() => 'Error');
+      }
     } else {
-      audio.pause();
+      playState = false;
+      const pausePromise = audio.pause();
+      if (pausePromise !== undefined) {
+        pausePromise.then(() => 'Success!').catch(() => 'Error');
+      }
     }
+
+    // Setting other localStorage variables 
+    localStorage.setItem('artist_playing', JSON.stringify(playState));
+    localStorage.setItem('active_playlist', JSON.stringify(playlist));
 
     this.props.receiveCurrentTrack(track);
     this.props.receiveTitle(track.title);
