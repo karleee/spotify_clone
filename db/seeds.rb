@@ -9,6 +9,7 @@ require 'open-uri'
 
 User.destroy_all
 Playlist.destroy_all
+ArtistPlaylist.destroy_all
 PlaylistTrack.destroy_all
 
 # Users
@@ -188,178 +189,156 @@ basement_jaxx.banner.attach(io: banner, filename: 'basement_jaxx_banner.png')
 
 
 # Playlists (Artists)
-ratatat_all = Playlist.create({ 
+ratatat_all = ArtistPlaylist.create({ 
   title: 'Ratatat All', 
-  user_id: ratatat.id, 
-  playlist_type: 'artist'
+  artist_id: ratatat.id 
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/ratatat.png')
 ratatat_all.photo.attach(io: file, filename: 'ratatat.png')
 
-daft_punk_all = Playlist.create({ 
+daft_punk_all = ArtistPlaylist.create({ 
   title: 'Daft Punk All', 
-  user_id: daft_punk.id, 
-  playlist_type: 'artist' 
+  artist_id: daft_punk.id 
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/daft_punk.png')
 daft_punk_all.photo.attach(io: file, filename: 'daft_punk.png')
 
-the_whitest_boy_alive_all = Playlist.create({ 
+the_whitest_boy_alive_all = ArtistPlaylist.create({ 
   title: 'The Whitest Boy Alive All', 
-  user_id: the_whitest_boy_alive.id, 
-  playlist_type: 'artist'
+  artist_id: the_whitest_boy_alive.id,
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/the_whitest_boy_alive.png')
 the_whitest_boy_alive_all.photo.attach(io: file, filename: 'the_whitest_boy_alive.png')
 
-gorillaz_all = Playlist.create({ 
+gorillaz_all = ArtistPlaylist.create({ 
   title: 'Gorillaz All', 
-  user_id: gorillaz.id, 
-  playlist_type: 'artist'
+  artist_id: gorillaz.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/gorillaz.png')
 gorillaz_all.photo.attach(io: file, filename: 'gorillaz.png')
 
-lord_huron_all = Playlist.create({ 
+lord_huron_all = ArtistPlaylist.create({ 
   title: 'Lord Huron All', 
-  user_id: lord_huron.id, 
-  playlist_type: 'artist'
+  artist_id: lord_huron.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/lord_huron.png')
 lord_huron_all.photo.attach(io: file, filename: 'lord_huron.png')
 
-miike_snow_all = Playlist.create({ 
+miike_snow_all = ArtistPlaylist.create({ 
   title: 'Miike Snow All', 
-  user_id: miike_snow.id, 
-  playlist_type: 'artist'
+  artist_id: miike_snow.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/miike_snow.png')
 miike_snow_all.photo.attach(io: file, filename: 'miike_snow.png')
 
-starfkr_all = Playlist.create({ 
+starfkr_all = ArtistPlaylist.create({ 
   title: 'Starfkr All', 
-  user_id: starfkr.id, 
-  playlist_type: 'artist'
+  artist_id: starfkr.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/starfkr.png')
 starfkr_all.photo.attach(io: file, filename: 'starfkr.png')
 
-phantogram_all = Playlist.create({ 
+phantogram_all = ArtistPlaylist.create({ 
   title: 'Phantogram All', 
-  user_id: phantogram.id, 
-  playlist_type: 'artist'
+  artist_id: phantogram.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/phantogram.png')
 phantogram_all.photo.attach(io: file, filename: 'phantogram.png')
 
-broken_bells_all = Playlist.create({  
+broken_bells_all = ArtistPlaylist.create({  
   title: 'Broken Bells All', 
-  user_id: broken_bells.id, 
-  playlist_type: 'artist'
+  artist_id: broken_bells.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/broken_bells.png')
 broken_bells_all.photo.attach(io: file, filename: 'broken_bells.png')
 
-two_door_cinema_club_all = Playlist.create({  
+two_door_cinema_club_all = ArtistPlaylist.create({  
   title: 'Two Door Cinema Club All', 
-  user_id: two_door_cinema_club.id, 
-  playlist_type: 'artist'
+  artist_id: two_door_cinema_club.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/two_door_cinema_club.png')
 two_door_cinema_club_all.photo.attach(io: file, filename: 'two_door_cinema_club.png')
 
-spoon_all = Playlist.create({ 
+spoon_all = ArtistPlaylist.create({ 
   title: 'Spoon All', 
-  user_id: spoon.id, 
-  playlist_type: 'artist'
+  artist_id: spoon.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/spoon.png')
 spoon_all.photo.attach(io: file, filename: 'spoon.png')
 
-kavinsky_all = Playlist.create({ 
+kavinsky_all = ArtistPlaylist.create({ 
   title: 'Kavinsky All', 
-  user_id: kavinsky.id, 
-  playlist_type: 'artist'
+  artist_id: kavinsky.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/kavinsky.png')
 kavinsky_all.photo.attach(io: file, filename: 'kavinsky.png')
 
-the_strokes_all = Playlist.create({ 
+the_strokes_all = ArtistPlaylist.create({ 
   title: 'The Strokes All', 
-  user_id: the_strokes.id, 
-  playlist_type: 'artist'
+  artist_id: the_strokes.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/the_strokes.png')
 the_strokes_all.photo.attach(io: file, filename: 'the_strokes.png')
 
-architecture_in_helsinki_all = Playlist.create({ 
+architecture_in_helsinki_all = ArtistPlaylist.create({ 
   title: 'Architecture in Helsinki All', 
-  user_id: architecture_in_helsinki.id, 
-  playlist_type: 'artist'
+  artist_id: architecture_in_helsinki.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/architecture_in_helsinki.png')
 architecture_in_helsinki_all.photo.attach(io: file, filename: 'architecture_in_helsinki.png')
 
-disclosure_all = Playlist.create({ 
+disclosure_all = ArtistPlaylist.create({ 
   title: 'Disclosure All', 
-  user_id: disclosure.id, 
-  playlist_type: 'artist'
+  artist_id: disclosure.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/disclosure.png')
 disclosure_all.photo.attach(io: file, filename: 'disclosure.png')
 
-lake_street_dive_all = Playlist.create({ 
+lake_street_dive_all = ArtistPlaylist.create({ 
   title: 'Lake Street Dive All', 
-  user_id: lake_street_dive.id, 
-  playlist_type: 'artist'
+  artist_id: lake_street_dive.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/lake_street_dive.png')
 lake_street_dive_all.photo.attach(io: file, filename: 'lake_street_dive.png')
 
-vacationer_all = Playlist.create({ 
+vacationer_all = ArtistPlaylist.create({ 
   title: 'Vacationer All', 
-  user_id: vacationer.id, 
-  playlist_type: 'artist'
+  artist_id: vacationer.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/vacationer.png')
 vacationer_all.photo.attach(io: file, filename: 'vacationer.png')
 
-magic_city_hippies_all = Playlist.create({ 
+magic_city_hippies_all = ArtistPlaylist.create({ 
   title: 'Magic City Hippies All', 
-  user_id: magic_city_hippies.id, 
-  playlist_type: 'artist'
+  artist_id: magic_city_hippies.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/magic_city_hippies.png')
 magic_city_hippies_all.photo.attach(io: file, filename: 'magic_city_hippies.png')
 
-alabama_shakes_all = Playlist.create({ 
+alabama_shakes_all = ArtistPlaylist.create({ 
   title: 'Alabama Shakes All', 
-  user_id: alabama_shakes.id, 
-  playlist_type: 'artist'
+  artist_id: alabama_shakes.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/alabama_shakes.png')
 alabama_shakes_all.photo.attach(io: file, filename: 'alabama_shakes.png')
 
-greta_van_fleet_all = Playlist.create({ 
+greta_van_fleet_all = ArtistPlaylist.create({ 
   title: 'Greta Van Fleet All', 
-  user_id: greta_van_fleet.id, 
-  playlist_type: 'artist'
+  artist_id: greta_van_fleet.id 
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/greta_van_fleet.png')
 greta_van_fleet_all.photo.attach(io: file, filename: 'greta_van_fleet.png')
 
-bahamas_all = Playlist.create({ 
+bahamas_all = ArtistPlaylist.create({ 
   title: 'Bahamas All', 
-  user_id: bahamas.id, 
-  playlist_type: 'artist'
+  artist_id: bahamas.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/bahamas.png')
 bahamas_all.photo.attach(io: file, filename: 'bahamas.png')
 
-basement_jaxx_all = Playlist.create({ 
+basement_jaxx_all = ArtistPlaylist.create({ 
   title: 'Basement Jaxx All', 
-  user_id: basement_jaxx.id, 
-  playlist_type: 'artist'
+  artist_id: basement_jaxx.id
 })
 file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/basement_jaxx.png')
 basement_jaxx_all.photo.attach(io: file, filename: 'basement_jaxx.png')
@@ -1003,7 +982,7 @@ lord_huron_radio_track2 = PlaylistTrack.create({
 
 lord_huron_radio_track3 = PlaylistTrack.create({
   playlist_id: lord_huron_radio.id,
-  track_id: alabama_shakes_track_soundAndColor.id
+  c_id: alabama_shakes_track_soundAndColor.id
 })
 
 lord_huron_radio_track4 = PlaylistTrack.create({
@@ -1043,177 +1022,177 @@ lord_huron_radio_track10 = PlaylistTrack.create({
 
 
 # Playlist Tracks (Artists)
-daft_punk_all_track1 = PlaylistTrack.create({ 
-  playlist_id: daft_punk_all.id,
-  track_id: daft_punk_track_instantCrush.id
-})
+# daft_punk_all_track1 = PlaylistTrack.create({  
+#   playlist_id: daft_punk_all.id,
+#   track_id: daft_punk_track_instantCrush.id
+# })
 
-daft_punk_all_track2 = PlaylistTrack.create({ 
-  playlist_id: daft_punk_all.id,
-  track_id: daft_punk_track_somethingAboutUs.id
-})
+# daft_punk_all_track2 = PlaylistTrack.create({ 
+#   playlist_id: daft_punk_all.id,
+#   track_id: daft_punk_track_somethingAboutUs.id
+# })
 
-ratatat_all_track1 = PlaylistTrack.create({ 
-  playlist_id: ratatat_all.id,
-  track_id: ratatat_track_creamOnChrome.id
-})
+# ratatat_all_track1 = PlaylistTrack.create({ 
+#   playlist_id: ratatat_all.id,
+#   track_id: ratatat_track_creamOnChrome.id
+# })
 
-ratatat_all_track2 = PlaylistTrack.create({ 
-  playlist_id: ratatat_all.id,
-  track_id: ratatat_track_abrasive.id
-})
+# ratatat_all_track2 = PlaylistTrack.create({ 
+#   playlist_id: ratatat_all.id,
+#   track_id: ratatat_track_abrasive.id
+# })
 
-ratatat_all_track3 = PlaylistTrack.create({ 
-  playlist_id: ratatat_all.id,
-  track_id: ratatat_track_pricksOfBrightness.id
-})
+# ratatat_all_track3 = PlaylistTrack.create({ 
+#   playlist_id: ratatat_all.id,
+#   track_id: ratatat_track_pricksOfBrightness.id
+# })
 
-ratatat_all_track4 = PlaylistTrack.create({ 
-  playlist_id: ratatat_all.id,
-  track_id: ratatat_track_supreme.id
-})
+# ratatat_all_track4 = PlaylistTrack.create({ 
+#   playlist_id: ratatat_all.id,
+#   track_id: ratatat_track_supreme.id
+# })
 
-ratatat_all_track4 = PlaylistTrack.create({ 
-  playlist_id: ratatat_all.id,
-  track_id: ratatat_track_rome.id
-})
+# ratatat_all_track4 = PlaylistTrack.create({ 
+#   playlist_id: ratatat_all.id,
+#   track_id: ratatat_track_rome.id
+# })
 
-the_whitest_boy_alive_all_track1 = PlaylistTrack.create({
-  playlist_id: the_whitest_boy_alive_all.id,
-  track_id: the_whitest_boy_alive_track_burning.id
-})
+# the_whitest_boy_alive_all_track1 = PlaylistTrack.create({
+#   playlist_id: the_whitest_boy_alive_all.id,
+#   track_id: the_whitest_boy_alive_track_burning.id
+# })
 
-gorillaz_all_track1 = PlaylistTrack.create({
-  playlist_id: gorillaz_all.id,
-  track_id: gorillaz_track_feelGoodInc.id
-})
+# gorillaz_all_track1 = PlaylistTrack.create({
+#   playlist_id: gorillaz_all.id,
+#   track_id: gorillaz_track_feelGoodInc.id
+# })
 
-gorillaz_all_track2 = PlaylistTrack.create({
-  playlist_id: gorillaz_all.id,
-  track_id: gorillaz_track_clintEastwood.id
-})
+# gorillaz_all_track2 = PlaylistTrack.create({
+#   playlist_id: gorillaz_all.id,
+#   track_id: gorillaz_track_clintEastwood.id
+# })
 
-lord_huron_all_track1 = PlaylistTrack.create({
-  playlist_id: lord_huron_all.id,
-  track_id: lord_huron_track_theNightWeMet.id
-})
+# lord_huron_all_track1 = PlaylistTrack.create({
+#   playlist_id: lord_huron_all.id,
+#   track_id: lord_huron_track_theNightWeMet.id
+# })
 
-miike_snow_all_track1 = PlaylistTrack.create({
-  playlist_id: miike_snow_all.id,
-  track_id: miike_snow_track_blackAndBlue.id
-})
+# miike_snow_all_track1 = PlaylistTrack.create({
+#   playlist_id: miike_snow_all.id,
+#   track_id: miike_snow_track_blackAndBlue.id
+# })
 
-miike_snow_all_track2 = PlaylistTrack.create({
-  playlist_id: miike_snow_all.id,
-  track_id: miike_snow_track_songForNoOne.id
-})
+# miike_snow_all_track2 = PlaylistTrack.create({
+#   playlist_id: miike_snow_all.id,
+#   track_id: miike_snow_track_songForNoOne.id
+# })
 
-miike_snow_all_track3 = PlaylistTrack.create({
-  playlist_id: miike_snow_all.id,
-  track_id: miike_snow_track_myTrigger.id
-})
+# miike_snow_all_track3 = PlaylistTrack.create({
+#   playlist_id: miike_snow_all.id,
+#   track_id: miike_snow_track_myTrigger.id
+# })
 
-miike_snow_all_track4 = PlaylistTrack.create({
-  playlist_id: miike_snow_all.id,
-  track_id: miike_snow_track_theHeartOfMe.id
-})
+# miike_snow_all_track4 = PlaylistTrack.create({
+#   playlist_id: miike_snow_all.id,
+#   track_id: miike_snow_track_theHeartOfMe.id
+# })
 
-miike_snow_all_track5 = PlaylistTrack.create({
-  playlist_id: miike_snow_all.id,
-  track_id: miike_snow_track_backOfTheCar.id
-})
+# miike_snow_all_track5 = PlaylistTrack.create({
+#   playlist_id: miike_snow_all.id,
+#   track_id: miike_snow_track_backOfTheCar.id
+# })
 
-starfkr_all_track1 = PlaylistTrack.create({
-  playlist_id: starfkr_all.id,
-  track_id: starfkr_track_girlsJustWantToHaveFun.id
-})
+# starfkr_all_track1 = PlaylistTrack.create({
+#   playlist_id: starfkr_all.id,
+#   track_id: starfkr_track_girlsJustWantToHaveFun.id
+# })
 
-phantogram_all_track1 = PlaylistTrack.create({
-  playlist_id: phantogram_all.id,
-  track_id: phantogram_track_youreMine.id
-})
+# phantogram_all_track1 = PlaylistTrack.create({
+#   playlist_id: phantogram_all.id,
+#   track_id: phantogram_track_youreMine.id
+# })
 
-broken_bells_all_track1 = PlaylistTrack.create({
-  playlist_id: broken_bells_all.id,
-  track_id: broken_bells_track_goodLuck.id
-})
+# broken_bells_all_track1 = PlaylistTrack.create({
+#   playlist_id: broken_bells_all.id,
+#   track_id: broken_bells_track_goodLuck.id
+# })
 
-two_door_cinema_club_all_track1 = PlaylistTrack.create({
-  playlist_id: two_door_cinema_club_all.id,
-  track_id: two_door_cinema_club_track_whatYouKnow.id
-})
+# two_door_cinema_club_all_track1 = PlaylistTrack.create({
+#   playlist_id: two_door_cinema_club_all.id,
+#   track_id: two_door_cinema_club_track_whatYouKnow.id
+# })
 
-two_door_cinema_club_all_track2 = PlaylistTrack.create({
-  playlist_id: two_door_cinema_club_all.id,
-  track_id: two_door_cinema_club_track_undercoverMartyn.id
-})
+# two_door_cinema_club_all_track2 = PlaylistTrack.create({
+#   playlist_id: two_door_cinema_club_all.id,
+#   track_id: two_door_cinema_club_track_undercoverMartyn.id
+# })
 
-spoon_all_track1 = PlaylistTrack.create({
-  playlist_id: spoon_all.id,
-  track_id: spoon_track_iTurnMyCameraOn.id
-})
+# spoon_all_track1 = PlaylistTrack.create({
+#   playlist_id: spoon_all.id,
+#   track_id: spoon_track_iTurnMyCameraOn.id
+# })
 
-kavinsky_all_track1 = PlaylistTrack.create({
-  playlist_id: kavinsky_all.id,
-  track_id: kavinsky_track_nightcall.id
-})
+# kavinsky_all_track1 = PlaylistTrack.create({
+#   playlist_id: kavinsky_all.id,
+#   track_id: kavinsky_track_nightcall.id
+# })
 
-the_strokes_all_track1 = PlaylistTrack.create({
-  playlist_id: the_strokes_all.id,
-  track_id: the_strokes_track_someday.id
-})
+# the_strokes_all_track1 = PlaylistTrack.create({
+#   playlist_id: the_strokes_all.id,
+#   track_id: the_strokes_track_someday.id
+# })
 
-architecture_in_helsinki_all_track1 = PlaylistTrack.create({
-  playlist_id: architecture_in_helsinki_all.id,
-  track_id: architecture_in_helsinki__track_contactHigh.id
-})
+# architecture_in_helsinki_all_track1 = PlaylistTrack.create({
+#   playlist_id: architecture_in_helsinki_all.id,
+#   track_id: architecture_in_helsinki__track_contactHigh.id
+# })
 
-disclosure_all_track1 = PlaylistTrack.create({
-  playlist_id: disclosure_all.id,
-  track_id: disclosure_track_youAndMe.id
-})
+# disclosure_all_track1 = PlaylistTrack.create({
+#   playlist_id: disclosure_all.id,
+#   track_id: disclosure_track_youAndMe.id
+# })
 
-lake_street_dive_all_track1 = PlaylistTrack.create({
-  playlist_id: lake_street_dive_all.id,
-  track_id: lake_street_dive_track_richGirl.id
-})
+# lake_street_dive_all_track1 = PlaylistTrack.create({
+#   playlist_id: lake_street_dive_all.id,
+#   track_id: lake_street_dive_track_richGirl.id
+# })
 
-lake_street_dive_all_track2 = PlaylistTrack.create({
-  playlist_id: lake_street_dive_all.id,
-  track_id: lake_street_dive_track_iWantYouBack.id
-})
+# lake_street_dive_all_track2 = PlaylistTrack.create({
+#   playlist_id: lake_street_dive_all.id,
+#   track_id: lake_street_dive_track_iWantYouBack.id
+# })
 
-vacationer_all_track1 = PlaylistTrack.create({
-  playlist_id: vacationer_all.id,
-  track_id: vacationer_track_paradiseWaiting.id
-})
+# vacationer_all_track1 = PlaylistTrack.create({
+#   playlist_id: vacationer_all.id,
+#   track_id: vacationer_track_paradiseWaiting.id
+# })
 
-magic_city_hippies_all_track1 = PlaylistTrack.create({
-  playlist_id: magic_city_hippies_all.id,
-  track_id: magic_city_hippies_track_limestone.id
-})
+# magic_city_hippies_all_track1 = PlaylistTrack.create({
+#   playlist_id: magic_city_hippies_all.id,
+#   track_id: magic_city_hippies_track_limestone.id
+# })
 
-alabama_shakes_all_track1 = PlaylistTrack.create({
-  playlist_id: alabama_shakes_all.id,
-  track_id: alabama_shakes_track_dontWannaFight.id
-})
+# alabama_shakes_all_track1 = PlaylistTrack.create({
+#   playlist_id: alabama_shakes_all.id,
+#   track_id: alabama_shakes_track_dontWannaFight.id
+# })
 
-alabama_shakes_all_track2 = PlaylistTrack.create({
-  playlist_id: alabama_shakes_all.id,
-  track_id: alabama_shakes_track_soundAndColor.id
-})
+# alabama_shakes_all_track2 = PlaylistTrack.create({
+#   playlist_id: alabama_shakes_all.id,
+#   track_id: alabama_shakes_track_soundAndColor.id
+# })
 
-greta_van_fleet_all_track1 = PlaylistTrack.create({
-  playlist_id: greta_van_fleet_all.id,
-  track_id: greta_van_fleet_track_aChangeIsGonnaCome.id
-})
+# greta_van_fleet_all_track1 = PlaylistTrack.create({
+#   playlist_id: greta_van_fleet_all.id,
+#   track_id: greta_van_fleet_track_aChangeIsGonnaCome.id
+# })
 
-bahamas_all_track1 = PlaylistTrack.create({
-  playlist_id: bahamas_all.id,
-  track_id: bahamas_track_allTheTime.id
-})
+# bahamas_all_track1 = PlaylistTrack.create({
+#   playlist_id: bahamas_all.id,
+#   track_id: bahamas_track_allTheTime.id
+# })
 
-basement_jaxx_all_track1 = PlaylistTrack.create({
-  playlist_id: basement_jaxx_all.id,
-  track_id: basement_jaxx_track_neverSayNever.id
-})
+# basement_jaxx_all_track1 = PlaylistTrack.create({
+#   playlist_id: basement_jaxx_all.id,
+#   track_id: basement_jaxx_track_neverSayNever.id
+# })

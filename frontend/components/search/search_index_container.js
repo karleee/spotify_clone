@@ -7,10 +7,10 @@ const mapStateToProps = state => {
   const artists = Object.values(JSON.parse(localStorage.getItem('artists')));
   const albums = Object.values(JSON.parse(localStorage.getItem('albums')));
   const tracks = Object.values(JSON.parse(localStorage.getItem('tracks')));
-  const playlists = Object.values(JSON.parse(localStorage.getItem('playlists')));
+  const playlists = Object.values(JSON.parse(localStorage.getItem('playlists'))).filter(playlist => !playlist.title.includes('All'));
 
   return ({
-    values: [...artists, ...tracks, ...playlists, ...albums]
+    values: [...artists, ...tracks, ...playlists, ...albums] 
   });
 };
 

@@ -54,7 +54,7 @@ class PlaylistIndexItem extends React.Component {
     // this.props.receiveNextTrack(nextTrack);
     this.props.receiveTitle(currentTrack.title);
     this.props.receiveArtist(currentTrack.artist);
-    this.props.receiveAlbumId(currentTrack.album_id);
+    this.props.receiveAlbumId(currentTrack.album_id); 
   }
 
   render() {
@@ -63,9 +63,9 @@ class PlaylistIndexItem extends React.Component {
     // Getting active playlist
     const activePlaylist = JSON.parse(localStorage.getItem('active_playlist'));
 
-    // Getting users
-    const users = JSON.parse(localStorage.getItem('users'));
-    const user = users[playlist.user_id];
+    // Get playlist's user
+    const users = Object.values(JSON.parse(localStorage.getItem('users')));
+    const user = users[playlist.user_id - 1];
 
     // Determine class name for button based on play or pause 
     const buttonType = isPlaying && playlist.track_ids[0] === currentTrack.id && playlist.id === activePlaylist.id ? 'pause-button' : 'play-button';

@@ -1,3 +1,4 @@
+// Fetch all user playlists
 export const fetchAllPlaylists = () => (
   $.ajax({
     method: 'GET', 

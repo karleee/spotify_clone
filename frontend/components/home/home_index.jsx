@@ -12,6 +12,7 @@ class HomeIndex extends React.Component {
 
   componentDidMount() { 
     this.props.requestAllPlaylists();
+    this.props.requestAllArtistPlaylists();
     this.props.requestAllTracks();
     this.props.requestAllAlbums();
     this.props.requestAllArtists();
@@ -20,6 +21,7 @@ class HomeIndex extends React.Component {
 
   render() {
     const { playlists } = this.props;
+    
     return (
       <div className="home-container"> 
         <h1>Home</h1>
@@ -29,7 +31,7 @@ class HomeIndex extends React.Component {
             <h2>Your heavy rotation</h2>
           </div> 
 
-          <div className="playlists"> 
+          <div className="playlists">  
             <ul> 
               {playlists.map(playlist => 
                 <PlaylistIndexItem key={playlist.id} playlist={playlist} {...this.props} />)}   

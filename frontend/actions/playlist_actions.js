@@ -21,7 +21,7 @@ export const removePlaylist = id => ({
 
 export const requestAllPlaylists = () => dispatch => (
   PlaylistAPIUtil.fetchAllPlaylists().
-    then(playlists => dispatch(receiveAllPlaylists(playlists)))
+    then(playlists => dispatch(receiveAllPlaylists(playlists))) 
 );
 
 export const requestSinglePlaylist = id => dispatch => (

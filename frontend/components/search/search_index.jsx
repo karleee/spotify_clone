@@ -68,7 +68,6 @@ class SearchIndex extends React.Component {
     let found;
     let notFound;
 
-
     if (typeof this.state.results[0] === 'string') {
       notFound = <div className="search-error-wrapper">
         <h2>{this.state.results}</h2>

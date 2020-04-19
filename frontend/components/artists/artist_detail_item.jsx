@@ -81,7 +81,7 @@ class ArtistDetailItem extends Component {
 
     // Getting track's album 
     const albumId = track.album_id; 
-    const album = albums[albumId];
+    const album = albums[albumId - 1];
 
     return (
       <li>

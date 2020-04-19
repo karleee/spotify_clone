@@ -5,19 +5,28 @@ import { receiveTitle, receiveArtist, receiveAlbumId, receiveIsPlaying } from '.
 
 import ArtistDetail from './artist_detail';
 
-import { selectPlaylistFromArtist, selectTracksFromArtistPlaylist } from '../../reducers/selectors';
+import { selectPlaylistFromArtist, selectTracksFromArtistPlaylist, selectPlaylistsFromUser } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
   // Get all playlists, tracks, artists, and albums from local storage
-  const playlists = Object.values(JSON.parse(localStorage.getItem('playlists'))).filter(playlist => playlist.playlist_type === 'artist');
+  const playlists = Object.values(JSON.parse(localStorage.getItem('artist_playlists')));
   const tracks = Object.values(JSON.parse(localStorage.getItem('tracks')));
-  const artists = JSON.parse(localStorage.getItem('artists'));
-  const albums = JSON.parse(localStorage.getItem('albums'));
+  const artists = Object.values(JSON.parse(localStorage.getItem('artists')));
+  const albums = Object.values(JSON.parse(localStorage.getItem('albums')));
 
   // Get artist, artist's playlists, and artist's tracks
-  const artist = artists[ownProps.match.params.artistId];
+  const artist = artists[ownProps.match.params.artistId - 1];
   let artistPlaylist = selectPlaylistFromArtist(playlists, artist)[0];
   let artistTracks = selectTracksFromArtistPlaylist(tracks, artistPlaylist);
+
+
+  //TESTING...
+  // console.log('Playlists: ' + JSON.stringify(playlists));
+  // console.log('Artists: ' + JSON.stringify(artists)); 
+  // console.log('Found Artist: ' + JSON.stringify(artist));
+
+
+
 
   // Get artist page's play state
   let storedPlayState = JSON.parse(localStorage.getItem('artist_playing')); 
