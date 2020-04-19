@@ -982,7 +982,7 @@ lord_huron_radio_track2 = PlaylistTrack.create({
 
 lord_huron_radio_track3 = PlaylistTrack.create({
   playlist_id: lord_huron_radio.id,
-  c_id: alabama_shakes_track_soundAndColor.id
+  track_id: alabama_shakes_track_soundAndColor.id
 })
 
 lord_huron_radio_track4 = PlaylistTrack.create({
