@@ -4,6 +4,24 @@ import { Link } from 'react-router-dom';
 class PlaylistIndexItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {user: '', userType: ''};
+  }
+
+  componentDidMount() {
+    // Leave one second in between data fetching and state setting to avoid
+    // undefined values for users
+    setTimeout(() => {
+      this.getPlaylistUser();
+    }, 700);
+  }
+
+  // Get the playlist's user or artist
+  getPlaylistUser() {
+    const {playlist, users, artists} = this.props;
+    const user = playlist.user_id ? users[playlist.user_id - 1].username : artists[playlist.artist_id - 1].name;
+    const userType = playlist.user_id ? 'user' : 'artist';
+    this.setState({user});
+    this.setState({userType});
   }
 
   handleThumbnailClick(e) {
@@ -56,16 +74,14 @@ class PlaylistIndexItem extends React.Component {
   }
 
   render() {
-    const { playlist, currentTrack, isPlaying, users, artists } = this.props;
+    const {playlist, currentTrack, isPlaying} = this.props;
+    const {user, userType} = this.state;
+
+    // Get correct redirect link
+    const link = userType === 'user' ? `/playlist/${playlist.user_id}` : `/artist/${playlist.artist_id}`;
 
     // Getting active playlist
     const activePlaylist = JSON.parse(localStorage.getItem('active_playlist'));
-
-    // Get playlist's user
-    let user;
-    if (users.length && artists.length) {
-      user = playlist.user_id ? users[playlist.user_id - 1].username : artists[playlist.artist_id - 1].name;
-    }
 
     // Determine class name for button based on play or pause 
     const buttonType = isPlaying && playlist.track_ids[0] === currentTrack.id && playlist.id === activePlaylist.id ? 'pause-button' : 'play-button';
@@ -75,10 +91,10 @@ class PlaylistIndexItem extends React.Component {
         <li>
           <div className="playlist-thumbnail-wrapper" onClick={e => this.handleThumbnailClick(e)}> 
             <div className="thumbnail">
-              <Link to={`/playlist/${playlist.id}`}>
+              <Link to={link}>
                 <img src={playlist.photo_url} alt="Playlist thumbnail" />
                 <p>{playlist.title}</p>
-                <p>By {user}</p>
+                <p>By {user}</p> 
               </Link>
             </div>
 

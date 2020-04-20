@@ -73,8 +73,8 @@ class PlaylistDetail extends React.Component {
           <h1>{playlist.title}</h1> 
 
           <div className="user-wrapper">
-            {playlist.playlist_type === 'album' ? <Link to={`/artists/${playlist.user_id}`}>{playlist.user}</Link> : <Link to={`/users/${playlist.user_id}`}>{playlist.user}</Link>} 
-          </div>
+            {playlist.playlist_type === 'album' ? <Link to={`/artist/${playlist.user_id}`}>{playlist.user}</Link> : <Link to={`/users/${playlist.user_id}`}>{playlist.user}</Link>} 
+          </div>  
           
           <p>{playlist.track_ids.length} songs</p>             
         </div>

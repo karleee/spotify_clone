@@ -4,7 +4,7 @@ import PlaylistIndexItem from '../playlists/playlist_index_item_container';
 class HomeIndex extends React.Component {
   constructor(props) {
     super(props);
-
+    this.state = {selectedArtistPlaylists: []};
     // Explicity resetting play state to false if the page is manually reloaded
     // Otherwise don't touch it/keep the play state across the site
     window.performance.navigation.type === 1 ? localStorage.setItem('artist_playing', false) : '';
@@ -17,21 +17,31 @@ class HomeIndex extends React.Component {
     this.props.requestAllAlbums();
     this.props.requestAllArtists();
     this.props.requestAllUsers(); 
+
+    // Leave one second in between data fetching and state setting to avoid
+    // undefined values for playlists
+    setTimeout(() => {
+      this.getSelectedArtistPlaylists();
+    }, 700);
+  }
+
+  // Get random slice of artist playlists
+  getSelectedArtistPlaylists() {
+    const {artistPlaylists} = this.props;
+    
+    let selectedArtistPlaylists = [];
+    while (selectedArtistPlaylists.length < 4) {
+      const randomPlaylist = artistPlaylists[Math.floor(Math.random() * artistPlaylists.length)];
+      if (!selectedArtistPlaylists.includes(randomPlaylist)) selectedArtistPlaylists.push(randomPlaylist);
+    }
+
+    this.setState({selectedArtistPlaylists});
   }
 
   render() {
-    const { users, artists, heavyRotation, artistPlaylists } = this.props;
-    let user;
-    console.log('Artist Playlists: ' + JSON.stringify(artistPlaylists));
-    if (artistPlaylists.length > 0 && !artistPlaylists.includes(undefined)) {
-      const index = artistPlaylists[Math.floor(Math.random() * artistPlaylists.length)];
-      console.log('Index: ' + index);
-      user = artistPlaylists[index];
-    } else {
-      user = 'hi';
-    }
-    console.log(user);
-    
+    const {users, artists, heavyRotation} = this.props;
+    const {selectedArtistPlaylists} = this.state;
+
     return (
       <div className="home-index main-container"> 
         <h1>Home</h1>
@@ -51,7 +61,7 @@ class HomeIndex extends React.Component {
           </div>
 
           <ul>
-            {artistPlaylists.slice(0, 5).map(playlist =>
+            {selectedArtistPlaylists.includes(undefined) ? <li></li> : selectedArtistPlaylists.map(playlist =>
               <PlaylistIndexItem key={playlist.id} playlist={playlist} artists={artists} {...this.props} />
             )} 
           </ul>

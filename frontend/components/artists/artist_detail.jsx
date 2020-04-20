@@ -120,7 +120,7 @@ class ArtistDetail extends Component {
               <ArtistDetailItem 
                 key={track.id} 
                 playlist={playlist}
-                albums={albums} 
+                albums={albums}  
                 track={track} 
                 tracks={tracks} 
                 indx={indx + 1} 
