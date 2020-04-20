@@ -75,7 +75,7 @@ class PlaylistIndexItem extends React.Component {
 
   render() {
     const {playlist, currentTrack, isPlaying} = this.props;
-    const {user, userType} = this.state;
+    const {user, userType} = this.state; 
 
     // Get correct redirect link
     const link = userType === 'user' ? `/playlist/${playlist.user_id}` : `/artist/${playlist.artist_id}`;
