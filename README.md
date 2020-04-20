@@ -1,5 +1,10 @@
 # Fikafy
 
+## Updates
+> 4/19/2020
+
+Version 1.1 has been released with audio control toggling patches and a new feature that allows users to view and play tracks from an artist's page.
+
 ## Introduction
 Fikafy is a single page music streaming app that is meant to mirror the style and user interface of 'Spotify'. Using a simple and clean interface, it delivers continuous song playing capability along with extra features embedded in the audio player; some of which include track shuffling, repeating, and automatic queuing. 
 
