@@ -10,7 +10,7 @@ export const selectPlaylistsFromUser = (playlists, user) => (
 
 // Gets the playlist from an artist
 export const selectPlaylistFromArtist = (playlists, artist) => (
-  Object.values(playlists).filter(playlist => playlist.artist_id === artist.id)
+  Object.values(playlists).filter(playlist => playlist.artist_id === artist.id) 
 ); 
  
 // Gets the tracks from an artist's playlist

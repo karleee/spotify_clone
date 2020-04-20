@@ -26,7 +26,6 @@ class PlaylistIndexItem extends React.Component {
   play(tracks, clickedClass, buttonClass) {
     // Get the current and next track
     const currentTrack = tracks[0];
-    // const nextTrack = tracks[1];
 
     // Get the current audio tag on the page (the current song playing)
     const audio = document.getElementById("audio");
@@ -49,23 +48,24 @@ class PlaylistIndexItem extends React.Component {
       }
     }
 
-    // Setting new current and next track
+    // Setting new current track
     this.props.receiveCurrentTrack(currentTrack); 
-    // this.props.receiveNextTrack(nextTrack);
     this.props.receiveTitle(currentTrack.title);
     this.props.receiveArtist(currentTrack.artist);
     this.props.receiveAlbumId(currentTrack.album_id); 
   }
 
   render() {
-    const { playlist, currentTrack, isPlaying } = this.props;
+    const { playlist, currentTrack, isPlaying, users, artists } = this.props;
 
     // Getting active playlist
     const activePlaylist = JSON.parse(localStorage.getItem('active_playlist'));
 
     // Get playlist's user
-    const users = Object.values(JSON.parse(localStorage.getItem('users')));
-    const user = users[playlist.user_id - 1];
+    let user;
+    if (users.length && artists.length) {
+      user = playlist.user_id ? users[playlist.user_id - 1].username : artists[playlist.artist_id - 1].name;
+    }
 
     // Determine class name for button based on play or pause 
     const buttonType = isPlaying && playlist.track_ids[0] === currentTrack.id && playlist.id === activePlaylist.id ? 'pause-button' : 'play-button';
@@ -78,7 +78,7 @@ class PlaylistIndexItem extends React.Component {
               <Link to={`/playlist/${playlist.id}`}>
                 <img src={playlist.photo_url} alt="Playlist thumbnail" />
                 <p>{playlist.title}</p>
-                <p>By {user.username}</p> 
+                <p>By {user}</p>
               </Link>
             </div>
 

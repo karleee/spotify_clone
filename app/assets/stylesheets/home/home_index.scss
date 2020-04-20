@@ -1,13 +1,14 @@
 @import "variables";
 
-.home-container {
+.home-index.main-container {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding: 7em 3em 0 3em;
-  width: 100%;
+  padding: 7em 3em 7em 3em;
+  width: 100%; 
   height: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 
   h1 {
     font-family: 'ProximaNova-Extrabld';
@@ -15,27 +16,28 @@
     color: $white;
   }
 
-  .heavy-rotation-wrapper {
+  .heavy-rotation-playlists-wrapper {
     display: flex;
     flex-direction: column;
     color: $white;
+    width: 100%;
 
-    .header {
-      h2 {
-        font-family: 'ProximaNova-Extrabld';
-        font-size: 18px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-        margin-top: 50px;
-      }
+    h2 {
+      font-family: 'ProximaNova-Extrabld';
+      font-size: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      margin-top: 50px;
     }
 
-    .playlists {
-      margin-top: 30px;
+    // .playlists-wrapper {
+    //   margin-top: 30px;
 
       ul {
         display: flex;
         flex-direction: row;
+        margin-top: 30px;
+        width: 100%;
 
         li {
           position: relative;
@@ -117,6 +119,122 @@
             transform: scale(1.10);
             transition: transform 0.5s;
           }
+        }
+      }
+    // }
+  }
+
+  /* Artist playlists styling */
+  
+  .artist-playlists-wrapper { 
+    width: 100%;
+
+    .header-wrapper {
+      width: 100%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+      h2 {
+        font-family: 'ProximaNova-Extrabld';
+        font-size: 18px;
+        color: white;
+        margin-top: 50px;
+      }
+
+      p {
+        font-family: 'ProximaNova-Regular';
+        font-size: 0.9em;
+        color: $gray; 
+        box-sizing: border-box;
+        padding: 0.5em 0;
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-top: 30px;
+      width: 100%;
+
+      li {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background: $playlist-thumbnail-gray;
+        border-radius: 15px;
+        box-sizing: border-box;
+        padding: 20px 20px 40px 20px;
+
+        .playlist-thumbnail-wrapper {
+          .thumbnail {
+            a {
+              text-decoration: none;
+
+              img {
+                width: 140px;
+                box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+              }
+            }
+
+            p:first-of-type {
+              font-family: 'ProximaNova-Bold';
+              font-size: 14px;
+              color: $white; 
+              margin-top: 10px;
+            }
+
+            p:last-of-type {
+              font-family: 'ProximaNova-Regular';
+              font-size: 13px;
+              color: $gray; 
+              margin-top: 5px;
+            }
+          }
+
+          .playlist-item.control-container {
+            position: absolute;
+            top: 80%;
+            left: 67%;
+            width: 2.1875em;
+            height: 2.1875em;
+            opacity: 0;
+ 
+            .playlist-item.circle-icon-wrapper {
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+              background: $green;
+
+              .playlist.play-icon-wrapper {
+                content: image_url('playlists/white-play-icon.png');
+                width: 1em;
+              }
+
+              .playlist.pause-icon-wrapper {
+                content: image_url('playlists/white-pause-icon.png');
+                width: 1em;
+              }
+            }
+          }
+        }
+      }
+
+      li:nth-child(even) {
+        margin: 0 20px;
+      }
+
+      li:hover {
+        .playlist-item.control-container {
+          opacity: 1;
+        }
+
+        .playlist-item.control-container:hover {
+          transform: scale(1.10);
+          transition: transform 0.5s;
         }
       }
     }

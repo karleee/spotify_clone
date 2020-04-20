@@ -4,7 +4,7 @@ import PlaylistIndexItem from '../playlists/playlist_index_item_container';
 class HomeIndex extends React.Component {
   constructor(props) {
     super(props);
-    
+
     // Explicity resetting play state to false if the page is manually reloaded
     // Otherwise don't touch it/keep the play state across the site
     window.performance.navigation.type === 1 ? localStorage.setItem('artist_playing', false) : '';
@@ -20,23 +20,41 @@ class HomeIndex extends React.Component {
   }
 
   render() {
-    const { playlists } = this.props;
+    const { users, artists, heavyRotation, artistPlaylists } = this.props;
+    let user;
+    console.log('Artist Playlists: ' + JSON.stringify(artistPlaylists));
+    if (artistPlaylists.length > 0 && !artistPlaylists.includes(undefined)) {
+      const index = artistPlaylists[Math.floor(Math.random() * artistPlaylists.length)];
+      console.log('Index: ' + index);
+      user = artistPlaylists[index];
+    } else {
+      user = 'hi';
+    }
+    console.log(user);
     
     return (
-      <div className="home-container"> 
+      <div className="home-index main-container"> 
         <h1>Home</h1>
         
-        <div className="heavy-rotation-wrapper">   
-          <div className="header"> 
-            <h2>Your heavy rotation</h2>
-          </div> 
+        <div className="home-index heavy-rotation-playlists-wrapper">   
+          <h2>Your heavy rotation</h2> 
+          <ul> 
+            {heavyRotation.map(playlist => 
+              <PlaylistIndexItem key={playlist.id} playlist={playlist} users={users} {...this.props} />)}   
+          </ul>
+        </div>
 
-          <div className="playlists">  
-            <ul> 
-              {playlists.map(playlist => 
-                <PlaylistIndexItem key={playlist.id} playlist={playlist} {...this.props} />)}   
-            </ul>
+        <div className="home-index artist-playlists-wrapper">
+          <div className="home-index header-wrapper">
+            <h2>Based on your recent listening</h2>
+            <p>Inspired by your recent activity.</p>
           </div>
+
+          <ul>
+            {artistPlaylists.slice(0, 5).map(playlist =>
+              <PlaylistIndexItem key={playlist.id} playlist={playlist} artists={artists} {...this.props} />
+            )} 
+          </ul>
         </div>
       </div>
     )
