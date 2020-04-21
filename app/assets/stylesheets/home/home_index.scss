@@ -26,12 +26,29 @@
     color: $white;
     width: 100%;
 
+    
     h2 {
       font-family: 'ProximaNova-Extrabld';
       font-size: 18px;
       padding-bottom: 10px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.07);
       margin-top: 50px;
+    }
+    
+    .header-wrapper {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+      h2 {
+        border-bottom: none;
+        padding: 0;
+      }
+
+      p {
+        font-family: 'ProximaNova-Regular';
+        font-size: 0.9em;
+        color: $gray;
+        padding: 0.5em 0;
+      }
     }
 
     ul {
