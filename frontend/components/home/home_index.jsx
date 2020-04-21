@@ -25,22 +25,18 @@ class HomeIndex extends Component {
   }
 
   // Get random slice of artist playlists
-  getSelectedArtistPlaylists(artistPlaylists) {    
-    let selectedArtistPlaylists = [];
-    while (selectedArtistPlaylists.length < 4) {
-      const randomPlaylist = artistPlaylists[Math.floor(Math.random() * artistPlaylists.length)];
-      if (!selectedArtistPlaylists.includes(randomPlaylist)) selectedArtistPlaylists.push(randomPlaylist);
-    }
+  // getSelectedArtistPlaylists(artistPlaylists) {    
+  //   let selectedArtistPlaylists = [];
+  //   while (selectedArtistPlaylists.length < 4) {
+  //     const randomPlaylist = artistPlaylists[Math.floor(Math.random() * artistPlaylists.length)];
+  //     if (!selectedArtistPlaylists.includes(randomPlaylist)) selectedArtistPlaylists.push(randomPlaylist);
+  //   }
 
-    return selectedArtistPlaylists;
-  }
+  //   return selectedArtistPlaylists;
+  // }
 
   render() {
     const {users, artists, heavyRotation, artistPlaylists} = this.props;
-
-    // Get randomly selected artist playlists
-    const artistPlaylistsArr = Object.values(artistPlaylists);
-    const selectedArtistPlaylists = artistPlaylistsArr.length ? this.getSelectedArtistPlaylists(artistPlaylistsArr) : artistPlaylistsArr.slice(0, 4);
 
     return (
       <div className="home-index main-container"> 
@@ -61,7 +57,7 @@ class HomeIndex extends Component {
           </div>
 
           <ul>
-            {selectedArtistPlaylists.map(playlist =>
+            {Object.values(artistPlaylists).slice(0, 4).map(playlist =>
               <PlaylistIndexItem key={playlist.id} playlist={playlist} artists={artists} {...this.props} />
             )} 
           </ul>
