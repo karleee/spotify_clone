@@ -98,9 +98,9 @@
           .playlist-item.control-container {
             position: absolute;
             top: 82%;
-            left: 72%;
-            width: 2.1875em;
-            height: 2.1875em;
+            left: 70%;
+            width: 2.5em;
+            height: 2.5em;
             opacity: 0;
  
             .playlist-item.circle-icon-wrapper {
@@ -115,12 +115,12 @@
 
               .playlist.play-icon-wrapper {
                 content: image_url('playlists/white-play-icon.png');
-                width: 1em;
+                width: 1.2em;
               }
 
               .playlist.pause-icon-wrapper {
                 content: image_url('playlists/white-pause-icon.png');
-                width: 1em;
+                width: 1.2em;
               }
             }
           }
