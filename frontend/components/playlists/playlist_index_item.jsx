@@ -94,7 +94,7 @@ class PlaylistIndexItem extends React.Component {
               <Link to={link}>
                 <img src={playlist.photo_url} alt="Playlist thumbnail" />
                 <p>{playlist.title}</p>
-                <p>By {user}</p> 
+                {userType === 'user' ? <p>{`By ${user}`}</p> : <p>{user}</p>}
               </Link>
             </div>
 
