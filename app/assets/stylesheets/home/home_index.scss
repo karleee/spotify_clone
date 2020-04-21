@@ -68,14 +68,13 @@
         padding: 1.5em 1.5em 3em 1.5em;
 
         .playlist-thumbnail-wrapper {
-          width: 100%;
-
           .thumbnail {
             a {
               text-decoration: none;
 
               img {
-                width: 100%;
+                width: 12em;
+                height: 12em;
                 box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
               }
             }
