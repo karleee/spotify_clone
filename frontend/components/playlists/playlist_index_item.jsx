@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 class PlaylistIndexItem extends React.Component { 
   constructor(props) {
     super(props);
-    this.state = {user: '', userType: ''};
+    this.state = {
+      user: '', 
+      userType: ''
+    };
   } 
 
   componentDidMount() {
@@ -94,7 +97,7 @@ class PlaylistIndexItem extends React.Component {
     const {user, userType} = this.state; 
 
     // Get correct redirect link
-    const link = userType === 'user' ? `/playlist/${playlist.user_id}` : `/artist/${playlist.artist_id}`;
+    const link = userType === 'user' ? `/playlist/${playlist.id}` : `/artist/${playlist.artist_id}`;
 
     // Getting active playlist
     const activePlaylist = JSON.parse(localStorage.getItem('active_playlist'));
