@@ -7,7 +7,7 @@ class AudioDetail extends React.Component {
     this.state = {
       title: '',
       artist: '',
-      album: null
+      album: null 
     }
   }
 

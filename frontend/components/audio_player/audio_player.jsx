@@ -8,8 +8,8 @@ class AudioPlayer extends React.Component {
     super(props);
 
     this.state = {
-      audio: "",
-      nextTrack: "",
+      audio: '',
+      nextTrack: '',
       tracks: [],
       shuffle: false,
       repeat: false,
@@ -27,6 +27,21 @@ class AudioPlayer extends React.Component {
     this.mouseDown = this.mouseDown.bind(this);
     this.mouseUp = this.mouseUp.bind(this);
   }
+
+  // Replacement for componentWillReceiveProps
+  // static getDerivedStateFromProps(nextProps, prevState) {
+  //   if (nextProps.audio && nextProps.audio.track_url !== prevState.audio) {
+  //     let audio = nextProps.audio.track_url;
+  //     return {paused: false, audio};
+  //   }
+  //   return null;
+  // }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log(prevState);
+  //   console.log(this.props.audio);
+  //   if (prevState.audio !== this.props.audio) this.setState({paused: false, audio});
+  // }
 
   // Cleanup from mounting component
   componentWillUnmount() {

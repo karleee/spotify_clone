@@ -5,7 +5,6 @@ class HomeIndex extends Component {
   constructor(props) {
     super(props);
     this._isMounted = false;
-    this.state = {selectedArtistPlaylists: []};
     // Explicity resetting play state to false if the page is manually reloaded
     // Otherwise don't touch it/keep the play state across the site
     window.performance.navigation.type === 1 ? localStorage.setItem('artist_playing', false) : '';
@@ -19,16 +18,6 @@ class HomeIndex extends Component {
     this.props.requestAllAlbums();
     this.props.requestAllArtists();
     this.props.requestAllUsers(); 
-
-    // Leave one second in between data fetching and state setting to avoid
-    // undefined values for playlists
-    // setTimeout(() => {
-    //   this.getSelectedArtistPlaylists();
-    // }, 700);
-
-    this.setState((state, props) => ({
-      selectedArtistPlaylists: props.artistPlaylists.slice(0, 4)
-    }))
   }
 
   componentWillUnmount() {
@@ -43,12 +32,15 @@ class HomeIndex extends Component {
       if (!selectedArtistPlaylists.includes(randomPlaylist)) selectedArtistPlaylists.push(randomPlaylist);
     }
 
-    this.setState({selectedArtistPlaylists});
+    return selectedArtistPlaylists;
   }
 
   render() {
-    const {users, artists, heavyRotation} = this.props;
-    const {selectedArtistPlaylists} = this.state;
+    const {users, artists, heavyRotation, artistPlaylists} = this.props;
+
+    // Get randomly selected artist playlists
+    const artistPlaylistsArr = Object.values(artistPlaylists);
+    const selectedArtistPlaylists = artistPlaylistsArr.length ? this.getSelectedArtistPlaylists(artistPlaylistsArr) : artistPlaylistsArr.slice(0, 4);
 
     return (
       <div className="home-index main-container"> 
@@ -69,7 +61,7 @@ class HomeIndex extends Component {
           </div>
 
           <ul>
-            {selectedArtistPlaylists.includes(undefined) ? <li></li> : selectedArtistPlaylists.map(playlist =>
+            {selectedArtistPlaylists.map(playlist =>
               <PlaylistIndexItem key={playlist.id} playlist={playlist} artists={artists} {...this.props} />
             )} 
           </ul>

@@ -22,7 +22,7 @@ const mapStateToProps = state => {
     users: Object.values(state.entities.users),
     artists: Object.values(state.entities.artists),
     heavyRotation: selectPlaylistsFromType(state, 'heavyRotation'),
-    artistPlaylists: Object.values(state.entities.artistPlaylists),
+    artistPlaylists: state.entities.artistPlaylists
   })
 };
 
