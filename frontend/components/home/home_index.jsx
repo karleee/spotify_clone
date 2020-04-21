@@ -5,6 +5,7 @@ class HomeIndex extends Component {
   constructor(props) {
     super(props);
     this._isMounted = false;
+    this.state = {selectedArtistPlaylists: []};
     // Explicity resetting play state to false if the page is manually reloaded
     // Otherwise don't touch it/keep the play state across the site
     window.performance.navigation.type === 1 ? localStorage.setItem('artist_playing', false) : '';
@@ -24,19 +25,28 @@ class HomeIndex extends Component {
     this._isMounted = false;
   }
 
-  // Get random slice of artist playlists
-  // getSelectedArtistPlaylists(artistPlaylists) {    
-  //   let selectedArtistPlaylists = [];
-  //   while (selectedArtistPlaylists.length < 4) {
-  //     const randomPlaylist = artistPlaylists[Math.floor(Math.random() * artistPlaylists.length)];
-  //     if (!selectedArtistPlaylists.includes(randomPlaylist)) selectedArtistPlaylists.push(randomPlaylist);
-  //   }
+  // Update the local selected playlists state once all artist playlists have been received
+  componentDidUpdate(prevProps) {
+    if (prevProps.artistPlaylists !== this.props.artistPlaylists) {
+      const selectedArtistPlaylists = this.getSelectedArtistPlaylists(Object.values(this.props.artistPlaylists));
+      this.setState({selectedArtistPlaylists});
+    }
+  }
 
-  //   return selectedArtistPlaylists;
-  // }
+  // Get random slice of artist playlists
+  getSelectedArtistPlaylists(artistPlaylists) {    
+    let selectedArtistPlaylists = [];
+    while (selectedArtistPlaylists.length < 4) {
+      const randomPlaylist = artistPlaylists[Math.floor(Math.random() * artistPlaylists.length)];
+      if (!selectedArtistPlaylists.includes(randomPlaylist)) selectedArtistPlaylists.push(randomPlaylist);
+    }
+
+    return selectedArtistPlaylists;
+  }
 
   render() {
-    const {users, artists, heavyRotation, artistPlaylists} = this.props;
+    const {users, artists, heavyRotation} = this.props;
+    const {selectedArtistPlaylists} = this.state;
 
     return (
       <div className="home-index main-container"> 
@@ -57,7 +67,7 @@ class HomeIndex extends Component {
           </div>
 
           <ul>
-            {Object.values(artistPlaylists).slice(0, 4).map(playlist =>
+            {selectedArtistPlaylists.map(playlist =>
               <PlaylistIndexItem key={playlist.id} playlist={playlist} artists={artists} {...this.props} />
             )} 
           </ul>

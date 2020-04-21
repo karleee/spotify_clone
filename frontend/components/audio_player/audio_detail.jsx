@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from 'react-router-dom';
 
 class AudioDetail extends React.Component {
   constructor(props) {
@@ -16,7 +15,7 @@ class AudioDetail extends React.Component {
     if (nextProps.title !== prevState.title) return {title: nextProps.title};
     if (nextProps.artist !== prevState.artist) return {artist: nextProps.artist};
     if (nextProps.album !== prevState.album) return {album: nextProps.album}; 
-    return null;
+    return null; 
   }
 
   componentDidUpdate(prevProps, prevState) {
