@@ -8,7 +8,7 @@ class HomeIndex extends React.Component {
     // Explicity resetting play state to false if the page is manually reloaded
     // Otherwise don't touch it/keep the play state across the site
     window.performance.navigation.type === 1 ? localStorage.setItem('artist_playing', false) : '';
-  }
+  } 
 
   componentDidMount() { 
     this.props.requestAllPlaylists();
