@@ -193,155 +193,155 @@ ratatat_all = ArtistPlaylist.create({
   title: 'This is Ratatat', 
   artist_id: ratatat.id 
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/ratatat.png')
-ratatat_all.photo.attach(io: file, filename: 'ratatat.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_ratatat.png')
+ratatat_all.photo.attach(io: file, filename: 'this_is_ratatat.png')
 
 daft_punk_all = ArtistPlaylist.create({ 
   title: 'This is Daft Punk', 
   artist_id: daft_punk.id 
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/daft_punk.png')
-daft_punk_all.photo.attach(io: file, filename: 'daft_punk.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_daft_punk.png')
+daft_punk_all.photo.attach(io: file, filename: 'this_is_daft_punk.png')
 
 the_whitest_boy_alive_all = ArtistPlaylist.create({ 
   title: 'This is The Whitest Boy Alive', 
   artist_id: the_whitest_boy_alive.id,
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/the_whitest_boy_alive.png')
-the_whitest_boy_alive_all.photo.attach(io: file, filename: 'the_whitest_boy_alive.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_the_whitest_boy_alive.png')
+the_whitest_boy_alive_all.photo.attach(io: file, filename: 'this_is_the_whitest_boy_alive.png')
 
 gorillaz_all = ArtistPlaylist.create({ 
   title: 'This is Gorillaz', 
   artist_id: gorillaz.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/gorillaz.png')
-gorillaz_all.photo.attach(io: file, filename: 'gorillaz.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_gorillaz.png')
+gorillaz_all.photo.attach(io: file, filename: 'this_is_gorillaz.png')
 
 lord_huron_all = ArtistPlaylist.create({ 
   title: 'This is Lord Huron', 
   artist_id: lord_huron.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/lord_huron.png')
-lord_huron_all.photo.attach(io: file, filename: 'lord_huron.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_lord_huron.png')
+lord_huron_all.photo.attach(io: file, filename: 'this_is_lord_huron.png')
 
 miike_snow_all = ArtistPlaylist.create({ 
   title: 'This is Miike Snow', 
   artist_id: miike_snow.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/miike_snow.png')
-miike_snow_all.photo.attach(io: file, filename: 'miike_snow.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_miike_snow.png')
+miike_snow_all.photo.attach(io: file, filename: 'this_is_miike_snow.png')
 
 starfkr_all = ArtistPlaylist.create({ 
   title: 'This is Starfkr', 
   artist_id: starfkr.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/starfkr.png')
-starfkr_all.photo.attach(io: file, filename: 'starfkr.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_starfkr.png')
+starfkr_all.photo.attach(io: file, filename: 'this_is_starfkr.png')
 
 phantogram_all = ArtistPlaylist.create({ 
   title: 'This is Phantogram', 
   artist_id: phantogram.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/phantogram.png')
-phantogram_all.photo.attach(io: file, filename: 'phantogram.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_phantogram.png')
+phantogram_all.photo.attach(io: file, filename: 'this_is_phantogram.png')
 
 broken_bells_all = ArtistPlaylist.create({  
   title: 'This is Broken Bells', 
   artist_id: broken_bells.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/broken_bells.png')
-broken_bells_all.photo.attach(io: file, filename: 'broken_bells.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_broken_bells.png')
+broken_bells_all.photo.attach(io: file, filename: 'this_is_broken_bells.png')
 
 two_door_cinema_club_all = ArtistPlaylist.create({  
   title: 'This is Two Door Cinema Club', 
   artist_id: two_door_cinema_club.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/two_door_cinema_club.png')
-two_door_cinema_club_all.photo.attach(io: file, filename: 'two_door_cinema_club.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_two_door_cinema_club.png')
+two_door_cinema_club_all.photo.attach(io: file, filename: 'this_is_two_door_cinema_club.png')
 
 spoon_all = ArtistPlaylist.create({ 
   title: 'This is Spoon', 
   artist_id: spoon.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/spoon.png')
-spoon_all.photo.attach(io: file, filename: 'spoon.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_spoon.png')
+spoon_all.photo.attach(io: file, filename: 'this_is_spoon.png')
 
 kavinsky_all = ArtistPlaylist.create({ 
   title: 'This is Kavinsky', 
   artist_id: kavinsky.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/kavinsky.png')
-kavinsky_all.photo.attach(io: file, filename: 'kavinsky.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_kavinsky.png')
+kavinsky_all.photo.attach(io: file, filename: 'this_is_kavinsky.png')
 
 the_strokes_all = ArtistPlaylist.create({ 
   title: 'This is The Strokes', 
   artist_id: the_strokes.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/the_strokes.png')
-the_strokes_all.photo.attach(io: file, filename: 'the_strokes.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_the_strokes.png')
+the_strokes_all.photo.attach(io: file, filename: 'this_is_the_strokes.png')
 
 architecture_in_helsinki_all = ArtistPlaylist.create({ 
   title: 'This is Architecture in Helsinki', 
   artist_id: architecture_in_helsinki.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/architecture_in_helsinki.png')
-architecture_in_helsinki_all.photo.attach(io: file, filename: 'architecture_in_helsinki.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_architecture_in_helsinki.png')
+architecture_in_helsinki_all.photo.attach(io: file, filename: 'this_is_architecture_in_helsinki.png')
 
 disclosure_all = ArtistPlaylist.create({ 
   title: 'This is Disclosure', 
   artist_id: disclosure.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/disclosure.png')
-disclosure_all.photo.attach(io: file, filename: 'disclosure.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_disclosure.png')
+disclosure_all.photo.attach(io: file, filename: 'this_is_disclosure.png')
 
 lake_street_dive_all = ArtistPlaylist.create({ 
   title: 'This is Lake Street Dive', 
   artist_id: lake_street_dive.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/lake_street_dive.png')
-lake_street_dive_all.photo.attach(io: file, filename: 'lake_street_dive.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_lake_street_dive.png')
+lake_street_dive_all.photo.attach(io: file, filename: 'this_is_lake_street_dive.png')
 
 vacationer_all = ArtistPlaylist.create({ 
   title: 'This is Vacationer', 
   artist_id: vacationer.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/vacationer.png')
-vacationer_all.photo.attach(io: file, filename: 'vacationer.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_vacationer.png')
+vacationer_all.photo.attach(io: file, filename: 'this_is_vacationer.png')
 
 magic_city_hippies_all = ArtistPlaylist.create({ 
   title: 'This is Magic City Hippies', 
   artist_id: magic_city_hippies.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/magic_city_hippies.png')
-magic_city_hippies_all.photo.attach(io: file, filename: 'magic_city_hippies.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_magic_city_hippies.png')
+magic_city_hippies_all.photo.attach(io: file, filename: 'this_is_magic_city_hippies.png')
 
 alabama_shakes_all = ArtistPlaylist.create({ 
   title: 'This is Alabama Shakes', 
   artist_id: alabama_shakes.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/alabama_shakes.png')
-alabama_shakes_all.photo.attach(io: file, filename: 'alabama_shakes.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_alabama_shakes.png')
+alabama_shakes_all.photo.attach(io: file, filename: 'this_is_alabama_shakes.png')
 
 greta_van_fleet_all = ArtistPlaylist.create({ 
   title: 'This is Greta Van Fleet', 
   artist_id: greta_van_fleet.id 
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/greta_van_fleet.png')
-greta_van_fleet_all.photo.attach(io: file, filename: 'greta_van_fleet.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_greta_van_fleet.png')
+greta_van_fleet_all.photo.attach(io: file, filename: 'this_is_greta_van_fleet.png')
 
 bahamas_all = ArtistPlaylist.create({ 
   title: 'This is Bahamas', 
   artist_id: bahamas.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/bahamas.png')
-bahamas_all.photo.attach(io: file, filename: 'bahamas.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_bahamas.png')
+bahamas_all.photo.attach(io: file, filename: 'this_is_bahamas.png')
 
 basement_jaxx_all = ArtistPlaylist.create({ 
   title: 'This is Basement Jaxx', 
   artist_id: basement_jaxx.id
 })
-file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/basement_jaxx.png')
-basement_jaxx_all.photo.attach(io: file, filename: 'basement_jaxx.png')
+file = open('https://spotify-seeds.s3-us-west-1.amazonaws.com/this_is_basement_jaxx.png')
+basement_jaxx_all.photo.attach(io: file, filename: 'this_is_basement_jaxx.png')
 
 # Albums
 ratatat_creamOnChrome = Album.create({
