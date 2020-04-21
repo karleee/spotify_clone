@@ -8,24 +8,28 @@ class PlaylistIndexItem extends React.Component {
   } 
 
   componentDidMount() {
-    // Leave one second in between data fetching and state setting to avoid
+    // Leave time in between data fetching and state setting to avoid
     // undefined values for users
     setTimeout(() => {
-      this.getPlaylistUser(); 
+      this.getPlaylistUser();  
     }, 700);
   }
 
   // Get the playlist's user or artist
   getPlaylistUser() {
     const {playlist, users, artists} = this.props;
+    const usersArr = Object.values(users);
+    const artistsArr = Object.values(artists);
     let user;
     let userType;
 
     if (playlist.user_id) {
-      user = users[playlist.user_id - 1].username;
+      const matchedUser = usersArr[playlist.user_id - 1];
+      user = matchedUser ? matchedUser.username : '';
       userType = 'user';
     } else if (playlist.artist_id) {
-      user = artists[playlist.artist_id - 1].name;
+      const matchedArtist = artistsArr[playlist.artist_id - 1];
+      user = matchedArtist ? matchedArtist.name : '';
       userType = 'artist';
     } else {
       user = '';
@@ -122,3 +126,9 @@ class PlaylistIndexItem extends React.Component {
 }
  
 export default PlaylistIndexItem;  
+
+// const PlaylistIndexItem = ({users, artists}) => (
+//   <p>{JSON.stringify(users)}</p>
+// );
+
+// export default PlaylistIndexItem;  

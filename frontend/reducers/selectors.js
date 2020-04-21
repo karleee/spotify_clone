@@ -1,6 +1,6 @@
 // Gets the playlists based on type
-export const selectPlaylistsFromType = (state, playlistType) => (
-  Object.values(state.entities.playlists).filter(playlist => playlist.playlist_type === playlistType)
+export const selectPlaylistsFromType = (playlists, type) => (
+  Object.values(playlists).filter(playlist => playlist.playlist_type === type)
 );  
 
 // Gets the playlists from a user
@@ -22,7 +22,3 @@ export const selectTracksFromArtistPlaylist = (tracks, playlist) => (
 export const selectTracksFromPlaylist = (state, playlist) => (
   playlist.track_ids ? playlist.track_ids.map(id => state.entities.tracks[id]) : []     
 ); 
-
-// export const selectTracksFromAlbum = (state, album) => (
-//   album.track_ids ? album.track_ids.map(id => state.entities.tracks[id]) : []
-// ); 

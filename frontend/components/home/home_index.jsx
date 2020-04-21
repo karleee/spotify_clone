@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import PlaylistIndexItem from '../playlists/playlist_index_item_container';
+import {selectPlaylistsFromType} from '../../reducers/selectors';
+// import PlaylistIndexItem from '../playlists/playlist_index_item';
 
 class HomeIndex extends Component {
   constructor(props) {
@@ -11,6 +13,7 @@ class HomeIndex extends Component {
     window.performance.navigation.type === 1 ? localStorage.setItem('artist_playing', false) : '';
   } 
 
+  // Data fetching when the component mounts
   componentDidMount() { 
     this._isMounted = true;
     this.props.requestAllPlaylists();
@@ -21,6 +24,7 @@ class HomeIndex extends Component {
     this.props.requestAllUsers(); 
   }
 
+  // Setting isMounted to false once component unmounts
   componentWillUnmount() {
     this._isMounted = false;
   }
@@ -44,9 +48,12 @@ class HomeIndex extends Component {
     return selectedArtistPlaylists;
   }
 
+  // Renders HomeIndex component
   render() {
-    const {users, artists, heavyRotation} = this.props;
+    const {users, artists, userPlaylists} = this.props;
     const {selectedArtistPlaylists} = this.state;
+
+    const heavyRotationPlaylists = selectPlaylistsFromType(userPlaylists, 'heavyRotation');
 
     return (
       <div className="home-index main-container"> 
@@ -55,8 +62,14 @@ class HomeIndex extends Component {
         <div className="home-index heavy-rotation-playlists-wrapper">   
           <h2>Your heavy rotation</h2> 
           <ul> 
-            {heavyRotation.map(playlist => 
-              <PlaylistIndexItem key={playlist.id} playlist={playlist} users={users} {...this.props} />)}   
+            {heavyRotationPlaylists.map(playlist => 
+              <PlaylistIndexItem 
+                key={playlist.id} 
+                playlist={playlist} 
+                users={users} 
+                artists={artists}
+                {...this.props} 
+              />)}   
           </ul>
         </div>
 
@@ -68,7 +81,13 @@ class HomeIndex extends Component {
 
           <ul>
             {selectedArtistPlaylists.map(playlist =>
-              <PlaylistIndexItem key={playlist.id} playlist={playlist} artists={artists} {...this.props} />
+              <PlaylistIndexItem 
+                key={playlist.id} 
+                playlist={playlist} 
+                users={users}
+                artists={artists} 
+                {...this.props} 
+              />
             )} 
           </ul>
         </div>
@@ -77,4 +96,4 @@ class HomeIndex extends Component {
   }
 }
 
-export default HomeIndex;
+export default HomeIndex; 

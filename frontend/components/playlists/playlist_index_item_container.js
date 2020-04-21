@@ -6,8 +6,10 @@ import { selectTracksFromPlaylist } from '../../reducers/selectors';
 
 import PlaylistIndexItem from './playlist_index_item';
 
-const mapStateToProps = (state, { playlist }) => ({
+const mapStateToProps = (state, { playlist, users, artists }) => ({
   playlist,
+  users,
+  artists,
   tracks: selectTracksFromPlaylist(state, playlist),
   currentTrack: state.ui.currentTrack,
   isPlaying: state.ui.isPlaying 
