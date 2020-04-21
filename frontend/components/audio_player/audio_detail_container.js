@@ -3,7 +3,7 @@ import { requestAllAlbums } from '../../actions/album_actions';
 
 import AudioDetail from './audio_detail';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   return ({
     title: state.audio.title,
     artist: state.audio.artist,

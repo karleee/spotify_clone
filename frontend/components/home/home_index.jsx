@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PlaylistIndexItem from '../playlists/playlist_index_item_container';
 
-class HomeIndex extends React.Component {
+class HomeIndex extends Component {
   constructor(props) {
     super(props);
+    this._isMounted = false;
     this.state = {selectedArtistPlaylists: []};
     // Explicity resetting play state to false if the page is manually reloaded
     // Otherwise don't touch it/keep the play state across the site
@@ -11,6 +12,7 @@ class HomeIndex extends React.Component {
   } 
 
   componentDidMount() { 
+    this._isMounted = true;
     this.props.requestAllPlaylists();
     this.props.requestAllArtistPlaylists();
     this.props.requestAllTracks();
@@ -20,15 +22,21 @@ class HomeIndex extends React.Component {
 
     // Leave one second in between data fetching and state setting to avoid
     // undefined values for playlists
-    setTimeout(() => {
-      this.getSelectedArtistPlaylists();
-    }, 700);
+    // setTimeout(() => {
+    //   this.getSelectedArtistPlaylists();
+    // }, 700);
+
+    this.setState((state, props) => ({
+      selectedArtistPlaylists: props.artistPlaylists.slice(0, 4)
+    }))
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   // Get random slice of artist playlists
-  getSelectedArtistPlaylists() {
-    const {artistPlaylists} = this.props;
-    
+  getSelectedArtistPlaylists(artistPlaylists) {    
     let selectedArtistPlaylists = [];
     while (selectedArtistPlaylists.length < 4) {
       const randomPlaylist = artistPlaylists[Math.floor(Math.random() * artistPlaylists.length)];
