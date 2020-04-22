@@ -137,12 +137,17 @@ class AudioPlayer extends React.Component {
       const button = e.target.className === 'ap-play-icon' ? 'play' : 'pause';
       let isPlaying;
 
+      // Getting artist playing state to determine whether or not to play or pause it
+      const artistPlaying = JSON.parse(localStorage.getItem('artist_playing'));
+
       // Setting global state of isPlaying to false or true based on pause or play
       if (button === 'play') {
+        if (artistPlaying) localStorage.setItem('artist_playing', true);
         this.audio.play();
         isPlaying = true;
         this.props.receiveIsPlaying(isPlaying);
       } else {
+        if (artistPlaying) localStorage.setItem('artist_playing', false);
         this.audio.pause();
         isPlaying = false;
         this.props.receiveIsPlaying(isPlaying);

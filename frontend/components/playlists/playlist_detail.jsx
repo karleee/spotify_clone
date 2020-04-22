@@ -14,10 +14,9 @@ class PlaylistDetail extends React.Component {
     localStorage.setItem('playlist_tracks', JSON.stringify(this.props.tracks)); 
   }
 
-  handleClick(e) {   
-    const { playlist, tracks } = this.props;
-    const currentTrack = tracks[0];
-    const nextTrack = tracks[1];
+  handleClick(e, track) {    
+    const {playlist, tracks} = this.props;
+    const currentTrack = track && tracks.includes(track) ? track : tracks[0];
 
     // Setting the active playlist in localStorage
     localStorage.setItem('active_playlist', JSON.stringify(playlist));
@@ -28,18 +27,24 @@ class PlaylistDetail extends React.Component {
     // Toggle global isPlaying state based on play or pause button press for icon change
     const parent = e.target.parentElement;
     const isPlaying = parent.parentElement.className === 'playlist pause-button control-container' ? false : true;
-    this.props.receiveIsPlaying(isPlaying);
+    this.props.receiveIsPlaying(isPlaying); 
 
     // Play and pause the audio when buttons are clicked 
+    // Calling play or pause now returns a Promise
     if (isPlaying) {
-      audio.play();
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => 'Success!').catch(() => 'Error');
+      }
     } else {
-      audio.pause();
+      const pausePromise = audio.pause();
+      if (pausePromise !== undefined) {
+        pausePromise.then(() => 'Success!').catch(() => 'Error');
+      }
     }
 
     // Setting new current and next track
     this.props.receiveCurrentTrack(currentTrack);
-    this.props.receiveNextTrack(nextTrack);
     this.props.receiveTitle(currentTrack.title);
     this.props.receiveArtist(currentTrack.artist);
     this.props.receivePlaylistId(playlist.id); 
@@ -47,7 +52,7 @@ class PlaylistDetail extends React.Component {
   }
 
   render() {
-    const { playlist, tracks, isPlaying } = this.props;
+    const { playlist, tracks, isPlaying, currentTrack } = this.props;
 
     // Getting active playlist
     const activePlaylist = JSON.parse(localStorage.getItem('active_playlist'));
@@ -63,7 +68,7 @@ class PlaylistDetail extends React.Component {
             <img src={playlist.photo_url} alt="Playlist thumbnail" /> 
             <div className={`playlist ${buttonType} overlay-container`}></div>  
 
-            <div className={`playlist ${buttonType} control-container`} onClick={e => this.handleClick(e)}>
+            <div className={`playlist ${buttonType} control-container`} onClick={e => this.handleClick(e, currentTrack)}>
               <div className="playlist circle-icon-wrapper">
                 <i className={`playlist ${buttonIcon}-wrapper`}></i> 
               </div>
