@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import TrackDetail from '../track/track_detail_container';
+// import TrackDetail from '../track/track_detail_container';
+import TrackDetail from '../track/track_detail';
 
 class PlaylistDetail extends React.Component { 
   constructor(props) {
     super(props);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -25,8 +27,9 @@ class PlaylistDetail extends React.Component {
     const audio = document.getElementById("audio");
 
     // Toggle global isPlaying state based on play or pause button press for icon change
-    const parent = e.target.parentElement;
-    const isPlaying = parent.parentElement.className === 'playlist pause-button control-container' ? false : true;
+    const thumbnailButton = e.target.parentElement.parentElement.className;
+    const trackButton = e.target.parentElement.parentElement.parentElement.className;
+    const isPlaying = thumbnailButton === 'playlist pause-button control-container' || trackButton === 'track-index-item active main-container' ? false : true;
     this.props.receiveIsPlaying(isPlaying); 
 
     // Play and pause the audio when buttons are clicked 
@@ -53,7 +56,6 @@ class PlaylistDetail extends React.Component {
 
   render() {
     const {playlist, tracks, isPlaying, currentTrack} = this.props;
-    console.log(JSON.stringify(playlist));
 
     // Getting active playlist
     const activePlaylist = JSON.parse(localStorage.getItem('active_playlist'));
@@ -86,9 +88,14 @@ class PlaylistDetail extends React.Component {
         </div>
  
         <div className="tracks">    
-          <TrackDetail playlist={playlist} tracks={tracks} />   
+          <TrackDetail 
+            playlist={playlist} 
+            tracks={tracks} 
+            currentTrack={currentTrack}
+            handleClick={this.handleClick}
+          />   
         </div>
-      </div>
+      </div> 
     );
   }
 }

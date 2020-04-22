@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class TrackIndexItem extends Component {
   constructor(props) {
     super(props);
-    this.state = { duration: '0:00' };
+    this.state = {duration: '0:00'};
     this.getDuration();
   }
 
@@ -35,10 +35,11 @@ class TrackIndexItem extends Component {
 
   // Renders TrackIndexItem component
   render() {
-    const { track, playlist, currentTrack, isPlaying, handleClick } = this.props;
+    const {track, playlist, currentTrack, isPlaying, handleClick} = this.props;
 
     // Getting active playlist
     const activePlaylist = JSON.parse(localStorage.getItem('active_playlist'));
+    console.log(currentTrack);
 
     const isActive = currentTrack && currentTrack.title === track.title &&  playlist.id === activePlaylist.id ? 'active' : '';
     let audioState;
